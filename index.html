@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Koino Edafos</title>
+
+    <link rel="stylesheet" href="libs/leaflet.css" />
+    <link rel="stylesheet" href="libs/leaflet-panel-layers.css" />
+
+    <script src="data/erosion_1.js"></script>
+    <script src="data/iperboskisi_2.js"></script>
+    <script src="data/polution_3.js"></script>
+    <script src="data/tsimetno_4.js"></script>
+    <script src="data/climate_events_5.js"></script>
+    <script src="data/poiotita_6.js"></script>
+    <script src="data/survey_makri_7.js"></script>
+
+    <style>
+      .leaflet-panel-layers {
+        background: rgba(255, 255, 255, 0.8);
+      }
+      #map {
+        position: fixed;
+        top: 50px;
+        width: 98%;
+        height: 90%;
+      }
+      h4,
+      div,
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script src="libs/autolinker.min.js"></script>
+    <script src="libs/leaflet.js"></script>
+    <script src="libs/leaflet-hash.js"></script>
+    <script src="libs/leaflet-panel-layers.js"></script>
+
+    <script src="src/config.js"></script>
+    <script src="src/helpers.js"></script>
+    <script src="src/events.js"></script>
+    <script src="src/layers.js"></script>
+    <script src="src/app.js"></script>
+    <script src="src/controls.js"></script>
+    <script src="src/zoom.js"></script>
+  </body>
+</html>
