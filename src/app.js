@@ -39,8 +39,8 @@ map.getPane("paneSurveyMakri").style["mix-blend-mode"] = "normal";
 
 var bounds_group = new L.featureGroup([]);
 
-// bounds_group.addLayer(layerErosion, { style: style });
-// map.addLayer(layerErosion);
+bounds_group.addLayer(layerErosion, { style: style });
+map.addLayer(layerErosion);
 
 // bounds_group.addLayer(layerOvergrazing);
 // map.addLayer(layerOvergrazing);

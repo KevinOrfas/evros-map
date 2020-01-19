@@ -108,7 +108,7 @@ function style_poiotita_6_0(feature) {
   switch (String(feature.properties["poiotita"])) {
     case "ΙΚΑΝΟΠΟΙΗΤΙΚΗ ΠΟΙΟΤΗΤΑ ΕΔΑΦΟΥΣ":
       return {
-        pane: "pane_poiotita_6",
+        pane: "paneQuality",
         radius: 7.2,
         opacity: 1,
         color: "rgba(128,17,25,1.0)",
@@ -124,7 +124,7 @@ function style_poiotita_6_0(feature) {
       break;
     case "ΜΗ ΙΚΑΝΟΠΟΙΗΤΙΚΗ ΠΟΙΟΤΗΤΑ ΕΔΑΦΟΥΣ":
       return {
-        pane: "pane_poiotita_6",
+        pane: "paneQuality",
         radius: 7.2,
         opacity: 1,
         color: "rgba(61,128,53,1.0)",

@@ -33,21 +33,21 @@ var overLayers = [
     layer: L.geoJson(jsonCement, {
       pointToLayer: featureToMarker
     })
-  },
-  {
-    name: "quality",
-    icon: iconByName("quality"),
-    layer: L.geoJson(jsonQuality, {
-      pointToLayer: featureToMarker
-    })
-  },
-  {
-    name: "survey",
-    icon: iconByName("survey"),
-    layer: L.geoJson(jsonSurveyMakri, {
-      pointToLayer: featureToMarker
-    })
   }
+  // {
+  //   name: "quality",
+  //   icon: iconByName("quality"),
+  //   layer: L.geoJson(jsonQuality, {
+  //     pointToLayer: featureToMarker
+  //   })
+  // },
+  // {
+  //   name: "survey",
+  //   icon: iconByName("survey"),
+  //   layer: L.geoJson(jsonSurveyMakri, {
+  //     pointToLayer: featureToMarker
+  //   })
+  // }
 ];
 var panelLayers = new L.Control.PanelLayers(null, overLayers);
 map.addControl(panelLayers);
