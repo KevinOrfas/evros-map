@@ -1,6 +1,6 @@
-var json_iperboskisi_2 = {
+var jsonOvergrazing = {
   type: "FeatureCollection",
-  name: "iperboskisi_2",
+  name: "jsonOvergrazing",
   crs: { type: "name", properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" } },
   features: [
     {

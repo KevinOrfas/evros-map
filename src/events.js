@@ -1,4 +1,4 @@
-function events_erosion_1(feature, layer) {
+function eventsErosion(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
@@ -18,7 +18,7 @@ function events_erosion_1(feature, layer) {
   layer.bindPopup(popupContent, { maxHeight: 400 });
 }
 
-function events_iperboskisi_2(feature, layer) {
+function eventsOvergrazing(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,

@@ -3,9 +3,9 @@ var layerErosion = new L.geoJson(jsonErosion, {
   interactive: true,
   dataVar: "jsonErosion",
   layerName: "layerErosion",
-  pane: "pane_erosion_1",
+  pane: "paneErosion",
   style: {
-    pane: "pane_erosion_1",
+    pane: "paneErosion",
     opacity: 1,
     color: "rgba(56,128,54,1.0)",
     dashArray: "",
@@ -20,14 +20,14 @@ var layerErosion = new L.geoJson(jsonErosion, {
   onEachFeature: events_erosion_1
 });
 
-var layer_iperboskisi_2 = new L.geoJson(json_iperboskisi_2, {
+var layerOvergrazing = new L.geoJson(jsonOvergrazing, {
   attribution: "",
   interactive: true,
-  dataVar: "json_iperboskisi_2",
-  layerName: "layer_iperboskisi_2",
-  pane: "pane_iperboskisi_2",
+  dataVar: "jsonOvergrazing",
+  layerName: "layerOvergrazing",
+  pane: "paneOvergrazing",
   style: {
-    pane: "pane_iperboskisi_2",
+    pane: "paneOvergrazing",
     opacity: 1,
     color: "rgba(38,89,128,1.0)",
     dashArray: "",
@@ -39,5 +39,5 @@ var layer_iperboskisi_2 = new L.geoJson(json_iperboskisi_2, {
     fillColor: "rgba(55,126,184,1.0)",
     interactive: true
   },
-  onEachFeature: events_iperboskisi_2
+  onEachFeature: eventsOvergrazing
 });
