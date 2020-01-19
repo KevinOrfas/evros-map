@@ -13,7 +13,8 @@ var conf = {
               "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
               {
                 opacity: 1.0,
-                attribution: "",
+                attribution:
+                  '<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>',
                 minZoom: 1,
                 maxZoom: 28,
                 minNativeZoom: 0,
@@ -25,9 +26,7 @@ var conf = {
             name: "Corine",
             layer: {
               type: "tileLayer",
-              args: [
-                "http://{s}.tile3.opencyclemap.org/landscape/{z}/{x}/{y}.png"
-              ]
+              args: ["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"]
             }
           }
         ]

@@ -4,7 +4,7 @@ function events_erosion_1(feature, layer) {
     mouseover: highlightFeature,
     click: zoomToFeature
   });
-  var erosionContent = `<div>
+  var popupContent = `<div>
     <h4>${
       feature.properties["village"] !== null
         ? Autolinker.link(feature.properties["village"].toLocaleString())
@@ -15,5 +15,26 @@ function events_erosion_1(feature, layer) {
         ? Autolinker.link(feature.properties["comment"].toLocaleString())
         : ""
     }</div>`;
-  layer.bindPopup(erosionContent, { maxHeight: 400 });
+  layer.bindPopup(popupContent, { maxHeight: 400 });
+}
+
+function events_iperboskisi_2(feature, layer) {
+  layer.on({
+    mouseout: resetHighlight,
+    mouseover: highlightFeature,
+    click: zoomToFeature
+  });
+  var popupContent = `<div>
+  <h4>${
+    feature.properties["eidos"] !== null
+      ? Autolinker.link(feature.properties["eidos"].toLocaleString())
+      : ""
+  }</h4>
+  ${
+    feature.properties["village"] !== null
+      ? Autolinker.link(feature.properties["village"].toLocaleString())
+      : ""
+  }</div>`;
+
+  layer.bindPopup(popupContent, { maxHeight: 400 });
 }
