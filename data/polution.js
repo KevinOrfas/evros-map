@@ -1,4 +1,4 @@
-var json_polution_3 = {
+var jsonPolution = {
 "type": "FeatureCollection",
 "name": "polution_3",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
