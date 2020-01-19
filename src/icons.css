@@ -13,11 +13,11 @@
 .icon-overgrazing {
   background: url("../icons/overgrazing.png") center center no-repeat;
 }
-.icon-parking {
-  background: url("images/icons/parking.png") center center no-repeat;
+.icon-cement {
+  background: url("../icons/cement.png") center center no-repeat;
 }
-.icon-drinking_water {
-  background: url("images/icons/drinking_water.png") center center no-repeat;
+.icon-quality {
+  background: url("../icons/quality.png") center center no-repeat;
 }
 
 /* MARKERS */
@@ -31,9 +31,9 @@
 .marker-overgrazing {
   background: url("../icons/overgrazing.png") center center no-repeat;
 }
-.marker-parking {
-  background: url("images/markers/parking.png") center center no-repeat;
+.marker-cement {
+  background: url("../icons/cement.png") center center no-repeat;
 }
-.marker-drinking_water {
-  background: url("images/markers/drinking_water.png") center center no-repeat;
+.marker-quality {
+  background: url("../icons/quality.png") center center no-repeat;
 }

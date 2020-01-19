@@ -1,4 +1,4 @@
-var json_poiotita_6 = {
+var jsonQuality = {
 "type": "FeatureCollection",
 "name": "poiotita_6",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
