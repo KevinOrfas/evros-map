@@ -7,17 +7,17 @@ var layerErosion = new L.geoJson(jsonErosion, {
   style: {
     pane: "paneErosion",
     opacity: 1,
-    color: "rgba(56,128,54,1.0)",
+    color: "red",
     dashArray: "",
     lineCap: "butt",
     lineJoin: "miter",
     weight: 1.0,
     fill: true,
     fillOpacity: 0.5,
-    fillColor: "rgba(77,175,74,1.0)",
+    fillColor: "red",
     interactive: true
   },
-  onEachFeature: events_erosion_1
+  onEachFeature: eventsErosion
 });
 
 var layerOvergrazing = new L.geoJson(jsonOvergrazing, {
