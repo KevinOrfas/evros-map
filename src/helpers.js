@@ -1,6 +1,6 @@
 function highlightFeature(e) {
   var layer = e.target;
-
+  console.log({ layer });
   if (e.target.feature.geometry.type === "LineString") {
     layer.setStyle({
       color: "#ffff00"

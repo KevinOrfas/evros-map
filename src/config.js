@@ -8,7 +8,6 @@ var conf = {
         layers: [
           {
             name: "Google",
-            active: true,
             layer: L.tileLayer(
               "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
               {
@@ -23,7 +22,8 @@ var conf = {
             )
           },
           {
-            name: "Corine",
+            name: "Topomaps",
+            active: true,
             layer: {
               type: "tileLayer",
               args: ["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"]

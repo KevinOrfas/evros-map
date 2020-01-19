@@ -1,6 +1,6 @@
-var json_erosion_1 = {
+var jsonErosion = {
   type: "FeatureCollection",
-  name: "erosion_1",
+  name: "erosion",
   crs: { type: "name", properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" } },
   features: [
     {

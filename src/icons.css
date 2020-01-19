@@ -7,8 +7,8 @@
 }
 
 /* ICONS */
-.icon-ersosion_point_5 {
-  background: url("../icons/ersosion_point_5.png") center center no-repeat;
+.icon-erosion {
+  background: url("../icons/erosion.png") center center no-repeat;
 }
 .icon-fuel {
   background: url("images/icons/fuel.png") center center no-repeat;
@@ -25,8 +25,8 @@
   padding: 2px;
   text-align: center;
 }
-.marker-ersosion_point_5 {
-  background: url("../icons/ersosion_point_5.png") center center no-repeat;
+.marker-erosion {
+  background: url("../icons/erosion.png") center center no-repeat;
 }
 .marker-fuel {
   background: url("images/markers/fuel.png") center center no-repeat;

@@ -1,8 +1,8 @@
-var layer_erosion_1 = new L.geoJson(json_erosion_1, {
+var layerErosion = new L.geoJson(jsonErosion, {
   attribution: "",
   interactive: true,
-  dataVar: "json_erosion_1",
-  layerName: "layer_erosion_1",
+  dataVar: "jsonErosion",
+  layerName: "layerErosion",
   pane: "pane_erosion_1",
   style: {
     pane: "pane_erosion_1",
