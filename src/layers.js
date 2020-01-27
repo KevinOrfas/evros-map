@@ -6,15 +6,15 @@ var layerErosion = new L.geoJson(jsonErosion, {
   pane: "paneErosion",
   style: {
     pane: "paneErosion",
-    opacity: 1,
-    color: "red",
+    opacity: 0.5,
+    color: "#adc378",
     dashArray: "",
     lineCap: "butt",
     lineJoin: "miter",
-    weight: 1.0,
+    weight: 1,
     fill: true,
-    fillOpacity: 0.5,
-    fillColor: "red",
+    fillOpacity: 0.1,
+    fillColor: "#adc378",
     interactive: true
   },
   onEachFeature: eventsErosion
@@ -28,15 +28,15 @@ var layerOvergrazing = new L.geoJson(jsonOvergrazing, {
   pane: "paneOvergrazing",
   style: {
     pane: "paneOvergrazing",
-    opacity: 1,
-    color: "rgba(38,89,128,1.0)",
+    opacity: 0.5,
+    color: "#9FC7E8",
     dashArray: "",
     lineCap: "butt",
     lineJoin: "miter",
     weight: 1.0,
     fill: true,
-    fillOpacity: 0.5,
-    fillColor: "rgba(55,126,184,1.0)",
+    fillOpacity: 0.1,
+    fillColor: "#9FC7E8",
     interactive: true
   },
   onEachFeature: eventsOvergrazing
@@ -48,20 +48,42 @@ var layerCement = new L.geoJson(jsonCement, {
   dataVar: "jsonCement",
   layerName: "layerCement",
   pane: "paneCement",
-  onEachFeature: eventsCement,
   style: {
     pane: "paneCement",
-    opacity: 1,
-    color: "rgba(102,51,24,1.0)",
+    opacity: 0.5,
+    color: "#FBB23E",
     dashArray: "",
     lineCap: "butt",
     lineJoin: "miter",
     weight: 1.0,
     fill: true,
-    fillOpacity: 0.5,
-    fillColor: "rgba(155,152,147,1.0)",
+    fillOpacity: 0.1,
+    fillColor: "#FBB23E",
     interactive: true
-  }
+  },
+  onEachFeature: eventsCement
+});
+
+var layerPolution = new L.geoJson(jsonPolution, {
+  attribution: "",
+  interactive: true,
+  dataVar: "jsonPolution",
+  layerName: "layerPolution",
+  pane: "panePolution",
+  style: {
+    pane: "panePolution",
+    opacity: 0.5,
+    color: "#f788b2",
+    dashArray: "",
+    lineCap: "butt",
+    lineJoin: "miter",
+    weight: 1.0,
+    fill: true,
+    fillOpacity: 0.1,
+    fillColor: "#f788b2",
+    interactive: true
+  },
+  onEachFeature: eventsPolution
 });
 
 var layerQuality = new L.geoJson(jsonQuality, {

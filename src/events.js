@@ -41,30 +41,49 @@ function eventsOvergrazing(feature, layer) {
 
 function eventsCement(feature, layer) {
   layer.on({
-    mouseout: function(e) {
-      for (i in e.target._eventParents) {
-        e.target._eventParents[i].resetStyle(e.target);
-      }
-    },
-    mouseover: highlightFeature
+    mouseout: resetHighlight,
+    mouseover: highlightFeature,
+    click: zoomToFeature
   });
-  var popupContent =
-    '<table>\
-              <tr>\
-                  <td colspan="2">' +
-    (feature.properties["comment"] !== null
+  var popupContent = `<div>
+  <h4>${
+    feature.properties["comment"] !== null
       ? Autolinker.link(feature.properties["comment"].toLocaleString())
-      : "") +
-    '</td>\
-              </tr>\
-              <tr>\
-                  <td colspan="2">' +
-    (feature.properties["village"] !== null
+      : ""
+  }</h4>
+  ${
+    feature.properties["village"] !== null
       ? Autolinker.link(feature.properties["village"].toLocaleString())
-      : "") +
-    "</td>\
-              </tr>\
-          </table>";
+      : ""
+  }</div>`;
+
+  layer.bindPopup(popupContent, { maxHeight: 400 });
+}
+
+function eventsPolution(feature, layer) {
+  layer.on({
+    mouseout: resetHighlight,
+    mouseover: highlightFeature,
+    click: zoomToFeature
+  });
+  var popupContent = `<div>
+  <h4>${
+    feature.properties["comment"] !== null
+      ? Autolinker.link(feature.properties["comment"].toLocaleString())
+      : ""
+  }</h4>
+  ${
+    feature.properties["village"] !== null
+      ? Autolinker.link(feature.properties["village"].toLocaleString())
+      : ""
+  }<br>
+  ${
+    feature.properties["category"] !== null
+      ? Autolinker.link(feature.properties["category"].toLocaleString())
+      : ""
+  }
+  </div>`;
+
   layer.bindPopup(popupContent, { maxHeight: 400 });
 }
 
