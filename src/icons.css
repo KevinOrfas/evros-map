@@ -8,16 +8,28 @@
 
 /* ICONS */
 .icon-erosion {
-  background: url("../icons/erosion.png") center center no-repeat;
+  background: url("../markers/erosion.svg") center center no-repeat;
+  background-size: contain;
 }
 .icon-overgrazing {
-  background: url("../icons/overgrazing.png") center center no-repeat;
+  background: url("../markers/overgrazing.svg") center center no-repeat;
+  background-size: contain;
 }
 .icon-cement {
-  background: url("../icons/cement.png") center center no-repeat;
+  background: url("../markers/cement.svg") center center no-repeat;
+  background-size: contain;
+}
+.icon-polution-wastes {
+  background: url("../icons/polution-wastes.png") center center no-repeat;
+  background-size: contain;
+}
+.icon-polution-pesticides {
+  background: url("../icons/polution-pesticides.png") center center no-repeat;
+  background-size: contain;
 }
 .icon-quality {
-  background: url("../icons/quality.png") center center no-repeat;
+  background: url("../markers/desertification.svg") center center no-repeat;
+  background-size: contain;
 }
 
 /* MARKERS */
@@ -26,14 +38,29 @@
   text-align: center;
 }
 .marker-erosion {
-  background: url("../icons/erosion.png") center center no-repeat;
+  background: url("../markers/erosion.svg") center center no-repeat;
+  background-size: contain;
 }
 .marker-overgrazing {
-  background: url("../icons/overgrazing.png") center center no-repeat;
+  background: url("../markers/overgrazing.svg") center center no-repeat;
+  background-size: contain;
 }
 .marker-cement {
-  background: url("../icons/cement.png") center center no-repeat;
+  background: url("../markers/cement.svg") center center no-repeat;
+  background-size: contain;
 }
+
+.marker-polution-wastes {
+  background: url("../icons/polution-wastes.png") center center no-repeat;
+  background-size: contain;
+}
+
+.marker-polution-pesticides {
+  background: url("../icons/polution-pesticides.png") center center no-repeat;
+  background-size: contain;
+}
+
 .marker-quality {
-  background: url("../icons/quality.png") center center no-repeat;
+  background: url("../markers/quality.svg") center center no-repeat;
+  background-size: contain;
 }

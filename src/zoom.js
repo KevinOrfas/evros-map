@@ -9,28 +9,21 @@ map.on("zoomend", function() {
   var MeterPerPixel = maxMeters / x;
   // say this is your scale
   // This is the scale denominator
-  console.log("scale denominator: ", MeterPerPixel * scale.options.maxWidth);
-
-  console.log("zoom", map.getZoom());
+  // console.log("scale denominator: ", MeterPerPixel * scale.options.maxWidth);
+  // console.log("zoom", map.getZoom());
 });
 
-var legend = L.control({ position: "bottomright" });
+const markUpFn = (color, name) =>
+  `<i style="background: ${color}"></i><span>${name}</span><br>`;
 
-legend.onAdd = function(map) {
-  var div = L.DomUtil.create("div", "info legend"),
-    grades = [0, 10, 20, 50, 100, 200, 500, 1000],
-    labels = [];
+const legend = L.control({ position: "bottomleft" });
 
-  // loop through our density intervals and generate a label with a colored square for each interval
-  for (var i = 0; i < grades.length; i++) {
-    div.innerHTML +=
-      '<i style="background:' +
-      getColor(grades[i] + 1) +
-      '"></i> ' +
-      grades[i] +
-      (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
-  }
-
+legend.onAdd = () => {
+  let div = L.DomUtil.create("div", "legend");
+  div.innerHTML += markUpFn("#adc378", "Erosion");
+  div.innerHTML += markUpFn("#9FC7E8", "Overgrazing");
+  div.innerHTML += markUpFn("#FBB23E", "Cement");
+  div.innerHTML += markUpFn("#f788b2", "Polution");
   return div;
 };
 

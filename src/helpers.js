@@ -7,8 +7,8 @@ function highlightFeature(e) {
     });
   } else {
     layer.setStyle({
-      fillColor: "green",
-      fillOpacity: 1
+      fillColor: layer.defaultOptions.style.color,
+      fillOpacity: 0.5
     });
   }
   if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -47,6 +47,7 @@ function getColor(d) {
 }
 
 function style(feature) {
+  console.log("HERE", feature);
   return {
     fillColor: getColor("#FFEDA0"),
     weight: 2,
@@ -61,32 +62,15 @@ function iconByName(name) {
   return '<i class="icon icon-' + name + '"></i>';
 }
 
-// function featureToMarker(feature, latlng) {
-//   return L.marker(latlng, {
-//     icon: L.divIcon({
-//       className: "marker-" + feature.properties.amenity,
-//       html: iconByName(feature.properties.amenity),
-//       iconUrl: "../images/markers/" + feature.properties.amenity + ".png",
-//       iconSize: [25, 41],
-//       iconAnchor: [12, 41],
-//       popupAnchor: [1, -34],
-//       shadowSize: [41, 41]
-//     })
-//   });
-// }
-
 function featureToMarker(feature, latlng) {
-  return L.marker([40.06602200033871, 24.44890103711547]);
-
-  // return L.marker(latlng, {
-  //   icon: L.divIcon({
-  //     className: "marker-" + "erosion",
-  //     html: iconByName("erosion"),
-  //     iconUrl: "../icons/" + "erosion" + ".png",
-  //     iconSize: [25, 41],
-  //     iconAnchor: [12, 41],
-  //     popupAnchor: [1, -34],
-  //     shadowSize: [41, 41]
-  //   })
-  // });
+  return L.marker(latlng, {
+    icon: L.divIcon({
+      className: `marker-${feature.properties.amenity}`,
+      iconUrl: `../markers/${feature.properties.amenity}.svg`,
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41]
+    })
+  });
 }
