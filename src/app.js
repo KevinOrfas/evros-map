@@ -10,11 +10,11 @@ var map = L.map("map", {
 var hash = new L.Hash(map);
 
 map.createPane("paneErosion");
-map.getPane("paneErosion").style.zIndex = 401;
+map.getPane("paneErosion").style.zIndex = 402;
 // map.getPane("paneErosion").style["mix-blend-mode"] = "normal";
 
 map.createPane("paneOvergrazing");
-map.getPane("paneOvergrazing").style.zIndex = 402;
+map.getPane("paneOvergrazing").style.zIndex = 401;
 map.getPane("paneOvergrazing").style["mix-blend-mode"] = "normal";
 
 map.createPane("paneOvergrazing");
@@ -25,69 +25,101 @@ map.createPane("paneCement");
 map.getPane("paneCement").style.zIndex = 404;
 map.getPane("paneCement").style["mix-blend-mode"] = "normal";
 
+map.createPane("panePolution");
+map.getPane("panePolution").style.zIndex = 403;
+map.getPane("panePolution").style["mix-blend-mode"] = "normal";
+
 map.createPane("paneQuality");
 map.getPane("paneQuality").style.zIndex = 406;
 map.getPane("paneQuality").style["mix-blend-mode"] = "normal";
-
-// map.createPane("panePolution");
-// map.getPane("panePolution").style.zIndex = 403;
-// map.getPane("panePolution").style["mix-blend-mode"] = "normal";
 
 map.createPane("paneSurveyMakri");
 map.getPane("paneSurveyMakri").style.zIndex = 407;
 map.getPane("paneSurveyMakri").style["mix-blend-mode"] = "normal";
 
-var bounds_group = new L.featureGroup([]);
+const bounds_group = new L.featureGroup([]);
 
-bounds_group.addLayer(layerErosion, { style: style });
-map.addLayer(layerErosion);
+const featureGroupLayers = [
+  layerErosion,
+  layerOvergrazing,
+  layerCement,
+  layerPolution
+];
+featureGroupLayers.forEach(layer => {
+  bounds_group.addLayer(layer);
+  map.addLayer(layer);
+});
 
-// bounds_group.addLayer(layerOvergrazing);
-// map.addLayer(layerOvergrazing);
+var myIcon = name =>
+  L.divIcon({
+    className: `marker-${name}`,
+    iconUrl: `../markers/${name}.svg`,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
 
-// bounds_group.addLayer(layerCement);
-// map.addLayer(layerCement);
+const getCenterOfPolygon = elm => {
+  return turf.centroid(turf.multiPolygon(elm.geometry.coordinates));
+};
+const swap = (array, i, j) => ([array[i], array[j]] = [array[j], array[i]]);
+const swapCoordinates = ({ geometry }) => swap(geometry.coordinates, 0, 1);
+const setIcon = name => point => {
+  L.marker(point, { icon: myIcon(name) }).addTo(map);
+};
 
-// var layerPolution = new L.geoJson.multiStyle(jsonPolution, {
-//   attribution: "",
-//   interactive: true,
-//   dataVar: "jsonPolution",
-//   layerName: "layerPolution",
-//   pane: "panePolution",
-//   onEachFeature: pop_polution_3,
-//   styles: [style_polution_1, style_polution_2]
-// });
+// Set up erosion icons
+jsonErosion.features
+  .map(getCenterOfPolygon)
+  .map(swapCoordinates)
+  .forEach(setIcon("erosion"));
+// Set up overgrazing icons
+jsonOvergrazing.features
+  .map(getCenterOfPolygon)
+  .map(swapCoordinates)
+  .forEach(setIcon("overgrazing"));
+// Set up cement icons
+jsonCement.features
+  .map(getCenterOfPolygon)
+  .map(swapCoordinates)
+  .forEach(setIcon("cement"));
 
-// bounds_group.addLayer(layerPolution);
-// map.addLayer(layerPolution);
+const filterFeatures = filter => feature =>
+  feature.properties.category === filter;
 
-// var pattern_polution_3_0 = new L.StripePattern({
-//   weight: 0.3,
-//   spaceWeight: 2.0,
-//   color: "#ff1ff1",
-//   opacity: 1.0,
-//   spaceOpacity: 0,
-//   angle: 225
-// });
-// pattern_polution_3_0.addTo(map);
-// var pattern_polution_3_0 = new L.StripePattern({
-//   weight: 0.3,
-//   spaceWeight: 2.0,
-//   color: "#e41a1c",
-//   opacity: 1.0,
-//   spaceOpacity: 0,
-//   angle: 315
-// });
-// pattern_polution_3_0.addTo(map);
-// var pattern_polution_3_0 = new L.StripePattern({
-//   weight: 0.3,
-//   spaceWeight: 2.0,
-//   color: "#ff1ff1",
-//   opacity: 1.0,
-//   spaceOpacity: 0,
-//   angle: 225
-// });
-// pattern_polution_3_0.addTo(map);
+const polutionWastes = jsonPolution.features.filter(
+  filterFeatures("Ρύπανση από Στερεά Απόβλητα")
+);
+const jsonPolutionWastes = Object.assign({}, jsonPolution);
+jsonPolutionWastes.features = polutionWastes;
+
+const polutionPesticides = jsonPolution.features.filter(
+  filterFeatures("Ρύπανση από Φυτοφάρμακα")
+);
+const jsonPolutionPesticides = Object.assign({}, jsonPolution);
+jsonPolutionPesticides.features = polutionPesticides;
+
+const polutionMisc = jsonPolution.features.filter(filterFeatures("ΔΙΑΦΟΡΑ"));
+const jsonPolutionMisc = Object.assign({}, jsonPolution);
+jsonPolutionMisc.features = polutionMisc;
+
+polutionWastes
+  .map(getCenterOfPolygon)
+  .map(swapCoordinates)
+  .forEach(setIcon("polution-wastes"));
+
+polutionPesticides
+  .map(getCenterOfPolygon)
+  .map(swapCoordinates)
+  .forEach(setIcon("polution-pesticides"));
+
+polutionMisc
+  .map(getCenterOfPolygon)
+  .map(swapCoordinates)
+  .forEach(elm => {
+    L.marker(elm).addTo(map);
+  });
 
 // function style_polution_1(feature) {
 //   switch (String(feature.properties["category"])) {
@@ -182,12 +214,3 @@ info.update = function(props) {
 };
 
 info.addTo(map);
-
-// console.log(jsonErosion.features[0].geometry.coordinates);
-// var polygon = turf.multiPolygon(
-//   jsonErosion.features[0].geometry.coordinates
-// );
-// var centroid = turf.centroid(polygon);
-// console.log(centroid);
-
-// L.marker(centroid.geometry.coordinates).addTo(map);
