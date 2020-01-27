@@ -11,7 +11,7 @@ var hash = new L.Hash(map);
 
 map.createPane("paneErosion");
 map.getPane("paneErosion").style.zIndex = 402;
-// map.getPane("paneErosion").style["mix-blend-mode"] = "normal";
+map.getPane("paneErosion").style["mix-blend-mode"] = "normal";
 
 map.createPane("paneOvergrazing");
 map.getPane("paneOvergrazing").style.zIndex = 401;
@@ -121,81 +121,7 @@ polutionMisc
     L.marker(elm).addTo(map);
   });
 
-// function style_polution_1(feature) {
-//   switch (String(feature.properties["category"])) {
-//     case "ΔΙΑΦΟΡΑ":
-//       return {
-//         pane: "panePolution",
-//         stroke: false,
-//         fillOpacity: 1,
-//         fillPattern: pattern_polution_3_0,
-//         interactive: true
-//       };
-//       break;
-//     case "Ρύπανση από Στερεά Απόβλητα":
-//       return {
-//         pane: "panePolution",
-//         stroke: false,
-//         fillOpacity: 1,
-//         fillPattern: pattern_polution_3_0,
-//         interactive: true
-//       };
-//       break;
-//     case "Ρύπανση από Φυτοφάρμακα":
-//       return {
-//         pane: "panePolution",
-//         interactive: true
-//       };
-//       break;
-//   }
-// }
-// function style_polution_2(feature) {
-//   switch (String(feature.properties["category"])) {
-//     case "ΔΙΑΦΟΡΑ":
-//       return {
-//         pane: "panePolution",
-//         opacity: 1,
-//         color: "rgba(228,26,28,1.0)",
-//         dashArray: "",
-//         lineCap: "square",
-//         lineJoin: "bevel",
-//         weight: 2.0,
-//         fillOpacity: 0,
-//         interactive: true
-//       };
-//       break;
-//     case "Ρύπανση από Στερεά Απόβλητα":
-//       return {
-//         pane: "panePolution",
-//         opacity: 1,
-//         color: "rgba(255,31,241,1.0)",
-//         dashArray: "",
-//         lineCap: "square",
-//         lineJoin: "bevel",
-//         weight: 2.0,
-//         fillOpacity: 0,
-//         interactive: true
-//       };
-//       break;
-//     case "Ρύπανση από Φυτοφάρμακα":
-//       return {
-//         pane: "panePolution",
-//         opacity: 1,
-//         color: "rgba(255,31,241,1.0)",
-//         dashArray: "",
-//         lineCap: "square",
-//         lineJoin: "bevel",
-//         weight: 2.0,
-//         fillOpacity: 0,
-//         interactive: true
-//       };
-//       break;
-//   }
-// }
-
-// pattern_polution_3_0.addTo(map);
-
-var info = L.control({ position: "topright" });
+const info = L.control({ position: "topright" });
 
 info.onAdd = function(map) {
   this._div = L.DomUtil.create("div", "info"); // create a div with a class "info"
