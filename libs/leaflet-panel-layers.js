@@ -229,6 +229,19 @@
               });
             }
 
+            if (e.target.value === "603") {
+              polutionWastesMarkers.forEach(marker => {
+                marker.classList.add("marker-visible");
+                marker.classList.remove("marker-hidden");
+              });
+            }
+            if (e.target.value === "632") {
+              polutionPesticidesMarkers.forEach(marker => {
+                marker.classList.add("marker-visible");
+                marker.classList.remove("marker-hidden");
+              });
+            }
+
             self.fire("panel:selected", e.target._layer);
           } else {
             // erosion
@@ -252,6 +265,21 @@
                 marker.classList.add("marker-hidden");
               });
             }
+
+            if (e.target.value === "603") {
+              polutionWastesMarkers.forEach(marker => {
+                marker.classList.remove("marker-visible");
+                marker.classList.add("marker-hidden");
+              });
+            }
+
+            if (e.target.value === "632") {
+              polutionPesticidesMarkers.forEach(marker => {
+                marker.classList.remove("marker-visible");
+                marker.classList.add("marker-hidden");
+              });
+            }
+
             self.fire("panel:unselected", e.target._layer);
           }
         },
