@@ -91,17 +91,17 @@ const filterFeatures = filter => feature =>
 const polutionWastes = jsonPolution.features.filter(
   filterFeatures("Ρύπανση από Στερεά Απόβλητα")
 );
-const jsonPolutionWastes = Object.assign({}, jsonPolution);
+const jsonPolutionWastes = { ...jsonPolution };
 jsonPolutionWastes.features = polutionWastes;
 
 const polutionPesticides = jsonPolution.features.filter(
   filterFeatures("Ρύπανση από Φυτοφάρμακα")
 );
-const jsonPolutionPesticides = Object.assign({}, jsonPolution);
+const jsonPolutionPesticides = { ...jsonPolution };
 jsonPolutionPesticides.features = polutionPesticides;
 
 const polutionMisc = jsonPolution.features.filter(filterFeatures("ΔΙΑΦΟΡΑ"));
-const jsonPolutionMisc = Object.assign({}, jsonPolution);
+const jsonPolutionMisc = { ...jsonPolution };
 jsonPolutionMisc.features = polutionMisc;
 
 polutionWastes
@@ -140,3 +140,23 @@ info.update = function(props) {
 };
 
 info.addTo(map);
+
+const cementMarkers = document.querySelectorAll(".marker-cement");
+const erosionMarkers = document.querySelectorAll(".marker-erosion");
+const qualityMarkers = document.querySelectorAll(".marker-quality");
+const polutionWastesMarkers = document.querySelectorAll(
+  ".marker-polution-wastes"
+);
+const polutionPesticidesMarkers = document.querySelectorAll(
+  ".marker-polution-pesticides"
+);
+const overgrazingMarkers = document.querySelectorAll(".marker-overgrazing");
+
+cementMarkers.forEach(marker => marker.classList.add("marker-hidden"));
+erosionMarkers.forEach(marker => marker.classList.add("marker-hidden"));
+qualityMarkers.forEach(marker => marker.classList.add("marker-hidden"));
+polutionWastesMarkers.forEach(marker => marker.classList.add("marker-hidden"));
+polutionPesticidesMarkers.forEach(marker =>
+  marker.classList.add("marker-hidden")
+);
+overgrazingMarkers.forEach(marker => marker.classList.add("marker-hidden"));

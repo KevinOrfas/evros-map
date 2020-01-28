@@ -150,4 +150,4 @@ var jsonQuality = {
 { "type": "Feature", "properties": { "poiotita": "ΜΗ ΙΚΑΝΟΠΟΙΗΤΙΚΗ ΠΟΙΟΤΗΤΑ ΕΔΑΦΟΥΣ", "comment": null, "village": "Σαμοθράκη" }, "geometry": { "type": "Point", "coordinates": [ 25.529218420397331, 40.486455080613979 ] } },
 { "type": "Feature", "properties": { "poiotita": "ΙΚΑΝΟΠΟΙΗΤΙΚΗ ΠΟΙΟΤΗΤΑ ΕΔΑΦΟΥΣ", "comment": null, "village": "Σαμοθράκη" }, "geometry": { "type": "Point", "coordinates": [ 25.481217892037165, 40.472420422072318 ] } }
 ]
-}
+};
