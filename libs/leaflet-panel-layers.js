@@ -206,36 +206,36 @@
         "click",
         function(e) {
           self._onInputClick();
+          const copy = e.target.nextElementSibling.innerText.toLowerCase();
           if (e.target.checked) {
-            // erosion
-            if (e.target.value === "561") {
+            if (copy === "erosion") {
               erosionMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
               });
             }
-            // overgrazing
-            if (e.target.value === "588") {
+
+            if (copy === "overgrazing") {
               overgrazingMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
               });
             }
 
-            if (e.target.value === "592") {
+            if (copy === "cement") {
               cementMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
               });
             }
 
-            if (e.target.value === "603") {
+            if (copy === "polution-wastes") {
               polutionWastesMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
               });
             }
-            if (e.target.value === "632") {
+            if (copy === "polution-pesticides") {
               polutionPesticidesMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
@@ -244,36 +244,34 @@
 
             self.fire("panel:selected", e.target._layer);
           } else {
-            // erosion
-            if (e.target.value === "561") {
+            if (copy === "erosion") {
               erosionMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
               });
             }
-            // overgrazing
-            if (e.target.value === "588") {
+            if (copy === "overgrazing") {
               overgrazingMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
               });
             }
 
-            if (e.target.value === "592") {
+            if (copy === "cement") {
               cementMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
               });
             }
 
-            if (e.target.value === "603") {
+            if (copy === "polution-wastes") {
               polutionWastesMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
               });
             }
 
-            if (e.target.value === "632") {
+            if (copy === "polution-pesticides") {
               polutionPesticidesMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
