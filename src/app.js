@@ -30,6 +30,10 @@ map.createPane("panePolutionPesticides");
 map.getPane("panePolutionPesticides").style.zIndex = 405;
 map.getPane("panePolutionPesticides").style["mix-blend-mode"] = "normal";
 
+map.createPane("panePolutionMisc");
+map.getPane("panePolutionMisc").style.zIndex = 410;
+map.getPane("panePolutionMisc").style["mix-blend-mode"] = "normal";
+
 map.createPane("paneDesertification");
 map.getPane("paneDesertification").style.zIndex = 406;
 map.getPane("paneDesertification").style["mix-blend-mode"] = "normal";
@@ -51,6 +55,7 @@ const featureGroupLayers = [
   layerCement,
   layerPolutionWastes,
   layerPolutionPesticides,
+  layerPolutionMisc,
   layerOvergrazingPoints,
   layerDesertificationPoints,
   layerFirePoints,
@@ -81,12 +86,12 @@ polutionPesticides
   .map(swapCoord)
   .forEach(setIcon("pesticides"));
 
-// polutionMisc
-//   .map(getCenterOfPolygon)
-//   .map(swapCoord)
-//   .forEach(elm => {
-//     L.marker(elm).addTo(map);
-//   });
+polutionMisc
+  .map(getCenterOfPolygon)
+  .map(swapCoord)
+  .forEach(elm => {
+    L.marker(elm).addTo(map);
+  });
 
 const info = L.control({ position: "topright" });
 
@@ -116,4 +121,5 @@ const fireMarkers = document.querySelectorAll(".m-fire");
 const floodMarkers = document.querySelectorAll(".m-flood");
 const wastesMarkers = document.querySelectorAll(".m-wastes");
 const pesticidesMarkers = document.querySelectorAll(".m-pesticides");
+// const polutionMiscMarkers = document.querySelectorAll(".m-pesticides");
 const desertificationMarkers = document.querySelectorAll(".m-desertification");

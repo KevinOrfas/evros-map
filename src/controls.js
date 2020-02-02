@@ -48,20 +48,10 @@ var overLayers = [
     icon: iconByName("flood"),
     layer: layerFloodPoints
   },
-  // {
-  //   name: "overgrazing",
-  //   icon: iconByName("overgrazing"),
-  //   layer: layerOvergrazingPoints
-  // },
-
   {
     name: "polution-misc",
     icon: iconByName("polution-misc"),
-    layer: L.geoJson(jsonPolutionMisc, {
-      pointToLayer: featureToMarker,
-      color: "black",
-      fillColor: "black"
-    })
+    layer: layerPolutionMisc
   }
 ];
 var panelLayers = new L.Control.PanelLayers(null, overLayers);
