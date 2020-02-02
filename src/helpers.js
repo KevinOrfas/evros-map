@@ -74,3 +74,22 @@ function featureToMarker(feature, latlng) {
     })
   });
 }
+
+const myIcon = name =>
+  L.divIcon({
+    className: `marker-${name}`,
+    iconUrl: `../markers/${name}.svg`,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+const getCenterOfPolygon = elm => {
+  return turf.centroid(turf.multiPolygon(elm.geometry.coordinates));
+};
+const swapArr = (array, i, j) => ([array[i], array[j]] = [array[j], array[i]]);
+const swapCoord = ({ geometry }) => swapArr(geometry.coordinates, 0, 1);
+const setIcon = name => point => {
+  L.marker(point, { icon: myIcon(name) }).addTo(map);
+};
