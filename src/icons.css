@@ -27,8 +27,13 @@
   background: url("../icons/poisoning.svg") center center no-repeat;
   background-size: contain;
 }
-.icon-quality {
+.icon-desertification {
   background: url("../markers/desertification.svg") center center no-repeat;
+  background-size: contain;
+}
+
+.icon-fire {
+  background: url("../markers/fire.svg") center center no-repeat;
   background-size: contain;
 }
 
@@ -57,6 +62,16 @@
 
 .marker-polution-pesticides {
   background: url("../icons/poisoning.svg") center center no-repeat;
+  background-size: contain;
+}
+
+.marker-desertification {
+  background: url("../markers/desertification.svg") center center no-repeat;
+  background-size: contain;
+}
+
+.marker-fire {
+  background: url("../markers/fire.svg") center center no-repeat;
   background-size: contain;
 }
 
