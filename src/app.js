@@ -1,4 +1,4 @@
-var map = L.map("map", {
+const map = L.map("map", {
   zoomControl: true,
   maxZoom: 28,
   minZoom: 1
@@ -7,10 +7,11 @@ var map = L.map("map", {
   [41.75275316854418, 27.36050423859745]
 ]);
 
-var hash = new L.Hash(map);
+const hash = new L.Hash(map);
 
+// Pane creation starts
 map.createPane("paneErosion");
-map.getPane("paneErosion").style.zIndex = 402;
+map.getPane("paneErosion").style.zIndex = 400;
 map.getPane("paneErosion").style["mix-blend-mode"] = "normal";
 
 map.createPane("paneOvergrazing");
@@ -22,104 +23,74 @@ map.getPane("paneOvergrazing").style.zIndex = 402;
 map.getPane("paneOvergrazing").style["mix-blend-mode"] = "normal";
 
 map.createPane("paneCement");
-map.getPane("paneCement").style.zIndex = 404;
+map.getPane("paneCement").style.zIndex = 403;
 map.getPane("paneCement").style["mix-blend-mode"] = "normal";
 
-map.createPane("panePolution");
-map.getPane("panePolution").style.zIndex = 403;
-map.getPane("panePolution").style["mix-blend-mode"] = "normal";
+map.createPane("panePolutionWastes");
+map.getPane("panePolutionWastes").style.zIndex = 404;
+map.getPane("panePolutionWastes").style["mix-blend-mode"] = "normal";
+
+map.createPane("panePolutionPesticides");
+map.getPane("panePolutionPesticides").style.zIndex = 405;
+map.getPane("panePolutionPesticides").style["mix-blend-mode"] = "normal";
+
+map.createPane("paneDesertification");
+map.getPane("paneDesertification").style.zIndex = 406;
+map.getPane("paneDesertification").style["mix-blend-mode"] = "normal";
+
+// paneFirePoints
 
 map.createPane("paneQuality");
-map.getPane("paneQuality").style.zIndex = 406;
+map.getPane("paneQuality").style.zIndex = 408;
 map.getPane("paneQuality").style["mix-blend-mode"] = "normal";
 
 map.createPane("paneSurveyMakri");
-map.getPane("paneSurveyMakri").style.zIndex = 407;
+map.getPane("paneSurveyMakri").style.zIndex = 409;
 map.getPane("paneSurveyMakri").style["mix-blend-mode"] = "normal";
+// Pane creation ends
 
-const bounds_group = new L.featureGroup([]);
-
+// boundsGroup Starts
+const boundsGroup = new L.featureGroup([]);
 const featureGroupLayers = [
   layerErosion,
   layerOvergrazing,
   layerCement,
-  layerPolution
+  layerPolutionWastes,
+  layerPolutionPesticides,
+  layerDesertification,
+  layerFirePoints
 ];
 featureGroupLayers.forEach(layer => {
-  bounds_group.addLayer(layer);
+  boundsGroup.addLayer(layer);
   map.addLayer(layer);
 });
+// boundsGroup end
 
-var myIcon = name =>
-  L.divIcon({
-    className: `marker-${name}`,
-    iconUrl: `../markers/${name}.svg`,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41]
-  });
-
-const getCenterOfPolygon = elm => {
-  return turf.centroid(turf.multiPolygon(elm.geometry.coordinates));
-};
-const swap = (array, i, j) => ([array[i], array[j]] = [array[j], array[i]]);
-const swapCoordinates = ({ geometry }) => swap(geometry.coordinates, 0, 1);
-const setIcon = name => point => {
-  L.marker(point, { icon: myIcon(name) }).addTo(map);
-};
-
-// Set up erosion icons
-jsonErosion.features
-  .map(getCenterOfPolygon)
-  .map(swapCoordinates)
-  .forEach(setIcon("erosion"));
-// Set up overgrazing icons
-jsonOvergrazing.features
-  .map(getCenterOfPolygon)
-  .map(swapCoordinates)
-  .forEach(setIcon("overgrazing"));
-// Set up cement icons
-jsonCement.features
-  .map(getCenterOfPolygon)
-  .map(swapCoordinates)
-  .forEach(setIcon("cement"));
-
-const filterFeatures = filter => feature =>
-  feature.properties.category === filter;
-
-const polutionWastes = jsonPolution.features.filter(
-  filterFeatures("Ρύπανση από Στερεά Απόβλητα")
-);
-const jsonPolutionWastes = { ...jsonPolution };
-jsonPolutionWastes.features = polutionWastes;
-
-const polutionPesticides = jsonPolution.features.filter(
-  filterFeatures("Ρύπανση από Φυτοφάρμακα")
-);
-const jsonPolutionPesticides = { ...jsonPolution };
-jsonPolutionPesticides.features = polutionPesticides;
-
-const polutionMisc = jsonPolution.features.filter(filterFeatures("ΔΙΑΦΟΡΑ"));
-const jsonPolutionMisc = { ...jsonPolution };
-jsonPolutionMisc.features = polutionMisc;
+// Set up icons
+jsonErsosionPoints.features.map(swapCoord).forEach(setIcon("erosion"));
+jsonOvergrazingPoints.features.map(swapCoord).forEach(setIcon("overgrazing"));
+jsonCementificationPoints.features.map(swapCoord).forEach(setIcon("cement"));
+jsonFirePoints.features.map(swapCoord).forEach(setIcon("fire"));
+jsonDesertificationPoints.features
+  .map(swapCoord)
+  .forEach(setIcon("desertification"));
 
 polutionWastes
   .map(getCenterOfPolygon)
-  .map(swapCoordinates)
+  .map(swapCoord)
   .forEach(setIcon("polution-wastes"));
 
 polutionPesticides
   .map(getCenterOfPolygon)
-  .map(swapCoordinates)
+  .map(swapCoord)
   .forEach(setIcon("polution-pesticides"));
 
-polutionMisc
-  .map(getCenterOfPolygon)
-  .map(swapCoordinates)
-  .forEach(elm => {
-    L.marker(elm).addTo(map);
-  });
+// polutionMisc
+//   .map(getCenterOfPolygon)
+//   .map(swapCoord)
+//   .forEach(elm => {
+//     L.marker(elm).addTo(map);
+//   });
 
 const info = L.control({ position: "topright" });
 
@@ -143,6 +114,8 @@ info.addTo(map);
 
 const cementMarkers = document.querySelectorAll(".marker-cement");
 const erosionMarkers = document.querySelectorAll(".marker-erosion");
+const overgrazingMarkers = document.querySelectorAll(".marker-overgrazing");
+
 const qualityMarkers = document.querySelectorAll(".marker-quality");
 const polutionWastesMarkers = document.querySelectorAll(
   ".marker-polution-wastes"
@@ -150,13 +123,17 @@ const polutionWastesMarkers = document.querySelectorAll(
 const polutionPesticidesMarkers = document.querySelectorAll(
   ".marker-polution-pesticides"
 );
-const overgrazingMarkers = document.querySelectorAll(".marker-overgrazing");
-
-cementMarkers.forEach(marker => marker.classList.add("marker-hidden"));
-erosionMarkers.forEach(marker => marker.classList.add("marker-hidden"));
-qualityMarkers.forEach(marker => marker.classList.add("marker-hidden"));
-polutionWastesMarkers.forEach(marker => marker.classList.add("marker-hidden"));
-polutionPesticidesMarkers.forEach(marker =>
-  marker.classList.add("marker-hidden")
+const desertificationMarkers = document.querySelectorAll(
+  ".marker-desertification"
 );
-overgrazingMarkers.forEach(marker => marker.classList.add("marker-hidden"));
+
+const fireMarkers = document.querySelectorAll(".marker-fire");
+
+// cementMarkers.forEach(marker => marker.classList.add("marker-hidden"));
+// erosionMarkers.forEach(marker => marker.classList.add("marker-hidden"));
+// qualityMarkers.forEach(marker => marker.classList.add("marker-hidden"));
+// polutionWastesMarkers.forEach(marker => marker.classList.add("marker-hidden"));
+// polutionPesticidesMarkers.forEach(marker =>
+//   marker.classList.add("marker-hidden")
+// );
+// overgrazingMarkers.forEach(marker => marker.classList.add("marker-hidden"));

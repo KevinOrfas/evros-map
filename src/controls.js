@@ -11,48 +11,39 @@ var overLayers = [
   {
     name: "Erosion",
     icon: iconByName("erosion"),
-    layer: L.geoJson(jsonErosion, {
-      pointToLayer: featureToMarker,
-      color: "#adc378",
-      fillColor: "#adc378"
-    })
+    layer: layerErosion
   },
   {
     name: "overgrazing",
     icon: iconByName("overgrazing"),
-    layer: L.geoJson(jsonOvergrazing, {
-      pointToLayer: featureToMarker,
-      color: "#9FC7E8",
-      fillColor: "#9FC7E8"
-    })
+    layer: layerOvergrazing
   },
   {
     name: "cement",
     icon: iconByName("cement"),
-    layer: L.geoJson(jsonCement, {
-      pointToLayer: featureToMarker,
-      color: "#FBB23E",
-      fillColor: "#FBB23E"
-    })
+    layer: layerCement
   },
   {
     name: "polution-wastes",
     icon: iconByName("polution-wastes"),
-    layer: L.geoJson(jsonPolutionWastes, {
-      pointToLayer: featureToMarker,
-      color: "#f788b2",
-      fillColor: "#f788b2"
-    })
+    layer: layerPolutionWastes
   },
   {
     name: "polution-pesticides",
     icon: iconByName("polution-pesticides"),
-    layer: L.geoJson(jsonPolutionPesticides, {
-      pointToLayer: featureToMarker,
-      color: "#f788d5",
-      fillColor: "#f788d5"
-    })
+    layer: layerPolutionPesticides
   },
+  {
+    name: "desertification",
+    icon: iconByName("desertification"),
+    layer: layerDesertification
+  },
+  {
+    name: "fire",
+    icon: iconByName("fire"),
+    layer: layerFirePoints
+  },
+
   {
     name: "polution-misc",
     icon: iconByName("polution-misc"),

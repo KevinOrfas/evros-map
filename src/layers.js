@@ -6,17 +6,18 @@ var layerErosion = new L.geoJson(jsonErosion, {
   pane: "paneErosion",
   style: {
     pane: "paneErosion",
-    opacity: 0.5,
+    opacity: 1,
     color: "#adc378",
     dashArray: "",
     lineCap: "butt",
     lineJoin: "miter",
     weight: 1,
     fill: true,
-    fillOpacity: 0.1,
+    fillOpacity: 0.5,
     fillColor: "#adc378",
     interactive: true
   },
+  pointToLayer: featureToMarker,
   onEachFeature: eventsErosion
 });
 
@@ -28,17 +29,18 @@ var layerOvergrazing = new L.geoJson(jsonOvergrazing, {
   pane: "paneOvergrazing",
   style: {
     pane: "paneOvergrazing",
-    opacity: 0.5,
+    opacity: 1,
     color: "#9FC7E8",
     dashArray: "",
     lineCap: "butt",
     lineJoin: "miter",
     weight: 1.0,
     fill: true,
-    fillOpacity: 0.1,
+    fillOpacity: 0.5,
     fillColor: "#9FC7E8",
     interactive: true
   },
+  pointToLayer: featureToMarker,
   onEachFeature: eventsOvergrazing
 });
 
@@ -61,17 +63,33 @@ var layerCement = new L.geoJson(jsonCement, {
     fillColor: "#FBB23E",
     interactive: true
   },
+  pointToLayer: featureToMarker,
   onEachFeature: eventsCement
 });
 
-var layerPolution = new L.geoJson(jsonPolution, {
+const filterFeatures = filter => feature =>
+  feature.properties.category === filter;
+
+const polutionWastes = jsonPolution.features.filter(
+  filterFeatures("Ρύπανση από Στερεά Απόβλητα")
+);
+const polutionPesticides = jsonPolution.features.filter(
+  filterFeatures("Ρύπανση από Φυτοφάρμακα")
+);
+const polutionMisc = jsonPolution.features.filter(filterFeatures("ΔΙΑΦΟΡΑ"));
+
+const jsonPolutionWastes = { ...jsonPolution };
+jsonPolutionWastes.features = polutionWastes;
+jsonPolutionWastes.name = "polutionWastes";
+
+var layerPolutionWastes = new L.geoJson(jsonPolutionWastes, {
   attribution: "",
   interactive: true,
-  dataVar: "jsonPolution",
-  layerName: "layerPolution",
-  pane: "panePolution",
+  dataVar: "jsonPolutionWastes",
+  layerName: "layerPolutionWastes",
+  pane: "panePolutionWastes",
   style: {
-    pane: "panePolution",
+    pane: "panePolutionWastes",
     opacity: 0.5,
     color: "#f788b2",
     dashArray: "",
@@ -79,11 +97,88 @@ var layerPolution = new L.geoJson(jsonPolution, {
     lineJoin: "miter",
     weight: 1.0,
     fill: true,
-    fillOpacity: 0.1,
+    fillOpacity: 0.5,
     fillColor: "#f788b2",
     interactive: true
   },
+  pointToLayer: featureToMarker,
   onEachFeature: eventsPolution
+});
+
+const jsonPolutionPesticides = { ...jsonPolution };
+jsonPolutionPesticides.features = polutionPesticides;
+jsonPolutionPesticides.name = "polutionPesticides";
+var layerPolutionPesticides = new L.geoJson(jsonPolutionPesticides, {
+  attribution: "",
+  interactive: true,
+  dataVar: "jsonPolutionPesticides",
+  layerName: "layerPolutionPesticides",
+  pane: "panePolutionPesticides",
+  style: {
+    pane: "panePolutionPesticides",
+    opacity: 0.5,
+    color: "#f788b2",
+    dashArray: "",
+    lineCap: "butt",
+    lineJoin: "miter",
+    weight: 1.0,
+    fill: true,
+    fillOpacity: 0.5,
+    fillColor: "#f788b2",
+    interactive: true
+  },
+  pointToLayer: featureToMarker,
+  onEachFeature: eventsPolution
+});
+
+const jsonPolutionMisc = { ...jsonPolution };
+jsonPolutionMisc.features = polutionMisc;
+jsonPolutionWastes.name = "polutionMisc";
+
+var layerDesertification = new L.geoJson(jsonDesertificationPoints, {
+  attribution: "",
+  interactive: true,
+  dataVar: "jsonDesertificationPoints",
+  layerName: "layerDesertification",
+  pane: "paneDesertification",
+  style: {
+    pane: "paneDesertification",
+    opacity: 0.5,
+    color: "black",
+    dashArray: "",
+    lineCap: "butt",
+    lineJoin: "miter",
+    weight: 1.0,
+    fill: true,
+    fillOpacity: 0.5,
+    fillColor: "#black",
+    interactive: true
+  },
+  pointToLayer: featureToMarker
+  // onEachFeature: eventsPolution
+});
+
+var layerFirePoints = new L.geoJson(jsonFirePoints, {
+  attribution: "",
+  interactive: true,
+  dataVar: "jsonFirePoints",
+  layerName: "layerFirePoints",
+  pane: "paneFirePoints",
+  style: {
+    pane: "paneFirePoints",
+    opacity: 0.5,
+    color: "red",
+    dashArray: "",
+    lineCap: "butt",
+    lineJoin: "miter",
+    weight: 1.0,
+    fill: true,
+    fillOpacity: 0.5,
+    fillColor: "red",
+    interactive: true
+  },
+  pointToLayer: featureToMarker
+  // onEachFeature: eventsPolution
 });
 
 var layerQuality = new L.geoJson(jsonQuality, {
