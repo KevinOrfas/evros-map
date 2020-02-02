@@ -145,6 +145,26 @@ var layerDesertificationPoints = new L.geoJson(jsonDesertificationPoints, {
   // onEachFeature: eventsPolution
 });
 
+var layerDesertificationPoints = new L.geoJson(jsonDesertificationPoints, {
+  attribution: "",
+  interactive: true,
+  dataVar: "jsonDesertificationPoints",
+  layerName: "layerDesertificationPoints",
+  pane: "paneDesertification",
+  pointToLayer: featureToMarker
+  // onEachFeature: eventsPolution
+});
+
+var layerOvergrazingPoints = new L.geoJson(jsonOvergrazingPoints, {
+  attribution: "",
+  interactive: true,
+  dataVar: "jsonOvergrazingPoints",
+  layerName: "layerOvergrazingPoints",
+  pane: "paneFireOvergrazingPoints",
+  pointToLayer: featureToMarker
+  // onEachFeature: eventsPolution
+});
+
 var layerFirePoints = new L.geoJson(jsonFirePoints, {
   attribution: "",
   interactive: true,

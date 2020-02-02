@@ -18,10 +18,6 @@ map.createPane("paneOvergrazing");
 map.getPane("paneOvergrazing").style.zIndex = 401;
 map.getPane("paneOvergrazing").style["mix-blend-mode"] = "normal";
 
-map.createPane("paneOvergrazing");
-map.getPane("paneOvergrazing").style.zIndex = 402;
-map.getPane("paneOvergrazing").style["mix-blend-mode"] = "normal";
-
 map.createPane("paneCement");
 map.getPane("paneCement").style.zIndex = 403;
 map.getPane("paneCement").style["mix-blend-mode"] = "normal";
@@ -37,8 +33,6 @@ map.getPane("panePolutionPesticides").style["mix-blend-mode"] = "normal";
 map.createPane("paneDesertification");
 map.getPane("paneDesertification").style.zIndex = 406;
 map.getPane("paneDesertification").style["mix-blend-mode"] = "normal";
-
-// paneFirePoints
 
 map.createPane("paneQuality");
 map.getPane("paneQuality").style.zIndex = 408;
@@ -57,6 +51,7 @@ const featureGroupLayers = [
   layerCement,
   layerPolutionWastes,
   layerPolutionPesticides,
+  layerOvergrazingPoints,
   layerDesertificationPoints,
   layerFirePoints,
   layerFloodPoints
@@ -67,7 +62,7 @@ featureGroupLayers.forEach(layer => {
 });
 // boundsGroup end
 
-// Set up icons
+// // Set up icons
 jsonErsosionPoints.features.map(swapCoord).forEach(setIcon("erosion"));
 jsonOvergrazingPoints.features.map(swapCoord).forEach(setIcon("overgrazing"));
 jsonCementificationPoints.features.map(swapCoord).forEach(setIcon("cement"));
@@ -76,14 +71,15 @@ jsonFloodPoints.features.map(swapCoord).forEach(setIcon("flood"));
 jsonDesertificationPoints.features
   .map(swapCoord)
   .forEach(setIcon("desertification"));
+
 polutionWastes
   .map(getCenterOfPolygon)
   .map(swapCoord)
-  .forEach(setIcon("polution-wastes"));
+  .forEach(setIcon("wastes"));
 polutionPesticides
   .map(getCenterOfPolygon)
   .map(swapCoord)
-  .forEach(setIcon("polution-pesticides"));
+  .forEach(setIcon("pesticides"));
 
 // polutionMisc
 //   .map(getCenterOfPolygon)

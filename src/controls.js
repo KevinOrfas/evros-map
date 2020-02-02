@@ -24,13 +24,13 @@ var overLayers = [
     layer: layerCement
   },
   {
-    name: "polution-wastes",
-    icon: iconByName("polution-wastes"),
+    name: "wastes",
+    icon: iconByName("wastes"),
     layer: layerPolutionWastes
   },
   {
-    name: "polution-pesticides",
-    icon: iconByName("polution-pesticides"),
+    name: "pesticides",
+    icon: iconByName("pesticides"),
     layer: layerPolutionPesticides
   },
   {
@@ -48,6 +48,11 @@ var overLayers = [
     icon: iconByName("flood"),
     layer: layerFloodPoints
   },
+  // {
+  //   name: "overgrazing",
+  //   icon: iconByName("overgrazing"),
+  //   layer: layerOvergrazingPoints
+  // },
 
   {
     name: "polution-misc",

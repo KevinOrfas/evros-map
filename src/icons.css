@@ -19,11 +19,11 @@
   background: url("../markers/cement.svg") center center no-repeat;
   background-size: contain;
 }
-.icon-polution-wastes {
+.icon-wastes {
   background: url("../icons/landfill.svg") center center no-repeat;
   background-size: contain;
 }
-.icon-polution-pesticides {
+.icon-pesticides {
   background: url("../icons/poisoning.svg") center center no-repeat;
   background-size: contain;
 }

@@ -229,13 +229,13 @@
               });
             }
 
-            if (copy === "polution-wastes") {
+            if (copy === "wastes") {
               wastesMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
               });
             }
-            if (copy === "polution-pesticides") {
+            if (copy === "pesticides") {
               pesticidesMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
@@ -284,14 +284,14 @@
               });
             }
 
-            if (copy === "polution-wastes") {
+            if (copy === "wastes") {
               wastesMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
               });
             }
 
-            if (copy === "polution-pesticides") {
+            if (copy === "pesticides") {
               pesticidesMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
