@@ -17,7 +17,6 @@ var layerErosion = new L.geoJson(jsonErosion, {
     fillColor: "#adc378",
     interactive: true
   },
-  // pointToLayer: featureToMarker,
   onEachFeature: eventsErosion
 });
 
@@ -40,7 +39,6 @@ var layerOvergrazing = new L.geoJson(jsonOvergrazing, {
     fillColor: "#9FC7E8",
     interactive: true
   },
-  pointToLayer: featureToMarker,
   onEachFeature: eventsOvergrazing
 });
 
@@ -63,20 +61,16 @@ var layerCement = new L.geoJson(jsonCement, {
     fillColor: "#FBB23E",
     interactive: true
   },
-  pointToLayer: featureToMarker,
   onEachFeature: eventsCement
 });
 
-const filterFeatures = filter => feature =>
-  feature.properties.category === filter;
-
 const polutionWastes = jsonPolution.features.filter(
-  filterFeatures("Ρύπανση από Στερεά Απόβλητα")
+  byFeature("Ρύπανση από Στερεά Απόβλητα")
 );
 const polutionPesticides = jsonPolution.features.filter(
-  filterFeatures("Ρύπανση από Φυτοφάρμακα")
+  byFeature("Ρύπανση από Φυτοφάρμακα")
 );
-const polutionMisc = jsonPolution.features.filter(filterFeatures("ΔΙΑΦΟΡΑ"));
+const polutionMisc = jsonPolution.features.filter(byFeature("ΔΙΑΦΟΡΑ"));
 
 const jsonPolutionWastes = { ...jsonPolution };
 jsonPolutionWastes.features = polutionWastes;

@@ -85,33 +85,10 @@ polutionPesticides
   .map(getCenterOfPolygon)
   .map(swapCoord)
   .forEach(setIcon("pesticides"));
-
 polutionMisc
   .map(getCenterOfPolygon)
   .map(swapCoord)
-  .forEach(elm => {
-    L.marker(elm).addTo(map);
-  });
-
-const info = L.control({ position: "topright" });
-
-info.onAdd = function(map) {
-  this._div = L.DomUtil.create("div", "info"); // create a div with a class "info"
-  this.update();
-  return this._div;
-};
-
-// method that we will use to update the control based on feature properties passed
-info.update = function(props) {
-  console.log(props);
-  this._div.innerHTML =
-    "<h4>Info</h4>" +
-    (props
-      ? `<b>${props.village}</b> <br /> ${props.comment}`
-      : "Hover over an area");
-};
-
-info.addTo(map);
+  .forEach(setIcon("polution"));
 
 const cementMarkers = document.querySelectorAll(".m-cement");
 const erosionMarkers = document.querySelectorAll(".m-erosion");
@@ -121,5 +98,21 @@ const fireMarkers = document.querySelectorAll(".m-fire");
 const floodMarkers = document.querySelectorAll(".m-flood");
 const wastesMarkers = document.querySelectorAll(".m-wastes");
 const pesticidesMarkers = document.querySelectorAll(".m-pesticides");
-// const polutionMiscMarkers = document.querySelectorAll(".m-pesticides");
+const polutionMiscMarkers = document.querySelectorAll(".m-polution");
 const desertificationMarkers = document.querySelectorAll(".m-desertification");
+
+const info = L.control({ position: "bottomright" });
+info.onAdd = map => {
+  info._div = L.DomUtil.create("div", "info"); // create a div with a class "info"
+  info.update();
+  return info._div;
+};
+info.update = props => {
+  info._div.innerHTML =
+    "<h4>Info</h4>" +
+    (props
+      ? `<b>${props.village}</b> <br /> ${props.comment}`
+      : "Hover over an area");
+};
+
+info.addTo(map);

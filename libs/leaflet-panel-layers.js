@@ -261,6 +261,12 @@
                 marker.classList.remove("marker-hidden");
               });
             }
+            if (copy === "polution") {
+              polutionMiscMarkers.forEach(marker => {
+                marker.classList.add("marker-visible");
+                marker.classList.remove("marker-hidden");
+              });
+            }
 
             self.fire("panel:selected", e.target._layer);
           } else {
@@ -313,6 +319,13 @@
 
             if (copy === "flood") {
               floodMarkers.forEach(marker => {
+                marker.classList.remove("marker-visible");
+                marker.classList.add("marker-hidden");
+              });
+            }
+
+            if (copy === "polution") {
+              polutionMiscMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
               });

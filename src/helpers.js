@@ -1,6 +1,6 @@
 function highlightFeature(e) {
   var layer = e.target;
-  // console.log({ f: e.target.feature });
+
   if (e.target.feature.geometry.type === "LineString") {
     layer.setStyle({
       color: "blue"
@@ -8,7 +8,7 @@ function highlightFeature(e) {
   } else {
     layer.setStyle({
       fillColor: layer.defaultOptions.style.color,
-      fillOpacity: 0.5
+      fillOpacity: 1
     });
   }
   if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -47,7 +47,6 @@ function getColor(d) {
 }
 
 function style(feature) {
-  console.log("HERE", feature);
   return {
     fillColor: getColor("#FFEDA0"),
     weight: 2,
@@ -93,3 +92,4 @@ const swapCoord = ({ geometry }) => swapArr(geometry.coordinates, 0, 1);
 const setIcon = name => point => {
   L.marker(point, { icon: myIcon(name) }).addTo(map);
 };
+const byFeature = filter => ({ properties }) => properties.category === filter;

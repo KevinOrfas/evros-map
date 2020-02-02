@@ -42,6 +42,11 @@
   background-size: contain;
 }
 
+.icon-polution {
+  background: url("../markers/polution.png") center center no-repeat;
+  background-size: contain;
+}
+
 /* MARKERS */
 .leaflet-marker-icon {
   padding: 2px;
@@ -87,5 +92,10 @@
 
 .m-quality {
   background: url("../markers/quality.svg") center center no-repeat;
+  background-size: contain;
+}
+
+.m-polution {
+  background: url("../markers/polution.png") center center no-repeat;
   background-size: contain;
 }
