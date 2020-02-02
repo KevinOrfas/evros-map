@@ -135,25 +135,12 @@ const jsonPolutionMisc = { ...jsonPolution };
 jsonPolutionMisc.features = polutionMisc;
 jsonPolutionWastes.name = "polutionMisc";
 
-var layerDesertification = new L.geoJson(jsonDesertificationPoints, {
+var layerDesertificationPoints = new L.geoJson(jsonDesertificationPoints, {
   attribution: "",
   interactive: true,
   dataVar: "jsonDesertificationPoints",
-  layerName: "layerDesertification",
+  layerName: "layerDesertificationPoints",
   pane: "paneDesertification",
-  style: {
-    pane: "paneDesertification",
-    opacity: 0.5,
-    color: "black",
-    dashArray: "",
-    lineCap: "butt",
-    lineJoin: "miter",
-    weight: 1.0,
-    fill: true,
-    fillOpacity: 0.5,
-    fillColor: "#black",
-    interactive: true
-  },
   pointToLayer: featureToMarker
   // onEachFeature: eventsPolution
 });
@@ -164,19 +151,16 @@ var layerFirePoints = new L.geoJson(jsonFirePoints, {
   dataVar: "jsonFirePoints",
   layerName: "layerFirePoints",
   pane: "paneFirePoints",
-  style: {
-    pane: "paneFirePoints",
-    opacity: 0.5,
-    color: "red",
-    dashArray: "",
-    lineCap: "butt",
-    lineJoin: "miter",
-    weight: 1.0,
-    fill: true,
-    fillOpacity: 0.5,
-    fillColor: "red",
-    interactive: true
-  },
+  pointToLayer: featureToMarker
+  // onEachFeature: eventsPolution
+});
+
+var layerFloodPoints = new L.geoJson(jsonFloodPoints, {
+  attribution: "",
+  interactive: true,
+  dataVar: "jsonFloodPoints",
+  layerName: "layerFloodPoints",
+  pane: "paneFloodPoints",
   pointToLayer: featureToMarker
   // onEachFeature: eventsPolution
 });

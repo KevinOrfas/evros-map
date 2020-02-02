@@ -37,45 +37,55 @@
   background-size: contain;
 }
 
+.icon-flood {
+  background: url("../markers/flood.svg") center center no-repeat;
+  background-size: contain;
+}
+
 /* MARKERS */
 .leaflet-marker-icon {
   padding: 2px;
   text-align: center;
 }
-.marker-erosion {
+.m-erosion {
   background: url("../markers/erosion.svg") center center no-repeat;
   background-size: contain;
 }
-.marker-overgrazing {
+.m-overgrazing {
   background: url("../markers/overgrazing.svg") center center no-repeat;
   background-size: contain;
 }
-.marker-cement {
+.m-cement {
   background: url("../markers/cement.svg") center center no-repeat;
   background-size: contain;
 }
 
-.marker-polution-wastes {
+.m-wastes {
   background: url("../icons/landfill.svg") center center no-repeat;
   background-size: contain;
 }
 
-.marker-polution-pesticides {
+.m-pesticides {
   background: url("../icons/poisoning.svg") center center no-repeat;
   background-size: contain;
 }
 
-.marker-desertification {
+.m-desertification {
   background: url("../markers/desertification.svg") center center no-repeat;
   background-size: contain;
 }
 
-.marker-fire {
+.m-fire {
   background: url("../markers/fire.svg") center center no-repeat;
   background-size: contain;
 }
 
-.marker-quality {
+.m-flood {
+  background: url("../markers/flood.svg") center center no-repeat;
+  background-size: contain;
+}
+
+.m-quality {
   background: url("../markers/quality.svg") center center no-repeat;
   background-size: contain;
 }

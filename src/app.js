@@ -57,8 +57,9 @@ const featureGroupLayers = [
   layerCement,
   layerPolutionWastes,
   layerPolutionPesticides,
-  layerDesertification,
-  layerFirePoints
+  layerDesertificationPoints,
+  layerFirePoints,
+  layerFloodPoints
 ];
 featureGroupLayers.forEach(layer => {
   boundsGroup.addLayer(layer);
@@ -71,15 +72,14 @@ jsonErsosionPoints.features.map(swapCoord).forEach(setIcon("erosion"));
 jsonOvergrazingPoints.features.map(swapCoord).forEach(setIcon("overgrazing"));
 jsonCementificationPoints.features.map(swapCoord).forEach(setIcon("cement"));
 jsonFirePoints.features.map(swapCoord).forEach(setIcon("fire"));
+jsonFloodPoints.features.map(swapCoord).forEach(setIcon("flood"));
 jsonDesertificationPoints.features
   .map(swapCoord)
   .forEach(setIcon("desertification"));
-
 polutionWastes
   .map(getCenterOfPolygon)
   .map(swapCoord)
   .forEach(setIcon("polution-wastes"));
-
 polutionPesticides
   .map(getCenterOfPolygon)
   .map(swapCoord)
@@ -112,28 +112,12 @@ info.update = function(props) {
 
 info.addTo(map);
 
-const cementMarkers = document.querySelectorAll(".marker-cement");
-const erosionMarkers = document.querySelectorAll(".marker-erosion");
-const overgrazingMarkers = document.querySelectorAll(".marker-overgrazing");
-
-const qualityMarkers = document.querySelectorAll(".marker-quality");
-const polutionWastesMarkers = document.querySelectorAll(
-  ".marker-polution-wastes"
-);
-const polutionPesticidesMarkers = document.querySelectorAll(
-  ".marker-polution-pesticides"
-);
-const desertificationMarkers = document.querySelectorAll(
-  ".marker-desertification"
-);
-
-const fireMarkers = document.querySelectorAll(".marker-fire");
-
-// cementMarkers.forEach(marker => marker.classList.add("marker-hidden"));
-// erosionMarkers.forEach(marker => marker.classList.add("marker-hidden"));
-// qualityMarkers.forEach(marker => marker.classList.add("marker-hidden"));
-// polutionWastesMarkers.forEach(marker => marker.classList.add("marker-hidden"));
-// polutionPesticidesMarkers.forEach(marker =>
-//   marker.classList.add("marker-hidden")
-// );
-// overgrazingMarkers.forEach(marker => marker.classList.add("marker-hidden"));
+const cementMarkers = document.querySelectorAll(".m-cement");
+const erosionMarkers = document.querySelectorAll(".m-erosion");
+const overgrazingMarkers = document.querySelectorAll(".m-overgrazing");
+const qualityMarkers = document.querySelectorAll(".m-quality");
+const fireMarkers = document.querySelectorAll(".m-fire");
+const floodMarkers = document.querySelectorAll(".m-flood");
+const wastesMarkers = document.querySelectorAll(".m-wastes");
+const pesticidesMarkers = document.querySelectorAll(".m-pesticides");
+const desertificationMarkers = document.querySelectorAll(".m-desertification");

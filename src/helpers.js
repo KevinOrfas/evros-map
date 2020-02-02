@@ -65,7 +65,7 @@ function iconByName(name) {
 function featureToMarker(feature, latlng) {
   return L.marker(latlng, {
     icon: L.divIcon({
-      className: `marker-${feature.properties.amenity}`,
+      className: `m-${feature.properties.amenity}`,
       iconUrl: `../markers/${feature.properties.amenity}.svg`,
       iconSize: [25, 41],
       iconAnchor: [12, 41],
@@ -77,7 +77,7 @@ function featureToMarker(feature, latlng) {
 
 const myIcon = name =>
   L.divIcon({
-    className: `marker-${name}`,
+    className: `m-${name}`,
     iconUrl: `../markers/${name}.svg`,
     iconSize: [25, 41],
     iconAnchor: [12, 41],

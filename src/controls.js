@@ -36,12 +36,17 @@ var overLayers = [
   {
     name: "desertification",
     icon: iconByName("desertification"),
-    layer: layerDesertification
+    layer: layerDesertificationPoints
   },
   {
     name: "fire",
     icon: iconByName("fire"),
     layer: layerFirePoints
+  },
+  {
+    name: "flood",
+    icon: iconByName("flood"),
+    layer: layerFloodPoints
   },
 
   {

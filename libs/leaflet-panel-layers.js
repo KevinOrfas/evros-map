@@ -230,13 +230,13 @@
             }
 
             if (copy === "polution-wastes") {
-              polutionWastesMarkers.forEach(marker => {
+              wastesMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
               });
             }
             if (copy === "polution-pesticides") {
-              polutionPesticidesMarkers.forEach(marker => {
+              pesticidesMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
               });
@@ -250,6 +250,13 @@
 
             if (copy === "fire") {
               fireMarkers.forEach(marker => {
+                marker.classList.add("marker-visible");
+                marker.classList.remove("marker-hidden");
+              });
+            }
+
+            if (copy === "flood") {
+              floodMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
               });
@@ -278,14 +285,14 @@
             }
 
             if (copy === "polution-wastes") {
-              polutionWastesMarkers.forEach(marker => {
+              wastesMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
               });
             }
 
             if (copy === "polution-pesticides") {
-              polutionPesticidesMarkers.forEach(marker => {
+              pesticidesMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
               });
@@ -299,6 +306,13 @@
 
             if (copy === "fire") {
               fireMarkers.forEach(marker => {
+                marker.classList.remove("marker-visible");
+                marker.classList.add("marker-hidden");
+              });
+            }
+
+            if (copy === "flood") {
+              floodMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
               });
