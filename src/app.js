@@ -9,6 +9,21 @@ const map = L.map("map", {
 
 const hash = new L.Hash(map);
 
+const info = L.control({ position: "bottomright" });
+info.onAdd = map => {
+  info._div = L.DomUtil.create("div", "info"); // create a div with a class "info"
+  info.update();
+  return info._div;
+};
+info.update = props => {
+  info._div.innerHTML =
+    "<h4>Info</h4>" +
+    (props
+      ? `<b>${props.village}</b> <br /> ${props.comment}`
+      : "Hover over an area");
+};
+info.addTo(map);
+
 // Pane creation starts
 map.createPane("paneErosion");
 map.getPane("paneErosion").style.zIndex = 400;
@@ -34,10 +49,6 @@ map.createPane("panePolutionMisc");
 map.getPane("panePolutionMisc").style.zIndex = 410;
 map.getPane("panePolutionMisc").style["mix-blend-mode"] = "normal";
 
-map.createPane("paneDesertification");
-map.getPane("paneDesertification").style.zIndex = 406;
-map.getPane("paneDesertification").style["mix-blend-mode"] = "normal";
-
 map.createPane("paneQuality");
 map.getPane("paneQuality").style.zIndex = 408;
 map.getPane("paneQuality").style["mix-blend-mode"] = "normal";
@@ -56,7 +67,6 @@ const featureGroupLayers = [
   layerPolutionWastes,
   layerPolutionPesticides,
   layerPolutionMisc,
-  layerOvergrazingPoints,
   layerDesertificationPoints,
   layerFirePoints,
   layerFloodPoints
@@ -67,16 +77,13 @@ featureGroupLayers.forEach(layer => {
 });
 // boundsGroup end
 
-// // Set up icons
-jsonErsosionPoints.features.map(swapCoord).forEach(setIcon("erosion"));
+// Set up icons
+jsonErosionPoints.features.map(swapCoord).forEach(setIcon("erosion"));
 jsonOvergrazingPoints.features.map(swapCoord).forEach(setIcon("overgrazing"));
-jsonCementificationPoints.features.map(swapCoord).forEach(setIcon("cement"));
+jsonCementPoints.features.map(swapCoord).forEach(setIcon("cement"));
 jsonFirePoints.features.map(swapCoord).forEach(setIcon("fire"));
 jsonFloodPoints.features.map(swapCoord).forEach(setIcon("flood"));
-jsonDesertificationPoints.features
-  .map(swapCoord)
-  .forEach(setIcon("desertification"));
-
+jsonDesertPoints.features.map(swapCoord).forEach(setIcon("desertification"));
 polutionWastes
   .map(getCenterOfPolygon)
   .map(swapCoord)
@@ -89,6 +96,7 @@ polutionMisc
   .map(getCenterOfPolygon)
   .map(swapCoord)
   .forEach(setIcon("polution"));
+// Set up icons
 
 const cementMarkers = document.querySelectorAll(".m-cement");
 const erosionMarkers = document.querySelectorAll(".m-erosion");
@@ -100,19 +108,3 @@ const wastesMarkers = document.querySelectorAll(".m-wastes");
 const pesticidesMarkers = document.querySelectorAll(".m-pesticides");
 const polutionMiscMarkers = document.querySelectorAll(".m-polution");
 const desertificationMarkers = document.querySelectorAll(".m-desertification");
-
-const info = L.control({ position: "bottomright" });
-info.onAdd = map => {
-  info._div = L.DomUtil.create("div", "info"); // create a div with a class "info"
-  info.update();
-  return info._div;
-};
-info.update = props => {
-  info._div.innerHTML =
-    "<h4>Info</h4>" +
-    (props
-      ? `<b>${props.village}</b> <br /> ${props.comment}`
-      : "Hover over an area");
-};
-
-info.addTo(map);

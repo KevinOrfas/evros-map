@@ -9,7 +9,7 @@ var base1 = L.control
 
 var overLayers = [
   {
-    name: "Erosion",
+    name: "erosion",
     icon: iconByName("erosion"),
     layer: layerErosion
   },
@@ -34,6 +34,11 @@ var overLayers = [
     layer: layerPolutionPesticides
   },
   {
+    name: "polution",
+    icon: iconByName("polution"),
+    layer: layerPolutionMisc
+  },
+  {
     name: "desertification",
     icon: iconByName("desertification"),
     layer: layerDesertificationPoints
@@ -47,11 +52,6 @@ var overLayers = [
     name: "flood",
     icon: iconByName("flood"),
     layer: layerFloodPoints
-  },
-  {
-    name: "polution",
-    icon: iconByName("polution"),
-    layer: layerPolutionMisc
   }
 ];
 var panelLayers = new L.Control.PanelLayers(null, overLayers);

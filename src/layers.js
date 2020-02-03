@@ -1,4 +1,4 @@
-var layerErosion = new L.geoJson(jsonErosion, {
+const layerErosion = new L.geoJson(jsonErosion, {
   attribution: "",
   interactive: true,
   dataVar: "jsonErosion",
@@ -20,7 +20,7 @@ var layerErosion = new L.geoJson(jsonErosion, {
   onEachFeature: eventsErosion
 });
 
-var layerOvergrazing = new L.geoJson(jsonOvergrazing, {
+const layerOvergrazing = new L.geoJson(jsonOvergrazing, {
   attribution: "",
   interactive: true,
   dataVar: "jsonOvergrazing",
@@ -42,7 +42,7 @@ var layerOvergrazing = new L.geoJson(jsonOvergrazing, {
   onEachFeature: eventsOvergrazing
 });
 
-var layerCement = new L.geoJson(jsonCement, {
+const layerCement = new L.geoJson(jsonCement, {
   attribution: "",
   interactive: true,
   dataVar: "jsonCement",
@@ -50,14 +50,14 @@ var layerCement = new L.geoJson(jsonCement, {
   pane: "paneCement",
   style: {
     pane: "paneCement",
-    opacity: 0.5,
+    opacity: 1,
     color: "#FBB23E",
     dashArray: "",
     lineCap: "butt",
     lineJoin: "miter",
     weight: 1.0,
     fill: true,
-    fillOpacity: 0.1,
+    fillOpacity: 0.5,
     fillColor: "#FBB23E",
     interactive: true
   },
@@ -75,8 +75,7 @@ const polutionMisc = jsonPolution.features.filter(byFeature("ΔΙΑΦΟΡΑ"));
 const jsonPolutionWastes = { ...jsonPolution };
 jsonPolutionWastes.features = polutionWastes;
 jsonPolutionWastes.name = "polutionWastes";
-
-var layerPolutionWastes = new L.geoJson(jsonPolutionWastes, {
+const layerPolutionWastes = new L.geoJson(jsonPolutionWastes, {
   attribution: "",
   interactive: true,
   dataVar: "jsonPolutionWastes",
@@ -84,7 +83,7 @@ var layerPolutionWastes = new L.geoJson(jsonPolutionWastes, {
   pane: "panePolutionWastes",
   style: {
     pane: "panePolutionWastes",
-    opacity: 0.5,
+    opacity: 1,
     color: "#f788b2",
     dashArray: "",
     lineCap: "butt",
@@ -102,7 +101,7 @@ var layerPolutionWastes = new L.geoJson(jsonPolutionWastes, {
 const jsonPolutionPesticides = { ...jsonPolution };
 jsonPolutionPesticides.features = polutionPesticides;
 jsonPolutionPesticides.name = "polutionPesticides";
-var layerPolutionPesticides = new L.geoJson(jsonPolutionPesticides, {
+const layerPolutionPesticides = new L.geoJson(jsonPolutionPesticides, {
   attribution: "",
   interactive: true,
   dataVar: "jsonPolutionPesticides",
@@ -110,7 +109,7 @@ var layerPolutionPesticides = new L.geoJson(jsonPolutionPesticides, {
   pane: "panePolutionPesticides",
   style: {
     pane: "panePolutionPesticides",
-    opacity: 0.5,
+    opacity: 1,
     color: "#f788b2",
     dashArray: "",
     lineCap: "butt",
@@ -128,8 +127,7 @@ var layerPolutionPesticides = new L.geoJson(jsonPolutionPesticides, {
 const jsonPolutionMisc = { ...jsonPolution };
 jsonPolutionMisc.features = polutionMisc;
 jsonPolutionMisc.name = "polutionMisc";
-
-var layerPolutionMisc = new L.geoJson(jsonPolutionMisc, {
+const layerPolutionMisc = new L.geoJson(jsonPolutionMisc, {
   attribution: "",
   interactive: true,
   dataVar: "jsonPolutionMisc",
@@ -137,7 +135,7 @@ var layerPolutionMisc = new L.geoJson(jsonPolutionMisc, {
   pane: "panePolutionMisc",
   style: {
     pane: "panePolutionMisc",
-    opacity: 0.5,
+    opacity: 1,
     color: "#f788b2",
     dashArray: "",
     lineCap: "butt",
@@ -152,57 +150,45 @@ var layerPolutionMisc = new L.geoJson(jsonPolutionMisc, {
   onEachFeature: eventsPolution
 });
 
-var layerDesertificationPoints = new L.geoJson(jsonDesertificationPoints, {
+const layerDesertificationPoints = new L.geoJson(jsonDesertPoints, {
   attribution: "",
   interactive: true,
-  dataVar: "jsonDesertificationPoints",
+  dataVar: "jsonDesertPoints",
   layerName: "layerDesertificationPoints",
-  pane: "paneDesertification",
   pointToLayer: featureToMarker
 });
 
-var layerOvergrazingPoints = new L.geoJson(jsonOvergrazingPoints, {
-  attribution: "",
-  interactive: true,
-  dataVar: "jsonOvergrazingPoints",
-  layerName: "layerOvergrazingPoints",
-  pane: "paneFireOvergrazingPoints",
-  pointToLayer: featureToMarker
-});
-
-var layerFirePoints = new L.geoJson(jsonFirePoints, {
+const layerFirePoints = new L.geoJson(jsonFirePoints, {
   attribution: "",
   interactive: true,
   dataVar: "jsonFirePoints",
   layerName: "layerFirePoints",
-  pane: "paneFirePoints",
   pointToLayer: featureToMarker
 });
 
-var layerFloodPoints = new L.geoJson(jsonFloodPoints, {
+const layerFloodPoints = new L.geoJson(jsonFloodPoints, {
   attribution: "",
   interactive: true,
   dataVar: "jsonFloodPoints",
   layerName: "layerFloodPoints",
-  pane: "paneFloodPoints",
   pointToLayer: featureToMarker
 });
 
-var layerQuality = new L.geoJson(jsonQuality, {
-  attribution: "",
-  interactive: true,
-  dataVar: "jsonQuality",
-  layerName: "layerQuality",
-  pane: "paneQuality",
-  onEachFeature: popQuality,
-  pointToLayer: function(feature, latlng) {
-    var context = {
-      feature: feature,
-      variables: {}
-    };
-    return L.circleMarker(latlng, style_poiotita_6_0(feature));
-  }
-});
+// const layerQuality = new L.geoJson(jsonQuality, {
+//   attribution: "",
+//   interactive: true,
+//   dataVar: "jsonQuality",
+//   layerName: "layerQuality",
+//   pane: "paneQuality",
+//   onEachFeature: popQuality,
+//   pointToLayer: function(feature, latlng) {
+//     var context = {
+//       feature: feature,
+//       variables: {}
+//     };
+//     return L.circleMarker(latlng, style_poiotita_6_0(feature));
+//   }
+// });
 
 function style_survey_makri_7_0() {
   return {
@@ -250,7 +236,7 @@ function pop_survey_makri_7(feature, layer) {
   layer.bindPopup(popupContent, { maxHeight: 400 });
 }
 
-var layerSurveyMakri = new L.geoJson(jsonSurveyMakri, {
+const layerSurveyMakri = new L.geoJson(jsonSurveyMakri, {
   attribution: "",
   interactive: true,
   dataVar: "jsonSurveyMakri",
@@ -265,39 +251,3 @@ var layerSurveyMakri = new L.geoJson(jsonSurveyMakri, {
     return L.shapeMarker(latlng, style_survey_makri_7_0(feature));
   }
 });
-
-// function pop_polution_3(feature, layer) {
-//   layer.on({
-//     mouseout: function(e) {
-//       for (i in e.target._eventParents) {
-//         e.target._eventParents[i].resetStyle(e.target);
-//       }
-//     },
-//     mouseover: highlightFeature
-//   });
-//   var popupContent =
-//     '<table>\
-//               <tr>\
-//                   <td colspan="2">' +
-//     (feature.properties["comment"] !== null
-//       ? Autolinker.link(feature.properties["comment"].toLocaleString())
-//       : "") +
-//     '</td>\
-//               </tr>\
-//               <tr>\
-//                   <td colspan="2">' +
-//     (feature.properties["village"] !== null
-//       ? Autolinker.link(feature.properties["village"].toLocaleString())
-//       : "") +
-//     '</td>\
-//               </tr>\
-//               <tr>\
-//                   <td colspan="2">' +
-//     (feature.properties["category"] !== null
-//       ? Autolinker.link(feature.properties["category"].toLocaleString())
-//       : "") +
-//     "</td>\
-//               </tr>\
-//           </table>";
-//   layer.bindPopup(popupContent, { maxHeight: 400 });
-// }

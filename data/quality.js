@@ -1,6 +1,6 @@
 var jsonQuality = {
 "type": "FeatureCollection",
-"name": "poiotita_6",
+"name": "quality",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
 { "type": "Feature", "properties": { "poiotita": "ΙΚΑΝΟΠΟΙΗΤΙΚΗ ΠΟΙΟΤΗΤΑ ΕΔΑΦΟΥΣ", "comment": null, "village": "Μάκρη" }, "geometry": { "type": "Point", "coordinates": [ 25.75744141825853, 40.849844612826885 ] } },

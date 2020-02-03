@@ -1,4 +1,4 @@
-var jsonCementificationPoints = {
+var jsonCementPoints = {
   type: "FeatureCollection",
   name: "cementification_points",
   crs: { type: "name", properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" } },
