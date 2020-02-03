@@ -61,15 +61,15 @@ map.getPane("paneSurveyMakri").style["mix-blend-mode"] = "normal";
 // boundsGroup Starts
 const boundsGroup = new L.featureGroup([]);
 const featureGroupLayers = [
-  // layerErosion,
-  // layerOvergrazing,
-  // layerCement,
-  // layerPolutionWastes,
-  // layerPolutionPesticides,
-  // layerPolutionMisc,
-  // layerDesertificationPoints,
-  // layerFirePoints,
-  // layerFloodPoints,
+  layerErosion,
+  layerOvergrazing,
+  layerCement,
+  layerPolutionWastes,
+  layerPolutionPesticides,
+  layerPolutionMisc,
+  layerDesertificationPoints,
+  layerFirePoints,
+  layerFloodPoints,
   layerQualityGood,
   layerQualityBad
 ];
