@@ -150,6 +150,36 @@ const layerPolutionMisc = new L.geoJson(jsonPolutionMisc, {
   onEachFeature: eventsPolution
 });
 
+const qualityGood = jsonQuality.features.filter(
+  byQuality("ΙΚΑΝΟΠΟΙΗΤΙΚΗ ΠΟΙΟΤΗΤΑ ΕΔΑΦΟΥΣ")
+);
+const jsonQualityGood = { ...jsonQuality };
+jsonQualityGood.features = qualityGood;
+jsonQualityGood.name = "qualityGood";
+
+const layerQualityGood = new L.geoJson(jsonQualityGood, {
+  attribution: "",
+  interactive: true,
+  dataVar: "jsonQualityGood",
+  layerName: "layerQualityGood",
+  pointToLayer: featureToMarker
+});
+
+const qualityBad = jsonQuality.features.filter(
+  byQuality("ΜΗ ΙΚΑΝΟΠΟΙΗΤΙΚΗ ΠΟΙΟΤΗΤΑ ΕΔΑΦΟΥΣ")
+);
+
+const jsonQualityBad = { ...jsonQuality };
+jsonQualityBad.features = qualityBad;
+jsonQualityBad.name = "qualityBad";
+const layerQualityBad = new L.geoJson(jsonQualityBad, {
+  attribution: "",
+  interactive: true,
+  dataVar: "jsonQualityBad",
+  layerName: "layerQualityBad",
+  pointToLayer: featureToMarker
+});
+
 const layerDesertificationPoints = new L.geoJson(jsonDesertPoints, {
   attribution: "",
   interactive: true,
@@ -173,22 +203,6 @@ const layerFloodPoints = new L.geoJson(jsonFloodPoints, {
   layerName: "layerFloodPoints",
   pointToLayer: featureToMarker
 });
-
-// const layerQuality = new L.geoJson(jsonQuality, {
-//   attribution: "",
-//   interactive: true,
-//   dataVar: "jsonQuality",
-//   layerName: "layerQuality",
-//   pane: "paneQuality",
-//   onEachFeature: popQuality,
-//   pointToLayer: function(feature, latlng) {
-//     var context = {
-//       feature: feature,
-//       variables: {}
-//     };
-//     return L.circleMarker(latlng, style_poiotita_6_0(feature));
-//   }
-// });
 
 function style_survey_makri_7_0() {
   return {

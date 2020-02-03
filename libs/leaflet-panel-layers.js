@@ -268,6 +268,20 @@
               });
             }
 
+            if (copy === "quality-good") {
+              qualityGoodMarkers.forEach(marker => {
+                marker.classList.add("marker-visible");
+                marker.classList.remove("marker-hidden");
+              });
+            }
+
+            if (copy === "quality-bad") {
+              qualityBadMarkers.forEach(marker => {
+                marker.classList.add("marker-visible");
+                marker.classList.remove("marker-hidden");
+              });
+            }
+
             self.fire("panel:selected", e.target._layer);
           } else {
             if (copy === "erosion") {
@@ -326,6 +340,20 @@
 
             if (copy === "polution") {
               polutionMiscMarkers.forEach(marker => {
+                marker.classList.remove("marker-visible");
+                marker.classList.add("marker-hidden");
+              });
+            }
+
+            if (copy === "quality-good") {
+              qualityGoodMarkers.forEach(marker => {
+                marker.classList.remove("marker-visible");
+                marker.classList.add("marker-hidden");
+              });
+            }
+
+            if (copy === "quality-bad") {
+              qualityBadMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
               });

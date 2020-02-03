@@ -52,6 +52,16 @@ var overLayers = [
     name: "flood",
     icon: iconByName("flood"),
     layer: layerFloodPoints
+  },
+  {
+    name: "quality-good",
+    icon: iconByName("quality-good"),
+    layer: layerQualityGood
+  },
+  {
+    name: "quality-bad",
+    icon: iconByName("quality-bad"),
+    layer: layerQualityBad
   }
 ];
 var panelLayers = new L.Control.PanelLayers(null, overLayers);

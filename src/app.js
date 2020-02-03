@@ -61,15 +61,17 @@ map.getPane("paneSurveyMakri").style["mix-blend-mode"] = "normal";
 // boundsGroup Starts
 const boundsGroup = new L.featureGroup([]);
 const featureGroupLayers = [
-  layerErosion,
-  layerOvergrazing,
-  layerCement,
-  layerPolutionWastes,
-  layerPolutionPesticides,
-  layerPolutionMisc,
-  layerDesertificationPoints,
-  layerFirePoints,
-  layerFloodPoints
+  // layerErosion,
+  // layerOvergrazing,
+  // layerCement,
+  // layerPolutionWastes,
+  // layerPolutionPesticides,
+  // layerPolutionMisc,
+  // layerDesertificationPoints,
+  // layerFirePoints,
+  // layerFloodPoints,
+  layerQualityGood,
+  layerQualityBad
 ];
 featureGroupLayers.forEach(layer => {
   boundsGroup.addLayer(layer);
@@ -84,6 +86,8 @@ jsonCementPoints.features.map(swapCoord).forEach(setIcon("cement"));
 jsonFirePoints.features.map(swapCoord).forEach(setIcon("fire"));
 jsonFloodPoints.features.map(swapCoord).forEach(setIcon("flood"));
 jsonDesertPoints.features.map(swapCoord).forEach(setIcon("desertification"));
+qualityGood.map(swapCoord).forEach(setIcon("quality-good"));
+qualityBad.map(swapCoord).forEach(setIcon("quality-bad"));
 polutionWastes
   .map(getCenterOfPolygon)
   .map(swapCoord)
@@ -108,3 +112,5 @@ const wastesMarkers = document.querySelectorAll(".m-wastes");
 const pesticidesMarkers = document.querySelectorAll(".m-pesticides");
 const polutionMiscMarkers = document.querySelectorAll(".m-polution");
 const desertificationMarkers = document.querySelectorAll(".m-desertification");
+const qualityGoodMarkers = document.querySelectorAll(".m-quality-good");
+const qualityBadMarkers = document.querySelectorAll(".m-quality-bad");
