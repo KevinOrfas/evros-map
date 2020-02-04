@@ -3,10 +3,6 @@ body {
   color: #285585;
   font-family: Arial;
 }
-body#home {
-  background: url("images/leaflet-panel.png") no-repeat top left #b5d0d0;
-  margin-left: 200px;
-}
 
 a {
   color: #1978cf;
@@ -24,22 +20,14 @@ h3 a,
 h3 a:hover {
   text-decoration: none;
 }
-#desc {
-  float: left;
-  margin-bottom: 1em;
-  position: relative;
-  white-space: nowrap;
-  font-size: 1em;
+
+h4,
+div,
+p {
+  margin: 0;
+  padding: 0;
 }
-#map {
-  border-radius: 0.125em;
-  border: 2px solid #1978cf;
-  box-shadow: 0 0 8px #999;
-  /* float: left; */
-  /* width: 100%; */
-  /* max-width: 600px; */
-  height: 100vh;
-}
+
 label {
   float: left;
 }
@@ -54,6 +42,21 @@ pre {
   background-color: #eee;
   box-shadow: inset 2px 2px 4px #ccc;
 }
+
+#desc {
+  float: left;
+  margin-bottom: 1em;
+  position: relative;
+  white-space: nowrap;
+  font-size: 1em;
+}
+#map {
+  border-radius: 0.125em;
+  border: 2px solid #1978cf;
+  box-shadow: 0 0 8px #999;
+  height: 98vh;
+}
+
 #copy {
   position: fixed;
   z-index: 1000;
@@ -99,4 +102,19 @@ pre {
   font-size: 10px;
   box-shadow: inset 2px 2px 4px #ccc;
   border: 2px solid #1978cf;
+}
+
+.leaflet-panel-layers {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.info {
+  width: 300px;
+  height: 80px;
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
 }
