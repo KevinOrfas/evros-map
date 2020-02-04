@@ -9,21 +9,6 @@ const map = L.map("map", {
 
 const hash = new L.Hash(map);
 
-const info = L.control({ position: "bottomright" });
-info.onAdd = map => {
-  info._div = L.DomUtil.create("div", "info"); // create a div with a class "info"
-  info.update();
-  return info._div;
-};
-info.update = props => {
-  info._div.innerHTML =
-    "<h4>Info</h4>" +
-    (props
-      ? `<b>${props.village}</b> <br /> ${props.comment}`
-      : "Hover over an area");
-};
-info.addTo(map);
-
 // Pane creation starts
 map.createPane("paneErosion");
 map.getPane("paneErosion").style.zIndex = 400;
