@@ -58,12 +58,23 @@ featureGroupLayers.forEach(layer => {
 jsonErosionPoints.features.map(swapCoord).forEach(setIcon("erosion"));
 jsonOvergrazingPoints.features.map(swapCoord).forEach(setIcon("overgrazing"));
 jsonCementPoints.features.map(swapCoord).forEach(setIcon("cement"));
-jsonErosionPoints.features.map(swapCoord).forEach(setIcon("erosion"));
 jsonFirePoints.features.map(swapCoord).forEach(setIcon("fire"));
 jsonFloodPoints.features.map(swapCoord).forEach(setIcon("flood"));
 jsonDesertPoints.features.map(swapCoord).forEach(setIcon("desertification"));
 qualityGood.map(swapCoord).forEach(setIcon("quality-good"));
 qualityBad.map(swapCoord).forEach(setIcon("quality-bad"));
+pollutionWastes
+  .map(getCenterOfPolygon)
+  .map(swapCoord)
+  .forEach(setIcon("wastes"));
+pollutionPesticides
+  .map(getCenterOfPolygon)
+  .map(swapCoord)
+  .forEach(setIcon("pesticides"));
+pollutionMisc
+  .map(getCenterOfPolygon)
+  .map(swapCoord)
+  .forEach(setIcon("pollution"));
 // Set up icons
 
 const cementMarkers = document.querySelectorAll(".m-cement");
@@ -74,7 +85,7 @@ const fireMarkers = document.querySelectorAll(".m-fire");
 const floodMarkers = document.querySelectorAll(".m-flood");
 const wastesMarkers = document.querySelectorAll(".m-wastes");
 const pesticidesMarkers = document.querySelectorAll(".m-pesticides");
-const polutionMiscMarkers = document.querySelectorAll(".m-polution");
+const pollutionMiscMarkers = document.querySelectorAll(".m-pollution");
 const desertificationMarkers = document.querySelectorAll(".m-desertification");
 const qualityGoodMarkers = document.querySelectorAll(".m-quality-good");
 const qualityBadMarkers = document.querySelectorAll(".m-quality-bad");

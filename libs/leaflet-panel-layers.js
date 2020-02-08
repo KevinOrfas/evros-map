@@ -229,18 +229,21 @@
               });
             }
 
-            if (copy === "wastes") {
+            if (copy === "pollution") {
               wastesMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
               });
-            }
-            if (copy === "pesticides") {
               pesticidesMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
               });
+              pollutionMiscMarkers.forEach(marker => {
+                marker.classList.add("marker-visible");
+                marker.classList.remove("marker-hidden");
+              });
             }
+
             if (copy === "desertification") {
               desertificationMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
@@ -257,12 +260,6 @@
 
             if (copy === "flood") {
               floodMarkers.forEach(marker => {
-                marker.classList.add("marker-visible");
-                marker.classList.remove("marker-hidden");
-              });
-            }
-            if (copy === "pollution") {
-              polutionMiscMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
               });
@@ -304,19 +301,21 @@
               });
             }
 
-            if (copy === "wastes") {
+            if (copy === "pollution") {
               wastesMarkers.forEach(marker => {
+                marker.classList.remove("marker-visible");
+                marker.classList.add("marker-hidden");
+              });
+              pesticidesMarkers.forEach(marker => {
+                marker.classList.remove("marker-visible");
+                marker.classList.add("marker-hidden");
+              });
+              pollutionMiscMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
               });
             }
 
-            if (copy === "pesticides") {
-              pesticidesMarkers.forEach(marker => {
-                marker.classList.remove("marker-visible");
-                marker.classList.add("marker-hidden");
-              });
-            }
             if (copy === "desertification") {
               desertificationMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
@@ -333,13 +332,6 @@
 
             if (copy === "flood") {
               floodMarkers.forEach(marker => {
-                marker.classList.remove("marker-visible");
-                marker.classList.add("marker-hidden");
-              });
-            }
-
-            if (copy === "pollution") {
-              polutionMiscMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
               });

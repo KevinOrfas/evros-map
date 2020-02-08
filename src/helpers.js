@@ -14,14 +14,14 @@ function highlightFeature(e) {
   if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
     layer.bringToFront();
   }
-  info.update(layer.feature.properties);
+  // info.update(layer.feature.properties);
 }
 
 function resetHighlight(e) {
   for (i in e.target._eventParents) {
     e.target._eventParents[i].resetStyle(e.target);
   }
-  info.update();
+  // info.update();
 }
 
 function zoomToFeature(e) {
