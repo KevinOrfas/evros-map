@@ -22,17 +22,9 @@ map.createPane("paneCement");
 map.getPane("paneCement").style.zIndex = 403;
 map.getPane("paneCement").style["mix-blend-mode"] = "normal";
 
-map.createPane("panePolutionWastes");
-map.getPane("panePolutionWastes").style.zIndex = 404;
-map.getPane("panePolutionWastes").style["mix-blend-mode"] = "normal";
-
-map.createPane("panePolutionPesticides");
-map.getPane("panePolutionPesticides").style.zIndex = 405;
-map.getPane("panePolutionPesticides").style["mix-blend-mode"] = "normal";
-
-map.createPane("panePolutionMisc");
-map.getPane("panePolutionMisc").style.zIndex = 410;
-map.getPane("panePolutionMisc").style["mix-blend-mode"] = "normal";
+map.createPane("panePollution");
+map.getPane("panePollution").style.zIndex = 404;
+map.getPane("panePollution").style["mix-blend-mode"] = "normal";
 
 map.createPane("paneQuality");
 map.getPane("paneQuality").style.zIndex = 408;
@@ -49,9 +41,7 @@ const featureGroupLayers = [
   layerErosion,
   layerOvergrazing,
   layerCement,
-  layerPolutionWastes,
-  layerPolutionPesticides,
-  layerPolutionMisc,
+  layerPollution,
   layerDesertificationPoints,
   layerFirePoints,
   layerFloodPoints,
@@ -68,23 +58,12 @@ featureGroupLayers.forEach(layer => {
 jsonErosionPoints.features.map(swapCoord).forEach(setIcon("erosion"));
 jsonOvergrazingPoints.features.map(swapCoord).forEach(setIcon("overgrazing"));
 jsonCementPoints.features.map(swapCoord).forEach(setIcon("cement"));
+jsonErosionPoints.features.map(swapCoord).forEach(setIcon("erosion"));
 jsonFirePoints.features.map(swapCoord).forEach(setIcon("fire"));
 jsonFloodPoints.features.map(swapCoord).forEach(setIcon("flood"));
 jsonDesertPoints.features.map(swapCoord).forEach(setIcon("desertification"));
 qualityGood.map(swapCoord).forEach(setIcon("quality-good"));
 qualityBad.map(swapCoord).forEach(setIcon("quality-bad"));
-polutionWastes
-  .map(getCenterOfPolygon)
-  .map(swapCoord)
-  .forEach(setIcon("wastes"));
-polutionPesticides
-  .map(getCenterOfPolygon)
-  .map(swapCoord)
-  .forEach(setIcon("pesticides"));
-polutionMisc
-  .map(getCenterOfPolygon)
-  .map(swapCoord)
-  .forEach(setIcon("polution"));
 // Set up icons
 
 const cementMarkers = document.querySelectorAll(".m-cement");

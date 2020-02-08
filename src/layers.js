@@ -72,17 +72,14 @@ const polutionPesticides = jsonPolution.features.filter(
 );
 const polutionMisc = jsonPolution.features.filter(byFeature("ΔΙΑΦΟΡΑ"));
 
-const jsonPolutionWastes = { ...jsonPolution };
-jsonPolutionWastes.features = polutionWastes;
-jsonPolutionWastes.name = "polutionWastes";
-const layerPolutionWastes = new L.geoJson(jsonPolutionWastes, {
+const layerPollution = new L.geoJson(jsonPollution, {
   attribution: "",
   interactive: true,
-  dataVar: "jsonPolutionWastes",
-  layerName: "layerPolutionWastes",
-  pane: "panePolutionWastes",
+  dataVar: "jsonPollution",
+  layerName: "layerPollution",
+  pane: "panePollution",
   style: {
-    pane: "panePolutionWastes",
+    pane: "panePollution",
     opacity: 1,
     color: "#f788b2",
     dashArray: "",
@@ -95,59 +92,7 @@ const layerPolutionWastes = new L.geoJson(jsonPolutionWastes, {
     interactive: true
   },
   pointToLayer: featureToMarker,
-  onEachFeature: eventsPolution
-});
-
-const jsonPolutionPesticides = { ...jsonPolution };
-jsonPolutionPesticides.features = polutionPesticides;
-jsonPolutionPesticides.name = "polutionPesticides";
-const layerPolutionPesticides = new L.geoJson(jsonPolutionPesticides, {
-  attribution: "",
-  interactive: true,
-  dataVar: "jsonPolutionPesticides",
-  layerName: "layerPolutionPesticides",
-  pane: "panePolutionPesticides",
-  style: {
-    pane: "panePolutionPesticides",
-    opacity: 1,
-    color: "#f788b2",
-    dashArray: "",
-    lineCap: "butt",
-    lineJoin: "miter",
-    weight: 1.0,
-    fill: true,
-    fillOpacity: 0.5,
-    fillColor: "#f788b2",
-    interactive: true
-  },
-  pointToLayer: featureToMarker,
-  onEachFeature: eventsPolution
-});
-
-const jsonPolutionMisc = { ...jsonPolution };
-jsonPolutionMisc.features = polutionMisc;
-jsonPolutionMisc.name = "polutionMisc";
-const layerPolutionMisc = new L.geoJson(jsonPolutionMisc, {
-  attribution: "",
-  interactive: true,
-  dataVar: "jsonPolutionMisc",
-  layerName: "layerPolutionMisc",
-  pane: "panePolutionMisc",
-  style: {
-    pane: "panePolutionMisc",
-    opacity: 1,
-    color: "#f788b2",
-    dashArray: "",
-    lineCap: "butt",
-    lineJoin: "miter",
-    weight: 1.0,
-    fill: true,
-    fillOpacity: 0.5,
-    fillColor: "#f788b2",
-    interactive: true
-  },
-  pointToLayer: featureToMarker,
-  onEachFeature: eventsPolution
+  onEachFeature: eventsPollution
 });
 
 const qualityGood = jsonQuality.features.filter(

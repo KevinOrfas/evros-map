@@ -23,11 +23,11 @@ const overLayers = [
     icon: iconByName("cement"),
     layer: layerCement
   },
-  // {
-  //   name: "wastes",
-  //   icon: iconByName("wastes"),
-  //   layer: layerPolutionWastes
-  // },
+  {
+    name: "pollution",
+    icon: iconByName("pollution"),
+    layer: layerPollution
+  },
   // {
   //   name: "pesticides",
   //   icon: iconByName("pesticides"),
@@ -67,7 +67,4 @@ const overLayers = [
 var panelLayers = new L.Control.PanelLayers(null, overLayers);
 map.addControl(panelLayers);
 
-// var over1 = L.control
-//   .panelLayers(null, conf.tree.layers, panelLayersOptions)
-//   .addTo(map);
 var scale = L.control.scale().addTo(map);

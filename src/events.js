@@ -60,7 +60,7 @@ function eventsCement(feature, layer) {
   layer.bindPopup(popupContent, { maxHeight: 400 });
 }
 
-function eventsPolution(feature, layer) {
+function eventsPollution(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,

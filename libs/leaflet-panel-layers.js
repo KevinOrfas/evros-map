@@ -261,7 +261,7 @@
                 marker.classList.remove("marker-hidden");
               });
             }
-            if (copy === "polution") {
+            if (copy === "pollution") {
               polutionMiscMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
@@ -338,7 +338,7 @@
               });
             }
 
-            if (copy === "polution") {
+            if (copy === "pollution") {
               polutionMiscMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
