@@ -390,10 +390,7 @@ const capitalize = s => {
         const pesticidesText = L.DomUtil.create("span");
         wasteText.innerText = "Wastes";
         pesticidesText.innerText = "Pesticides";
-        const iconWastes = L.DomUtil.create(
-          "i",
-          this.className + "-icon icon-wastes"
-        );
+        const iconWastes = L.DomUtil.create("i", this.className + "-icon");
         const iconPesticides = L.DomUtil.create("i", this.className + "-icon");
         iconWastes.innerHTML = `<i class="icon icon-wastes"></i>`;
         iconPesticides.innerHTML = `<i class="icon icon-pesticides"></i>`;
@@ -467,7 +464,10 @@ const capitalize = s => {
 
       if (obj.group) {
         if (!obj.group.hasOwnProperty("name")) obj.group = { name: obj.group };
-
+        console.log(
+          "this._groups[obj.group.name]",
+          this._groups[obj.group.name]
+        );
         if (!this._groups[obj.group.name]) {
           var collapsed = false;
           if (obj.collapsed === true) collapsed = true;
