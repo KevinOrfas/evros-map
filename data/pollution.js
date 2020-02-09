@@ -8,7 +8,7 @@ var jsonPollution = {
       properties: {
         comment: "Λιμανάκι",
         village: "Μάκρη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -35,7 +35,7 @@ var jsonPollution = {
       properties: {
         comment: "Εκτεταμένη χρήση φυτοφαρμάκων",
         village: "Μάκρη",
-        category: "Ρύπανση από Φυτοφάρμακα"
+        category: "pesticides"
       },
       geometry: {
         type: "MultiPolygon",
@@ -85,7 +85,7 @@ var jsonPollution = {
       properties: {
         comment: "Εκτεταμένη χρήση φυτοφαρμάκων",
         village: "Μάκρη",
-        category: "Ρύπανση από Φυτοφάρμακα"
+        category: "pesticides"
       },
       geometry: {
         type: "MultiPolygon",
@@ -145,7 +145,7 @@ var jsonPollution = {
       properties: {
         comment: "Εκτεταμένη χρήση φυτοφαρμάκων",
         village: "Μάκρη",
-        category: "Ρύπανση από Φυτοφάρμακα"
+        category: "pesticides"
       },
       geometry: {
         type: "MultiPolygon",
@@ -197,7 +197,7 @@ var jsonPollution = {
       properties: {
         comment: "ΔΙΑΛΟΓΗ ΣΚΟΥΠΙΔΙΩΝ",
         village: "Άβαντας",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -260,7 +260,7 @@ var jsonPollution = {
       properties: {
         comment: "ΑΝΑΚΥΚΛΩΣΗ ΥΛΙΚΩΝ",
         village: "Άβαντας",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -283,7 +283,7 @@ var jsonPollution = {
       properties: {
         comment: "ΒΙΟΜΗΧΑΝΙΚΗ ΠΕΡΙΟΧΗ",
         village: "Μάκρη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -323,7 +323,7 @@ var jsonPollution = {
       properties: {
         comment: "Χωρος απόθεσης άδειων συσκευασιών φυτοφαρμάκων",
         village: "Άβαντας",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -359,7 +359,7 @@ var jsonPollution = {
       properties: {
         comment: "μπαζα",
         village: "Άβαντας",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -397,7 +397,7 @@ var jsonPollution = {
       properties: {
         comment: "μπαζα",
         village: "Μάκρη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -431,7 +431,7 @@ var jsonPollution = {
       properties: {
         comment: "μπαζα",
         village: "Μάκρη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -470,7 +470,7 @@ var jsonPollution = {
       properties: {
         comment: "Εκτεταμένη χρήση φυτοφαρμάκων",
         village: "Μάκρη",
-        category: "Ρύπανση από Φυτοφάρμακα"
+        category: "pesticides"
       },
       geometry: {
         type: "MultiPolygon",
@@ -670,7 +670,7 @@ var jsonPollution = {
         comment:
           "Χώρος γεμίσματος δεξαμενών και απόθεσης συσκευασιών φυτοφαρμάκων",
         village: "Λευκίμμη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -722,7 +722,7 @@ var jsonPollution = {
       properties: {
         comment: "Μπάζα",
         village: "Λευκίμμη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -766,7 +766,7 @@ var jsonPollution = {
       properties: {
         comment: "Σκουπίδια απο οχήματα κατα μήκος του δρόμου",
         village: "Λευκίμμη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -1033,7 +1033,7 @@ var jsonPollution = {
       properties: {
         comment: "Μπάζα",
         village: "Λευκίμμη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -1058,7 +1058,7 @@ var jsonPollution = {
       properties: {
         comment: "Σκουπίδια κατα μήκος του δρόμου κυρίως τις αργίες",
         village: "Λευκίμμη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -1262,7 +1262,7 @@ var jsonPollution = {
         comment:
           "Χρόνια χρήση συμβατικών καλλιέργιών με χρήση φυτοφαρμάκων και υποβάθμιση του εδάφους, σταδιακή μετάβαση σε",
         village: "Λευκίμμη",
-        category: "Ρύπανση από Φυτοφάρμακα"
+        category: "pesticides"
       },
       geometry: {
         type: "MultiPolygon",
@@ -1542,7 +1542,7 @@ var jsonPollution = {
       properties: {
         comment: "Κεραίες",
         village: "Λευκίμμη",
-        category: "ΔΙΑΦΟΡΑ"
+        category: "other"
       },
       geometry: {
         type: "MultiPolygon",
@@ -1574,7 +1574,7 @@ var jsonPollution = {
       properties: {
         comment: "Μπάζα",
         village: "Νεοχώρι",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -1631,7 +1631,7 @@ var jsonPollution = {
       properties: {
         comment: "Μπάζα",
         village: "Νεοχώρι",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -1677,7 +1677,7 @@ var jsonPollution = {
       properties: {
         comment: "Μπάζα",
         village: "Νεοχώρι",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -1709,7 +1709,7 @@ var jsonPollution = {
       properties: {
         comment: "Μπάζα - Φυτοφάρμακα",
         village: "Νεοχώρι",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -1738,7 +1738,7 @@ var jsonPollution = {
       properties: {
         comment: "ρεμα",
         village: "Σαμοθράκη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -2111,7 +2111,7 @@ var jsonPollution = {
       properties: {
         comment: "ρεμα",
         village: "Σαμοθράκη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -2331,7 +2331,7 @@ var jsonPollution = {
       properties: {
         comment: "ρεμα",
         village: "Σαμοθράκη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -2672,7 +2672,7 @@ var jsonPollution = {
       properties: {
         comment: "ρεμα",
         village: "Σαμοθράκη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -2993,7 +2993,7 @@ var jsonPollution = {
       properties: {
         comment: "ρεμα",
         village: "Σαμοθράκη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -4376,7 +4376,7 @@ var jsonPollution = {
       properties: {
         comment: "εκτεταμένη χρήση φυτοφαρμάκων",
         village: "Σαμοθράκη",
-        category: "Ρύπανση από Φυτοφάρμακα"
+        category: "pesticides"
       },
       geometry: {
         type: "MultiPolygon",
@@ -5089,7 +5089,7 @@ var jsonPollution = {
       properties: {
         comment: "καμαριωτισα",
         village: "Σαμοθράκη",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -5167,7 +5167,7 @@ var jsonPollution = {
       properties: {
         comment: "εκτεταμένη χρήση φυτοφαρμακων",
         village: "Σαμοθράκη",
-        category: "Ρύπανση από Φυτοφάρμακα"
+        category: "pesticides"
       },
       geometry: {
         type: "MultiPolygon",
@@ -5862,7 +5862,7 @@ var jsonPollution = {
       properties: {
         comment: "Αμιαντα",
         village: "Νεοχώρι",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -5931,7 +5931,7 @@ var jsonPollution = {
       properties: {
         comment: "Αμιαντα",
         village: "Νεοχώρι",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -6014,7 +6014,7 @@ var jsonPollution = {
       properties: {
         comment: "Παλίο στρατόπεδο",
         village: "Νεοχώρι",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -6056,7 +6056,7 @@ var jsonPollution = {
       properties: {
         comment: "εργοστάσιο YTONG",
         village: "Νεοχώρι",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",
@@ -6092,7 +6092,7 @@ var jsonPollution = {
       properties: {
         comment: "Φυτοφάρμακα",
         village: "Νεοχώρι",
-        category: "Ρύπανση από Στερεά Απόβλητα"
+        category: "wastes"
       },
       geometry: {
         type: "MultiPolygon",

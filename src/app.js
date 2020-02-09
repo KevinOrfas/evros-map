@@ -63,15 +63,18 @@ jsonFloodPoints.features.map(swapCoord).forEach(setIcon("flood"));
 jsonDesertPoints.features.map(swapCoord).forEach(setIcon("desertification"));
 qualityGood.map(swapCoord).forEach(setIcon("quality-good"));
 qualityBad.map(swapCoord).forEach(setIcon("quality-bad"));
-pollutionWastes
+jsonPollution.features
+  .filter(byFeature("wastes"))
   .map(getCenterOfPolygon)
   .map(swapCoord)
   .forEach(setIcon("wastes"));
-pollutionPesticides
+jsonPollution.features
+  .filter(byFeature("pesticides"))
   .map(getCenterOfPolygon)
   .map(swapCoord)
   .forEach(setIcon("pesticides"));
-pollutionMisc
+jsonPollution.features
+  .filter(byFeature("other"))
   .map(getCenterOfPolygon)
   .map(swapCoord)
   .forEach(setIcon("pollution"));

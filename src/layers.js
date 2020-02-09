@@ -64,14 +64,6 @@ const layerCement = new L.geoJson(jsonCement, {
   onEachFeature: eventsCement
 });
 
-const pollutionWastes = jsonPollution.features.filter(
-  byFeature("Ρύπανση από Στερεά Απόβλητα")
-);
-const pollutionPesticides = jsonPollution.features.filter(
-  byFeature("Ρύπανση από Φυτοφάρμακα")
-);
-const pollutionMisc = jsonPollution.features.filter(byFeature("ΔΙΑΦΟΡΑ"));
-
 const layerPollution = new L.geoJson(jsonPollution, {
   attribution: "",
   interactive: true,

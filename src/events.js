@@ -60,6 +60,18 @@ function eventsCement(feature, layer) {
   layer.bindPopup(popupContent, { maxHeight: 400 });
 }
 
+function showDescription(properties) {
+  const props = { ...properties, desc: "Άλλο" };
+  if (props.category === "wastes") {
+    props.desc = "Ρύπανση από Στερεά Απόβλητα";
+  } else if (props.category === "pesticides") {
+    props.desc = "Ρύπανση από Φυτοφάρμακα";
+  }
+  return props.category !== null
+    ? Autolinker.link(props.desc.toLocaleString())
+    : props.desc;
+}
+
 function eventsPollution(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
@@ -77,11 +89,7 @@ function eventsPollution(feature, layer) {
       ? Autolinker.link(feature.properties["village"].toLocaleString())
       : ""
   }<br>
-  ${
-    feature.properties["category"] !== null
-      ? Autolinker.link(feature.properties["category"].toLocaleString())
-      : ""
-  }
+  ${showDescription(feature.properties)}
   </div>`;
 
   layer.bindPopup(popupContent, { maxHeight: 400 });
