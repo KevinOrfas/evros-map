@@ -1,3 +1,8 @@
+const capitalize = s => {
+  if (typeof s !== "string") return "";
+  return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
 (function(factory) {
   if (typeof define === "function" && define.amd) {
     //AMD
@@ -206,7 +211,7 @@
         "click",
         function(e) {
           self._onInputClick();
-          const copy = e.target.nextElementSibling.innerText.toLowerCase();
+          const copy = e.target.nextElementSibling.getAttribute("data-title");
           if (e.target.checked) {
             if (copy === "erosion") {
               erosionMarkers.forEach(marker => {
@@ -265,14 +270,11 @@
               });
             }
 
-            if (copy === "quality-good") {
+            if (copy === "quality") {
               qualityGoodMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
               });
-            }
-
-            if (copy === "quality-bad") {
               qualityBadMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
                 marker.classList.remove("marker-hidden");
@@ -337,14 +339,11 @@
               });
             }
 
-            if (copy === "quality-good") {
+            if (copy === "quality") {
               qualityGoodMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
               });
-            }
-
-            if (copy === "quality-bad") {
               qualityBadMarkers.forEach(marker => {
                 marker.classList.remove("marker-visible");
                 marker.classList.add("marker-hidden");
@@ -360,15 +359,62 @@
       var label = L.DomUtil.create("label", this.className + "-title");
       //TODO label.htmlFor = input.id;
       var title = L.DomUtil.create("span");
-      title.innerHTML = obj.name || "";
+      title.setAttribute("data-title", obj.name);
+      title.innerHTML = capitalize(obj.name) || "";
+      if (obj.name === "quality") {
+        const good = L.DomUtil.create("div");
+        const bad = L.DomUtil.create("div");
+        const goodText = L.DomUtil.create("span");
+        const badText = L.DomUtil.create("span");
+        goodText.innerText = "Good";
+        badText.innerText = "Bad";
+        var iconGood = L.DomUtil.create("i", this.className + "-icon");
+        var iconBad = L.DomUtil.create("i", this.className + "-icon");
+        iconGood.innerHTML = `<i class="icon icon-quality-good"></i>`;
+        iconBad.innerHTML = `<i class="icon icon-quality-bad"></i>`;
+
+        good.appendChild(goodText);
+        good.appendChild(iconGood);
+
+        bad.appendChild(badText);
+        bad.appendChild(iconBad);
+
+        title.appendChild(good);
+        title.appendChild(bad);
+      }
+
+      if (obj.name === "pollution") {
+        const good = L.DomUtil.create("div");
+        const bad = L.DomUtil.create("div");
+        const wasteText = L.DomUtil.create("span");
+        const pesticidesText = L.DomUtil.create("span");
+        wasteText.innerText = "Wastes";
+        pesticidesText.innerText = "Pesticides";
+        const iconWastes = L.DomUtil.create(
+          "i",
+          this.className + "-icon icon-wastes"
+        );
+        const iconPesticides = L.DomUtil.create("i", this.className + "-icon");
+        iconWastes.innerHTML = `<i class="icon icon-wastes"></i>`;
+        iconPesticides.innerHTML = `<i class="icon icon-pesticides"></i>`;
+
+        good.appendChild(wasteText);
+        good.appendChild(iconWastes);
+
+        bad.appendChild(pesticidesText);
+        bad.appendChild(iconPesticides);
+
+        title.appendChild(good);
+        title.appendChild(bad);
+      }
 
       if (obj.icon) {
-        var icon = L.DomUtil.create("i", this.className + "-icon");
+        var iconGood = L.DomUtil.create("i", this.className + "-icon");
 
-        if (typeof obj.icon === "string") icon.innerHTML = obj.icon || "";
-        else icon.appendChild(obj.icon);
+        if (typeof obj.icon === "string") iconGood.innerHTML = obj.icon || "";
+        else iconGood.appendChild(obj.icon);
 
-        label.appendChild(icon);
+        label.appendChild(iconGood);
       }
 
       label.appendChild(input);

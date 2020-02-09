@@ -93,4 +93,4 @@ const setIcon = name => point => {
   L.marker(point, { icon: myIcon(name) }).addTo(map);
 };
 const byFeature = filter => ({ properties }) => properties.category === filter;
-const byQuality = filter => ({ properties }) => properties.poiotita === filter;
+const byQuality = filter => ({ properties }) => properties.quality === filter;

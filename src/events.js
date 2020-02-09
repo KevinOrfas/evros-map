@@ -108,8 +108,8 @@ function popQuality(feature, layer) {
     '<table>\
               <tr>\
                   <td colspan="2">' +
-    (feature.properties["poiotita"] !== null
-      ? Autolinker.link(feature.properties["poiotita"].toLocaleString())
+    (feature.properties["quality"] !== null
+      ? Autolinker.link(feature.properties["quality"].toLocaleString())
       : "") +
     '</td>\
               </tr>\
@@ -132,8 +132,8 @@ function popQuality(feature, layer) {
 }
 
 function style_poiotita_6_0(feature) {
-  switch (String(feature.properties["poiotita"])) {
-    case "ΙΚΑΝΟΠΟΙΗΤΙΚΗ ΠΟΙΟΤΗΤΑ ΕΔΑΦΟΥΣ":
+  switch (String(feature.properties["quality"])) {
+    case "good":
       return {
         pane: "paneQuality",
         radius: 7.2,
@@ -149,7 +149,7 @@ function style_poiotita_6_0(feature) {
         interactive: true
       };
       break;
-    case "ΜΗ ΙΚΑΝΟΠΟΙΗΤΙΚΗ ΠΟΙΟΤΗΤΑ ΕΔΑΦΟΥΣ":
+    case "bad":
       return {
         pane: "paneQuality",
         radius: 7.2,

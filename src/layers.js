@@ -87,33 +87,14 @@ const layerPollution = new L.geoJson(jsonPollution, {
   onEachFeature: eventsPollution
 });
 
-const qualityGood = jsonQuality.features.filter(
-  byQuality("ΙΚΑΝΟΠΟΙΗΤΙΚΗ ΠΟΙΟΤΗΤΑ ΕΔΑΦΟΥΣ")
-);
-const jsonQualityGood = { ...jsonQuality };
-jsonQualityGood.features = qualityGood;
-jsonQualityGood.name = "qualityGood";
+const qualityGood = jsonQuality.features.filter(byQuality("good"));
+const qualityBad = jsonQuality.features.filter(byQuality("bad"));
 
-const layerQualityGood = new L.geoJson(jsonQualityGood, {
+const layerQuality = new L.geoJson(jsonQuality, {
   attribution: "",
   interactive: true,
-  dataVar: "jsonQualityGood",
-  layerName: "layerQualityGood",
-  pointToLayer: featureToMarker
-});
-
-const qualityBad = jsonQuality.features.filter(
-  byQuality("ΜΗ ΙΚΑΝΟΠΟΙΗΤΙΚΗ ΠΟΙΟΤΗΤΑ ΕΔΑΦΟΥΣ")
-);
-
-const jsonQualityBad = { ...jsonQuality };
-jsonQualityBad.features = qualityBad;
-jsonQualityBad.name = "qualityBad";
-const layerQualityBad = new L.geoJson(jsonQualityBad, {
-  attribution: "",
-  interactive: true,
-  dataVar: "jsonQualityBad",
-  layerName: "layerQualityBad",
+  dataVar: "jsonQuality",
+  layerName: "layerQuality",
   pointToLayer: featureToMarker
 });
 

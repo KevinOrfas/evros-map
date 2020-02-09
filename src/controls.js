@@ -28,16 +28,6 @@ const overLayers = [
     icon: iconByName("pollution"),
     layer: layerPollution
   },
-  // {
-  //   name: "pesticides",
-  //   icon: iconByName("pesticides"),
-  //   layer: layerPolutionPesticides
-  // },
-  // {
-  //   name: "polution",
-  //   icon: iconByName("polution"),
-  //   layer: layerPolutionMisc
-  // },
   {
     name: "desertification",
     icon: iconByName("desertification"),
@@ -54,14 +44,9 @@ const overLayers = [
     layer: layerFloodPoints
   },
   {
-    name: "quality-good",
-    icon: iconByName("quality-good"),
-    layer: layerQualityGood
-  },
-  {
-    name: "quality-bad",
-    icon: iconByName("quality-bad"),
-    layer: layerQualityBad
+    name: "quality",
+    icon: "",
+    layer: layerQuality
   }
 ];
 var panelLayers = new L.Control.PanelLayers(null, overLayers);

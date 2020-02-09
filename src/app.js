@@ -45,8 +45,7 @@ const featureGroupLayers = [
   layerDesertificationPoints,
   layerFirePoints,
   layerFloodPoints,
-  layerQualityGood,
-  layerQualityBad
+  layerQuality
 ];
 featureGroupLayers.forEach(layer => {
   boundsGroup.addLayer(layer);
@@ -63,6 +62,7 @@ jsonFloodPoints.features.map(swapCoord).forEach(setIcon("flood"));
 jsonDesertPoints.features.map(swapCoord).forEach(setIcon("desertification"));
 qualityGood.map(swapCoord).forEach(setIcon("quality-good"));
 qualityBad.map(swapCoord).forEach(setIcon("quality-bad"));
+
 jsonPollution.features
   .filter(byFeature("wastes"))
   .map(getCenterOfPolygon)
