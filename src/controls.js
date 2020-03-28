@@ -1,22 +1,20 @@
 const panelLayersOptions = {
   title: conf.base.title,
   compact: true
+
+  // position: "bottomright"
 };
 
-const base1 = L.control
-  .panelLayers(conf.base.layers, null, panelLayersOptions)
-  .addTo(map);
-
 const overLayers = [
+  {
+    name: "pollution",
+    icon: "",
+    layer: layerPollution
+  },
   {
     name: "erosion",
     icon: iconByName("erosion"),
     layer: layerErosion
-  },
-  {
-    name: "overgrazing",
-    icon: iconByName("overgrazing"),
-    layer: layerOvergrazing
   },
   {
     name: "cement",
@@ -24,9 +22,9 @@ const overLayers = [
     layer: layerCement
   },
   {
-    name: "pollution",
-    icon: iconByName("pollution"),
-    layer: layerPollution
+    name: "overgrazing",
+    icon: iconByName("overgrazing"),
+    layer: layerOvergrazing
   },
   {
     name: "desertification",
@@ -51,5 +49,8 @@ const overLayers = [
 ];
 var panelLayers = new L.Control.PanelLayers(null, overLayers);
 map.addControl(panelLayers);
+const base1 = L.control
+  .panelLayers(conf.base.layers, null, panelLayersOptions)
+  .addTo(map);
 
 var scale = L.control.scale().addTo(map);

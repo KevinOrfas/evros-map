@@ -110,8 +110,9 @@
 
 .leaflet-panel-layers {
   padding: 4px;
-  background: rgba(255, 255, 255, 0.5);
-  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
+  background: #3a887a;
+  color: #fff;
+  /* box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3); */
 }
 .leaflet-panel-layers.expanded {
   padding: 4px;
@@ -137,7 +138,7 @@
   display: inline-block;
   height: 20px;
   width: 20px;
-  background: #fff;
+  /* background: #fff; */
 }
 .leaflet-panel-layers-group.collapsible .leaflet-panel-layers-icon:first-child {
   min-width: 20px;
@@ -148,19 +149,19 @@
 .leaflet-panel-layers-group {
   padding: 2px 4px;
   margin-bottom: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  /* border: 1px solid rgba(0, 0, 0, 0.3);
   background: rgba(255, 255, 255, 0.6);
-  border-radius: 3px;
+  border-radius: 3px; */
 }
 .leaflet-panel-layers-overlays .leaflet-panel-layers-item {
-  margin-bottom: 4px;
-  padding: 2px;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
+  /* margin-bottom: 4px; */
+  padding: 4px 8px;
+  background: #d4ffee85;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  /* border-radius: 4px; */
 }
 .leaflet-panel-layers-overlays .leaflet-panel-layers-item:hover {
-  border: 1px solid #888;
+  /* border: 1px solid #888; */
   cursor: pointer;
 }
 
@@ -170,4 +171,60 @@
 
 .marker-hidden {
   visibility: hidden;
+}
+
+.leaflet-panel-layers-title input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #0f6535;
+}
+
+/* On mouse-over, add a grey background color */
+.leaflet-panel-layers-title:hover input ~ .checkmark {
+  background-color: #29d073;
+}
+
+/* When the checkbox is checked, add a blue background */
+.leaflet-panel-layers-title input:checked ~ .checkmark {
+  background-color: #0f6535;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.leaflet-panel-layers-title input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.leaflet-panel-layers-title {
+  position: relative;
+}
+
+/* Style the checkmark/indicator */
+.leaflet-panel-layers-title .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }

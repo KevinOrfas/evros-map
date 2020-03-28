@@ -122,6 +122,28 @@ const layerFloodPoints = new L.geoJson(jsonFloodPoints, {
   pointToLayer: featureToMarker
 });
 
+const layerClimateEvents = new L.geoJson(json_climate_events_5, {
+  attribution: "",
+  interactive: true,
+  dataVar: "json_climate_events_5",
+  layerName: "layerClimateEvents",
+  // pane: "paneErosion",
+  style: {
+    // pane: "paneErosion",
+    opacity: 1,
+    color: "#adc378",
+    dashArray: "",
+    lineCap: "butt",
+    lineJoin: "miter",
+    weight: 1,
+    fill: true,
+    fillOpacity: 0.5,
+    fillColor: "#adc378",
+    interactive: true
+  }
+  // onEachFeature: eventsErosion
+});
+
 function style_survey_makri_7_0() {
   return {
     pane: "pane_survey_makri_7",

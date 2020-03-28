@@ -1,7 +1,7 @@
 body {
   background: #b5d0d0;
   color: #285585;
-  font-family: Arial;
+  font-family: "Oswald", sans-serif !important;
 }
 
 a {
@@ -104,9 +104,9 @@ pre {
   border: 2px solid #1978cf;
 }
 
-.leaflet-panel-layers {
+/* .leaflet-panel-layers {
   background: rgba(255, 255, 255, 0.8);
-}
+} */
 
 .info {
   width: 300px;

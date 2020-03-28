@@ -20,7 +20,7 @@ const capitalize = s => {
     includes: L.version[0] === "1" ? L.Evented.prototype : L.Mixin.Events,
 
     options: {
-      compact: false,
+      compact: true,
       compactOffset: 0,
       collapsed: false,
       autoZIndex: true,
@@ -211,8 +211,10 @@ const capitalize = s => {
         "click",
         function(e) {
           self._onInputClick();
+          console.log("e.target", e.target);
           const copy = e.target.nextElementSibling.getAttribute("data-title");
           if (e.target.checked) {
+            console.log("ERE", copy);
             if (copy === "erosion") {
               erosionMarkers.forEach(marker => {
                 marker.classList.add("marker-visible");
@@ -356,66 +358,103 @@ const capitalize = s => {
         this
       );
 
-      var label = L.DomUtil.create("label", this.className + "-title");
+      const label = L.DomUtil.create("label", this.className + "-title");
       //TODO label.htmlFor = input.id;
-      var title = L.DomUtil.create("span");
+      const title = L.DomUtil.create("span");
       title.setAttribute("data-title", obj.name);
-      title.innerHTML = capitalize(obj.name) || "";
+      const fakeCheckBox = L.DomUtil.create("span", "checkmark");
+
+      console.log(obj.name);
+      const controlsMap = new Map();
+      controlsMap.set("erosion", "Διάβρωση");
+      controlsMap.set("overgrazing", "Υπερβόσκηση");
+      controlsMap.set("cement", "Τάσεις Τσιμεντοποίηση");
+      controlsMap.set("pollution", "Ρύπανση");
+      controlsMap.set("quality", "Ποιότητα τόπου");
+      controlsMap.set("desertification", "Ερημοποίηση");
+      controlsMap.set("flood", "Πλημμύρα");
+      controlsMap.set("fire", "Φωτία");
+      controlsMap.set("Google", "Google");
+      controlsMap.set("Topomaps", "Topomaps");
+
+      // title.innerHTML = capitalize(obj.name) || "";
+      title.innerHTML = capitalize(controlsMap.get(obj.name)) || "";
+      // Helpers
+      const setIconClass = ({ icon, name }) =>
+        L.DomUtil.create("i", `icon ${icon}-${name.toLowerCase()}`);
+
+      const qualityMap = new Map();
+      qualityMap.set("good", "καλή");
+      qualityMap.set("bad", "κακή");
+
+      const pollutionMap = new Map();
+      pollutionMap.set("wastes", "Ρύπανση από Στερεά Απόβλητα");
+      pollutionMap.set("pesticides", "Ρύπανση από Φυτοφάρμακα");
+
+      function generateTable(data) {
+        const translations = new Map([...qualityMap, ...pollutionMap]);
+
+        const table = L.DomUtil.create("table");
+        data.forEach(item => {
+          const row = table.insertRow();
+          row.appendChild(row.insertCell().appendChild(setIconClass(item)));
+          row.appendChild(
+            row
+              .insertCell()
+              .appendChild(
+                document.createTextNode(
+                  capitalize(
+                    item.name.replace(item.name, translations.get(item.name))
+                  )
+                )
+              )
+          );
+        });
+        return table;
+      }
+      // Helpers
+
       if (obj.name === "quality") {
-        const good = L.DomUtil.create("div");
-        const bad = L.DomUtil.create("div");
-        const goodText = L.DomUtil.create("span");
-        const badText = L.DomUtil.create("span");
-        goodText.innerText = "Good";
-        badText.innerText = "Bad";
-        var iconGood = L.DomUtil.create("i", this.className + "-icon");
-        var iconBad = L.DomUtil.create("i", this.className + "-icon");
-        iconGood.innerHTML = `<i class="icon icon-quality-good"></i>`;
-        iconBad.innerHTML = `<i class="icon icon-quality-bad"></i>`;
-
-        good.appendChild(goodText);
-        good.appendChild(iconGood);
-
-        bad.appendChild(badText);
-        bad.appendChild(iconBad);
-
-        title.appendChild(good);
-        title.appendChild(bad);
+        const data = [
+          {
+            name: "good",
+            icon: "icon-quality"
+          },
+          {
+            name: "bad",
+            icon: "icon-quality"
+          }
+        ];
+        const div = L.DomUtil.create("div");
+        div.appendChild(generateTable(data));
+        title.appendChild(div);
       }
 
       if (obj.name === "pollution") {
-        const good = L.DomUtil.create("div");
-        const bad = L.DomUtil.create("div");
-        const wasteText = L.DomUtil.create("span");
-        const pesticidesText = L.DomUtil.create("span");
-        wasteText.innerText = "Wastes";
-        pesticidesText.innerText = "Pesticides";
-        const iconWastes = L.DomUtil.create("i", this.className + "-icon");
-        const iconPesticides = L.DomUtil.create("i", this.className + "-icon");
-        iconWastes.innerHTML = `<i class="icon icon-wastes"></i>`;
-        iconPesticides.innerHTML = `<i class="icon icon-pesticides"></i>`;
-
-        good.appendChild(wasteText);
-        good.appendChild(iconWastes);
-
-        bad.appendChild(pesticidesText);
-        bad.appendChild(iconPesticides);
-
-        title.appendChild(good);
-        title.appendChild(bad);
+        const data = [
+          {
+            name: "wastes",
+            icon: "icon"
+          },
+          {
+            name: "pesticides",
+            icon: "icon"
+          }
+        ];
+        const div = L.DomUtil.create("div");
+        div.appendChild(generateTable(data));
+        title.appendChild(div);
       }
 
       if (obj.icon) {
-        var iconGood = L.DomUtil.create("i", this.className + "-icon");
-
-        if (typeof obj.icon === "string") iconGood.innerHTML = obj.icon || "";
-        else iconGood.appendChild(obj.icon);
-
-        label.appendChild(iconGood);
+        const iconTag = L.DomUtil.create("i", this.className + "-icon");
+        iconTag.innerHTML = obj.icon || "";
+        label.appendChild(iconTag);
       }
 
       label.appendChild(input);
       label.appendChild(title);
+      label.appendChild(fakeCheckBox);
       item.appendChild(label);
 
       if (this.options.buildItem) {
