@@ -1,7 +1,5 @@
-const capitalize = s => {
-  if (typeof s !== "string") return "";
-  return s.charAt(0).toUpperCase() + s.slice(1);
-};
+const capitalize = s =>
+  typeof s !== "string" ? "" : s.charAt(0).toUpperCase() + s.slice(1);
 
 (function(factory) {
   if (typeof define === "function" && define.amd) {
