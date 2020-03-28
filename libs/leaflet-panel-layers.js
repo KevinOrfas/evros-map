@@ -206,151 +206,89 @@ const capitalize = s => {
       input.id = obj.id;
       input._layer = obj;
 
+      const makeMarkersVisible = collection => {
+        collection.forEach(marker => {
+          marker.classList.add("marker-visible");
+          marker.classList.remove("marker-hidden");
+        });
+      };
+      const makeMarkersInvisible = collection => {
+        collection.forEach(marker => {
+          marker.classList.remove("marker-visible");
+          marker.classList.add("marker-hidden");
+        });
+      };
+
       L.DomEvent.on(
         input,
         "click",
         function(e) {
           self._onInputClick();
-          console.log("e.target", e.target);
           const copy = e.target.nextElementSibling.getAttribute("data-title");
           if (e.target.checked) {
-            console.log("ERE", copy);
-            if (copy === "erosion") {
-              erosionMarkers.forEach(marker => {
-                marker.classList.add("marker-visible");
-                marker.classList.remove("marker-hidden");
-              });
-            }
-
-            if (copy === "overgrazing") {
-              overgrazingMarkers.forEach(marker => {
-                marker.classList.add("marker-visible");
-                marker.classList.remove("marker-hidden");
-              });
-            }
-
-            if (copy === "cement") {
-              cementMarkers.forEach(marker => {
-                marker.classList.add("marker-visible");
-                marker.classList.remove("marker-hidden");
-              });
-            }
-
-            if (copy === "pollution") {
-              wastesMarkers.forEach(marker => {
-                marker.classList.add("marker-visible");
-                marker.classList.remove("marker-hidden");
-              });
-              pesticidesMarkers.forEach(marker => {
-                marker.classList.add("marker-visible");
-                marker.classList.remove("marker-hidden");
-              });
-              pollutionMiscMarkers.forEach(marker => {
-                marker.classList.add("marker-visible");
-                marker.classList.remove("marker-hidden");
-              });
-            }
-
-            if (copy === "desertification") {
-              desertificationMarkers.forEach(marker => {
-                marker.classList.add("marker-visible");
-                marker.classList.remove("marker-hidden");
-              });
-            }
-
-            if (copy === "fire") {
-              fireMarkers.forEach(marker => {
-                marker.classList.add("marker-visible");
-                marker.classList.remove("marker-hidden");
-              });
-            }
-
-            if (copy === "flood") {
-              floodMarkers.forEach(marker => {
-                marker.classList.add("marker-visible");
-                marker.classList.remove("marker-hidden");
-              });
-            }
-
-            if (copy === "quality") {
-              qualityGoodMarkers.forEach(marker => {
-                marker.classList.add("marker-visible");
-                marker.classList.remove("marker-hidden");
-              });
-              qualityBadMarkers.forEach(marker => {
-                marker.classList.add("marker-visible");
-                marker.classList.remove("marker-hidden");
-              });
-            }
+            const handlers = {
+              erosion: () => {
+                makeMarkersVisible(erosionMarkers);
+              },
+              overgrazing: () => {
+                makeMarkersVisible(overgrazingMarkers);
+              },
+              cement: () => {
+                makeMarkersVisible(cementMarkers);
+              },
+              pollution: () => {
+                makeMarkersVisible(wastesMarkers);
+                makeMarkersVisible(pesticidesMarkers);
+                makeMarkersVisible(pollutionMiscMarkers);
+              },
+              desertification: () => {
+                makeMarkersVisible(desertificationMarkers);
+              },
+              fire: () => {
+                makeMarkersVisible(fireMarkers);
+              },
+              flood: () => {
+                makeMarkersVisible(floodMarkers);
+              },
+              quality: () => {
+                makeMarkersVisible(qualityGoodMarkers);
+                makeMarkersVisible(qualityBadMarkers);
+              }
+            };
+            handlers[copy]();
 
             self.fire("panel:selected", e.target._layer);
           } else {
-            if (copy === "erosion") {
-              erosionMarkers.forEach(marker => {
-                marker.classList.remove("marker-visible");
-                marker.classList.add("marker-hidden");
-              });
-            }
-            if (copy === "overgrazing") {
-              overgrazingMarkers.forEach(marker => {
-                marker.classList.remove("marker-visible");
-                marker.classList.add("marker-hidden");
-              });
-            }
-
-            if (copy === "cement") {
-              cementMarkers.forEach(marker => {
-                marker.classList.remove("marker-visible");
-                marker.classList.add("marker-hidden");
-              });
-            }
-
-            if (copy === "pollution") {
-              wastesMarkers.forEach(marker => {
-                marker.classList.remove("marker-visible");
-                marker.classList.add("marker-hidden");
-              });
-              pesticidesMarkers.forEach(marker => {
-                marker.classList.remove("marker-visible");
-                marker.classList.add("marker-hidden");
-              });
-              pollutionMiscMarkers.forEach(marker => {
-                marker.classList.remove("marker-visible");
-                marker.classList.add("marker-hidden");
-              });
-            }
-
-            if (copy === "desertification") {
-              desertificationMarkers.forEach(marker => {
-                marker.classList.remove("marker-visible");
-                marker.classList.add("marker-hidden");
-              });
-            }
-
-            if (copy === "fire") {
-              fireMarkers.forEach(marker => {
-                marker.classList.remove("marker-visible");
-                marker.classList.add("marker-hidden");
-              });
-            }
-
-            if (copy === "flood") {
-              floodMarkers.forEach(marker => {
-                marker.classList.remove("marker-visible");
-                marker.classList.add("marker-hidden");
-              });
-            }
-
-            if (copy === "quality") {
-              qualityGoodMarkers.forEach(marker => {
-                marker.classList.remove("marker-visible");
-                marker.classList.add("marker-hidden");
-              });
-              qualityBadMarkers.forEach(marker => {
-                marker.classList.remove("marker-visible");
-                marker.classList.add("marker-hidden");
-              });
-            }
+            const handlers = {
+              erosion: () => {
+                makeMarkersInvisible(erosionMarkers);
+              },
+              overgrazing: () => {
+                makeMarkersInvisible(overgrazingMarkers);
+              },
+              cement: () => {
+                makeMarkersInvisible(cementMarkers);
+              },
+              pollution: () => {
+                makeMarkersInvisible(wastesMarkers);
+                makeMarkersInvisible(pesticidesMarkers);
+                makeMarkersInvisible(pollutionMiscMarkers);
+              },
+              desertification: () => {
+                makeMarkersInvisible(desertificationMarkers);
+              },
+              fire: () => {
+                makeMarkersInvisible(fireMarkers);
+              },
+              flood: () => {
+                makeMarkersInvisible(floodMarkers);
+              },
+              quality: () => {
+                makeMarkersInvisible(qualityGoodMarkers);
+                makeMarkersInvisible(qualityBadMarkers);
+              }
+            };
+            handlers[copy]();
 
             self.fire("panel:unselected", e.target._layer);
           }
