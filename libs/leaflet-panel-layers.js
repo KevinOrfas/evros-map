@@ -426,21 +426,18 @@ const generateTable = data => {
     },
 
     _addItem: function(obj) {
-      var self = this,
-        label,
-        input,
-        icon,
-        checked;
+      var self = this;
 
-      var list = obj.overlay ? this._overlaysList : this._baseLayersList;
-
-      if (obj.group) {
-        if (!obj.group.hasOwnProperty("name")) {
-          obj.group = { name: obj.group };
+      let { group } = obj;
+      const { overlay, collapsed: objCollapsed } = obj;
+      let list = overlay ? this._overlaysList : this._baseLayersList;
+      if (group) {
+        if (!group.hasOwnProperty("name")) {
+          group = { name: group };
         }
-        if (!this._groups[obj.group.name]) {
-          var collapsed = false;
-          if (obj.collapsed === true) {
+        if (!this._groups[group.name]) {
+          let collapsed = false;
+          if (objCollapsed === true) {
             collapsed = true;
           }
           this._groups[obj.group.name] = this._createGroup(
@@ -453,8 +450,7 @@ const generateTable = data => {
         list = this._groups[obj.group.name];
       }
 
-      label = this._createItem(obj);
-
+      const label = this._createItem(obj);
       list.appendChild(label);
 
       return label;
