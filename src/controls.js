@@ -40,12 +40,32 @@ const overLayers = [
   {
     name: "pollution",
     icon: "",
-    layer: layerPollution
+    layer: layerPollution,
+    subcategories: [
+      {
+        name: "wastes",
+        icon: "icon"
+      },
+      {
+        name: "pesticides",
+        icon: "icon"
+      }
+    ]
   },
   {
     name: "quality",
     icon: "",
-    layer: layerQuality
+    layer: layerQuality,
+    subcategories: [
+      {
+        name: "good",
+        icon: "icon-quality"
+      },
+      {
+        name: "bad",
+        icon: "icon-quality"
+      }
+    ]
   }
 ];
 var panelLayers = new L.Control.PanelLayers(null, overLayers);
