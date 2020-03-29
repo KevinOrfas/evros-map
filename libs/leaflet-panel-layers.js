@@ -1,5 +1,150 @@
-const capitalize = s =>
-  typeof s !== "string" ? "" : s.charAt(0).toUpperCase() + s.slice(1);
+const capitalize = s => {
+  return typeof s !== "string" ? "" : s.charAt(0).toUpperCase() + s.slice(1);
+};
+const makeMarkersVisible = collection => {
+  collection.forEach(marker => {
+    marker.classList.add("marker-visible");
+    marker.classList.remove("marker-hidden");
+  });
+};
+const makeMarkersInvisible = collection => {
+  collection.forEach(marker => {
+    marker.classList.remove("marker-visible");
+    marker.classList.add("marker-hidden");
+  });
+};
+const convertToHtmlElement = stringElement => {
+  const radioFragment = document.createElement("div");
+  radioFragment.innerHTML = stringElement;
+  return radioFragment.firstChild;
+};
+const createRadioElement = (name, checked, { id }, className) => {
+  let radioInput;
+  try {
+    // IE7 bugs out if you create a radio dynamically, so you have to do it
+    // this hacky way (see http://bit.ly/PqYLBe)
+    radioInput = document.createElement("input");
+    radioInput.classList.add(`${className}-selector`);
+    radioInput.setAttribute("type", "radio");
+    radioInput.setAttribute("name", name);
+    radioInput.setAttribute("id", obj.id);
+    if (checked) {
+      radioInput.setAttribute("checked", "checked");
+    }
+  } catch (err) {
+    let radioStringElement = `<input type="radio" class="${className}-selector" name="${name}" id="${id}"`;
+    if (checked) {
+      radioStringElement += ' checked="checked"';
+    }
+    radioStringElement += "/>";
+    radioInput = convertToHtmlElement(radioStringElement);
+  }
+  return radioInput;
+};
+const visMarkersHandler = {
+  erosion: () => {
+    makeMarkersVisible(erosionMarkers);
+  },
+  overgrazing: () => {
+    makeMarkersVisible(overgrazingMarkers);
+  },
+  cement: () => {
+    makeMarkersVisible(cementMarkers);
+  },
+  pollution: () => {
+    makeMarkersVisible(wastesMarkers);
+    makeMarkersVisible(pesticidesMarkers);
+    makeMarkersVisible(pollutionMiscMarkers);
+  },
+  desertification: () => {
+    makeMarkersVisible(desertificationMarkers);
+  },
+  fire: () => {
+    makeMarkersVisible(fireMarkers);
+  },
+  flood: () => {
+    makeMarkersVisible(floodMarkers);
+  },
+  quality: () => {
+    makeMarkersVisible(qualityGoodMarkers);
+    makeMarkersVisible(qualityBadMarkers);
+  }
+};
+const invisMarkersHandler = {
+  erosion: () => {
+    makeMarkersInvisible(erosionMarkers);
+  },
+  overgrazing: () => {
+    makeMarkersInvisible(overgrazingMarkers);
+  },
+  cement: () => {
+    makeMarkersInvisible(cementMarkers);
+  },
+  pollution: () => {
+    makeMarkersInvisible(wastesMarkers);
+    makeMarkersInvisible(pesticidesMarkers);
+    makeMarkersInvisible(pollutionMiscMarkers);
+  },
+  desertification: () => {
+    makeMarkersInvisible(desertificationMarkers);
+  },
+  fire: () => {
+    makeMarkersInvisible(fireMarkers);
+  },
+  flood: () => {
+    makeMarkersInvisible(floodMarkers);
+  },
+  quality: () => {
+    makeMarkersInvisible(qualityGoodMarkers);
+    makeMarkersInvisible(qualityBadMarkers);
+  }
+};
+const setIconClass = ({ icon, name }) => {
+  return L.DomUtil.create("i", `icon ${icon}-${name.toLowerCase()}`);
+};
+const isEmptyArray = array => !Array.isArray(array) || !array.length;
+
+const qualityMap = new Map();
+qualityMap.set("good", "καλή");
+qualityMap.set("bad", "κακή");
+
+const pollutionMap = new Map();
+pollutionMap.set("wastes", "Ρύπανση από Στερεά Απόβλητα");
+pollutionMap.set("pesticides", "Ρύπανση από Φυτοφάρμακα");
+
+const controlsMap = new Map();
+controlsMap.set("erosion", "Διάβρωση");
+controlsMap.set("overgrazing", "Υπερβόσκηση");
+controlsMap.set("cement", "Τάσεις Τσιμεντοποίηση");
+controlsMap.set("pollution", "Ρύπανση");
+controlsMap.set("quality", "Ποιότητα τόπου");
+controlsMap.set("desertification", "Ερημοποίηση");
+controlsMap.set("flood", "Πλημμύρα");
+controlsMap.set("fire", "Φωτία");
+controlsMap.set("Google", "Google");
+controlsMap.set("Topomaps", "Topomaps");
+
+const generateTable = data => {
+  const translations = new Map([...qualityMap, ...pollutionMap]);
+
+  const table = L.DomUtil.create("table");
+  data.forEach(item => {
+    const row = table.insertRow();
+    row.appendChild(row.insertCell().appendChild(setIconClass(item)));
+    row.appendChild(
+      row
+        .insertCell()
+        .appendChild(
+          document.createTextNode(
+            capitalize(
+              item.name.replace(item.name, translations.get(item.name))
+            )
+          )
+        )
+    );
+  });
+  return table;
+};
 
 (function(factory) {
   if (typeof define === "function" && define.amd) {
@@ -45,27 +190,33 @@ const capitalize = s =>
       for (i in baseLayers) {
         if (baseLayers[i].group && baseLayers[i].layers) {
           isCollapsed = baseLayers[i].collapsed || false;
-          for (n in baseLayers[i].layers)
+          for (n in baseLayers[i].layers) {
             this._addLayer(
               baseLayers[i].layers[n],
               false,
               baseLayers[i].group,
               isCollapsed
             );
-        } else this._addLayer(baseLayers[i], false);
+          }
+        } else {
+          this._addLayer(baseLayers[i], false);
+        }
       }
 
       for (i in overlays) {
         if (overlays[i].group && overlays[i].layers) {
           isCollapsed = overlays[i].collapsed || false;
-          for (n in overlays[i].layers)
+          for (n in overlays[i].layers) {
             this._addLayer(
               overlays[i].layers[n],
               true,
               overlays[i].group,
               isCollapsed
             );
-        } else this._addLayer(overlays[i], true);
+          }
+        } else {
+          this._addLayer(overlays[i], true);
+        }
       }
     },
 
@@ -103,7 +254,7 @@ const capitalize = s =>
     },
 
     removeLayer: function(layerDef) {
-      var layer = layerDef.hasOwnProperty("layer")
+      const layer = layerDef.hasOwnProperty("layer")
         ? this._layerFromDef(layerDef)
         : layerDef;
 
@@ -123,8 +274,9 @@ const capitalize = s =>
       for (var i = 0; i < this._layers.length; i++) {
         var id = L.stamp(this._layers[i].layer);
         //TODO add more conditions to comparing definitions
-        if (this._getLayer(id).name === layerDef.name)
+        if (this._getLayer(id).name === layerDef.name) {
           return this._getLayer(id).layer;
+        }
       }
     },
 
@@ -143,8 +295,9 @@ const capitalize = s =>
     },
 
     _addLayer: function(layerDef, overlay, group, isCollapsed) {
-      if (!layerDef.layer)
+      if (!layerDef.layer) {
         throw new Error("layer not defined in item: " + (layerDef.name || ""));
+      }
 
       if (
         !(layerDef.layer instanceof L.Class) &&
@@ -157,9 +310,13 @@ const capitalize = s =>
         );
       }
 
-      if (!layerDef.hasOwnProperty("id")) layerDef.id = L.stamp(layerDef.layer);
+      if (!layerDef.hasOwnProperty("id")) {
+        layerDef.id = L.stamp(layerDef.layer);
+      }
 
-      if (layerDef.active) this._layersActives.push(layerDef.layer);
+      if (layerDef.active) {
+        this._layersActives.push(layerDef.layer);
+      }
 
       this._layers.push(
         L.Util.extend(layerDef, {
@@ -180,231 +337,80 @@ const capitalize = s =>
     },
 
     _createItem: function(obj) {
-      console.log({ obj });
-      var self = this;
-
-      var item, input, checked;
-
-      item = L.DomUtil.create(
+      const item = L.DomUtil.create(
         "div",
-        this.className + "-item" + (obj.active ? " active" : "")
+        `${this.className}-item${obj.active ? " active" : ""}`
       );
 
-      checked = this._map.hasLayer(obj.layer);
-      console.log("obj.overlay", obj.overlay);
-      if (obj.overlay) {
-        input = L.DomUtil.create("input", this.className + "-selector");
-        input.type = "checkbox";
-        input.defaultChecked = checked;
-        //TODO name
-      } else {
-        input = this._createRadioElement("leaflet-base-layers", checked, obj);
-      }
-
-      input.value = obj.id;
-      input.layerId = obj.id;
-      input.id = obj.id;
-      input._layer = obj;
-
-      const makeMarkersVisible = collection => {
-        collection.forEach(marker => {
-          marker.classList.add("marker-visible");
-          marker.classList.remove("marker-hidden");
-        });
-      };
-      const makeMarkersInvisible = collection => {
-        collection.forEach(marker => {
-          marker.classList.remove("marker-visible");
-          marker.classList.add("marker-hidden");
-        });
+      const checked = this._map.hasLayer(obj.layer);
+      const createInput = () => {
+        let input;
+        if (obj.overlay) {
+          input = L.DomUtil.create("input", `${this.className}-selector`);
+          input.type = "checkbox";
+          input.defaultChecked = checked;
+        } else {
+          input = this._createRadioElement("leaflet-base-layers", checked, obj);
+        }
+        input.value = obj.id;
+        input.layerId = obj.id;
+        input.id = obj.id;
+        input._layer = obj;
+        return input;
       };
 
+      const input = createInput();
       L.DomEvent.on(
         input,
         "click",
-        function(e) {
-          self._onInputClick();
+        e => {
+          this._onInputClick();
           const copy = e.target.nextElementSibling.getAttribute("data-title");
           if (e.target.checked) {
-            const handlers = {
-              erosion: () => {
-                makeMarkersVisible(erosionMarkers);
-              },
-              overgrazing: () => {
-                makeMarkersVisible(overgrazingMarkers);
-              },
-              cement: () => {
-                makeMarkersVisible(cementMarkers);
-              },
-              pollution: () => {
-                makeMarkersVisible(wastesMarkers);
-                makeMarkersVisible(pesticidesMarkers);
-                makeMarkersVisible(pollutionMiscMarkers);
-              },
-              desertification: () => {
-                makeMarkersVisible(desertificationMarkers);
-              },
-              fire: () => {
-                makeMarkersVisible(fireMarkers);
-              },
-              flood: () => {
-                makeMarkersVisible(floodMarkers);
-              },
-              quality: () => {
-                makeMarkersVisible(qualityGoodMarkers);
-                makeMarkersVisible(qualityBadMarkers);
-              }
-            };
-            if (handlers[copy]) {
-              handlers[copy]();
+            if (visMarkersHandler[copy]) {
+              visMarkersHandler[copy]();
             }
-
-            self.fire("panel:selected", e.target._layer);
+            this.fire("panel:selected", e.target._layer);
           } else {
-            const handlers = {
-              erosion: () => {
-                makeMarkersInvisible(erosionMarkers);
-              },
-              overgrazing: () => {
-                makeMarkersInvisible(overgrazingMarkers);
-              },
-              cement: () => {
-                makeMarkersInvisible(cementMarkers);
-              },
-              pollution: () => {
-                makeMarkersInvisible(wastesMarkers);
-                makeMarkersInvisible(pesticidesMarkers);
-                makeMarkersInvisible(pollutionMiscMarkers);
-              },
-              desertification: () => {
-                makeMarkersInvisible(desertificationMarkers);
-              },
-              fire: () => {
-                makeMarkersInvisible(fireMarkers);
-              },
-              flood: () => {
-                makeMarkersInvisible(floodMarkers);
-              },
-              quality: () => {
-                makeMarkersInvisible(qualityGoodMarkers);
-                makeMarkersInvisible(qualityBadMarkers);
-              }
-            };
-            if (handlers[copy]) {
-              handlers[copy]();
+            if (invisMarkersHandler[copy]) {
+              invisMarkersHandler[copy]();
             }
-
-            self.fire("panel:unselected", e.target._layer);
+            this.fire("panel:unselected", e.target._layer);
           }
         },
         this
       );
 
-      const label = L.DomUtil.create("label", this.className + "-title");
-      //TODO label.htmlFor = input.id;
+      const label = L.DomUtil.create("label", `${this.className}-title`);
+      label.htmlFor = input.id;
       const title = L.DomUtil.create("span");
       title.setAttribute("data-title", obj.name);
-      const fakeCheckBox = L.DomUtil.create("span", "checkmark");
 
-      console.log(obj.name);
-      const controlsMap = new Map();
-      controlsMap.set("erosion", "Διάβρωση");
-      controlsMap.set("overgrazing", "Υπερβόσκηση");
-      controlsMap.set("cement", "Τάσεις Τσιμεντοποίηση");
-      controlsMap.set("pollution", "Ρύπανση");
-      controlsMap.set("quality", "Ποιότητα τόπου");
-      controlsMap.set("desertification", "Ερημοποίηση");
-      controlsMap.set("flood", "Πλημμύρα");
-      controlsMap.set("fire", "Φωτία");
-      controlsMap.set("Google", "Google");
-      controlsMap.set("Topomaps", "Topomaps");
-
-      // title.innerHTML = capitalize(obj.name) || "";
       title.innerHTML = capitalize(controlsMap.get(obj.name)) || "";
-      // Helpers
-      const setIconClass = ({ icon, name }) =>
-        L.DomUtil.create("i", `icon ${icon}-${name.toLowerCase()}`);
 
-      const qualityMap = new Map();
-      qualityMap.set("good", "καλή");
-      qualityMap.set("bad", "κακή");
-
-      const pollutionMap = new Map();
-      pollutionMap.set("wastes", "Ρύπανση από Στερεά Απόβλητα");
-      pollutionMap.set("pesticides", "Ρύπανση από Φυτοφάρμακα");
-
-      function generateTable(data) {
-        const translations = new Map([...qualityMap, ...pollutionMap]);
-
-        const table = L.DomUtil.create("table");
-        data.forEach(item => {
-          const row = table.insertRow();
-          row.appendChild(row.insertCell().appendChild(setIconClass(item)));
-          row.appendChild(
-            row
-              .insertCell()
-              .appendChild(
-                document.createTextNode(
-                  capitalize(
-                    item.name.replace(item.name, translations.get(item.name))
-                  )
-                )
-              )
-          );
-        });
-        return table;
-      }
-      // Helpers
-
-      if (obj.name === "quality") {
-        const data = [
-          {
-            name: "good",
-            icon: "icon-quality"
-          },
-          {
-            name: "bad",
-            icon: "icon-quality"
-          }
-        ];
+      if (!isEmptyArray(obj.subcategories)) {
         const div = L.DomUtil.create("div");
-        div.appendChild(generateTable(data));
-        title.appendChild(div);
-      }
-
-      if (obj.name === "pollution") {
-        const data = [
-          {
-            name: "wastes",
-            icon: "icon"
-          },
-          {
-            name: "pesticides",
-            icon: "icon"
-          }
-        ];
-        const div = L.DomUtil.create("div");
-        div.appendChild(generateTable(data));
+        div.appendChild(generateTable(obj.subcategories));
         title.appendChild(div);
       }
 
       if (obj.icon) {
-        const iconTag = L.DomUtil.create("i", this.className + "-icon");
+        const iconTag = L.DomUtil.create("i", `${this.className}-icon`);
         iconTag.innerHTML = obj.icon || "";
         label.appendChild(iconTag);
       }
 
       label.appendChild(input);
       label.appendChild(title);
+
+      const fakeCheckBox = L.DomUtil.create("span", "checkmark");
       label.appendChild(fakeCheckBox);
       item.appendChild(label);
 
       if (this.options.buildItem) {
-        var node = this.options.buildItem.call(this, obj); //custom node node or html string
+        const node = this.options.buildItem.call(this, obj); //custom node node or html string
         if (typeof node === "string") {
-          var tmp = L.DomUtil.create("div");
-          tmp.innerHTML = node;
-          item.appendChild(tmp.firstChild);
+          item.appendChild(convertToHtmlElement(node));
         } else {
           item.appendChild(node);
         }
@@ -415,25 +421,8 @@ const capitalize = s =>
       return item;
     },
 
-    // IE7 bugs out if you create a radio dynamically, so you have to do it this hacky way (see http://bit.ly/PqYLBe)
     _createRadioElement: function(name, checked, obj) {
-      var radioHtml =
-        '<input type="radio" class="' +
-        this.className +
-        '-selector" name="' +
-        name +
-        '" id="' +
-        obj.id +
-        '"';
-      if (checked) {
-        radioHtml += ' checked="checked"';
-      }
-      radioHtml += " />";
-
-      var radioFragment = document.createElement("div");
-      radioFragment.innerHTML = radioHtml;
-
-      return radioFragment.firstChild;
+      return createRadioElement(name, checked, obj, this.className);
     },
 
     _addItem: function(obj) {
@@ -446,7 +435,9 @@ const capitalize = s =>
       var list = obj.overlay ? this._overlaysList : this._baseLayersList;
 
       if (obj.group) {
-        if (!obj.group.hasOwnProperty("name")) obj.group = { name: obj.group };
+        if (!obj.group.hasOwnProperty("name")) {
+          obj.group = { name: obj.group };
+        }
         if (!this._groups[obj.group.name]) {
           var collapsed = false;
           if (obj.collapsed === true) {
@@ -520,22 +511,20 @@ const capitalize = s =>
     },
 
     _onInputClick: function() {
-      var i,
-        input,
-        obj,
-        inputs = this._form.querySelectorAll(`.${this.className}-selector`);
+      const inputs = this._form.querySelectorAll(`.${this.className}-selector`);
 
       this._handlingClick = true;
 
       inputs.forEach(input => {
-        obj = this._getLayer(input.value);
+        const { checked, value, parentNode } = input;
+        const { layer } = this._getLayer(input.value);
 
-        if (input.checked && !this._map.hasLayer(obj.layer)) {
-          L.DomUtil.addClass(input.parentNode.parentNode, "active");
-          this._map.addLayer(obj.layer);
-        } else if (!input.checked && this._map.hasLayer(obj.layer)) {
-          L.DomUtil.removeClass(input.parentNode.parentNode, "active");
-          this._map.removeLayer(obj.layer);
+        if (checked && !this._map.hasLayer(layer)) {
+          L.DomUtil.addClass(parentNode.parentNode, "active");
+          this._map.addLayer(layer);
+        } else if (!checked && this._map.hasLayer(layer)) {
+          L.DomUtil.removeClass(parentNode.parentNode, "active");
+          this._map.removeLayer(layer);
         }
       });
 
@@ -545,10 +534,8 @@ const capitalize = s =>
     },
 
     _initLayout: function() {
-      var container = (this._container = L.DomUtil.create(
-        "div",
-        this.className
-      ));
+      const container = L.DomUtil.create("div", this.className);
+      this._container = container;
 
       if (this.options.compact) {
         L.DomUtil.addClass(container, "compact");
@@ -561,13 +548,12 @@ const capitalize = s =>
         container
       );
 
-      if (this.options.className)
+      if (this.options.className) {
         L.DomUtil.addClass(container, this.options.className);
+      }
 
-      this._section = this._form = L.DomUtil.create(
-        "form",
-        this.className + "-list"
-      );
+      this._form = L.DomUtil.create("form", `${this.className}-list`);
+      this._section = this._form;
 
       this._updateHeight();
 
@@ -604,26 +590,20 @@ const capitalize = s =>
         this._form
       );
 
-      /* maybe useless
-		if (!this.options.compact)
-			L.DomUtil.create('div', this.className + '-margin', this._form);*/
-
       if (this.options.title) {
-        var titlabel = L.DomUtil.create("label", this.className + "-title");
-        titlabel.innerHTML = "<span>" + this.options.title + "</span>";
+        var titlabel = L.DomUtil.create("label", `${this.className}-title`);
+        titlabel.innerHTML = `<span>${this.options.title}</span>`;
         container.appendChild(titlabel);
       }
 
       container.appendChild(this._form);
     },
 
-    _updateHeight: function(h) {
-      h = h || this._map.getSize().y;
-
+    _updateHeight: function(h = this._map.getSize().y) {
       if (this.options.compact) {
-        this._form.style.maxHeight = h - this.options.compactOffset + "px";
+        this._form.style.maxHeight = `${h - this.options.compactOffset}px`;
       } else {
-        this._form.style.height = h + "px";
+        this._form.style.height = `${h}px`;
       }
     },
 
@@ -639,15 +619,21 @@ const capitalize = s =>
     },
 
     _getPath: function(obj, prop) {
-      var parts = prop.split("."),
-        last = parts.pop(),
-        len = parts.length,
-        cur = parts[0],
-        i = 1;
+      const parts = prop.split(".");
+      const last = parts.pop();
+      const len = parts.length;
+      let cur = parts[0];
+      let i = 1;
 
-      if (len > 0) while ((obj = obj[cur]) && i < len) cur = parts[i++];
+      if (len > 0) {
+        while ((obj = obj[cur]) && i < len) {
+          cur = parts[i++];
+        }
+      }
 
-      if (obj) return obj[last];
+      if (obj) {
+        return obj[last];
+      }
     }
   });
 
