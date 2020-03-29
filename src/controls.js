@@ -7,11 +7,6 @@ const panelLayersOptions = {
 
 const overLayers = [
   {
-    name: "pollution",
-    icon: "",
-    layer: layerPollution
-  },
-  {
     name: "erosion",
     icon: iconByName("erosion"),
     layer: layerErosion
@@ -40,6 +35,12 @@ const overLayers = [
     name: "flood",
     icon: iconByName("flood"),
     layer: layerFloodPoints
+  },
+
+  {
+    name: "pollution",
+    icon: "",
+    layer: layerPollution
   },
   {
     name: "quality",

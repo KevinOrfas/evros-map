@@ -1,9 +1,8 @@
 var conf = {
   base: {
-    title: "Maps",
     layers: [
       {
-        group: "Road Layers",
+        group: "Χάρτες",
         collapsed: true,
         layers: [
           {

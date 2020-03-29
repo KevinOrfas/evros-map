@@ -180,6 +180,7 @@ const capitalize = s =>
     },
 
     _createItem: function(obj) {
+      console.log({ obj });
       var self = this;
 
       var item, input, checked;
@@ -190,14 +191,15 @@ const capitalize = s =>
       );
 
       checked = this._map.hasLayer(obj.layer);
-
+      console.log("obj.overlay", obj.overlay);
       if (obj.overlay) {
         input = L.DomUtil.create("input", this.className + "-selector");
         input.type = "checkbox";
         input.defaultChecked = checked;
         //TODO name
-      } else
+      } else {
         input = this._createRadioElement("leaflet-base-layers", checked, obj);
+      }
 
       input.value = obj.id;
       input.layerId = obj.id;
@@ -253,7 +255,9 @@ const capitalize = s =>
                 makeMarkersVisible(qualityBadMarkers);
               }
             };
-            handlers[copy]();
+            if (handlers[copy]) {
+              handlers[copy]();
+            }
 
             self.fire("panel:selected", e.target._layer);
           } else {
@@ -286,7 +290,9 @@ const capitalize = s =>
                 makeMarkersInvisible(qualityBadMarkers);
               }
             };
-            handlers[copy]();
+            if (handlers[copy]) {
+              handlers[copy]();
+            }
 
             self.fire("panel:unselected", e.target._layer);
           }
@@ -399,7 +405,9 @@ const capitalize = s =>
           var tmp = L.DomUtil.create("div");
           tmp.innerHTML = node;
           item.appendChild(tmp.firstChild);
-        } else item.appendChild(node);
+        } else {
+          item.appendChild(node);
+        }
       }
 
       this._items[input.value] = item;
@@ -439,13 +447,11 @@ const capitalize = s =>
 
       if (obj.group) {
         if (!obj.group.hasOwnProperty("name")) obj.group = { name: obj.group };
-        console.log(
-          "this._groups[obj.group.name]",
-          this._groups[obj.group.name]
-        );
         if (!this._groups[obj.group.name]) {
           var collapsed = false;
-          if (obj.collapsed === true) collapsed = true;
+          if (obj.collapsed === true) {
+            collapsed = true;
+          }
           this._groups[obj.group.name] = this._createGroup(
             obj.group,
             collapsed
@@ -480,8 +486,11 @@ const capitalize = s =>
         L.DomUtil.addClass(groupdiv, "collapsible");
 
         groupexp = L.DomUtil.create("i", this.className + "-icon", grouplabel);
-        if (isCollapsed === true) groupexp.innerHTML = " + ";
-        else groupexp.innerHTML = " - ";
+        if (isCollapsed === true) {
+          groupexp.innerHTML = " + ";
+        } else {
+          groupexp.innerHTML = " - ";
+        }
 
         L.DomEvent.on(grouplabel, "click", function() {
           if (L.DomUtil.hasClass(groupdiv, "expanded")) {
@@ -494,7 +503,9 @@ const capitalize = s =>
           self._updateHeight();
         });
 
-        if (isCollapsed === false) L.DomUtil.addClass(groupdiv, "expanded");
+        if (isCollapsed === false) {
+          L.DomUtil.addClass(groupdiv, "expanded");
+        }
       }
 
       grouptit = L.DomUtil.create(
@@ -502,6 +513,7 @@ const capitalize = s =>
         this.className + "-title",
         grouplabel
       );
+
       grouptit.innerHTML = groupdata.name;
 
       return groupdiv;
@@ -511,16 +523,11 @@ const capitalize = s =>
       var i,
         input,
         obj,
-        inputs = this._form.getElementsByClassName(
-          this.className + "-selector"
-        ),
-        inputsLen = inputs.length;
+        inputs = this._form.querySelectorAll(`.${this.className}-selector`);
 
       this._handlingClick = true;
 
-      for (i = 0; i < inputsLen; i++) {
-        input = inputs[i];
-
+      inputs.forEach(input => {
         obj = this._getLayer(input.value);
 
         if (input.checked && !this._map.hasLayer(obj.layer)) {
@@ -530,7 +537,7 @@ const capitalize = s =>
           L.DomUtil.removeClass(input.parentNode.parentNode, "active");
           this._map.removeLayer(obj.layer);
         }
-      }
+      });
 
       this._handlingClick = false;
 
@@ -543,7 +550,9 @@ const capitalize = s =>
         this.className
       ));
 
-      if (this.options.compact) L.DomUtil.addClass(container, "compact");
+      if (this.options.compact) {
+        L.DomUtil.addClass(container, "compact");
+      }
 
       //Makes this work on IE10 Touch devices by stopping it from firing a mouseout event when the touch is released
       container.setAttribute("aria-haspopup", true);
@@ -563,9 +572,9 @@ const capitalize = s =>
       this._updateHeight();
 
       if (this.options.collapsed) {
-        if (L.Browser.android)
+        if (L.Browser.android) {
           L.DomEvent.on(container, "click", this._expand, this);
-        else {
+        } else {
           L.DomEvent.on(container, "mouseenter", this._expand, this).on(
             container,
             "mouseleave",
@@ -581,17 +590,17 @@ const capitalize = s =>
 
       this._baseLayersList = L.DomUtil.create(
         "div",
-        this.className + "-base",
+        `${this.className}-base`,
         this._form
       );
       this._separator = L.DomUtil.create(
         "div",
-        this.className + "-separator",
+        `${this.className}-separator`,
         this._form
       );
       this._overlaysList = L.DomUtil.create(
         "div",
-        this.className + "-overlays",
+        `${this.className}-overlays`,
         this._form
       );
 
@@ -611,9 +620,11 @@ const capitalize = s =>
     _updateHeight: function(h) {
       h = h || this._map.getSize().y;
 
-      if (this.options.compact)
+      if (this.options.compact) {
         this._form.style.maxHeight = h - this.options.compactOffset + "px";
-      else this._form.style.height = h + "px";
+      } else {
+        this._form.style.height = h + "px";
+      }
     },
 
     _expand: function() {
