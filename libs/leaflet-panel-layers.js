@@ -69,8 +69,10 @@ const visMarkersHandler = {
     makeMarkersVisible(qualityGoodMarkers);
     makeMarkersVisible(qualityBadMarkers);
   },
-  climateChange: () => {
-    makeMarkersVisible(climateMarkers);
+  climate: () => {
+    makeMarkersVisible(desertificationMarkers);
+    makeMarkersVisible(fireMarkers);
+    makeMarkersVisible(floodMarkers);
   }
 };
 const invisMarkersHandler = {
@@ -101,8 +103,10 @@ const invisMarkersHandler = {
     makeMarkersInvisible(qualityGoodMarkers);
     makeMarkersInvisible(qualityBadMarkers);
   },
-  climateChange: () => {
-    makeMarkersInvisible(climateMarkers);
+  climate: () => {
+    makeMarkersInvisible(desertificationMarkers);
+    makeMarkersInvisible(fireMarkers);
+    makeMarkersInvisible(floodMarkers);
   }
 };
 const setIconClass = ({ icon, name }) => {
@@ -117,6 +121,12 @@ qualityMap.set("bad", "κακή");
 const pollutionMap = new Map();
 pollutionMap.set("wastes", "Ρύπανση από Στερεά Απόβλητα");
 pollutionMap.set("pesticides", "Ρύπανση από Φυτοφάρμακα");
+pollutionMap.set("poisoning", "Δηλητηρίαση");
+
+const climateMap = new Map();
+climateMap.set("desertification", "Ερημοποίηση");
+climateMap.set("flood", "Πλημμύρα");
+climateMap.set("fire", "Φωτία");
 
 const controlsMap = new Map();
 controlsMap.set("erosion", "Διάβρωση");
@@ -124,14 +134,13 @@ controlsMap.set("overgrazing", "Υπερβόσκηση");
 controlsMap.set("cement", "Τάσεις Τσιμεντοποίηση");
 controlsMap.set("pollution", "Ρύπανση");
 controlsMap.set("quality", "Ποιότητα τόπου");
-controlsMap.set("desertification", "Ερημοποίηση");
-controlsMap.set("flood", "Πλημμύρα");
-controlsMap.set("fire", "Φωτία");
+controlsMap.set("climate", "Ακραία καιρικά φαινόμενα");
+
 controlsMap.set("Google", "Google");
 controlsMap.set("Topomaps", "Topomaps");
 
 const generateTable = data => {
-  const translations = new Map([...qualityMap, ...pollutionMap]);
+  const translations = new Map([...qualityMap, ...pollutionMap, ...climateMap]);
 
   const table = L.DomUtil.create("table");
   data.forEach(item => {
