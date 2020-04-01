@@ -22,21 +22,24 @@ const overLayers = [
     layer: layerOvergrazing
   },
   {
-    name: "desertification",
-    icon: iconByName("desertification"),
-    layer: layerDesertificationPoints
+    name: "climate",
+    icon: "",
+    layer: layerPollution,
+    subcategories: [
+      {
+        name: "flood",
+        icon: "icon"
+      },
+      {
+        name: "fire",
+        icon: "icon"
+      },
+      {
+        name: "desertification",
+        icon: "icon"
+      }
+    ]
   },
-  {
-    name: "fire",
-    icon: iconByName("fire"),
-    layer: layerFirePoints
-  },
-  {
-    name: "flood",
-    icon: iconByName("flood"),
-    layer: layerFloodPoints
-  },
-
   {
     name: "pollution",
     icon: "",
@@ -48,6 +51,10 @@ const overLayers = [
       },
       {
         name: "pesticides",
+        icon: "icon"
+      },
+      {
+        name: "poisoning",
         icon: "icon"
       }
     ]

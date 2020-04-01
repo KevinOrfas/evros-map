@@ -106,10 +106,18 @@ const layerDesertificationPoints = new L.geoJson(jsonDesertPoints, {
   pointToLayer: featureToMarker
 });
 
-const layerFirePoints = new L.geoJson(jsonFirePoints, {
+// const layerPoisoningPoints = new L.geoJson(jsonPoisoning, {
+//   attribution: "",
+//   interactive: true,
+//   dataVar: "jsonPoisoning",
+//   layerName: "layerPoisoningPoints",
+//   pointToLayer: featureToMarker
+// });
+
+const layerFirePoints = new L.geoJson(jsonFire, {
   attribution: "",
   interactive: true,
-  dataVar: "jsonFirePoints",
+  dataVar: "jsonFire",
   layerName: "layerFirePoints",
   pointToLayer: featureToMarker
 });

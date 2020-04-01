@@ -44,6 +44,7 @@ const featureGroupLayers = [
   layerPollution,
   layerDesertificationPoints,
   layerFirePoints,
+  // layerPoisoningPoints,
   layerFloodPoints,
   layerQuality
 ];
@@ -57,7 +58,7 @@ featureGroupLayers.forEach(layer => {
 jsonErosionPoints.features.map(swapCoord).forEach(setIcon("erosion"));
 jsonOvergrazingPoints.features.map(swapCoord).forEach(setIcon("overgrazing"));
 jsonCementPoints.features.map(swapCoord).forEach(setIcon("cement"));
-jsonFirePoints.features.map(swapCoord).forEach(setIcon("fire"));
+jsonFire.features.map(swapCoord).forEach(setIcon("fire"));
 jsonFloodPoints.features.map(swapCoord).forEach(setIcon("flood"));
 jsonDesertPoints.features.map(swapCoord).forEach(setIcon("desertification"));
 qualityGood.map(swapCoord).forEach(setIcon("quality-good"));
