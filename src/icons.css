@@ -37,6 +37,11 @@
   background-size: contain;
 }
 
+.icon-poisoning {
+  background: url("../icons/poisoning.svg") center center no-repeat;
+  background-size: contain;
+}
+
 .icon-flood {
   background: url("../icons/flood.svg") center center no-repeat;
   background-size: contain;
@@ -105,8 +110,8 @@
   background-size: contain;
 }
 
-.m-pollution {
-  background: url("../icons/pollution.png") center center no-repeat;
+.m-poisoning {
+  background: url("../icons/poisoning.svg") center center no-repeat;
   background-size: contain;
 }
 
