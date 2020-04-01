@@ -68,6 +68,9 @@ const visMarkersHandler = {
   quality: () => {
     makeMarkersVisible(qualityGoodMarkers);
     makeMarkersVisible(qualityBadMarkers);
+  },
+  climateChange: () => {
+    makeMarkersVisible(climateMarkers);
   }
 };
 const invisMarkersHandler = {
@@ -97,6 +100,9 @@ const invisMarkersHandler = {
   quality: () => {
     makeMarkersInvisible(qualityGoodMarkers);
     makeMarkersInvisible(qualityBadMarkers);
+  },
+  climateChange: () => {
+    makeMarkersInvisible(climateMarkers);
   }
 };
 const setIconClass = ({ icon, name }) => {
@@ -426,18 +432,23 @@ const generateTable = data => {
     },
 
     _addItem: function(obj) {
-      var self = this;
+      var self = this,
+        label,
+        input,
+        icon,
+        checked;
 
-      let { group } = obj;
-      const { overlay, collapsed: objCollapsed } = obj;
-      let list = overlay ? this._overlaysList : this._baseLayersList;
-      if (group) {
-        if (!group.hasOwnProperty("name")) {
-          group = { name: group };
+      var list = obj.overlay ? this._overlaysList : this._baseLayersList;
+      console.log(obj.group);
+      if (obj.group) {
+        console.log("one", obj.group.hasOwnProperty("name"));
+        if (!obj.group.hasOwnProperty("name")) {
+          obj.group = { name: obj.group };
         }
-        if (!this._groups[group.name]) {
-          let collapsed = false;
-          if (objCollapsed === true) {
+
+        if (!this._groups[obj.group.name]) {
+          var collapsed = false;
+          if (obj.collapsed === true) {
             collapsed = true;
           }
           this._groups[obj.group.name] = this._createGroup(
@@ -450,29 +461,31 @@ const generateTable = data => {
         list = this._groups[obj.group.name];
       }
 
-      const label = this._createItem(obj);
+      label = this._createItem(obj);
+
       list.appendChild(label);
 
       return label;
     },
 
     _createGroup: function(groupdata, isCollapsed) {
+      console.log("groupdata", groupdata);
       var self = this,
-        groupdiv = L.DomUtil.create("div", this.className + "-group"),
+        groupdiv = L.DomUtil.create("div", `${this.className}-group`),
         grouplabel,
         grouptit,
         groupexp;
 
       grouplabel = L.DomUtil.create(
         "label",
-        this.className + "-grouplabel",
+        `${this.className}-grouplabel`,
         groupdiv
       );
 
       if (this.options.collapsibleGroups) {
         L.DomUtil.addClass(groupdiv, "collapsible");
 
-        groupexp = L.DomUtil.create("i", this.className + "-icon", grouplabel);
+        groupexp = L.DomUtil.create("i", `${this.className}-icon`, grouplabel);
         if (isCollapsed === true) {
           groupexp.innerHTML = " + ";
         } else {
@@ -497,7 +510,7 @@ const generateTable = data => {
 
       grouptit = L.DomUtil.create(
         "span",
-        this.className + "-title",
+        `${this.className}-title`,
         grouplabel
       );
 
@@ -587,7 +600,7 @@ const generateTable = data => {
       );
 
       if (this.options.title) {
-        var titlabel = L.DomUtil.create("label", `${this.className}-title`);
+        const titlabel = L.DomUtil.create("label", `${this.className}-title`);
         titlabel.innerHTML = `<span>${this.options.title}</span>`;
         container.appendChild(titlabel);
       }
