@@ -2,7 +2,10 @@ var conf = {
   base: {
     layers: [
       {
-        group: "Χάρτες",
+        group: {
+          name: "Χάρτες"
+        },
+
         collapsed: true,
         layers: [
           {
