@@ -26,22 +26,28 @@ map.createPane("panePollution");
 map.getPane("panePollution").style.zIndex = 404;
 map.getPane("panePollution").style["mix-blend-mode"] = "normal";
 
+map.createPane("paneClimate");
+map.getPane("paneClimate").style.zIndex = 405;
+map.getPane("paneClimate").style["mix-blend-mode"] = "normal";
+
 map.createPane("paneQuality");
 map.getPane("paneQuality").style.zIndex = 408;
 map.getPane("paneQuality").style["mix-blend-mode"] = "normal";
 
-map.createPane("paneSurveyMakri");
-map.getPane("paneSurveyMakri").style.zIndex = 409;
-map.getPane("paneSurveyMakri").style["mix-blend-mode"] = "normal";
+// map.createPane("paneSurveyMakri");
+// map.getPane("paneSurveyMakri").style.zIndex = 409;
+// map.getPane("paneSurveyMakri").style["mix-blend-mode"] = "normal";
 // Pane creation ends
 
 // boundsGroup Starts
+// Here we initialise the layers - related with panes
 const boundsGroup = new L.featureGroup([]);
 const featureGroupLayers = [
   layerErosion,
   layerOvergrazing,
   layerCement,
   layerPollution,
+  layerClimate,
   layerDesertificationPoints,
   layerFirePoints,
   // layerPoisoningPoints,

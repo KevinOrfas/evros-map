@@ -24,7 +24,7 @@ const overLayers = [
   {
     name: "climate",
     icon: "",
-    layer: layerPollution,
+    layer: layerClimate,
     subcategories: [
       {
         name: "flood",

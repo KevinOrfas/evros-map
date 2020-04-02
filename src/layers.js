@@ -87,6 +87,29 @@ const layerPollution = new L.geoJson(jsonPollution, {
   onEachFeature: eventsPollution
 });
 
+const layerClimate = new L.geoJson(jsonClimate, {
+  attribution: "",
+  interactive: true,
+  dataVar: "jsonClimate",
+  layerName: "layerClimate",
+  pane: "paneClimate",
+  style: {
+    pane: "paneClimate",
+    opacity: 1,
+    color: "#f788b2",
+    dashArray: "",
+    lineCap: "butt",
+    lineJoin: "miter",
+    weight: 1.0,
+    fill: true,
+    fillOpacity: 0.5,
+    fillColor: "yellow",
+    interactive: true
+  },
+  pointToLayer: featureToMarker
+  // onEachFeature: eventsPollution
+});
+
 const qualityGood = jsonQuality.features.filter(byQuality("good"));
 const qualityBad = jsonQuality.features.filter(byQuality("bad"));
 
@@ -128,28 +151,6 @@ const layerFloodPoints = new L.geoJson(jsonFloodPoints, {
   dataVar: "jsonFloodPoints",
   layerName: "layerFloodPoints",
   pointToLayer: featureToMarker
-});
-
-const layerClimateEvents = new L.geoJson(json_climate_events_5, {
-  attribution: "",
-  interactive: true,
-  dataVar: "json_climate_events_5",
-  layerName: "layerClimateEvents",
-  // pane: "paneErosion",
-  style: {
-    // pane: "paneErosion",
-    opacity: 1,
-    color: "#adc378",
-    dashArray: "",
-    lineCap: "butt",
-    lineJoin: "miter",
-    weight: 1,
-    fill: true,
-    fillOpacity: 0.5,
-    fillColor: "#adc378",
-    interactive: true
-  }
-  // onEachFeature: eventsErosion
 });
 
 function style_survey_makri_7_0() {

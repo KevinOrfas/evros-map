@@ -280,9 +280,9 @@ const generateTable = data => {
     },
 
     clearLayers: function() {
-      for (var i = 0; i < this._layers.length; i++) {
-        this.removeLayer(this._layers[i]);
-      }
+      this._layers.forEach(layer => {
+        this.removeLayer(layer);
+      });
     },
 
     _layerFromDef: function(layerDef) {
@@ -441,22 +441,20 @@ const generateTable = data => {
     },
 
     _addItem: function(obj) {
-      var self = this,
+      let self = this,
         label,
         input,
         icon,
         checked;
 
-      var list = obj.overlay ? this._overlaysList : this._baseLayersList;
-      console.log(obj.group);
+      let list = obj.overlay ? this._overlaysList : this._baseLayersList;
       if (obj.group) {
-        console.log("one", obj.group.hasOwnProperty("name"));
         if (!obj.group.hasOwnProperty("name")) {
           obj.group = { name: obj.group };
         }
 
         if (!this._groups[obj.group.name]) {
-          var collapsed = false;
+          let collapsed = false;
           if (obj.collapsed === true) {
             collapsed = true;
           }
@@ -478,7 +476,6 @@ const generateTable = data => {
     },
 
     _createGroup: function(groupdata, isCollapsed) {
-      console.log("groupdata", groupdata);
       var self = this,
         groupdiv = L.DomUtil.create("div", `${this.className}-group`),
         grouplabel,
