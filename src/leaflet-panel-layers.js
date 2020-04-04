@@ -1,19 +1,19 @@
-const capitalize = s => {
+const capitalize = (s) => {
   return typeof s !== "string" ? "" : s.charAt(0).toUpperCase() + s.slice(1);
 };
-const makeMarkersVisible = collection => {
-  collection.forEach(marker => {
+const makeMarkersVisible = (collection) => {
+  collection.forEach((marker) => {
     marker.classList.add("marker-visible");
     marker.classList.remove("marker-hidden");
   });
 };
-const makeMarkersInvisible = collection => {
-  collection.forEach(marker => {
+const makeMarkersInvisible = (collection) => {
+  collection.forEach((marker) => {
     marker.classList.remove("marker-visible");
     marker.classList.add("marker-hidden");
   });
 };
-const convertToHtmlElement = stringElement => {
+const convertToHtmlElement = (stringElement) => {
   const radioFragment = document.createElement("div");
   radioFragment.innerHTML = stringElement;
   return radioFragment.firstChild;
@@ -73,7 +73,7 @@ const visMarkersHandler = {
     makeMarkersVisible(desertificationMarkers);
     makeMarkersVisible(fireMarkers);
     makeMarkersVisible(floodMarkers);
-  }
+  },
 };
 const invisMarkersHandler = {
   erosion: () => {
@@ -107,43 +107,18 @@ const invisMarkersHandler = {
     makeMarkersInvisible(desertificationMarkers);
     makeMarkersInvisible(fireMarkers);
     makeMarkersInvisible(floodMarkers);
-  }
+  },
 };
 const setIconClass = ({ icon, name }) => {
   return L.DomUtil.create("i", `icon ${icon}-${name.toLowerCase()}`);
 };
-const isEmptyArray = array => !Array.isArray(array) || !array.length;
+const isEmptyArray = (array) => !Array.isArray(array) || !array.length;
 
-const qualityMap = new Map();
-qualityMap.set("good", "καλή");
-qualityMap.set("bad", "κακή");
-
-const pollutionMap = new Map();
-pollutionMap.set("wastes", "Ρύπανση από Στερεά Απόβλητα");
-pollutionMap.set("pesticides", "Ρύπανση από Φυτοφάρμακα");
-pollutionMap.set("poisoning", "Δηλητηρίαση");
-
-const climateMap = new Map();
-climateMap.set("desertification", "Ερημοποίηση");
-climateMap.set("flood", "Πλημμύρα");
-climateMap.set("fire", "Φωτία");
-
-const controlsMap = new Map();
-controlsMap.set("erosion", "Διάβρωση");
-controlsMap.set("overgrazing", "Υπερβόσκηση");
-controlsMap.set("cement", "Τάσεις Τσιμεντοποίηση");
-controlsMap.set("pollution", "Ρύπανση");
-controlsMap.set("quality", "Ποιότητα τόπου");
-controlsMap.set("climate", "Ακραία καιρικά φαινόμενα");
-
-controlsMap.set("Google", "Google");
-controlsMap.set("Topomaps", "Topomaps");
-
-const generateTable = data => {
+const generateTable = (data) => {
   const translations = new Map([...qualityMap, ...pollutionMap, ...climateMap]);
 
   const table = L.DomUtil.create("table");
-  data.forEach(item => {
+  data.forEach((item) => {
     const row = table.insertRow();
     row.appendChild(row.insertCell().appendChild(setIconClass(item)));
     row.appendChild(
@@ -161,7 +136,7 @@ const generateTable = data => {
   return table;
 };
 
-(function(factory) {
+(function (factory) {
   if (typeof define === "function" && define.amd) {
     //AMD
     define(["leaflet"], factory);
@@ -173,7 +148,7 @@ const generateTable = data => {
     if (typeof window.L === "undefined") throw "Leaflet must be loaded first";
     factory(window.L);
   }
-})(function(L) {
+})(function (L) {
   L.Control.PanelLayers = L.Control.Layers.extend({
     includes: L.version[0] === "1" ? L.Evented.prototype : L.Mixin.Events,
 
@@ -186,10 +161,10 @@ const generateTable = data => {
       buildItem: null, //function that return row item html node(or html string)
       title: "", //title of panel
       className: "", //additional class name for panel
-      position: "topright"
+      position: "topright",
     },
 
-    initialize: function(baseLayers, overlays, options) {
+    initialize: function (baseLayers, overlays, options) {
       L.setOptions(this, options);
       this._layers = [];
       this._groups = {};
@@ -235,7 +210,7 @@ const generateTable = data => {
       }
     },
 
-    onAdd: function(map) {
+    onAdd: function (map) {
       var self = this;
 
       for (var i in this._layersActives) {
@@ -244,7 +219,7 @@ const generateTable = data => {
 
       L.Control.Layers.prototype.onAdd.call(this, map);
 
-      this._map.on("resize", function(e) {
+      this._map.on("resize", function (e) {
         self._updateHeight(e.newSize.y);
       });
 
@@ -254,21 +229,21 @@ const generateTable = data => {
     //TODO addBaseLayerGroup
     //TODO addOverlayGroup
 
-    addBaseLayer: function(layer, name, group) {
+    addBaseLayer: function (layer, name, group) {
       layer.name = name || layer.name || "";
       this._addLayer(layer, false, group);
       this._update();
       return this;
     },
 
-    addOverlay: function(layer, name, group) {
+    addOverlay: function (layer, name, group) {
       layer.name = name || layer.name || "";
       this._addLayer(layer, true, group);
       this._update();
       return this;
     },
 
-    removeLayer: function(layerDef) {
+    removeLayer: function (layerDef) {
       const layer = layerDef.hasOwnProperty("layer")
         ? this._layerFromDef(layerDef)
         : layerDef;
@@ -279,13 +254,13 @@ const generateTable = data => {
       return this;
     },
 
-    clearLayers: function() {
-      this._layers.forEach(layer => {
+    clearLayers: function () {
+      this._layers.forEach((layer) => {
         this.removeLayer(layer);
       });
     },
 
-    _layerFromDef: function(layerDef) {
+    _layerFromDef: function (layerDef) {
       for (var i = 0; i < this._layers.length; i++) {
         var id = L.stamp(this._layers[i].layer);
         //TODO add more conditions to comparing definitions
@@ -295,13 +270,13 @@ const generateTable = data => {
       }
     },
 
-    _update: function() {
+    _update: function () {
       this._groups = {};
       this._items = {};
       L.Control.Layers.prototype._update.call(this);
     },
 
-    _getLayer: function(id) {
+    _getLayer: function (id) {
       for (var i = 0; i < this._layers.length; i++) {
         if (this._layers[i] && this._layers[i].id == id) {
           return this._layers[i];
@@ -309,7 +284,7 @@ const generateTable = data => {
       }
     },
 
-    _addLayer: function(layerDef, overlay, group, isCollapsed) {
+    _addLayer: function (layerDef, overlay, group, isCollapsed) {
       if (!layerDef.layer) {
         throw new Error("layer not defined in item: " + (layerDef.name || ""));
       }
@@ -337,7 +312,7 @@ const generateTable = data => {
         L.Util.extend(layerDef, {
           collapsed: isCollapsed,
           overlay: overlay,
-          group: group
+          group: group,
         })
       );
 
@@ -351,7 +326,7 @@ const generateTable = data => {
       }
     },
 
-    _createItem: function(obj) {
+    _createItem: function (obj) {
       const item = L.DomUtil.create(
         "div",
         `${this.className}-item${obj.active ? " active" : ""}`
@@ -378,7 +353,7 @@ const generateTable = data => {
       L.DomEvent.on(
         input,
         "click",
-        e => {
+        (e) => {
           this._onInputClick();
           const copy = e.target.nextElementSibling.getAttribute("data-title");
           if (e.target.checked) {
@@ -436,11 +411,11 @@ const generateTable = data => {
       return item;
     },
 
-    _createRadioElement: function(name, checked, obj) {
+    _createRadioElement: function (name, checked, obj) {
       return createRadioElement(name, checked, obj, this.className);
     },
 
-    _addItem: function(obj) {
+    _addItem: function (obj) {
       let self = this,
         label,
         input,
@@ -475,7 +450,7 @@ const generateTable = data => {
       return label;
     },
 
-    _createGroup: function(groupdata, isCollapsed) {
+    _createGroup: function (groupdata, isCollapsed) {
       var self = this,
         groupdiv = L.DomUtil.create("div", `${this.className}-group`),
         grouplabel,
@@ -498,7 +473,7 @@ const generateTable = data => {
           groupexp.innerHTML = " - ";
         }
 
-        L.DomEvent.on(grouplabel, "click", function() {
+        L.DomEvent.on(grouplabel, "click", function () {
           if (L.DomUtil.hasClass(groupdiv, "expanded")) {
             L.DomUtil.removeClass(groupdiv, "expanded");
             groupexp.innerHTML = " + ";
@@ -525,12 +500,12 @@ const generateTable = data => {
       return groupdiv;
     },
 
-    _onInputClick: function() {
+    _onInputClick: function () {
       const inputs = this._form.querySelectorAll(`.${this.className}-selector`);
 
       this._handlingClick = true;
 
-      inputs.forEach(input => {
+      inputs.forEach((input) => {
         const { checked, value, parentNode } = input;
         const { layer } = this._getLayer(input.value);
 
@@ -548,7 +523,7 @@ const generateTable = data => {
       this._refocusOnMap();
     },
 
-    _initLayout: function() {
+    _initLayout: function () {
       const container = L.DomUtil.create("div", this.className);
       this._container = container;
 
@@ -614,7 +589,7 @@ const generateTable = data => {
       container.appendChild(this._form);
     },
 
-    _updateHeight: function(h = this._map.getSize().y) {
+    _updateHeight: function (h = this._map.getSize().y) {
       if (this.options.compact) {
         this._form.style.maxHeight = `${h - this.options.compactOffset}px`;
       } else {
@@ -622,18 +597,18 @@ const generateTable = data => {
       }
     },
 
-    _expand: function() {
+    _expand: function () {
       L.DomUtil.addClass(this._container, "expanded");
     },
 
-    _collapse: function() {
+    _collapse: function () {
       this._container.className = this._container.className.replace(
         "expanded",
         ""
       );
     },
 
-    _getPath: function(obj, prop) {
+    _getPath: function (obj, prop) {
       const parts = prop.split(".");
       const last = parts.pop();
       const len = parts.length;
@@ -649,10 +624,10 @@ const generateTable = data => {
       if (obj) {
         return obj[last];
       }
-    }
+    },
   });
 
-  L.control.panelLayers = function(baseLayers, overlays, options) {
+  L.control.panelLayers = function (baseLayers, overlays, options) {
     return new L.Control.PanelLayers(baseLayers, overlays, options);
   };
 
