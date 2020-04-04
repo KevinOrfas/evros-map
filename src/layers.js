@@ -1,5 +1,4 @@
 const setLayerOtpions = (name, color, handler) => {
-  console.log(name);
   return {
     attribution: "",
     interactive: true,
