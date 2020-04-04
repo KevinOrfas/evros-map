@@ -1,4 +1,4 @@
-var conf = {
+const conf = {
   base: {
     layers: [
       {
@@ -6,7 +6,7 @@ var conf = {
           name: "Χάρτες"
         },
 
-        collapsed: true,
+        collapsed: false,
         layers: [
           {
             name: "Google",

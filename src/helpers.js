@@ -3,12 +3,12 @@ function highlightFeature(e) {
 
   if (e.target.feature.geometry.type === "LineString") {
     layer.setStyle({
-      color: "blue"
+      color: "blue",
     });
   } else {
     layer.setStyle({
       fillColor: layer.defaultOptions.style.color,
-      fillOpacity: 1
+      fillOpacity: 1,
     });
   }
   if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -53,7 +53,7 @@ function style(feature) {
     opacity: 1,
     color: "white",
     dashArray: "3",
-    fillOpacity: 0.7
+    fillOpacity: 0.7,
   };
 }
 
@@ -69,28 +69,33 @@ function featureToMarker(feature, latlng) {
       iconSize: [25, 41],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
-      shadowSize: [41, 41]
-    })
+      shadowSize: [41, 41],
+    }),
   });
 }
 
-const myIcon = name =>
-  L.divIcon({
+const myIcon = (name) => {
+  return L.divIcon({
     className: `m-${name}`,
     iconUrl: `../markers/${name}.svg`,
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
-    shadowSize: [41, 41]
+    shadowSize: [41, 41],
   });
+};
 
-const getCenterOfPolygon = elm => {
+const getCenterOfPolygon = (elm) => {
   return turf.centroid(turf.multiPolygon(elm.geometry.coordinates));
 };
 const swapArr = (array, i, j) => ([array[i], array[j]] = [array[j], array[i]]);
 const swapCoord = ({ geometry }) => swapArr(geometry.coordinates, 0, 1);
-const setIcon = name => point => {
+const setIcon = (name) => (point) => {
   L.marker(point, { icon: myIcon(name) }).addTo(map);
 };
-const byFeature = filter => ({ properties }) => properties.category === filter;
-const byQuality = filter => ({ properties }) => properties.quality === filter;
+const byFeature = (filter) => ({ properties }) => {
+  return properties.category === filter;
+};
+const byCategory = (filter, category) => ({ properties }) => {
+  return properties[category] === filter;
+};

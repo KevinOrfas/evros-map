@@ -1,38 +1,38 @@
 const map = L.map("map", {
   zoomControl: true,
   maxZoom: 28,
-  minZoom: 1
+  minZoom: 1,
 }).fitBounds([
   [40.06602200033871, 24.44890103711547],
-  [41.75275316854418, 27.36050423859745]
+  [41.75275316854418, 27.36050423859745],
 ]);
 
 const hash = new L.Hash(map);
 
 // Pane creation starts
-map.createPane("paneErosion");
-map.getPane("paneErosion").style.zIndex = 400;
-map.getPane("paneErosion").style["mix-blend-mode"] = "normal";
+map.createPane("erosion");
+map.getPane("erosion").style.zIndex = 400;
+map.getPane("erosion").style["mix-blend-mode"] = "normal";
 
-map.createPane("paneOvergrazing");
-map.getPane("paneOvergrazing").style.zIndex = 401;
-map.getPane("paneOvergrazing").style["mix-blend-mode"] = "normal";
+map.createPane("overgrazing");
+map.getPane("overgrazing").style.zIndex = 401;
+map.getPane("overgrazing").style["mix-blend-mode"] = "normal";
 
-map.createPane("paneCement");
-map.getPane("paneCement").style.zIndex = 403;
-map.getPane("paneCement").style["mix-blend-mode"] = "normal";
+map.createPane("cement");
+map.getPane("cement").style.zIndex = 403;
+map.getPane("cement").style["mix-blend-mode"] = "normal";
 
-map.createPane("panePollution");
-map.getPane("panePollution").style.zIndex = 404;
-map.getPane("panePollution").style["mix-blend-mode"] = "normal";
+map.createPane("pollution");
+map.getPane("pollution").style.zIndex = 404;
+map.getPane("pollution").style["mix-blend-mode"] = "normal";
 
-map.createPane("paneClimate");
-map.getPane("paneClimate").style.zIndex = 405;
-map.getPane("paneClimate").style["mix-blend-mode"] = "normal";
+map.createPane("climate");
+map.getPane("climate").style.zIndex = 405;
+map.getPane("climate").style["mix-blend-mode"] = "normal";
 
-map.createPane("paneQuality");
-map.getPane("paneQuality").style.zIndex = 408;
-map.getPane("paneQuality").style["mix-blend-mode"] = "normal";
+map.createPane("quality");
+map.getPane("quality").style.zIndex = 408;
+map.getPane("quality").style["mix-blend-mode"] = "normal";
 
 // map.createPane("paneSurveyMakri");
 // map.getPane("paneSurveyMakri").style.zIndex = 409;
@@ -43,7 +43,7 @@ map.getPane("paneQuality").style["mix-blend-mode"] = "normal";
 // Here we initialise the layers - related with panes
 const boundsGroup = new L.featureGroup([]);
 const featureGroupLayers = [
-  layerErosion,
+  erosionLayer,
   layerOvergrazing,
   layerCement,
   layerPollution,
@@ -52,9 +52,9 @@ const featureGroupLayers = [
   layerFirePoints,
   // layerPoisoningPoints,
   layerFloodPoints,
-  layerQuality
+  layerQuality,
 ];
-featureGroupLayers.forEach(layer => {
+featureGroupLayers.forEach((layer) => {
   boundsGroup.addLayer(layer);
   map.addLayer(layer);
 });
@@ -67,8 +67,15 @@ jsonCementPoints.features.map(swapCoord).forEach(setIcon("cement"));
 jsonFire.features.map(swapCoord).forEach(setIcon("fire"));
 jsonFloodPoints.features.map(swapCoord).forEach(setIcon("flood"));
 jsonDesertPoints.features.map(swapCoord).forEach(setIcon("desertification"));
-qualityGood.map(swapCoord).forEach(setIcon("quality-good"));
-qualityBad.map(swapCoord).forEach(setIcon("quality-bad"));
+
+jsonQuality.features
+  .filter(byCategory("good", "quality"))
+  .map(swapCoord)
+  .forEach(setIcon("quality-good"));
+jsonQuality.features
+  .filter(byCategory("bad", "quality"))
+  .map(swapCoord)
+  .forEach(setIcon("quality-bad"));
 
 jsonPollution.features
   .filter(byFeature("wastes"))

@@ -1,8 +1,8 @@
-function eventsErosion(feature, layer) {
+function erosionHandler(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
-    click: zoomToFeature
+    click: zoomToFeature,
   });
   var popupContent = `<div>
     <h4>${
@@ -22,7 +22,7 @@ function eventsOvergrazing(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
-    click: zoomToFeature
+    click: zoomToFeature,
   });
   var popupContent = `<div>
   <h4>${
@@ -43,7 +43,7 @@ function eventsCement(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
-    click: zoomToFeature
+    click: zoomToFeature,
   });
   var popupContent = `<div>
   <h4>${
@@ -76,7 +76,7 @@ function eventsPollution(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
-    click: zoomToFeature
+    click: zoomToFeature,
   });
   var popupContent = `<div>
   <h4>${
@@ -97,12 +97,12 @@ function eventsPollution(feature, layer) {
 
 function popQuality(feature, layer) {
   layer.on({
-    mouseout: function(e) {
+    mouseout: function (e) {
       for (i in e.target._eventParents) {
         e.target._eventParents[i].resetStyle(e.target);
       }
     },
-    mouseover: highlightFeature
+    mouseover: highlightFeature,
   });
   var popupContent =
     '<table>\
@@ -146,7 +146,7 @@ function style_poiotita_6_0(feature) {
         fill: true,
         fillOpacity: 1,
         fillColor: "rgba(219,30,42,1.0)",
-        interactive: true
+        interactive: true,
       };
       break;
     case "bad":
@@ -162,7 +162,7 @@ function style_poiotita_6_0(feature) {
         fill: true,
         fillOpacity: 1,
         fillColor: "rgba(84,176,74,1.0)",
-        interactive: true
+        interactive: true,
       };
       break;
   }

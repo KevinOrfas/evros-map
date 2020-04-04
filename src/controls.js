@@ -1,6 +1,6 @@
 const panelLayersOptions = {
   title: conf.base.title,
-  compact: true
+  compact: true,
 
   // position: "bottomright"
 };
@@ -9,17 +9,17 @@ const overLayers = [
   {
     name: "erosion",
     icon: iconByName("erosion"),
-    layer: layerErosion
+    layer: erosionLayer,
   },
   {
     name: "cement",
     icon: iconByName("cement"),
-    layer: layerCement
+    layer: layerCement,
   },
   {
     name: "overgrazing",
     icon: iconByName("overgrazing"),
-    layer: layerOvergrazing
+    layer: layerOvergrazing,
   },
   {
     name: "climate",
@@ -28,17 +28,17 @@ const overLayers = [
     subcategories: [
       {
         name: "flood",
-        icon: "icon"
+        icon: "icon",
       },
       {
         name: "fire",
-        icon: "icon"
+        icon: "icon",
       },
       {
         name: "desertification",
-        icon: "icon"
-      }
-    ]
+        icon: "icon",
+      },
+    ],
   },
   {
     name: "pollution",
@@ -47,17 +47,17 @@ const overLayers = [
     subcategories: [
       {
         name: "wastes",
-        icon: "icon"
+        icon: "icon",
       },
       {
         name: "pesticides",
-        icon: "icon"
+        icon: "icon",
       },
       {
         name: "poisoning",
-        icon: "icon"
-      }
-    ]
+        icon: "icon",
+      },
+    ],
   },
   {
     name: "quality",
@@ -66,14 +66,14 @@ const overLayers = [
     subcategories: [
       {
         name: "good",
-        icon: "icon-quality"
+        icon: "icon-quality",
       },
       {
         name: "bad",
-        icon: "icon-quality"
-      }
-    ]
-  }
+        icon: "icon-quality",
+      },
+    ],
+  },
 ];
 var panelLayers = new L.Control.PanelLayers(null, overLayers);
 map.addControl(panelLayers);
