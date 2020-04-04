@@ -6,8 +6,18 @@ const map = L.map("map", {
   [40.06602200033871, 24.44890103711547],
   [41.75275316854418, 27.36050423859745],
 ]);
-
 const hash = new L.Hash(map);
+
+map.addControl(panelLayers);
+L.control
+  .panelLayers(conf.base.layers, null, {
+    title: conf.base.title,
+    compact: true,
+    // position: "bottomright"
+  })
+  .addTo(map);
+
+const scale = L.control.scale().addTo(map);
 
 // Pane creation starts
 map.createPane("erosion");
@@ -44,15 +54,15 @@ map.getPane("quality").style["mix-blend-mode"] = "normal";
 const boundsGroup = new L.featureGroup([]);
 const featureGroupLayers = [
   erosionLayer,
-  layerOvergrazing,
-  layerCement,
-  layerPollution,
-  layerClimate,
+  overgrazingLayer,
+  cementLayer,
+  pollutionLayer,
+  climateLayer,
+  qualityLayer,
   layerDesertificationPoints,
   layerFirePoints,
   // layerPoisoningPoints,
   layerFloodPoints,
-  layerQuality,
 ];
 featureGroupLayers.forEach((layer) => {
   boundsGroup.addLayer(layer);
@@ -61,37 +71,35 @@ featureGroupLayers.forEach((layer) => {
 // boundsGroup end
 
 // Set up icons
-jsonErosionPoints.features.map(swapCoord).forEach(setIcon("erosion"));
-jsonOvergrazingPoints.features.map(swapCoord).forEach(setIcon("overgrazing"));
-jsonCementPoints.features.map(swapCoord).forEach(setIcon("cement"));
-jsonFire.features.map(swapCoord).forEach(setIcon("fire"));
-jsonFloodPoints.features.map(swapCoord).forEach(setIcon("flood"));
-jsonDesertPoints.features.map(swapCoord).forEach(setIcon("desertification"));
-
-jsonQuality.features
+jsonErosionPoints.features.map(swapCoord).forEach(pinIcon("erosion"));
+jsonOvergrazingPoints.features.map(swapCoord).forEach(pinIcon("overgrazing"));
+jsonCementPoints.features.map(swapCoord).forEach(pinIcon("cement"));
+jsonFire.features.map(swapCoord).forEach(pinIcon("fire"));
+jsonFloodPoints.features.map(swapCoord).forEach(pinIcon("flood"));
+jsonDesertPoints.features.map(swapCoord).forEach(pinIcon("desertification"));
+qualityData.features
   .filter(byCategory("good", "quality"))
   .map(swapCoord)
-  .forEach(setIcon("quality-good"));
-jsonQuality.features
+  .forEach(pinIcon("quality-good"));
+qualityData.features
   .filter(byCategory("bad", "quality"))
   .map(swapCoord)
-  .forEach(setIcon("quality-bad"));
-
-jsonPollution.features
+  .forEach(pinIcon("quality-bad"));
+pollutionData.features
   .filter(byFeature("wastes"))
   .map(getCenterOfPolygon)
   .map(swapCoord)
-  .forEach(setIcon("wastes"));
-jsonPollution.features
+  .forEach(pinIcon("wastes"));
+pollutionData.features
   .filter(byFeature("pesticides"))
   .map(getCenterOfPolygon)
   .map(swapCoord)
-  .forEach(setIcon("pesticides"));
-jsonPollution.features
+  .forEach(pinIcon("pesticides"));
+pollutionData.features
   .filter(byFeature("other"))
   .map(getCenterOfPolygon)
   .map(swapCoord)
-  .forEach(setIcon("pollution"));
+  .forEach(pinIcon("pollution"));
 // Set up icons
 
 const cementMarkers = document.querySelectorAll(".m-cement");

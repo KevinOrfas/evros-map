@@ -1,4 +1,5 @@
-const setLayerOtpions = (name, color) => {
+const setLayerOtpions = (name, color, handler) => {
+  console.log(name);
   return {
     attribution: "",
     interactive: true,
@@ -18,105 +19,32 @@ const setLayerOtpions = (name, color) => {
       fillColor: color,
       interactive: true,
     },
-    onEachFeature: `${name}Handler`,
+    onEachFeature: handler,
   };
 };
+
 const erosionLayer = new L.geoJson(
   erosionData,
-  setLayerOtpions("erosion", "#adc378")
+  setLayerOtpions("erosion", "#adc378", erosionHandler)
+);
+const overgrazingLayer = new L.geoJson(
+  overgrazingData,
+  setLayerOtpions("overgrazing", "#9FC7E8", overgrazingHandler)
+);
+const cementLayer = new L.geoJson(
+  cementData,
+  setLayerOtpions("cement", "#FBB23E", cementHandler)
+);
+const pollutionLayer = new L.geoJson(
+  pollutionData,
+  setLayerOtpions("pollution", "#f788b2", pollutionHandler)
+);
+const climateLayer = new L.geoJson(
+  climateData,
+  setLayerOtpions("climate", "yellow")
 );
 
-const layerOvergrazing = new L.geoJson(jsonOvergrazing, {
-  attribution: "",
-  interactive: true,
-  dataVar: "jsonOvergrazing",
-  layerName: "layerOvergrazing",
-  pane: "overgrazing",
-  style: {
-    pane: "overgrazing",
-    opacity: 1,
-    color: "#9FC7E8",
-    dashArray: "",
-    lineCap: "butt",
-    lineJoin: "miter",
-    weight: 1.0,
-    fill: true,
-    fillOpacity: 0.5,
-    fillColor: "#9FC7E8",
-    interactive: true,
-  },
-  onEachFeature: eventsOvergrazing,
-});
-
-const layerCement = new L.geoJson(jsonCement, {
-  attribution: "",
-  interactive: true,
-  dataVar: "jsonCement",
-  layerName: "layerCement",
-  pane: "cement",
-  style: {
-    pane: "cement",
-    opacity: 1,
-    color: "#FBB23E",
-    dashArray: "",
-    lineCap: "butt",
-    lineJoin: "miter",
-    weight: 1.0,
-    fill: true,
-    fillOpacity: 0.5,
-    fillColor: "#FBB23E",
-    interactive: true,
-  },
-  onEachFeature: eventsCement,
-});
-
-const layerPollution = new L.geoJson(jsonPollution, {
-  attribution: "",
-  interactive: true,
-  dataVar: "jsonPollution",
-  layerName: "layerPollution",
-  pane: "pollution",
-  style: {
-    pane: "pollution",
-    opacity: 1,
-    color: "#f788b2",
-    dashArray: "",
-    lineCap: "butt",
-    lineJoin: "miter",
-    weight: 1.0,
-    fill: true,
-    fillOpacity: 0.5,
-    fillColor: "#f788b2",
-    interactive: true,
-  },
-  pointToLayer: featureToMarker,
-  onEachFeature: eventsPollution,
-});
-
-const layerClimate = new L.geoJson(jsonClimate, {
-  attribution: "",
-  interactive: true,
-  dataVar: "jsonClimate",
-  layerName: "layerClimate",
-  pane: "climate",
-  style: {
-    pane: "climate",
-    opacity: 1,
-    color: "#f788b2",
-    dashArray: "",
-    lineCap: "butt",
-    lineJoin: "miter",
-    weight: 1.0,
-    fill: true,
-    fillOpacity: 0.5,
-    fillColor: "yellow",
-    interactive: true,
-  },
-  pointToLayer: featureToMarker,
-  // onEachFeature: eventsPollution
-});
-
-const layerQuality = new L.geoJson(jsonQuality, {
+const qualityLayer = new L.geoJson(qualityData, {
   attribution: "",
   interactive: true,
   dataVar: "jsonQuality",

@@ -1,4 +1,4 @@
-var jsonClimate = {
+var climateData = {
   type: "FeatureCollection",
   name: "climate_events_5",
   crs: { type: "name", properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" } },

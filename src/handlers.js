@@ -18,7 +18,7 @@ function erosionHandler(feature, layer) {
   layer.bindPopup(popupContent, { maxHeight: 400 });
 }
 
-function eventsOvergrazing(feature, layer) {
+function overgrazingHandler(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
@@ -39,7 +39,7 @@ function eventsOvergrazing(feature, layer) {
   layer.bindPopup(popupContent, { maxHeight: 400 });
 }
 
-function eventsCement(feature, layer) {
+function cementHandler(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
@@ -72,7 +72,7 @@ function showDescription(properties) {
     : props.desc;
 }
 
-function eventsPollution(feature, layer) {
+function pollutionHandler(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
