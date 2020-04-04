@@ -1,3 +1,4 @@
+import { erosionLayer, climateData } from "./layers";
 const conf = {
   base: {
     layers: [
@@ -108,3 +109,5 @@ const conf = {
 };
 
 const panelLayers = new L.Control.PanelLayers(null, conf.overLayers);
+
+export { conf, panelLayers };

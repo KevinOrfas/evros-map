@@ -1,3 +1,6 @@
+import { conf, panelLayers } from "./controls";
+import { erosionLayer } from "./layers";
+
 const map = L.map("map", {
   zoomControl: true,
   maxZoom: 28,

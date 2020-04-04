@@ -1,3 +1,5 @@
+import { cementData } from "../data/index";
+
 const setLayerOtpions = (name, color, handler) => {
   return {
     attribution: "",
@@ -83,6 +85,18 @@ const layerFloodPoints = new L.geoJson(jsonFloodPoints, {
   layerName: "layerFloodPoints",
   pointToLayer: featureToMarker,
 });
+
+export {
+  layerFloodPoints,
+  layerFirePoints,
+  layerDesertificationPoints,
+  qualityLayer,
+  climateLayer,
+  pollutionLayer,
+  cementLayer,
+  overgrazingLayer,
+  erosionLayer,
+};
 
 // function style_survey_makri_7_0() {
 //   return {
