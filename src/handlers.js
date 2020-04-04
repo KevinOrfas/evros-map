@@ -60,18 +60,6 @@ function cementHandler(feature, layer) {
   layer.bindPopup(popupContent, { maxHeight: 400 });
 }
 
-function showDescription(properties) {
-  const props = { ...properties, desc: "Άλλο" };
-  if (props.category === "wastes") {
-    props.desc = "Ρύπανση από Στερεά Απόβλητα";
-  } else if (props.category === "pesticides") {
-    props.desc = "Ρύπανση από Φυτοφάρμακα";
-  }
-  return props.category !== null
-    ? Autolinker.link(props.desc.toLocaleString())
-    : props.desc;
-}
-
 function pollutionHandler(feature, layer) {
   layer.on({
     mouseout: resetHighlight,

@@ -107,4 +107,4 @@ const conf = {
   ],
 };
 
-const panelLayers = new L.Control.PanelLayers(null, config.overLayers);
+const panelLayers = new L.Control.PanelLayers(null, conf.overLayers);

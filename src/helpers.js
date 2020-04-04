@@ -28,6 +28,18 @@ const zoomToFeature = (e) => {
   map.fitBounds(e.target.getBounds());
 };
 
+const showDescription = (properties) => {
+  const props = { ...properties, desc: "Άλλο" };
+  if (props.category === "wastes") {
+    props.desc = "Ρύπανση από Στερεά Απόβλητα";
+  } else if (props.category === "pesticides") {
+    props.desc = "Ρύπανση από Φυτοφάρμακα";
+  }
+  return props.category !== null
+    ? Autolinker.link(props.desc.toLocaleString())
+    : props.desc;
+};
+
 const iconByName = (name) => `<i class="icon icon-${name}"></i>`;
 const determineIconType = (feature) => {
   const iconOptions = {
