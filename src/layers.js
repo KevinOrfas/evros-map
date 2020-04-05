@@ -2,7 +2,7 @@ import {
   cementData,
   cementPointsData,
   climateData,
-  desertificationPointsData,
+  desertificationData,
   erosionPointsData,
   erosionData,
   fireData,
@@ -77,42 +77,7 @@ const qualityLayer = new L.geoJson(qualityData, {
   pointToLayer: featureToMarker,
 });
 
-const desertificationPointsLayer = new L.geoJson(desertificationPointsData, {
-  attribution: "",
-  interactive: true,
-  dataVar: "desertificationPointsData",
-  layerName: "desertificationPointsLayer",
-  pointToLayer: featureToMarker,
-});
-
-// const layerPoisoningPoints = new L.geoJson(jsonPoisoning, {
-//   attribution: "",
-//   interactive: true,
-//   dataVar: "jsonPoisoning",
-//   layerName: "layerPoisoningPoints",
-//   pointToLayer: featureToMarker
-// });
-
-// const firePointsLayer = new L.geoJson(fireData, {
-//   attribution: "",
-//   interactive: true,
-//   dataVar: "fireData",
-//   layerName: "firePointsLayer",
-//   pointToLayer: featureToMarker,
-// });
-
-// const layerFloodPoints = new L.geoJson(jsonFloodPoints, {
-//   attribution: "",
-//   interactive: true,
-//   dataVar: "jsonFloodPoints",
-//   layerName: "layerFloodPoints",
-//   pointToLayer: featureToMarker,
-// });
-
 export {
-  // layerFloodPoints,
-  // layerFirePoints,
-  desertificationPointsLayer,
   cementLayer,
   climateLayer,
   erosionLayer,
