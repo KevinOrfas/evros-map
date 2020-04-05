@@ -1,4 +1,19 @@
-import { cementData } from "../data/index";
+import {
+  cementData,
+  cementPointsData,
+  climateData,
+  desertPointsData,
+  erosionPointsData,
+  erosionData,
+  fireData,
+  floodData,
+  overgrazingPointsData,
+  overgrazingData,
+  poisoningPointsData,
+  pollutionData,
+  qualityData,
+  surveyMakriData,
+} from "../data";
 
 const setLayerOtpions = (name, color, handler) => {
   return {
@@ -24,6 +39,14 @@ const setLayerOtpions = (name, color, handler) => {
   };
 };
 
+const cementLayer = new L.geoJson(
+  cementData,
+  setLayerOtpions("cement", "#FBB23E", cementHandler)
+);
+const climateLayer = new L.geoJson(
+  climateData,
+  setLayerOtpions("climate", "yellow")
+);
 const erosionLayer = new L.geoJson(
   erosionData,
   setLayerOtpions("erosion", "#adc378", erosionHandler)
@@ -32,35 +55,28 @@ const overgrazingLayer = new L.geoJson(
   overgrazingData,
   setLayerOtpions("overgrazing", "#9FC7E8", overgrazingHandler)
 );
-const cementLayer = new L.geoJson(
-  cementData,
-  setLayerOtpions("cement", "#FBB23E", cementHandler)
-);
+
 const pollutionLayer = new L.geoJson(
   pollutionData,
   setLayerOtpions("pollution", "#f788b2", pollutionHandler)
-);
-const climateLayer = new L.geoJson(
-  climateData,
-  setLayerOtpions("climate", "yellow")
 );
 
 const qualityLayer = new L.geoJson(qualityData, {
   attribution: "",
   interactive: true,
-  dataVar: "jsonQuality",
-  layerName: "layerQuality",
+  dataVar: "qualityData",
+  layerName: "qualityLayer",
   pane: "quality",
   pointToLayer: featureToMarker,
 });
 
-const layerDesertificationPoints = new L.geoJson(jsonDesertPoints, {
-  attribution: "",
-  interactive: true,
-  dataVar: "jsonDesertPoints",
-  layerName: "layerDesertificationPoints",
-  pointToLayer: featureToMarker,
-});
+// const desertificationPointsLayer = new L.geoJson(desertPointsData, {
+//   attribution: "",
+//   interactive: true,
+//   dataVar: "desertPointsData",
+//   layerName: "desertificationPointsLayer",
+//   pointToLayer: featureToMarker,
+// });
 
 // const layerPoisoningPoints = new L.geoJson(jsonPoisoning, {
 //   attribution: "",
@@ -70,32 +86,32 @@ const layerDesertificationPoints = new L.geoJson(jsonDesertPoints, {
 //   pointToLayer: featureToMarker
 // });
 
-const layerFirePoints = new L.geoJson(jsonFire, {
-  attribution: "",
-  interactive: true,
-  dataVar: "jsonFire",
-  layerName: "layerFirePoints",
-  pointToLayer: featureToMarker,
-});
+// const firePointsLayer = new L.geoJson(fireData, {
+//   attribution: "",
+//   interactive: true,
+//   dataVar: "fireData",
+//   layerName: "firePointsLayer",
+//   pointToLayer: featureToMarker,
+// });
 
-const layerFloodPoints = new L.geoJson(jsonFloodPoints, {
-  attribution: "",
-  interactive: true,
-  dataVar: "jsonFloodPoints",
-  layerName: "layerFloodPoints",
-  pointToLayer: featureToMarker,
-});
+// const layerFloodPoints = new L.geoJson(jsonFloodPoints, {
+//   attribution: "",
+//   interactive: true,
+//   dataVar: "jsonFloodPoints",
+//   layerName: "layerFloodPoints",
+//   pointToLayer: featureToMarker,
+// });
 
 export {
-  layerFloodPoints,
-  layerFirePoints,
-  layerDesertificationPoints,
-  qualityLayer,
-  climateLayer,
-  pollutionLayer,
+  // layerFloodPoints,
+  // layerFirePoints,
+  // layerDesertificationPoints,
   cementLayer,
-  overgrazingLayer,
+  climateLayer,
   erosionLayer,
+  overgrazingLayer,
+  pollutionLayer,
+  qualityLayer,
 };
 
 // function style_survey_makri_7_0() {
