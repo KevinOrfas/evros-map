@@ -24,7 +24,7 @@
   background-size: contain;
 }
 .icon-pesticides {
-  background: url("../icons/poisoning.svg") center center no-repeat;
+  background: url("../icons/pesticides.svg") center center no-repeat;
   background-size: contain;
 }
 .icon-desertification {
@@ -34,11 +34,6 @@
 
 .icon-fire {
   background: url("../icons/fire.svg") center center no-repeat;
-  background-size: contain;
-}
-
-.icon-poisoning {
-  background: url("../icons/poisoning.svg") center center no-repeat;
   background-size: contain;
 }
 
@@ -86,7 +81,7 @@
 }
 
 .m-pesticides {
-  background: url("../icons/poisoning.svg") center center no-repeat;
+  background: url("../icons/pesticides.svg") center center no-repeat;
   background-size: contain;
 }
 
@@ -107,11 +102,6 @@
 
 .m-quality {
   background: url("../icons/quality.svg") center center no-repeat;
-  background-size: contain;
-}
-
-.m-poisoning {
-  background: url("../icons/poisoning.svg") center center no-repeat;
   background-size: contain;
 }
 

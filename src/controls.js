@@ -95,10 +95,6 @@ const conf = {
           name: "pesticides",
           icon: "icon",
         },
-        {
-          name: "poisoning",
-          icon: "icon",
-        },
       ],
     },
     {
