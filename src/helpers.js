@@ -28,7 +28,7 @@ const featureIcon = (feature) => {
 const swapArr = (array, i, j) => ([array[i], array[j]] = [array[j], array[i]]);
 const swapCoord = ({ geometry }) => swapArr(geometry.coordinates, 0, 1);
 
-const byCategory = (filter, category) => ({ properties }) => {
+const byCategory = (category, filter) => ({ properties }) => {
   return properties[category] === filter;
 };
 

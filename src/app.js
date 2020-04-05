@@ -18,7 +18,7 @@ import {
   desertificationPointsLayer,
   erosionLayer,
   overgrazingLayer,
-  // pollutionLayer,
+  pollutionLayer,
   qualityLayer,
 } from "./layers";
 const map = L.map("map", {
@@ -43,6 +43,14 @@ L.control
 const scale = L.control.scale().addTo(map);
 
 // Pane creation starts
+map.createPane("cement");
+map.getPane("cement").style.zIndex = 403;
+map.getPane("cement").style["mix-blend-mode"] = "normal";
+
+map.createPane("climate");
+map.getPane("climate").style.zIndex = 405;
+map.getPane("climate").style["mix-blend-mode"] = "normal";
+
 map.createPane("erosion");
 map.getPane("erosion").style.zIndex = 400;
 map.getPane("erosion").style["mix-blend-mode"] = "normal";
@@ -51,17 +59,9 @@ map.createPane("overgrazing");
 map.getPane("overgrazing").style.zIndex = 401;
 map.getPane("overgrazing").style["mix-blend-mode"] = "normal";
 
-map.createPane("cement");
-map.getPane("cement").style.zIndex = 403;
-map.getPane("cement").style["mix-blend-mode"] = "normal";
-
 map.createPane("pollution");
 map.getPane("pollution").style.zIndex = 404;
 map.getPane("pollution").style["mix-blend-mode"] = "normal";
-
-map.createPane("climate");
-map.getPane("climate").style.zIndex = 405;
-map.getPane("climate").style["mix-blend-mode"] = "normal";
 
 map.createPane("quality");
 map.getPane("quality").style.zIndex = 408;
@@ -77,7 +77,7 @@ const featureGroupLayers = [
   climateLayer,
   erosionLayer,
   overgrazingLayer,
-  // pollutionLayer,
+  pollutionLayer,
   qualityLayer,
 ];
 featureGroupLayers.forEach((layer) => {
@@ -98,14 +98,12 @@ floodData.features.map(swapCoord).forEach(pinIcon("flood"));
 overgrazingPointsData.features.map(swapCoord).forEach(pinIcon("overgrazing"));
 pesticidesData.features.map(swapCoord).forEach(pinIcon("pesticides"));
 wastesData.features.map(swapCoord).forEach(pinIcon("wastes"));
-
 qualityData.features
-  .filter(byCategory("good", "quality"))
+  .filter(byCategory("quality", "good"))
   .map(swapCoord)
   .forEach(pinIcon("quality-good"));
 qualityData.features
-  .filter(byCategory("bad", "quality"))
+  .filter(byCategory("quality", "bad"))
   .map(swapCoord)
   .forEach(pinIcon("quality-bad"));
-
 // Set up icons
