@@ -9,6 +9,7 @@ import {
   qualityLayer,
 } from "./layers";
 
+const iconByName = (name) => `<i class="icon icon-${name}"></i>`;
 const conf = {
   base: {
     layers: [

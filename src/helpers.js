@@ -1,46 +1,3 @@
-const highlightFeature = (e) => {
-  const layer = e.target;
-
-  if (e.target.feature.geometry.type === "LineString") {
-    layer.setStyle({
-      color: "blue",
-    });
-  } else {
-    layer.setStyle({
-      fillColor: layer.defaultOptions.style.color,
-      fillOpacity: 1,
-    });
-  }
-  if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-    layer.bringToFront();
-  }
-  // info.update(layer.feature.properties);
-};
-
-const resetHighlight = (e) => {
-  for (i in e.target._eventParents) {
-    e.target._eventParents[i].resetStyle(e.target);
-  }
-  // info.update();
-};
-
-const zoomToFeature = (e) => {
-  map.fitBounds(e.target.getBounds());
-};
-
-const showDescription = (properties) => {
-  const props = { ...properties, desc: "Άλλο" };
-  if (props.category === "wastes") {
-    props.desc = "Ρύπανση από Στερεά Απόβλητα";
-  } else if (props.category === "pesticides") {
-    props.desc = "Ρύπανση από Φυτοφάρμακα";
-  }
-  return props.category !== null
-    ? Autolinker.link(props.desc.toLocaleString())
-    : props.desc;
-};
-
-const iconByName = (name) => `<i class="icon icon-${name}"></i>`;
 const determineIconType = (feature) => {
   const iconOptions = {
     iconSize: [25, 41],
@@ -58,14 +15,16 @@ const determineIconType = (feature) => {
   }
   return { ...iconOptions, ...identifiers };
 };
-const featureIcon = (feature) => {
-  return L.divIcon(determineIconType(feature));
-};
+
 const featureToMarker = (feature, latlng) => {
   return L.marker(latlng, {
     icon: featureIcon(feature),
   });
 };
+const featureIcon = (feature) => {
+  return L.divIcon(determineIconType(feature));
+};
+
 const pinIcon = (name) => (point) => {
   L.marker(point, { icon: featureIcon(name) }).addTo(map);
 };
@@ -233,3 +192,5 @@ const generateTable = (data) => {
   });
   return table;
 };
+
+export {};

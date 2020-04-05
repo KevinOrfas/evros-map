@@ -14,6 +14,14 @@ import {
   qualityData,
   surveyMakriData,
 } from "../data";
+import {
+  cementHandler,
+  erosionHandler,
+  overgrazingHandler,
+  pollutionHandler,
+} from "./handlers";
+
+import { featureToMarker } from "./helpers";
 
 const setLayerOtpions = (name, color, handler) => {
   return {
