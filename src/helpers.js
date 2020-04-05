@@ -25,15 +25,9 @@ const featureIcon = (feature) => {
   return L.divIcon(determineIconType(feature));
 };
 
-const getCenterOfPolygon = (elm) => {
-  return turf.centroid(turf.multiPolygon(elm.geometry.coordinates));
-};
 const swapArr = (array, i, j) => ([array[i], array[j]] = [array[j], array[i]]);
 const swapCoord = ({ geometry }) => swapArr(geometry.coordinates, 0, 1);
 
-const byFeature = (filter) => ({ properties }) => {
-  return properties.category === filter;
-};
 const byCategory = (filter, category) => ({ properties }) => {
   return properties[category] === filter;
 };

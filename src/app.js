@@ -5,8 +5,9 @@ import {
   fireData,
   floodData,
   overgrazingPointsData,
-  // poisoningPointsData,
+  pesticidesData,
   qualityData,
+  wastesData,
 } from "../data";
 
 import { swapCoord, featureIcon, byCategory } from "./helpers";
@@ -95,21 +96,8 @@ desertificationData.features.map(swapCoord).forEach(pinIcon("desertification"));
 fireData.features.map(swapCoord).forEach(pinIcon("fire"));
 floodData.features.map(swapCoord).forEach(pinIcon("flood"));
 overgrazingPointsData.features.map(swapCoord).forEach(pinIcon("overgrazing"));
-// pollutionData.features
-//   .filter(byFeature("wastes"))
-//   .map(getCenterOfPolygon)
-//   .map(swapCoord)
-//   .forEach(pinIcon("wastes"));
-// pollutionData.features
-//   .filter(byFeature("pesticides"))
-//   .map(getCenterOfPolygon)
-//   .map(swapCoord)
-//   .forEach(pinIcon("pesticides"));
-// pollutionData.features
-//   .filter(byFeature("other"))
-//   .map(getCenterOfPolygon)
-//   .map(swapCoord)
-//   .forEach(pinIcon("pollution"));
+pesticidesData.features.map(swapCoord).forEach(pinIcon("pesticides"));
+wastesData.features.map(swapCoord).forEach(pinIcon("wastes"));
 
 qualityData.features
   .filter(byCategory("good", "quality"))

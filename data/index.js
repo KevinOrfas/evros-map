@@ -11,6 +11,7 @@ import overgrazingData from "./overgrazing";
 import pesticidesData from "./pesticides_points";
 import pollutionData from "./pollution";
 import qualityData from "./quality";
+import wastesData from "./wastes_points";
 
 export {
   cementData,
@@ -26,4 +27,5 @@ export {
   pesticidesData,
   pollutionData,
   qualityData,
+  wastesData,
 };
