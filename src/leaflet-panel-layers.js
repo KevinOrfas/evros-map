@@ -1,8 +1,9 @@
-import * as L from "leaflet/dist/leaflet.js";
-import "../libs/leaflet-svg-shape-markers";
-import "../libs/leaflet.pattern";
-import "../libs/leaflet-hash";
+import "leaflet";
+import "leaflet-hash";
+import "leaflet-svg-shape-markers";
+import "leaflet.pattern";
 import "../libs/multi-style-layer";
+
 import { controlsMap } from "./translations";
 import {
   capitalize,

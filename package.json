@@ -20,6 +20,9 @@
   },
   "dependencies": {
     "autolinker": "^3.13.0",
-    "leaflet": "^1.6.0"
+    "leaflet": "^1.6.0",
+    "leaflet-hash": "^0.2.1",
+    "leaflet-svg-shape-markers": "^1.2.0",
+    "leaflet.pattern": "^0.1.0"
   }
 }
