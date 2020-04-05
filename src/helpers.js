@@ -11,7 +11,7 @@ const determineIconType = (feature) => {
     identifiers.iconUrl = `../markers/${feature.properties.amenity}.svg`;
   } else if (typeof feature === "string") {
     identifiers.className = `m-${feature}`;
-    identifiers.iconUrl = `../markers/${feature}.svg`;
+    identifiers.iconUrl = `../src/markers/${feature}.svg`;
   }
   return { ...iconOptions, ...identifiers };
 };
@@ -23,10 +23,6 @@ const featureToMarker = (feature, latlng) => {
 };
 const featureIcon = (feature) => {
   return L.divIcon(determineIconType(feature));
-};
-
-const pinIcon = (name) => (point) => {
-  L.marker(point, { icon: featureIcon(name) }).addTo(map);
 };
 
 const getCenterOfPolygon = (elm) => {
@@ -201,5 +197,6 @@ export {
   invisMarkersHandler,
   visMarkersHandler,
   swapCoord,
-  pinIcon,
+  featureToMarker,
+  featureIcon,
 };

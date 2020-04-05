@@ -2,7 +2,7 @@ import {
   cementData,
   cementPointsData,
   climateData,
-  desertPointsData,
+  desertificationPointsData,
   erosionPointsData,
   erosionData,
   fireData,
@@ -12,7 +12,6 @@ import {
   poisoningPointsData,
   pollutionData,
   qualityData,
-  surveyMakriData,
 } from "../data";
 import {
   cementHandler,
@@ -78,13 +77,13 @@ const qualityLayer = new L.geoJson(qualityData, {
   pointToLayer: featureToMarker,
 });
 
-// const desertificationPointsLayer = new L.geoJson(desertPointsData, {
-//   attribution: "",
-//   interactive: true,
-//   dataVar: "desertPointsData",
-//   layerName: "desertificationPointsLayer",
-//   pointToLayer: featureToMarker,
-// });
+const desertificationPointsLayer = new L.geoJson(desertificationPointsData, {
+  attribution: "",
+  interactive: true,
+  dataVar: "desertificationPointsData",
+  layerName: "desertificationPointsLayer",
+  pointToLayer: featureToMarker,
+});
 
 // const layerPoisoningPoints = new L.geoJson(jsonPoisoning, {
 //   attribution: "",
@@ -113,7 +112,7 @@ const qualityLayer = new L.geoJson(qualityData, {
 export {
   // layerFloodPoints,
   // layerFirePoints,
-  // layerDesertificationPoints,
+  desertificationPointsLayer,
   cementLayer,
   climateLayer,
   erosionLayer,
@@ -121,65 +120,3 @@ export {
   pollutionLayer,
   qualityLayer,
 };
-
-// function style_survey_makri_7_0() {
-//   return {
-//     pane: "pane_survey_makri_7",
-//     radius: 9.6,
-//     opacity: 1,
-//     color: "rgba(35,35,35,1.0)",
-//     dashArray: "",
-//     lineCap: "butt",
-//     lineJoin: "miter",
-//     weight: 1,
-//     fill: true,
-//     fillOpacity: 1,
-//     fillColor: "rgba(255,31,241,1.0)",
-//     interactive: true,
-//   };
-// }
-
-// function pop_survey_makri_7(feature, layer) {
-//   layer.on({
-//     mouseout: function (e) {
-//       for (i in e.target._eventParents) {
-//         e.target._eventParents[i].resetStyle(e.target);
-//       }
-//     },
-//     mouseover: highlightFeature,
-//   });
-//   var popupContent =
-//     '<table>\
-//               <tr>\
-//                   <td colspan="2">' +
-//     (feature.properties["Name"] !== null
-//       ? Autolinker.link(feature.properties["Name"].toLocaleString())
-//       : "") +
-//     '</td>\
-//               </tr>\
-//               <tr>\
-//                   <td colspan="2">' +
-//     (feature.properties["Images"] !== null
-//       ? Autolinker.link(feature.properties["Images"].toLocaleString())
-//       : "") +
-//     "</td>\
-//               </tr>\
-//           </table>";
-//   layer.bindPopup(popupContent, { maxHeight: 400 });
-// }
-
-// const layerSurveyMakri = new L.geoJson(jsonSurveyMakri, {
-//   attribution: "",
-//   interactive: true,
-//   dataVar: "jsonSurveyMakri",
-//   layerName: "layerSurveyMakri",
-//   pane: "paneSurveyMakri",
-//   onEachFeature: pop_survey_makri_7,
-//   pointToLayer: function (feature, latlng) {
-//     var context = {
-//       feature: feature,
-//       variables: {},
-//     };
-//     return L.shapeMarker(latlng, style_survey_makri_7_0(feature));
-//   },
-// });

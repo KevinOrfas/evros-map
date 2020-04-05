@@ -1,7 +1,7 @@
 import cementData from "./cement";
 import cementPointsData from "./cementification_points";
 import climateData from "./climate";
-import desertPointsData from "./desertification_points";
+import desertificationPointsData from "./desertification_points";
 import erosionPointsData from "./erosion_points";
 import erosionData from "./erosion";
 import fireData from "./fire_points";
@@ -11,13 +11,12 @@ import overgrazingData from "./overgrazing";
 import poisoningPointsData from "./poisoning";
 import pollutionData from "./pollution";
 import qualityData from "./quality";
-import surveyMakriData from "./survey_makri";
 
 export {
   cementData,
   cementPointsData,
   climateData,
-  desertPointsData,
+  desertificationPointsData,
   erosionPointsData,
   erosionData,
   fireData,
@@ -27,5 +26,4 @@ export {
   poisoningPointsData,
   pollutionData,
   qualityData,
-  surveyMakriData,
 };
