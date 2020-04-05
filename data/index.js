@@ -8,15 +8,15 @@ import fireData from "./fire_points";
 import floodData from "./flood_points";
 import overgrazingPointsData from "./overgrazing_points";
 import overgrazingData from "./overgrazing";
-import poisoningData from "./poisoning";
+import poisoningPointsData from "./poisoning";
 import pollutionData from "./pollution";
 import qualityData from "./quality";
 import surveyMakriData from "./survey_makri";
 
 export {
   cementData,
-  climateData,
   cementPointsData,
+  climateData,
   desertPointsData,
   erosionPointsData,
   erosionData,
@@ -24,7 +24,7 @@ export {
   floodData,
   overgrazingPointsData,
   overgrazingData,
-  poisoningData,
+  poisoningPointsData,
   pollutionData,
   qualityData,
   surveyMakriData,
