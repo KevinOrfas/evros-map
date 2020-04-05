@@ -6,7 +6,6 @@ import {
   isEmptyArray,
   generateTable,
   createRadioElement,
-  invisMarkersHandler,
   visMarkersHandler,
 } from "./helpers";
 
@@ -213,16 +212,15 @@ L.Control.PanelLayers = L.Control.Layers.extend({
       (e) => {
         this._onInputClick();
         const copy = e.target.nextElementSibling.getAttribute("data-title");
-        if (e.target.checked) {
-          if (visMarkersHandler[copy]) {
-            visMarkersHandler[copy]();
+        const action = visMarkersHandler[copy];
+        if (action) {
+          if (e.target.checked) {
+            action(true);
+            this.fire("panel:selected", e.target._layer);
+          } else {
+            action(false);
+            this.fire("panel:unselected", e.target._layer);
           }
-          this.fire("panel:selected", e.target._layer);
-        } else {
-          if (invisMarkersHandler[copy]) {
-            invisMarkersHandler[copy]();
-          }
-          this.fire("panel:unselected", e.target._layer);
         }
       },
       this
