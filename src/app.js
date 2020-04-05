@@ -1,14 +1,25 @@
-import "./helpers";
+import {
+  cementPointsData,
+  desertificationData,
+  erosionPointsData,
+  fireData,
+  floodData,
+  overgrazingPointsData,
+  // poisoningPointsData,
+  qualityData,
+} from "../data";
+
+import { swapCoord, featureIcon, byCategory } from "./helpers";
 import { conf, panelLayers } from "./controls";
 import {
   cementLayer,
   climateLayer,
+  desertificationPointsLayer,
   erosionLayer,
   overgrazingLayer,
-  pollutionLayer,
+  // pollutionLayer,
   qualityLayer,
 } from "./layers";
-
 const map = L.map("map", {
   zoomControl: true,
   maxZoom: 28,
@@ -55,9 +66,6 @@ map.createPane("quality");
 map.getPane("quality").style.zIndex = 408;
 map.getPane("quality").style["mix-blend-mode"] = "normal";
 
-// map.createPane("paneSurveyMakri");
-// map.getPane("paneSurveyMakri").style.zIndex = 409;
-// map.getPane("paneSurveyMakri").style["mix-blend-mode"] = "normal";
 // Pane creation ends
 
 // boundsGroup Starts
@@ -68,12 +76,8 @@ const featureGroupLayers = [
   climateLayer,
   erosionLayer,
   overgrazingLayer,
-  pollutionLayer,
+  // pollutionLayer,
   qualityLayer,
-  // layerDesertificationPoints,
-  // layerFirePoints,
-  // layerPoisoningPoints,
-  // layerFloodPoints,
 ];
 featureGroupLayers.forEach((layer) => {
   boundsGroup.addLayer(layer);
@@ -81,21 +85,16 @@ featureGroupLayers.forEach((layer) => {
 });
 // boundsGroup end
 
+const pinIcon = (name) => (point) => {
+  return L.marker(point, { icon: featureIcon(name) }).addTo(map);
+};
 // Set up icons
-// jsonErosionPoints.features.map(swapCoord).forEach(pinIcon("erosion"));
-// jsonOvergrazingPoints.features.map(swapCoord).forEach(pinIcon("overgrazing"));
-// cementPointsData.features.map(swapCoord).forEach(pinIcon("cement"));
-// fireData.features.map(swapCoord).forEach(pinIcon("fire"));
-// jsonFloodPoints.features.map(swapCoord).forEach(pinIcon("flood"));
-// desertPointsData.features.map(swapCoord).forEach(pinIcon("desertification"));
-// qualityData.features
-//   .filter(byCategory("good", "quality"))
-//   .map(swapCoord)
-//   .forEach(pinIcon("quality-good"));
-// qualityData.features
-//   .filter(byCategory("bad", "quality"))
-//   .map(swapCoord)
-//   .forEach(pinIcon("quality-bad"));
+cementPointsData.features.map(swapCoord).forEach(pinIcon("cement"));
+erosionPointsData.features.map(swapCoord).forEach(pinIcon("erosion"));
+desertificationData.features.map(swapCoord).forEach(pinIcon("desertification"));
+fireData.features.map(swapCoord).forEach(pinIcon("fire"));
+floodData.features.map(swapCoord).forEach(pinIcon("flood"));
+overgrazingPointsData.features.map(swapCoord).forEach(pinIcon("overgrazing"));
 // pollutionData.features
 //   .filter(byFeature("wastes"))
 //   .map(getCenterOfPolygon)
@@ -111,4 +110,14 @@ featureGroupLayers.forEach((layer) => {
 //   .map(getCenterOfPolygon)
 //   .map(swapCoord)
 //   .forEach(pinIcon("pollution"));
+
+qualityData.features
+  .filter(byCategory("good", "quality"))
+  .map(swapCoord)
+  .forEach(pinIcon("quality-good"));
+qualityData.features
+  .filter(byCategory("bad", "quality"))
+  .map(swapCoord)
+  .forEach(pinIcon("quality-bad"));
+
 // Set up icons
