@@ -6,7 +6,7 @@ import {
   isEmptyArray,
   generateTable,
   createRadioElement,
-  visMarkersHandler,
+  markersHandler,
 } from "./helpers";
 
 L.Control.PanelLayers = L.Control.Layers.extend({
@@ -212,7 +212,7 @@ L.Control.PanelLayers = L.Control.Layers.extend({
       (e) => {
         this._onInputClick();
         const copy = e.target.nextElementSibling.getAttribute("data-title");
-        const action = visMarkersHandler[copy];
+        const action = markersHandler[copy];
         if (action) {
           if (e.target.checked) {
             action(true);

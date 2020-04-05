@@ -82,86 +82,75 @@ const createRadioElement = (name, checked, { id }, className) => {
   return radioInput;
 };
 
-const cementMarkers = document.querySelectorAll(".m-cement");
-const erosionMarkers = document.querySelectorAll(".m-erosion");
-const overgrazingMarkers = document.querySelectorAll(".m-overgrazing");
-const qualityMarkers = document.querySelectorAll(".m-quality");
-const fireMarkers = document.querySelectorAll(".m-fire");
-const floodMarkers = document.querySelectorAll(".m-flood");
-const wastesMarkers = document.querySelectorAll(".m-wastes");
-const pesticidesMarkers = document.querySelectorAll(".m-pesticides");
-const pollutionMiscMarkers = document.querySelectorAll(".m-pollution");
-const desertificationMarkers = document.querySelectorAll(".m-desertification");
-const qualityGoodMarkers = document.querySelectorAll(".m-quality-good");
-const qualityBadMarkers = document.querySelectorAll(".m-quality-bad");
-const visMarkersHandler = {
-  erosion: () => {
-    makeMarkersVisible(erosionMarkers);
+const markersHandler = {
+  cement: (isVisible) => {
+    const cementMarkers = document.querySelectorAll(".m-cement");
+    if (isVisible) {
+      makeMarkersVisible(cementMarkers);
+    } else {
+      makeMarkersInvisible(cementMarkers);
+    }
   },
-  overgrazing: () => {
-    makeMarkersVisible(overgrazingMarkers);
+  climate: (isVisible) => {
+    const desertificationMarkers = document.querySelectorAll(
+      ".m-desertification"
+    );
+    const fireMarkers = document.querySelectorAll(".m-fire");
+    const floodMarkers = document.querySelectorAll(".m-flood");
+    if (isVisible) {
+      makeMarkersVisible(desertificationMarkers);
+      makeMarkersVisible(fireMarkers);
+      makeMarkersVisible(floodMarkers);
+    } else {
+      makeMarkersInvisible(desertificationMarkers);
+      makeMarkersInvisible(fireMarkers);
+      makeMarkersInvisible(floodMarkers);
+    }
   },
-  cement: () => {
-    makeMarkersVisible(cementMarkers);
+  erosion: (isVisible) => {
+    const erosionMarkers = document.querySelectorAll(".m-erosion");
+    if (isVisible) {
+      makeMarkersVisible(erosionMarkers);
+    } else {
+      makeMarkersInvisible(erosionMarkers);
+    }
   },
-  pollution: () => {
-    makeMarkersVisible(wastesMarkers);
-    makeMarkersVisible(pesticidesMarkers);
-    makeMarkersVisible(pollutionMiscMarkers);
+  overgrazing: (isVisible) => {
+    const overgrazingMarkers = document.querySelectorAll(".m-overgrazing");
+    if (isVisible) {
+      makeMarkersVisible(overgrazingMarkers);
+    } else {
+      makeMarkersInvisible(overgrazingMarkers);
+    }
   },
-  desertification: () => {
-    makeMarkersVisible(desertificationMarkers);
+  pollution: (isVisible) => {
+    const wastesMarkers = document.querySelectorAll(".m-wastes");
+    const pesticidesMarkers = document.querySelectorAll(".m-pesticides");
+    const pollutionMiscMarkers = document.querySelectorAll(".m-pollution");
+    if (isVisible) {
+      makeMarkersVisible(wastesMarkers);
+      makeMarkersVisible(pesticidesMarkers);
+      makeMarkersVisible(pollutionMiscMarkers);
+    } else {
+      makeMarkersInvisible(wastesMarkers);
+      makeMarkersInvisible(pesticidesMarkers);
+      makeMarkersInvisible(pollutionMiscMarkers);
+    }
   },
-  fire: () => {
-    makeMarkersVisible(fireMarkers);
-  },
-  flood: () => {
-    makeMarkersVisible(floodMarkers);
-  },
-  quality: () => {
-    makeMarkersVisible(qualityGoodMarkers);
-    makeMarkersVisible(qualityBadMarkers);
-  },
-  climate: () => {
-    makeMarkersVisible(desertificationMarkers);
-    makeMarkersVisible(fireMarkers);
-    makeMarkersVisible(floodMarkers);
-  },
-};
-const invisMarkersHandler = {
-  erosion: () => {
-    makeMarkersInvisible(erosionMarkers);
-  },
-  overgrazing: () => {
-    makeMarkersInvisible(overgrazingMarkers);
-  },
-  cement: () => {
-    makeMarkersInvisible(cementMarkers);
-  },
-  pollution: () => {
-    makeMarkersInvisible(wastesMarkers);
-    makeMarkersInvisible(pesticidesMarkers);
-    makeMarkersInvisible(pollutionMiscMarkers);
-  },
-  desertification: () => {
-    makeMarkersInvisible(desertificationMarkers);
-  },
-  fire: () => {
-    makeMarkersInvisible(fireMarkers);
-  },
-  flood: () => {
-    makeMarkersInvisible(floodMarkers);
-  },
-  quality: () => {
-    makeMarkersInvisible(qualityGoodMarkers);
-    makeMarkersInvisible(qualityBadMarkers);
-  },
-  climate: () => {
-    makeMarkersInvisible(desertificationMarkers);
-    makeMarkersInvisible(fireMarkers);
-    makeMarkersInvisible(floodMarkers);
+  quality: (isVisible) => {
+    const qualityMarkers = document.querySelectorAll(".m-quality");
+    const qualityGoodMarkers = document.querySelectorAll(".m-quality-good");
+    const qualityBadMarkers = document.querySelectorAll(".m-quality-bad");
+    if (isVisible) {
+      makeMarkersVisible(qualityGoodMarkers);
+      makeMarkersVisible(qualityBadMarkers);
+    } else {
+      makeMarkersInvisible(qualityGoodMarkers);
+      makeMarkersInvisible(qualityBadMarkers);
+    }
   },
 };
+
 const setIconClass = ({ icon, name }) => {
   return L.DomUtil.create("i", `icon ${icon}-${name.toLowerCase()}`);
 };
@@ -194,8 +183,7 @@ export {
   isEmptyArray,
   generateTable,
   createRadioElement,
-  invisMarkersHandler,
-  visMarkersHandler,
+  markersHandler,
   swapCoord,
   featureToMarker,
   featureIcon,
