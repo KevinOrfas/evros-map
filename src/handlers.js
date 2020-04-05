@@ -1,3 +1,5 @@
+import Autolinker from "autolinker";
+
 const showDescription = (properties) => {
   const props = { ...properties, desc: "Άλλο" };
   if (props.category === "wastes") {
@@ -11,7 +13,7 @@ const showDescription = (properties) => {
 };
 
 const resetHighlight = (e) => {
-  for (i in e.target._eventParents) {
+  for (const i in e.target._eventParents) {
     e.target._eventParents[i].resetStyle(e.target);
   }
   // info.update();

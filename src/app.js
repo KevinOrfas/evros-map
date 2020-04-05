@@ -29,7 +29,8 @@ const map = L.map("map", {
   [40.06602200033871, 24.44890103711547],
   [41.75275316854418, 27.36050423859745],
 ]);
-// const hash = new L.Hash(map);
+
+const hash = new L.Hash(map);
 
 map.addControl(panelLayers);
 L.control

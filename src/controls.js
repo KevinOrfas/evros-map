@@ -1,4 +1,3 @@
-import "leaflet/dist/leaflet.js";
 import "./leaflet-panel-layers";
 import {
   cementLayer,
