@@ -1,4 +1,14 @@
-import { erosionLayer, climateData } from "./layers";
+import "leaflet/dist/leaflet.js";
+import "./leaflet-panel-layers";
+import {
+  cementLayer,
+  climateLayer,
+  erosionLayer,
+  overgrazingLayer,
+  pollutionLayer,
+  qualityLayer,
+} from "./layers";
+
 const conf = {
   base: {
     layers: [
