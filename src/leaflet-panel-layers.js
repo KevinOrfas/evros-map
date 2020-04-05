@@ -1,5 +1,12 @@
 import * as L from "leaflet/dist/leaflet.js";
-console.log("L", L);
+import {
+  capitalize,
+  isEmptyArray,
+  generateTable,
+  createRadioElement,
+  invisMarkersHandler,
+  visMarkersHandler,
+} from "./helpers";
 
 L.Control.PanelLayers = L.Control.Layers.extend({
   includes: L.version[0] === "1" ? L.Evented.prototype : L.Mixin.Events,
