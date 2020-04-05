@@ -187,4 +187,5 @@ export {
   swapCoord,
   featureToMarker,
   featureIcon,
+  byCategory,
 };
