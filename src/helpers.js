@@ -193,4 +193,13 @@ const generateTable = (data) => {
   return table;
 };
 
-export {};
+export {
+  capitalize,
+  isEmptyArray,
+  generateTable,
+  createRadioElement,
+  invisMarkersHandler,
+  visMarkersHandler,
+  swapCoord,
+  pinIcon,
+};
