@@ -1,3 +1,9 @@
+import {
+  controlsMap,
+  qualityMap,
+  pollutionMap,
+  climateMap,
+} from "./translations";
 const determineIconType = (feature) => {
   const iconOptions = {
     iconSize: [25, 41],

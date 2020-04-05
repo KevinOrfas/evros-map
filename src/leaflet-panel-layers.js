@@ -1,6 +1,6 @@
 import * as L from "leaflet/dist/leaflet.js";
 import "../libs/leaflet-svg-shape-markers";
-
+import { controlsMap } from "./translations";
 import {
   capitalize,
   isEmptyArray,
