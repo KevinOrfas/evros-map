@@ -1,7 +1,7 @@
 import cementData from "./cement";
 import cementPointsData from "./cementification_points";
 import climateData from "./climate";
-import desertificationPointsData from "./desertification_points";
+import desertificationData from "./desertification_points";
 import erosionPointsData from "./erosion_points";
 import erosionData from "./erosion";
 import fireData from "./fire_points";
@@ -16,7 +16,7 @@ export {
   cementData,
   cementPointsData,
   climateData,
-  desertificationPointsData,
+  desertificationData,
   erosionPointsData,
   erosionData,
   fireData,
