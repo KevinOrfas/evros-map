@@ -126,6 +126,19 @@ const createRadioElement = (name, checked, { id }, className) => {
   }
   return radioInput;
 };
+
+const cementMarkers = document.querySelectorAll(".m-cement");
+const erosionMarkers = document.querySelectorAll(".m-erosion");
+const overgrazingMarkers = document.querySelectorAll(".m-overgrazing");
+const qualityMarkers = document.querySelectorAll(".m-quality");
+const fireMarkers = document.querySelectorAll(".m-fire");
+const floodMarkers = document.querySelectorAll(".m-flood");
+const wastesMarkers = document.querySelectorAll(".m-wastes");
+const pesticidesMarkers = document.querySelectorAll(".m-pesticides");
+const pollutionMiscMarkers = document.querySelectorAll(".m-pollution");
+const desertificationMarkers = document.querySelectorAll(".m-desertification");
+const qualityGoodMarkers = document.querySelectorAll(".m-quality-good");
+const qualityBadMarkers = document.querySelectorAll(".m-quality-bad");
 const visMarkersHandler = {
   erosion: () => {
     makeMarkersVisible(erosionMarkers);
