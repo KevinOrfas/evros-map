@@ -5,7 +5,6 @@ qualityMap.set("bad", "κακή");
 const pollutionMap = new Map();
 pollutionMap.set("wastes", "Ρύπανση από Στερεά Απόβλητα");
 pollutionMap.set("pesticides", "Ρύπανση από Φυτοφάρμακα");
-pollutionMap.set("poisoning", "Δηλητηρίαση");
 
 const climateMap = new Map();
 climateMap.set("desertification", "Ερημοποίηση");

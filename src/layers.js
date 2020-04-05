@@ -9,7 +9,6 @@ import {
   floodData,
   overgrazingPointsData,
   overgrazingData,
-  poisoningPointsData,
   pollutionData,
   qualityData,
 } from "../data";
