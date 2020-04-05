@@ -8,7 +8,7 @@ import fireData from "./fire_points";
 import floodData from "./flood_points";
 import overgrazingPointsData from "./overgrazing_points";
 import overgrazingData from "./overgrazing";
-import poisoningPointsData from "./poisoning";
+import pesticidesData from "./pesticides_points";
 import pollutionData from "./pollution";
 import qualityData from "./quality";
 
@@ -23,7 +23,7 @@ export {
   floodData,
   overgrazingPointsData,
   overgrazingData,
-  poisoningPointsData,
+  pesticidesData,
   pollutionData,
   qualityData,
 };
