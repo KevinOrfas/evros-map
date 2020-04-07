@@ -17,7 +17,8 @@ const conf = {
           name: "Χάρτες",
         },
 
-        collapsed: false,
+        collapsed: true,
+
         layers: [
           {
             name: "Google",

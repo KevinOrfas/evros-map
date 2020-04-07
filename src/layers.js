@@ -27,9 +27,9 @@ const setLayerOtpions = (name, color, handler) => {
     interactive: true,
     dataVar: `${name}Data`,
     layerName: `${name}Layer`,
-    pane: "erosion",
+    pane: `${name}`,
     style: {
-      pane: "erosion",
+      pane: `${name}`,
       opacity: 1,
       color: color,
       dashArray: "",
@@ -68,11 +68,7 @@ const pollutionLayer = new L.geoJson(
 );
 
 const qualityLayer = new L.geoJson(qualityData, {
-  attribution: "",
-  interactive: true,
-  dataVar: "qualityData",
-  layerName: "qualityLayer",
-  pane: "quality",
+  ...setLayerOtpions("overgrazing", "#9FC7E8", null),
   pointToLayer: featureToMarker,
 });
 

@@ -21,7 +21,7 @@ L.Control.PanelLayers = L.Control.Layers.extend({
     compactOffset: 0,
     collapsed: false,
     autoZIndex: true,
-    collapsibleGroups: false,
+    collapsibleGroups: true,
     buildItem: null, //function that return row item html node(or html string)
     title: "", //title of panel
     className: "", //additional class name for panel

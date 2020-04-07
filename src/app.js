@@ -37,7 +37,7 @@ L.control
   .panelLayers(conf.base.layers, null, {
     title: conf.base.title,
     compact: true,
-    // position: "bottomright"
+    position: "bottomright",
   })
   .addTo(map);
 
