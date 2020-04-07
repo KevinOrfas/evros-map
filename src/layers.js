@@ -17,6 +17,7 @@ import {
   erosionHandler,
   overgrazingHandler,
   pollutionHandler,
+  qualityHandler,
 } from "./handlers";
 
 import { featureToMarker } from "./helpers";
@@ -32,6 +33,7 @@ const setLayerOtpions = (name, color, handler) => {
       pane: `${name}`,
       opacity: 1,
       color: color,
+      // radius: 7.2,
       dashArray: "",
       lineCap: "butt",
       lineJoin: "miter",
@@ -68,7 +70,7 @@ const pollutionLayer = new L.geoJson(
 );
 
 const qualityLayer = new L.geoJson(qualityData, {
-  ...setLayerOtpions("overgrazing", "#9FC7E8", null),
+  ...setLayerOtpions("overgrazing", "blue", qualityHandler),
   pointToLayer: featureToMarker,
 });
 
