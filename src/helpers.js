@@ -81,6 +81,10 @@ const createRadioElement = (name, checked, { id }, className) => {
   }
   return radioInput;
 };
+const resetIcons = () => {
+  const allMarkers = document.querySelectorAll(".leaflet-marker-icon");
+  makeMarkersInvisible(allMarkers);
+};
 
 const markersHandler = {
   cement: (isVisible) => {
@@ -184,6 +188,7 @@ export {
   generateTable,
   createRadioElement,
   markersHandler,
+  resetIcons,
   swapCoord,
   featureToMarker,
   featureIcon,

@@ -11,6 +11,7 @@ import {
   generateTable,
   createRadioElement,
   markersHandler,
+  resetIcons,
 } from "./helpers";
 
 L.Control.PanelLayers = L.Control.Layers.extend({
@@ -38,6 +39,7 @@ L.Control.PanelLayers = L.Control.Layers.extend({
     this._handlingClick = false;
 
     this.className = "leaflet-panel-layers";
+    this.once = false;
 
     var i, n, isCollapsed;
 
@@ -198,7 +200,7 @@ L.Control.PanelLayers = L.Control.Layers.extend({
       if (obj.overlay) {
         input = L.DomUtil.create("input", `${this.className}-selector`);
         input.type = "checkbox";
-        input.defaultChecked = checked;
+        input.defaultChecked = false;
       } else {
         input = this._createRadioElement("leaflet-base-layers", checked, obj);
       }
@@ -217,6 +219,10 @@ L.Control.PanelLayers = L.Control.Layers.extend({
         this._onInputClick();
         const copy = e.target.nextElementSibling.getAttribute("data-title");
         const action = markersHandler[copy];
+        if (this.once === false) {
+          resetIcons();
+          this.once = true;
+        }
         if (action) {
           if (e.target.checked) {
             action(true);
