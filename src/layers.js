@@ -22,7 +22,7 @@ import {
 
 import { featureToMarker } from "./helpers";
 
-const setLayerOtpions = (name, color, handler) => {
+const setLayerOptions = (name, color, handler) => {
   return {
     attribution: "",
     interactive: true,
@@ -49,28 +49,28 @@ const setLayerOtpions = (name, color, handler) => {
 
 const cementLayer = new L.geoJson(
   cementData,
-  setLayerOtpions("cement", "#FBB23E", cementHandler)
+  setLayerOptions("cement", "#FBB23E", cementHandler)
 );
 const climateLayer = new L.geoJson(
   climateData,
-  setLayerOtpions("climate", "yellow")
+  setLayerOptions("climate", "yellow")
 );
 const erosionLayer = new L.geoJson(
   erosionData,
-  setLayerOtpions("erosion", "#adc378", erosionHandler)
+  setLayerOptions("erosion", "#adc378", erosionHandler)
 );
 const overgrazingLayer = new L.geoJson(
   overgrazingData,
-  setLayerOtpions("overgrazing", "#9FC7E8", overgrazingHandler)
+  setLayerOptions("overgrazing", "#9FC7E8", overgrazingHandler)
 );
 
 const pollutionLayer = new L.geoJson(
   pollutionData,
-  setLayerOtpions("pollution", "#f788b2", pollutionHandler)
+  setLayerOptions("pollution", "#f788b2", pollutionHandler)
 );
 
 const qualityLayer = new L.geoJson(qualityData, {
-  ...setLayerOtpions("overgrazing", "blue", qualityHandler),
+  ...setLayerOptions("overgrazing", "blue", qualityHandler),
   pointToLayer: featureToMarker,
 });
 
