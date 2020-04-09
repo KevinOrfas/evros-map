@@ -48,7 +48,7 @@ function cementHandler(feature, layer) {
     mouseover: highlightFeature,
     click: zoomToFeature,
   });
-  var popupContent = `<div>
+  const popupContent = `<div>
   <h4>${
     feature.properties["comment"] !== null
       ? Autolinker.link(feature.properties["comment"].toLocaleString())
@@ -69,7 +69,7 @@ function erosionHandler(feature, layer) {
     mouseover: highlightFeature,
     click: zoomToFeature,
   });
-  var popupContent = `<div>
+  const popupContent = `<div>
     <h4>${
       feature.properties["village"] !== null
         ? Autolinker.link(feature.properties["village"].toLocaleString())
@@ -89,7 +89,7 @@ function overgrazingHandler(feature, layer) {
     mouseover: highlightFeature,
     click: zoomToFeature,
   });
-  var popupContent = `<div>
+  const popupContent = `<div>
   <h4>${
     feature.properties["eidos"] !== null
       ? Autolinker.link(feature.properties["eidos"].toLocaleString())
@@ -105,7 +105,6 @@ function overgrazingHandler(feature, layer) {
 }
 
 function pollutionHandler(feature, layer) {
-  console.log("feature", feature);
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
