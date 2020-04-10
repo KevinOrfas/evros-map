@@ -32,8 +32,10 @@ const featureIcon = (feature) => {
 };
 
 const swapArr = (array, i, j) => ([array[i], array[j]] = [array[j], array[i]]);
-const swapCoord = ({ geometry }) => swapArr(geometry.coordinates, 0, 1);
-
+const createMarker = (name) => ({ geometry }) => {
+  const coords = swapArr(geometry.coordinates, 0, 1);
+  return L.marker(coords, { icon: featureIcon(name) });
+};
 const byCategory = (category, filter) => ({ properties }) => {
   return properties[category] === filter;
 };
@@ -189,7 +191,7 @@ export {
   createRadioElement,
   markersHandler,
   resetIcons,
-  swapArr,
+  createMarker,
   featureToMarker,
   featureIcon,
   byCategory,

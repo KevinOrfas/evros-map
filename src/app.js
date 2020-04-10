@@ -10,7 +10,7 @@ import {
   wastesData,
 } from "../data";
 
-import { swapCoord, featureIcon, byCategory } from "./helpers";
+import { createMarker, featureIcon, byCategory } from "./helpers";
 import { conf, panelLayers } from "./controls";
 import {
   cementLayer,
@@ -19,7 +19,6 @@ import {
   erosionLayer,
   overgrazingLayer,
   pollutionLayer,
-  qualityLayer,
 } from "./layers";
 const map = L.map("map", {
   zoomControl: true,
@@ -63,11 +62,6 @@ map.getPane("overgrazing").style["mix-blend-mode"] = "normal";
 map.createPane("pollution");
 map.getPane("pollution").style.zIndex = 404;
 map.getPane("pollution").style["mix-blend-mode"] = "normal";
-
-map.createPane("quality");
-map.getPane("quality").style.zIndex = 408;
-map.getPane("quality").style["mix-blend-mode"] = "normal";
-
 // Pane creation ends
 
 // boundsGroup Starts
@@ -79,7 +73,6 @@ const featureGroupLayers = [
   erosionLayer,
   overgrazingLayer,
   pollutionLayer,
-  qualityLayer,
 ];
 featureGroupLayers.forEach((layer) => {
   boundsGroup.addLayer(layer);
@@ -87,24 +80,20 @@ featureGroupLayers.forEach((layer) => {
 });
 // boundsGroup end
 
-const pinIcon = (name) => (point) => {
-  return L.marker(point, { icon: featureIcon(name) }).addTo(map);
+const constructIcons = ({ features }, name) => {
+  features.map(createMarker(name)).forEach((marker) => marker.addTo(map));
 };
-// Set up icons
-cementPointsData.features.map(swapCoord).forEach(pinIcon("cement"));
-erosionPointsData.features.map(swapCoord).forEach(pinIcon("erosion"));
-desertificationData.features.map(swapCoord).forEach(pinIcon("desertification"));
-fireData.features.map(swapCoord).forEach(pinIcon("fire"));
-floodData.features.map(swapCoord).forEach(pinIcon("flood"));
-overgrazingPointsData.features.map(swapCoord).forEach(pinIcon("overgrazing"));
-pesticidesData.features.map(swapCoord).forEach(pinIcon("pesticides"));
-wastesData.features.map(swapCoord).forEach(pinIcon("wastes"));
-qualityData.features
-  .filter(byCategory("quality", "good"))
-  .map(swapCoord)
-  .forEach(pinIcon("quality-good"));
-qualityData.features
-  .filter(byCategory("quality", "bad"))
-  .map(swapCoord)
-  .forEach(pinIcon("quality-bad"));
-// Set up icons
+
+const badQPoints = qualityData.features.filter(byCategory("quality", "bad"));
+const goodQPoints = qualityData.features.filter(byCategory("quality", "good"));
+
+constructIcons(cementPointsData, "cement");
+constructIcons(erosionPointsData, "erosion");
+constructIcons(desertificationData, "desertification");
+constructIcons(fireData, "fire");
+constructIcons(floodData, "flood");
+constructIcons(overgrazingPointsData, "overgrazing");
+constructIcons(pesticidesData, "pesticides");
+constructIcons(wastesData, "wastes");
+constructIcons({ ...qualityData, features: goodQPoints }, "quality-good");
+constructIcons({ ...qualityData, features: badQPoints }, "quality-bad");
