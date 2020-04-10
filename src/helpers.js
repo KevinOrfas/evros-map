@@ -189,7 +189,7 @@ export {
   createRadioElement,
   markersHandler,
   resetIcons,
-  swapCoord,
+  swapArr,
   featureToMarker,
   featureIcon,
   byCategory,

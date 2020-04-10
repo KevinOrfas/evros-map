@@ -21,7 +21,7 @@ import {
   qualityHandler,
 } from "./handlers";
 
-import { featureToMarker, swapCoord } from "./helpers";
+import { featureToMarker } from "./helpers";
 
 const setLayerOptions = (name, color, handler) => {
   return {
@@ -69,12 +69,6 @@ const pollutionLayer = new L.geoJson(
   pollutionData,
   setLayerOptions("pollution", "#f788b2", pollutionHandler)
 );
-
-// const updateObj = (data) => ({
-//   ...data,
-//   features: data.features.map(swapCoord),
-// });
-// console.log(updateObj(wastesData));
 
 const qualityLayer = new L.geoJson(qualityData, {
   ...setLayerOptions("quality", "#ff11ee", qualityHandler),

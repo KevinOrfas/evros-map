@@ -198,6 +198,7 @@
   margin: 0 0 5px 0;
   display: block;
   background-color: #0f6535;
+  border-radius: 20px;
 }
 
 /* On mouse-over, add a grey background color */
