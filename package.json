@@ -6,12 +6,15 @@
   "scripts": {
     "build": "webpack",
     "watch": "npm run build -- --watch",
-    "dev": "webpack-dev-server --open"
+    "start": "nodemon -w webpack.config.js -x webpack-dev-server -- --open"
   },
   "author": "Anastasios Orfanidis",
   "license": "ISC",
   "devDependencies": {
     "@types/leaflet": "^1.5.12",
+    "copy-webpack-plugin": "^5.1.1",
+    "file-loader": "^6.0.0",
+    "nodemon": "^2.0.3",
     "ts-loader": "^6.2.2",
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",

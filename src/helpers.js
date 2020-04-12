@@ -11,11 +11,13 @@ const determineIconType = (feature) => {
     popupAnchor: [1, -34],
     shadowSize: [41, 41],
   };
-  const identifiers = { className: "", iconUrl: "" };
+  const identifiers = { id: "", className: "", iconUrl: "" };
   if (typeof feature === "object") {
+    identifiers.id = `${feature}`;
     identifiers.className = `m-${feature.properties.amenity}`;
     identifiers.iconUrl = `../markers/${feature.properties.amenity}.svg`;
   } else if (typeof feature === "string") {
+    identifiers.id = `${feature}`;
     identifiers.className = `m-${feature}`;
     identifiers.iconUrl = `../src/markers/${feature}.svg`;
   }

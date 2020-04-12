@@ -81,7 +81,20 @@ featureGroupLayers.forEach((layer) => {
 // boundsGroup end
 
 const constructIcons = ({ features }, name) => {
-  features.map(createMarker(name)).forEach((marker) => marker.addTo(map));
+  const markers = features.map(createMarker(name));
+  const content = features.map(({ properties }) => properties.Images);
+  // console.log(content);
+  markers.forEach((marker, i) => {
+    if (name === "wastes") {
+      console.log(features[i].properties.Images);
+      marker
+        .addTo(map)
+        .bindPopup(
+          '<img src="/images/IMG_20200111_094458.jpg" width="300" height="225" />'
+        );
+    }
+    marker.addTo(map);
+  });
 };
 
 const badQPoints = qualityData.features.filter(byCategory("quality", "bad"));

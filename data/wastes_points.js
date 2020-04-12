@@ -8,7 +8,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_094458.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_094458.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -20,7 +20,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "../makri_pollution/IMG_20200111_094832.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_094832.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -32,7 +32,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_095817.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_095817.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -44,7 +44,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_100327.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_100327.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -56,7 +56,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_100520.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_100520.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -68,7 +68,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_100905.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_100905.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -80,7 +80,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_101350.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_101350.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -92,7 +92,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_101730.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_101730.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -104,7 +104,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_102213.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_102213.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -116,7 +116,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_102741.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_102741.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -128,7 +128,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_095538.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_095538.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -140,7 +140,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_100203.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_100203.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -152,7 +152,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_100733.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_100733.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -164,7 +164,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_101545.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_101545.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -176,7 +176,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_101742.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_101742.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -188,7 +188,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_103100.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_103100.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -200,7 +200,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_110123..jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_110123..jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -212,7 +212,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_104324.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_104324.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -224,7 +224,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_104548.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_104548.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -236,7 +236,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./makri_pollution/IMG_20200111_104415.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_104415.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -248,7 +248,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./avantas_polution/IMG_20200117_101005.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200117_101005.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -260,7 +260,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./avantas_polution/IMG_20200117_100449.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200117_100449.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -272,7 +272,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./avantas_polution/IMG_20200117_101726.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200117_101726.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
@@ -284,7 +284,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "./avantas_polution/IMG_20200117_101258.jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200117_101258.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
