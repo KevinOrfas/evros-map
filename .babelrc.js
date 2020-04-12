@@ -3,7 +3,7 @@ module.exports = {
     [
       "@babel/preset-env",
       {
-        debug: true,
+        debug: false,
         modules: false,
         targets: { browsers: [">1%"] },
         // useBuiltIns: "usage",
@@ -12,8 +12,12 @@ module.exports = {
   ],
   plugins: [
     [
-      "@babel/plugin-tranform-runtime",
-      { helpers: true, polyfill: true, generator: true },
+      "@babel/plugin-transform-runtime",
+      {
+        corejs: false,
+        helpers: true,
+        regenerator: true,
+      },
     ],
   ],
 };
