@@ -11,7 +11,11 @@
   "author": "Anastasios Orfanidis",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
     "@types/leaflet": "^1.5.12",
+    "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^5.1.1",
     "file-loader": "^6.0.0",
     "nodemon": "^2.0.3",
@@ -23,6 +27,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.8.7",
     "autolinker": "^3.13.0",
     "leaflet": "^1.6.0",
     "leaflet-hash": "^0.2.1",
