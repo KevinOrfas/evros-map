@@ -86,11 +86,11 @@ const constructIcons = ({ features }, name) => {
   // console.log(content);
   markers.forEach((marker, i) => {
     if (name === "wastes") {
-      console.log(features[i].properties.Images);
+      // console.log(features[i].properties.Images);
       marker
         .addTo(map)
         .bindPopup(
-          '<img src="/images/IMG_20200111_094458.jpg" width="300" height="225" />'
+          '<img src=" images/IMG_20200111_094458.jpg" width="300" height="225" />'
         );
     }
     marker.addTo(map);
@@ -110,3 +110,6 @@ constructIcons(pesticidesData, "pesticides");
 constructIcons(wastesData, "wastes");
 constructIcons({ ...qualityData, features: goodQPoints }, "quality-good");
 constructIcons({ ...qualityData, features: badQPoints }, "quality-bad");
+
+console.log("ENV_IS_DEVELOPMENT", ENV_IS_DEVELOPMENT);
+console.log("ENV_IS", ENV_IS);

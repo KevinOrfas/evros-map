@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --env production",
     "watch": "npm run build -- --watch",
-    "start": "nodemon -w webpack.config.js -x webpack-dev-server -- --open"
+    "start": "nodemon -w webpack.config.js -x webpack-dev-server -- --env development"
   },
   "author": "Anastasios Orfanidis",
   "license": "ISC",
@@ -19,7 +19,8 @@
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
     "autolinker": "^3.13.0",
