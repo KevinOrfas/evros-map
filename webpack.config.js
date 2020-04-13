@@ -2,6 +2,7 @@ const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = (env) => {
   const isDevelopement = env === "development";
@@ -17,12 +18,14 @@ module.exports = (env) => {
     },
 
     plugins: [
+      new CleanWebpackPlugin({}),
       new webpack.DefinePlugin({
         ENV_IS_DEVELOPMENT: isDevelopement,
         ENV_IS: JSON.stringify(env),
         "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
       }),
     ],
+    devtool: "none",
   };
 
   const devConfig = {
@@ -37,7 +40,6 @@ module.exports = (env) => {
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
-      new webpack.NamedModulesPlugin(),
       // new CopyPlugin([
       //   {
       //     from: path.resolve(__dirname, "images"),
@@ -49,7 +51,7 @@ module.exports = (env) => {
   };
 
   if (isDevelopement) {
-    return merge(baseConfig, require("./babel-loader"), devConfig);
+    return merge(baseConfig, devConfig);
   }
   return merge(baseConfig, require("./babel-loader"));
 };
