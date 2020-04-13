@@ -1,3 +1,4 @@
+// import * as buildInformation from "../buildInformation.gen.js";
 import {
   cementPointsData,
   desertificationData,

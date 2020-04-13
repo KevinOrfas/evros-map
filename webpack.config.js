@@ -3,6 +3,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+// const codeGenConfig = require("./codegen-loader");
 
 module.exports = (env) => {
   const isDevelopement = env === "development";
@@ -53,5 +54,5 @@ module.exports = (env) => {
   if (isDevelopement) {
     return merge(baseConfig, devConfig);
   }
-  return merge(baseConfig, require("./babel-loader"));
+  return merge(baseConfig, require("./config/babel-loader"));
 };
