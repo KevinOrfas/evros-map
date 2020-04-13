@@ -84,17 +84,25 @@ featureGroupLayers.forEach((layer) => {
 const constructIcons = ({ features }, name) => {
   const markers = features.map(createMarker(name));
   const content = features.map(({ properties }) => properties.Images);
-  // console.log(content);
+  const regex = /img[_]?\d{8}[_]\d{6}/i;
+  console.log(content);
   markers.forEach((marker, i) => {
-    if (name === "wastes") {
-      // console.log(features[i].properties.Images);
-      marker
-        .addTo(map)
-        .bindPopup(
-          '<img src=" images/IMG_20200111_094458.jpg" width="300" height="225" />'
-        );
-    }
     marker.addTo(map);
+    if (name === "wastes") {
+      const names = content.map((e) => {
+        let val;
+        if (e) {
+          e.replace(regex, (match) => {
+            val = match;
+          });
+        }
+        return val;
+      });
+
+      marker.bindPopup(
+        `<img src="images/${names[i]}.jpg" width="300" height="225" />`
+      );
+    }
   });
 };
 

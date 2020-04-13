@@ -200,7 +200,7 @@ export default {
       properties: {
         Comment: null,
         Images:
-          '<img src = "IMG_20200111_110123..jpg" width="300" height="225"/>',
+          '<img src = "IMG_20200111_110123.jpg" width="300" height="225"/>',
       },
       geometry: {
         type: "Point",
