@@ -80,12 +80,8 @@ featureGroupLayers.forEach((layer) => {
   map.addLayer(layer);
 });
 // boundsGroup end
-
-const constructIcons = ({ features }, name) => {
-  const markers = features.map(createMarker(name));
-  const images = features.map(({ properties }) => properties.Images);
-  const regex = /img[_]?\d{8}[_]\d{6}/i;
-  const names = images.map((str) => {
+const getMatchedWords = (strArr, regex) => {
+  return strArr.map((str) => {
     let word;
     if (str) {
       str.replace(regex, (matchedWord) => {
@@ -94,12 +90,28 @@ const constructIcons = ({ features }, name) => {
     }
     return word;
   });
+};
+
+const handlers = {
+  wastes: (marker, name) => {
+    marker.bindPopup(
+      `<img src="images/${name}.jpg" width="300" height="225" />`
+    );
+  },
+};
+
+const constructIcons = ({ features }, name) => {
+  const markers = features.map(createMarker(name));
+  // TODO: give it to web worker
+  const images = features.map(({ properties }) => properties.Images);
+  const regex = /img[_]?\d{8}[_]\d{6}/i;
+  const names = getMatchedWords(images, regex);
+
   markers.forEach((marker, i) => {
     marker.addTo(map);
-    if (name === "wastes") {
-      marker.bindPopup(
-        `<img src="images/${names[i]}.jpg" width="300" height="225" />`
-      );
+    const handler = handlers[name];
+    if (handler) {
+      handler(marker, names[i]);
     }
   });
 };
