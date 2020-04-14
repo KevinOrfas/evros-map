@@ -116,11 +116,10 @@
 /* theming style */
 
 .leaflet-panel-layers {
-  /* padding: 4px; */
   background: #fff;
   color: rgb(54, 52, 52);
-  border: 2px solid #69a82f;
-  /* box-shadow: -2px 0 8px #69a82f; */
+  /* box-shadow: 0px 0px 5px 1px #69a82f; */
+  border: 1px solid #69a82f;
   border-radius: 5px;
 }
 .leaflet-panel-layers.expanded {

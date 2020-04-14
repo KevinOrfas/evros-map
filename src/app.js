@@ -35,12 +35,13 @@ const controls = L.control.panelLayers(conf.base.layers, null, {
 controls.addTo(map);
 
 const paneNames = ["cement", "climate", "erosion", "overgrazing", "pollution"];
-paneNames.forEach((name, i) => {
+const createPane = (mode, zIndex) => (name, index) => {
   map.createPane(name);
   const pane = map.getPane(name);
-  pane.style.zIndex = 400 + i;
-  pane.style["mix-blend-mode"] = "normal";
-});
+  pane.style.zIndex = zIndex + index;
+  pane.style["mix-blend-mode"] = mode;
+};
+paneNames.forEach(createPane("normal", 400));
 
 // boundsGroup Starts
 // Here we initialise the layers - related with panes
