@@ -11,41 +11,40 @@ const map = L.map('map', {
   minZoom: 1,
 }).fitBounds(coords);
 
-const showDescription = (properties) => {
-  const props = { ...properties, desc: 'Άλλο' };
-  if (props.category === 'wastes') {
-    props.desc = 'Ρύπανση από Στερεά Απόβλητα';
-  } else if (props.category === 'pesticides') {
-    props.desc = 'Ρύπανση από Φυτοφάρμακα';
-  }
-  return props.category !== null ? Autolinker.link(props.desc.toLocaleString()) : props.desc;
+const getPollutionDesc = (category) => {
+  const handler = {
+    wastes: 'Ρύπανση από Στερεά Απόβλητα',
+    pesticides: 'Ρύπανση από Φυτοφάρμακα',
+    default: '',
+  };
+  return handler[category] || handler.default;
 };
 
-const getComments = ({ properties }) => {
-  const { comment } = properties;
-  return !comment ? '' : Autolinker.link(comment.toLocaleString());
+const showDescription = ({ category }) => {
+  const desc = getPollutionDesc(category);
+  return !desc ? desc : Autolinker.link(desc.toLocaleString());
 };
 
-const getVillage = ({ properties }) => {
-  const { village } = properties;
-  return !village ? '' : Autolinker.link(village.toLocaleString());
+const linker = (name, props) => {
+  const property = props[name];
+  return !property ? '' : Autolinker.link(property.toLocaleString());
 };
 
-const getType = ({ properties }) => {
-  const { eidos } = properties;
-  return !eidos ? '' : Autolinker.link(eidos.toLocaleString());
-};
+const uiCopyTypes = ['comment', 'village', 'eidos'];
+const [getComments, getVillage, getType] = uiCopyTypes.map((text) => ({ properties }) => {
+  return linker(text, properties);
+});
 
-const popupHeight = { maxHeight: 400 };
-const commentCnt = (feature) => `<div><h4>${getComments(feature)}</h4>${getVillage(feature)}</div>`;
-const typeCnt = (feature) => `<div><h4>${getType(feature)}</h4>${getVillage(feature)}</div>`;
+const commentCnt = (feature) =>
+  `<div><h4>${getVillage(feature)}</h4><hr>${getComments(feature)}</div>`;
+const typeCnt = (feature) => `<div><h4>${getType(feature)}</h4><hr>${getVillage(feature)}</div>`;
 const descCnt = (feature) =>
-  `<div><h4>${getComments(feature)}</h4>${getVillage(feature)}<br>${showDescription(
+  `<div><h4>${getVillage(feature)}</h4><hr><p>${showDescription(
     feature.properties
-  )}</div>`;
+  )}</br>${getComments(feature)}</p></div>`;
 
-const eventHandlerComment = (feature, layer) => {
-  layer.bindPopup(commentCnt(feature), popupHeight);
+const eventHandler = (content) => (feature, layer) => {
+  layer.bindPopup(content(feature), { maxHeight: 400 });
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
@@ -53,22 +52,4 @@ const eventHandlerComment = (feature, layer) => {
   });
 };
 
-const eventHandlerType = (feature, layer) => {
-  layer.bindPopup(typeCnt(feature), popupHeight);
-  layer.on({
-    mouseout: resetHighlight,
-    mouseover: highlightFeature,
-    click: zoomToFeature(map),
-  });
-};
-
-const eventHandlerDesc = (feature, layer) => {
-  layer.bindPopup(descCnt(feature), popupHeight);
-  layer.on({
-    mouseout: resetHighlight,
-    mouseover: highlightFeature,
-    click: zoomToFeature(map),
-  });
-};
-
-export { map, eventHandlerDesc, eventHandlerType, eventHandlerComment };
+export { map, eventHandler, descCnt, typeCnt, commentCnt };
