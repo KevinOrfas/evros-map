@@ -21,112 +21,72 @@ const showDescription = (properties) => {
   return props.category !== null ? Autolinker.link(props.desc.toLocaleString()) : props.desc;
 };
 
-function cementHandler(feature, layer) {
+const getComments = ({ properties }) => {
+  const { comment } = properties;
+  return !comment ? '' : Autolinker.link(comment.toLocaleString());
+};
+
+const getVillage = ({ properties }) => {
+  const { village } = properties;
+  return !village ? '' : Autolinker.link(village.toLocaleString());
+};
+
+const getType = ({ properties }) => {
+  const { eidos } = properties;
+  return !eidos ? '' : Autolinker.link(eidos.toLocaleString());
+};
+const popupHeight = { maxHeight: 400 };
+
+function eventHandlerComment(feature, layer) {
+  const popupContent = `<div><h4>${getComments(feature)}</h4>${getVillage(feature)}</div>`;
+  layer.bindPopup(popupContent, popupHeight);
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
     click: zoomToFeature(map),
   });
-  const popupContent = `<div>
-  <h4>${
-    feature.properties.comment !== null
-      ? Autolinker.link(feature.properties.comment.toLocaleString())
-      : ''
-  }</h4>
-  ${
-    feature.properties.village !== null
-      ? Autolinker.link(feature.properties.village.toLocaleString())
-      : ''
-  }</div>`;
-
-  layer.bindPopup(popupContent, { maxHeight: 400 });
 }
 
-function erosionHandler(feature, layer) {
+// function erosionHandler(feature, layer) {
+//   const popupContent = `<div><h4>${getComments(feature)}</h4>${getVillage(feature)}</div>`;
+//   layer.bindPopup(popupContent, popupHeight);
+//   layer.on({
+//     mouseout: resetHighlight,
+//     mouseover: highlightFeature,
+//     click: zoomToFeature(map),
+//   });
+// }
+
+function eventHandlerType(feature, layer) {
+  const popupContent = `<div><h4>${getType(feature)}</h4>${getVillage(feature)}</div>`;
+  layer.bindPopup(popupContent, popupHeight);
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
     click: zoomToFeature(map),
   });
-  const popupContent = `<div>
-    <h4>${
-      feature.properties.village !== null
-        ? Autolinker.link(feature.properties.village.toLocaleString())
-        : ''
-    }</h4>
-    ${
-      feature.properties.comment !== null
-        ? Autolinker.link(feature.properties.comment.toLocaleString())
-        : ''
-    }</div>`;
-  layer.bindPopup(popupContent, { maxHeight: 400 });
 }
 
-function overgrazingHandler(feature, layer) {
+function eventHandlerDesc(feature, layer) {
+  const popupContent = `<div><h4>${getComments(feature)}</h4>${getVillage(feature)}
+	<br>${showDescription(feature.properties)}</div>`;
+  layer.bindPopup(popupContent, popupHeight);
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
     click: zoomToFeature(map),
   });
-  const popupContent = `<div>
-  <h4>${
-    feature.properties.eidos !== null
-      ? Autolinker.link(feature.properties.eidos.toLocaleString())
-      : ''
-  }</h4>
-  ${
-    feature.properties.village !== null
-      ? Autolinker.link(feature.properties.village.toLocaleString())
-      : ''
-  }</div>`;
-
-  layer.bindPopup(popupContent, { maxHeight: 400 });
 }
 
-function pollutionHandler(feature, layer) {
-  layer.on({
-    mouseout: resetHighlight,
-    mouseover: highlightFeature,
-    click: zoomToFeature(map),
-  });
-  const popupContent = `<div>
-  <h4>${
-    feature.properties.comment !== null
-      ? Autolinker.link(feature.properties.comment.toLocaleString())
-      : ''
-  }</h4>
-  ${
-    feature.properties.village !== null
-      ? Autolinker.link(feature.properties.village.toLocaleString())
-      : ''
-  }<br>
-  ${showDescription(feature.properties)}
-  </div>`;
+// function qualityHandler(feature, layer) {
+//   const popupContent = `<div><h4>${getComments(feature)}</h4>${getVillage(feature)}
+// 	<br>${showDescription(feature.properties)}</div>`;
+//   layer.bindPopup(popupContent, popupHeight);
+//   layer.on({
+//     mouseout: resetHighlight,
+//     mouseover: highlightFeature,
+//     click: zoomToFeature(map),
+//   });
+// }
 
-  layer.bindPopup(popupContent, { maxHeight: 400 });
-}
-
-function qualityHandler(feature, layer) {
-  layer.on({
-    mouseout: resetHighlight,
-    mouseover: highlightFeature,
-    click: zoomToFeature(map),
-  });
-  const popupContent = `<div>
-  <h4>${
-    feature.properties.comment !== null
-      ? Autolinker.link(feature.properties.comment.toLocaleString())
-      : ''
-  }</h4>
-  ${
-    feature.properties.village !== null
-      ? Autolinker.link(feature.properties.village.toLocaleString())
-      : ''
-  }<br>
-  ${showDescription(feature.properties)}
-  </div>`;
-
-  layer.bindPopup(popupContent, { maxHeight: 400 });
-}
-
-export { cementHandler, erosionHandler, overgrazingHandler, pollutionHandler, qualityHandler, map };
+export { map, eventHandlerDesc, eventHandlerType, eventHandlerComment };

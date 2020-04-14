@@ -8,13 +8,7 @@ import {
   pollutionData,
   qualityData,
 } from '../data';
-import {
-  cementHandler,
-  erosionHandler,
-  overgrazingHandler,
-  pollutionHandler,
-  qualityHandler,
-} from './handlers';
+import { eventHandlerDesc, eventHandlerType, eventHandlerComment } from './handlers';
 
 import { featureToMarker } from './helpers';
 
@@ -43,24 +37,27 @@ const setLayerOptions = (name, color, handler) => {
   };
 };
 
-const cementLayer = new L.geoJson(cementData, setLayerOptions('cement', '#FBB23E', cementHandler));
+const cementLayer = new L.geoJson(
+  cementData,
+  setLayerOptions('cement', '#FBB23E', eventHandlerComment)
+);
 const climateLayer = new L.geoJson(climateData, setLayerOptions('climate', 'yellow'));
 const erosionLayer = new L.geoJson(
   erosionData,
-  setLayerOptions('erosion', '#adc378', erosionHandler)
+  setLayerOptions('erosion', '#adc378', eventHandlerComment)
 );
 const overgrazingLayer = new L.geoJson(
   overgrazingData,
-  setLayerOptions('overgrazing', '#9FC7E8', overgrazingHandler)
+  setLayerOptions('overgrazing', '#9FC7E8', eventHandlerType)
 );
 
 const pollutionLayer = new L.geoJson(
   pollutionData,
-  setLayerOptions('pollution', '#f788b2', pollutionHandler)
+  setLayerOptions('pollution', '#f788b2', eventHandlerDesc)
 );
 
 const qualityLayer = new L.geoJson(qualityData, {
-  ...setLayerOptions('quality', '#ff11ee', qualityHandler),
+  ...setLayerOptions('quality', '#ff11ee', eventHandlerDesc),
   pointToLayer: featureToMarker,
 });
 
