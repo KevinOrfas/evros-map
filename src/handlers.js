@@ -35,58 +35,40 @@ const getType = ({ properties }) => {
   const { eidos } = properties;
   return !eidos ? '' : Autolinker.link(eidos.toLocaleString());
 };
+
 const popupHeight = { maxHeight: 400 };
+const commentCnt = (feature) => `<div><h4>${getComments(feature)}</h4>${getVillage(feature)}</div>`;
+const typeCnt = (feature) => `<div><h4>${getType(feature)}</h4>${getVillage(feature)}</div>`;
+const descCnt = (feature) =>
+  `<div><h4>${getComments(feature)}</h4>${getVillage(feature)}<br>${showDescription(
+    feature.properties
+  )}</div>`;
 
-function eventHandlerComment(feature, layer) {
-  const popupContent = `<div><h4>${getComments(feature)}</h4>${getVillage(feature)}</div>`;
-  layer.bindPopup(popupContent, popupHeight);
+const eventHandlerComment = (feature, layer) => {
+  layer.bindPopup(commentCnt(feature), popupHeight);
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
     click: zoomToFeature(map),
   });
-}
+};
 
-// function erosionHandler(feature, layer) {
-//   const popupContent = `<div><h4>${getComments(feature)}</h4>${getVillage(feature)}</div>`;
-//   layer.bindPopup(popupContent, popupHeight);
-//   layer.on({
-//     mouseout: resetHighlight,
-//     mouseover: highlightFeature,
-//     click: zoomToFeature(map),
-//   });
-// }
-
-function eventHandlerType(feature, layer) {
-  const popupContent = `<div><h4>${getType(feature)}</h4>${getVillage(feature)}</div>`;
-  layer.bindPopup(popupContent, popupHeight);
+const eventHandlerType = (feature, layer) => {
+  layer.bindPopup(typeCnt(feature), popupHeight);
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
     click: zoomToFeature(map),
   });
-}
+};
 
-function eventHandlerDesc(feature, layer) {
-  const popupContent = `<div><h4>${getComments(feature)}</h4>${getVillage(feature)}
-	<br>${showDescription(feature.properties)}</div>`;
-  layer.bindPopup(popupContent, popupHeight);
+const eventHandlerDesc = (feature, layer) => {
+  layer.bindPopup(descCnt(feature), popupHeight);
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
     click: zoomToFeature(map),
   });
-}
-
-// function qualityHandler(feature, layer) {
-//   const popupContent = `<div><h4>${getComments(feature)}</h4>${getVillage(feature)}
-// 	<br>${showDescription(feature.properties)}</div>`;
-//   layer.bindPopup(popupContent, popupHeight);
-//   layer.on({
-//     mouseout: resetHighlight,
-//     mouseover: highlightFeature,
-//     click: zoomToFeature(map),
-//   });
-// }
+};
 
 export { map, eventHandlerDesc, eventHandlerType, eventHandlerComment };
