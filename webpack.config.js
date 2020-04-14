@@ -47,7 +47,7 @@ module.exports = (env) => {
       publicPath: '/dist/',
       watchContentBase: false,
       hotOnly: true,
-      overlay: true,
+      overlay: false,
       host: '0.0.0.0',
     },
     plugins: [

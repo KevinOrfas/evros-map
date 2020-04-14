@@ -4,7 +4,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.gen.\js$/,
+        test: /\.gen\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: ['codegen-loader'],
       },
