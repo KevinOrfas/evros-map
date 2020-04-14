@@ -42,7 +42,7 @@
 .leaflet-panel-layers-group {
   position: relative;
   width: auto;
-  border: 1px solid #0f6535;
+  /* border: 1px solid #69a82f; */
   height: auto;
   clear: both;
   overflow: hidden;
@@ -116,10 +116,12 @@
 /* theming style */
 
 .leaflet-panel-layers {
-  padding: 4px;
-  background: #3a887a;
-  color: #fff;
-  /* box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3); */
+  /* padding: 4px; */
+  background: #fff;
+  color: rgb(54, 52, 52);
+  border: 2px solid #69a82f;
+  /* box-shadow: -2px 0 8px #69a82f; */
+  border-radius: 5px;
 }
 .leaflet-panel-layers.expanded {
   padding: 4px;
@@ -164,9 +166,12 @@
 .leaflet-panel-layers-overlays .leaflet-panel-layers-item {
   /* margin-bottom: 4px; */
   padding: 4px 8px;
-  background: #d4ffee85;
-  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  /* background: #d4ffee85; */
+  border-top: 1px solid #69a82f;
   /* border-radius: 4px; */
+}
+.leaflet-panel-layers-overlays .leaflet-panel-layers-item:first-child {
+  border-top: none;
 }
 .leaflet-panel-layers-overlays .leaflet-panel-layers-item:hover {
   /* border: 1px solid #888; */
@@ -197,18 +202,18 @@
   width: 20px;
   margin: 0 0 5px 0;
   display: block;
-  background-color: #0f6535;
+  background-color: #69a82f;
   border-radius: 20px;
 }
 
 /* On mouse-over, add a grey background color */
 .leaflet-panel-layers-title:hover input ~ .checkmark {
-  background-color: #29d073;
+  background-color: #69a82f;
 }
 
 /* When the checkbox is checked, add a blue background */
 .leaflet-panel-layers-title input:checked ~ .checkmark {
-  background-color: #0f6535;
+  background-color: #69a82f;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
