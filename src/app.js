@@ -13,6 +13,7 @@ import {
 
 import { createMarker, featureIcon, byCategory } from "./helpers";
 import { conf, panelLayers } from "./controls";
+import { map } from "./handlers";
 import {
   cementLayer,
   climateLayer,
@@ -21,14 +22,6 @@ import {
   overgrazingLayer,
   pollutionLayer,
 } from "./layers";
-const map = L.map("map", {
-  zoomControl: true,
-  maxZoom: 28,
-  minZoom: 1,
-}).fitBounds([
-  [40.06602200033871, 24.44890103711547],
-  [41.75275316854418, 27.36050423859745],
-]);
 
 const hash = new L.Hash(map);
 

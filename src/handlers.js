@@ -1,4 +1,15 @@
 import Autolinker from "autolinker";
+import { resetHighlight, highlightFeature, zoomToFeature } from "./helpers";
+
+const coords = [
+  [40.06602200033871, 24.44890103711547],
+  [41.75275316854418, 27.36050423859745],
+];
+const map = L.map("map", {
+  zoomControl: true,
+  maxZoom: 28,
+  minZoom: 1,
+}).fitBounds(coords);
 
 const showDescription = (properties) => {
   const props = { ...properties, desc: "Άλλο" };
@@ -12,41 +23,11 @@ const showDescription = (properties) => {
     : props.desc;
 };
 
-const resetHighlight = (e) => {
-  for (const i in e.target._eventParents) {
-    e.target._eventParents[i].resetStyle(e.target);
-  }
-  // info.update();
-};
-
-const highlightFeature = (e) => {
-  const layer = e.target;
-
-  if (e.target.feature.geometry.type === "LineString") {
-    layer.setStyle({
-      color: "blue",
-    });
-  } else {
-    layer.setStyle({
-      fillColor: layer.defaultOptions.style.color,
-      fillOpacity: 1,
-    });
-  }
-  if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-    layer.bringToFront();
-  }
-  // info.update(layer.feature.properties);
-};
-
-const zoomToFeature = (e) => {
-  // map.fitBounds(e.target.getBounds());
-};
-
 function cementHandler(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
-    click: zoomToFeature,
+    click: zoomToFeature(map),
   });
   const popupContent = `<div>
   <h4>${
@@ -67,7 +48,7 @@ function erosionHandler(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
-    click: zoomToFeature,
+    click: zoomToFeature(map),
   });
   const popupContent = `<div>
     <h4>${
@@ -87,7 +68,7 @@ function overgrazingHandler(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
-    click: zoomToFeature,
+    click: zoomToFeature(map),
   });
   const popupContent = `<div>
   <h4>${
@@ -108,7 +89,7 @@ function pollutionHandler(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
-    click: zoomToFeature,
+    click: zoomToFeature(map),
   });
   const popupContent = `<div>
   <h4>${
@@ -131,7 +112,7 @@ function qualityHandler(feature, layer) {
   layer.on({
     mouseout: resetHighlight,
     mouseover: highlightFeature,
-    click: zoomToFeature,
+    click: zoomToFeature(map),
   });
   const popupContent = `<div>
   <h4>${
@@ -156,4 +137,5 @@ export {
   overgrazingHandler,
   pollutionHandler,
   qualityHandler,
+  map,
 };

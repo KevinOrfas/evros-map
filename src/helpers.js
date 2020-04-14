@@ -4,6 +4,35 @@ import {
   pollutionMap,
   climateMap,
 } from "./translations";
+
+const resetHighlight = (e) => {
+  for (const i in e.target._eventParents) {
+    e.target._eventParents[i].resetStyle(e.target);
+  }
+};
+
+const highlightFeature = (e) => {
+  const layer = e.target;
+
+  if (e.target.feature.geometry.type === "LineString") {
+    layer.setStyle({
+      color: "blue",
+    });
+  } else {
+    layer.setStyle({
+      fillColor: layer.defaultOptions.style.color,
+      fillOpacity: 1,
+    });
+  }
+  if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+    layer.bringToFront();
+  }
+};
+
+const zoomToFeature = (map) => (e) => {
+  map.fitBounds(e.target.getBounds());
+};
+
 const determineIconType = (feature) => {
   const iconOptions = {
     iconSize: [25, 41],
@@ -197,4 +226,7 @@ export {
   featureToMarker,
   featureIcon,
   byCategory,
+  resetHighlight,
+  highlightFeature,
+  zoomToFeature,
 };
