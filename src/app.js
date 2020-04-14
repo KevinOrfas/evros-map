@@ -78,7 +78,7 @@ const handlers = {
   },
 };
 
-const constructIcons = ({ features }, name) => {
+const constructIcons = (name, { features }) => {
   const markers = features.map(createMarker(name));
   // TODO: give it to web worker
   const images = features.map(({ properties }) => properties.Images);
@@ -94,16 +94,25 @@ const constructIcons = ({ features }, name) => {
   });
 };
 
-const badQPoints = qualityData.features.filter(byCategory('quality', 'bad'));
-const goodQPoints = qualityData.features.filter(byCategory('quality', 'good'));
+const pointsData = {
+  cement: cementPointsData,
+  erosion: erosionPointsData,
+  desertification: desertificationData,
+  fire: fireData,
+  flood: floodData,
+  overgrazing: overgrazingPointsData,
+  pesticides: pesticidesData,
+  wastes: wastesData,
+  'quality-good': {
+    ...qualityData,
+    features: qualityData.features.filter(byCategory('quality', 'good')),
+  },
+  'quality-bad': {
+    ...qualityData,
+    features: qualityData.features.filter(byCategory('quality', 'bad')),
+  },
+};
 
-constructIcons(cementPointsData, 'cement');
-constructIcons(erosionPointsData, 'erosion');
-constructIcons(desertificationData, 'desertification');
-constructIcons(fireData, 'fire');
-constructIcons(floodData, 'flood');
-constructIcons(overgrazingPointsData, 'overgrazing');
-constructIcons(pesticidesData, 'pesticides');
-constructIcons(wastesData, 'wastes');
-constructIcons({ ...qualityData, features: goodQPoints }, 'quality-good');
-constructIcons({ ...qualityData, features: badQPoints }, 'quality-bad');
+Object.entries(pointsData).forEach(([key, value]) => {
+  constructIcons(key, value);
+});
