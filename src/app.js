@@ -24,39 +24,23 @@ import {
 } from "./layers";
 
 const hash = new L.Hash(map);
-
-map.addControl(panelLayers);
-L.control
-  .panelLayers(conf.base.layers, null, {
-    title: conf.base.title,
-    compact: true,
-    position: "bottomright",
-  })
-  .addTo(map);
-
 const scale = L.control.scale().addTo(map);
 
-// Pane creation starts
-map.createPane("cement");
-map.getPane("cement").style.zIndex = 403;
-map.getPane("cement").style["mix-blend-mode"] = "normal";
+map.addControl(panelLayers);
+const controls = L.control.panelLayers(conf.base.layers, null, {
+  title: conf.base.title,
+  compact: true,
+  position: "bottomright",
+});
+controls.addTo(map);
 
-map.createPane("climate");
-map.getPane("climate").style.zIndex = 405;
-map.getPane("climate").style["mix-blend-mode"] = "normal";
-
-map.createPane("erosion");
-map.getPane("erosion").style.zIndex = 400;
-map.getPane("erosion").style["mix-blend-mode"] = "normal";
-
-map.createPane("overgrazing");
-map.getPane("overgrazing").style.zIndex = 401;
-map.getPane("overgrazing").style["mix-blend-mode"] = "normal";
-
-map.createPane("pollution");
-map.getPane("pollution").style.zIndex = 404;
-map.getPane("pollution").style["mix-blend-mode"] = "normal";
-// Pane creation ends
+const paneNames = ["cement", "climate", "erosion", "overgrazing", "pollution"];
+paneNames.forEach((name, i) => {
+  map.createPane(name);
+  const pane = map.getPane(name);
+  pane.style.zIndex = 400 + i;
+  pane.style["mix-blend-mode"] = "normal";
+});
 
 // boundsGroup Starts
 // Here we initialise the layers - related with panes
@@ -122,6 +106,3 @@ constructIcons(pesticidesData, "pesticides");
 constructIcons(wastesData, "wastes");
 constructIcons({ ...qualityData, features: goodQPoints }, "quality-good");
 constructIcons({ ...qualityData, features: badQPoints }, "quality-bad");
-
-console.log("ENV_IS_DEVELOPMENT", ENV_IS_DEVELOPMENT);
-console.log("ENV_IS", ENV_IS);
