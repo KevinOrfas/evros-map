@@ -1,3 +1,4 @@
+/* eslint new-cap: ["error", { "newIsCap": false }] */
 // import * as buildInformation from "../buildInformation.gen.js";
 import {
   cementPointsData,
@@ -9,39 +10,40 @@ import {
   pesticidesData,
   qualityData,
   wastesData,
-} from "../data";
+} from '../data';
 
-import { createMarker, featureIcon, byCategory } from "./helpers";
-import { conf, panelLayers } from "./controls";
-import { map } from "./handlers";
+import { createMarker, byCategory } from './helpers';
+import { conf, panelLayers } from './controls';
+import { map } from './handlers';
 import {
   cementLayer,
   climateLayer,
-  desertificationPointsLayer,
   erosionLayer,
   overgrazingLayer,
   pollutionLayer,
-} from "./layers";
+} from './layers';
 
-const hash = new L.Hash(map);
-const scale = L.control.scale().addTo(map);
+// eslint-disable-next-line no-new
+new L.Hash(map);
+const scale = L.control.scale();
+scale.addTo(map);
 
 map.addControl(panelLayers);
 const controls = L.control.panelLayers(conf.base.layers, null, {
   title: conf.base.title,
   compact: true,
-  position: "bottomright",
+  position: 'bottomright',
 });
 controls.addTo(map);
 
-const paneNames = ["cement", "climate", "erosion", "overgrazing", "pollution"];
+const paneNames = ['cement', 'climate', 'erosion', 'overgrazing', 'pollution'];
 const createPane = (mode, zIndex) => (name, index) => {
   map.createPane(name);
   const pane = map.getPane(name);
   pane.style.zIndex = zIndex + index;
-  pane.style["mix-blend-mode"] = mode;
+  pane.style['mix-blend-mode'] = mode;
 };
-paneNames.forEach(createPane("normal", 400));
+paneNames.forEach(createPane('normal', 400));
 
 // boundsGroup Starts
 // Here we initialise the layers - related with panes
@@ -72,9 +74,7 @@ const getMatchedWords = (strArr, regex) => {
 
 const handlers = {
   wastes: (marker, name) => {
-    marker.bindPopup(
-      `<img src="images/${name}.jpg" width="300" height="225" />`
-    );
+    marker.bindPopup(`<img src="images/${name}.jpg" width="300" height="225" />`);
   },
 };
 
@@ -94,16 +94,16 @@ const constructIcons = ({ features }, name) => {
   });
 };
 
-const badQPoints = qualityData.features.filter(byCategory("quality", "bad"));
-const goodQPoints = qualityData.features.filter(byCategory("quality", "good"));
+const badQPoints = qualityData.features.filter(byCategory('quality', 'bad'));
+const goodQPoints = qualityData.features.filter(byCategory('quality', 'good'));
 
-constructIcons(cementPointsData, "cement");
-constructIcons(erosionPointsData, "erosion");
-constructIcons(desertificationData, "desertification");
-constructIcons(fireData, "fire");
-constructIcons(floodData, "flood");
-constructIcons(overgrazingPointsData, "overgrazing");
-constructIcons(pesticidesData, "pesticides");
-constructIcons(wastesData, "wastes");
-constructIcons({ ...qualityData, features: goodQPoints }, "quality-good");
-constructIcons({ ...qualityData, features: badQPoints }, "quality-bad");
+constructIcons(cementPointsData, 'cement');
+constructIcons(erosionPointsData, 'erosion');
+constructIcons(desertificationData, 'desertification');
+constructIcons(fireData, 'fire');
+constructIcons(floodData, 'flood');
+constructIcons(overgrazingPointsData, 'overgrazing');
+constructIcons(pesticidesData, 'pesticides');
+constructIcons(wastesData, 'wastes');
+constructIcons({ ...qualityData, features: goodQPoints }, 'quality-good');
+constructIcons({ ...qualityData, features: badQPoints }, 'quality-bad');

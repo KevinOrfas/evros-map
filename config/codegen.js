@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
   module: {
@@ -6,11 +6,11 @@ module.exports = {
       {
         test: /\.gen.\js$/,
         exclude: /(node_modules|bower_components)/,
-        use: ["codegen-loader"],
+        use: ['codegen-loader'],
       },
     ],
   },
   resolveLoader: {
-    alias: { "codegen-loader": path.resolve(__dirname, "../codegen-loader") },
+    alias: { 'codegen-loader': path.resolve(__dirname, '../codegen-loader') },
   },
 };

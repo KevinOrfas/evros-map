@@ -1,13 +1,13 @@
 export default {
-  type: "FeatureCollection",
-  name: "jsonOvergrazing",
-  crs: { type: "name", properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+  type: 'FeatureCollection',
+  name: 'jsonOvergrazing',
+  crs: { type: 'name', properties: { name: 'urn:ogc:def:crs:OGC:1.3:CRS84' } },
   features: [
     {
-      type: "Feature",
-      properties: { eidos: "Υπερβόσκηση", comment: null, village: "Σαμοθράκη" },
+      type: 'Feature',
+      properties: { eidos: 'Υπερβόσκηση', comment: null, village: 'Σαμοθράκη' },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -245,10 +245,10 @@ export default {
       },
     },
     {
-      type: "Feature",
-      properties: { eidos: "Υπερβόσκηση", comment: null, village: "Σαμοθράκη" },
+      type: 'Feature',
+      properties: { eidos: 'Υπερβόσκηση', comment: null, village: 'Σαμοθράκη' },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -334,10 +334,10 @@ export default {
       },
     },
     {
-      type: "Feature",
-      properties: { eidos: "Υπερβόσκηση", comment: null, village: "Σαμοθράκη" },
+      type: 'Feature',
+      properties: { eidos: 'Υπερβόσκηση', comment: null, village: 'Σαμοθράκη' },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [

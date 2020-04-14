@@ -1,17 +1,17 @@
 export default {
-  type: "FeatureCollection",
-  name: "polution_3",
-  crs: { type: "name", properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+  type: 'FeatureCollection',
+  name: 'polution_3',
+  crs: { type: 'name', properties: { name: 'urn:ogc:def:crs:OGC:1.3:CRS84' } },
   features: [
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Λιμανάκι",
-        village: "Μάκρη",
-        category: "wastes",
+        comment: 'Λιμανάκι',
+        village: 'Μάκρη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -31,14 +31,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Εκτεταμένη χρήση φυτοφαρμάκων",
-        village: "Μάκρη",
-        category: "pesticides",
+        comment: 'Εκτεταμένη χρήση φυτοφαρμάκων',
+        village: 'Μάκρη',
+        category: 'pesticides',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -81,14 +81,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Εκτεταμένη χρήση φυτοφαρμάκων",
-        village: "Μάκρη",
-        category: "pesticides",
+        comment: 'Εκτεταμένη χρήση φυτοφαρμάκων',
+        village: 'Μάκρη',
+        category: 'pesticides',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -141,14 +141,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Εκτεταμένη χρήση φυτοφαρμάκων",
-        village: "Μάκρη",
-        category: "pesticides",
+        comment: 'Εκτεταμένη χρήση φυτοφαρμάκων',
+        village: 'Μάκρη',
+        category: 'pesticides',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -193,14 +193,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "ΔΙΑΛΟΓΗ ΣΚΟΥΠΙΔΙΩΝ",
-        village: "Άβαντας",
-        category: "wastes",
+        comment: 'ΔΙΑΛΟΓΗ ΣΚΟΥΠΙΔΙΩΝ',
+        village: 'Άβαντας',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -256,14 +256,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "ΑΝΑΚΥΚΛΩΣΗ ΥΛΙΚΩΝ",
-        village: "Άβαντας",
-        category: "wastes",
+        comment: 'ΑΝΑΚΥΚΛΩΣΗ ΥΛΙΚΩΝ',
+        village: 'Άβαντας',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -279,14 +279,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "ΒΙΟΜΗΧΑΝΙΚΗ ΠΕΡΙΟΧΗ",
-        village: "Μάκρη",
-        category: "wastes",
+        comment: 'ΒΙΟΜΗΧΑΝΙΚΗ ΠΕΡΙΟΧΗ',
+        village: 'Μάκρη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -319,14 +319,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Χωρος απόθεσης άδειων συσκευασιών φυτοφαρμάκων",
-        village: "Άβαντας",
-        category: "wastes",
+        comment: 'Χωρος απόθεσης άδειων συσκευασιών φυτοφαρμάκων',
+        village: 'Άβαντας',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -355,14 +355,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "μπαζα",
-        village: "Άβαντας",
-        category: "wastes",
+        comment: 'μπαζα',
+        village: 'Άβαντας',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -393,14 +393,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "μπαζα",
-        village: "Μάκρη",
-        category: "wastes",
+        comment: 'μπαζα',
+        village: 'Μάκρη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -427,14 +427,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "μπαζα",
-        village: "Μάκρη",
-        category: "wastes",
+        comment: 'μπαζα',
+        village: 'Μάκρη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -466,14 +466,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Εκτεταμένη χρήση φυτοφαρμάκων",
-        village: "Μάκρη",
-        category: "pesticides",
+        comment: 'Εκτεταμένη χρήση φυτοφαρμάκων',
+        village: 'Μάκρη',
+        category: 'pesticides',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -665,15 +665,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment:
-          "Χώρος γεμίσματος δεξαμενών και απόθεσης συσκευασιών φυτοφαρμάκων",
-        village: "Λευκίμμη",
-        category: "wastes",
+        comment: 'Χώρος γεμίσματος δεξαμενών και απόθεσης συσκευασιών φυτοφαρμάκων',
+        village: 'Λευκίμμη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -718,14 +717,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Μπάζα",
-        village: "Λευκίμμη",
-        category: "wastes",
+        comment: 'Μπάζα',
+        village: 'Λευκίμμη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -762,14 +761,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Σκουπίδια απο οχήματα κατα μήκος του δρόμου",
-        village: "Λευκίμμη",
-        category: "wastes",
+        comment: 'Σκουπίδια απο οχήματα κατα μήκος του δρόμου',
+        village: 'Λευκίμμη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -1029,14 +1028,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Μπάζα",
-        village: "Λευκίμμη",
-        category: "wastes",
+        comment: 'Μπάζα',
+        village: 'Λευκίμμη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -1054,14 +1053,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Σκουπίδια κατα μήκος του δρόμου κυρίως τις αργίες",
-        village: "Λευκίμμη",
-        category: "wastes",
+        comment: 'Σκουπίδια κατα μήκος του δρόμου κυρίως τις αργίες',
+        village: 'Λευκίμμη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -1257,15 +1256,15 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
         comment:
-          "Χρόνια χρήση συμβατικών καλλιέργιών με χρήση φυτοφαρμάκων και υποβάθμιση του εδάφους, σταδιακή μετάβαση σε",
-        village: "Λευκίμμη",
-        category: "pesticides",
+          'Χρόνια χρήση συμβατικών καλλιέργιών με χρήση φυτοφαρμάκων και υποβάθμιση του εδάφους, σταδιακή μετάβαση σε',
+        village: 'Λευκίμμη',
+        category: 'pesticides',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -1538,14 +1537,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Κεραίες",
-        village: "Λευκίμμη",
-        category: "other",
+        comment: 'Κεραίες',
+        village: 'Λευκίμμη',
+        category: 'other',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -1570,14 +1569,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Μπάζα",
-        village: "Νεοχώρι",
-        category: "wastes",
+        comment: 'Μπάζα',
+        village: 'Νεοχώρι',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -1627,14 +1626,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Μπάζα",
-        village: "Νεοχώρι",
-        category: "wastes",
+        comment: 'Μπάζα',
+        village: 'Νεοχώρι',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -1673,14 +1672,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Μπάζα",
-        village: "Νεοχώρι",
-        category: "wastes",
+        comment: 'Μπάζα',
+        village: 'Νεοχώρι',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -1705,14 +1704,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Μπάζα - Φυτοφάρμακα",
-        village: "Νεοχώρι",
-        category: "wastes",
+        comment: 'Μπάζα - Φυτοφάρμακα',
+        village: 'Νεοχώρι',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -1734,14 +1733,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "ρεμα",
-        village: "Σαμοθράκη",
-        category: "wastes",
+        comment: 'ρεμα',
+        village: 'Σαμοθράκη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -2107,14 +2106,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "ρεμα",
-        village: "Σαμοθράκη",
-        category: "wastes",
+        comment: 'ρεμα',
+        village: 'Σαμοθράκη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -2327,14 +2326,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "ρεμα",
-        village: "Σαμοθράκη",
-        category: "wastes",
+        comment: 'ρεμα',
+        village: 'Σαμοθράκη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -2668,14 +2667,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "ρεμα",
-        village: "Σαμοθράκη",
-        category: "wastes",
+        comment: 'ρεμα',
+        village: 'Σαμοθράκη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -2989,14 +2988,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "ρεμα",
-        village: "Σαμοθράκη",
-        category: "wastes",
+        comment: 'ρεμα',
+        village: 'Σαμοθράκη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -4372,14 +4371,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "εκτεταμένη χρήση φυτοφαρμάκων",
-        village: "Σαμοθράκη",
-        category: "pesticides",
+        comment: 'εκτεταμένη χρήση φυτοφαρμάκων',
+        village: 'Σαμοθράκη',
+        category: 'pesticides',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -5085,14 +5084,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "καμαριωτισα",
-        village: "Σαμοθράκη",
-        category: "wastes",
+        comment: 'καμαριωτισα',
+        village: 'Σαμοθράκη',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -5163,14 +5162,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "εκτεταμένη χρήση φυτοφαρμακων",
-        village: "Σαμοθράκη",
-        category: "pesticides",
+        comment: 'εκτεταμένη χρήση φυτοφαρμακων',
+        village: 'Σαμοθράκη',
+        category: 'pesticides',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -5858,14 +5857,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Αμιαντα",
-        village: "Νεοχώρι",
-        category: "wastes",
+        comment: 'Αμιαντα',
+        village: 'Νεοχώρι',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -5927,14 +5926,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Αμιαντα",
-        village: "Νεοχώρι",
-        category: "wastes",
+        comment: 'Αμιαντα',
+        village: 'Νεοχώρι',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -6010,14 +6009,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Παλίο στρατόπεδο",
-        village: "Νεοχώρι",
-        category: "wastes",
+        comment: 'Παλίο στρατόπεδο',
+        village: 'Νεοχώρι',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -6052,14 +6051,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "εργοστάσιο YTONG",
-        village: "Νεοχώρι",
-        category: "wastes",
+        comment: 'εργοστάσιο YTONG',
+        village: 'Νεοχώρι',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -6088,14 +6087,14 @@ export default {
       },
     },
     {
-      type: "Feature",
+      type: 'Feature',
       properties: {
-        comment: "Φυτοφάρμακα",
-        village: "Νεοχώρι",
-        category: "wastes",
+        comment: 'Φυτοφάρμακα',
+        village: 'Νεοχώρι',
+        category: 'wastes',
       },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [

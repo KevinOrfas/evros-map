@@ -54,13 +54,11 @@
 .leaflet-panel-layers-group.collapsible:not(.expanded) {
   height: 20px;
 }
-.leaflet-panel-layers-group.collapsible:not(.expanded)
-  .leaflet-panel-layers-grouplabel {
+.leaflet-panel-layers-group.collapsible:not(.expanded) .leaflet-panel-layers-grouplabel {
   height: 20px;
   overflow: hidden;
 }
-.leaflet-panel-layers-group.collapsible:not(.expanded)
-  .leaflet-panel-layers-item {
+.leaflet-panel-layers-group.collapsible:not(.expanded) .leaflet-panel-layers-item {
   display: none;
 }
 .leaflet-panel-layers-group .leaflet-panel-layers-item {

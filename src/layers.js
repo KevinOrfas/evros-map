@@ -1,31 +1,26 @@
+/* eslint new-cap: ["error", { "newIsCap": false }] */
+
 import {
   cementData,
-  cementPointsData,
   climateData,
-  desertificationData,
-  erosionPointsData,
   erosionData,
-  fireData,
-  floodData,
-  overgrazingPointsData,
   overgrazingData,
   pollutionData,
-  wastesData,
   qualityData,
-} from "../data";
+} from '../data';
 import {
   cementHandler,
   erosionHandler,
   overgrazingHandler,
   pollutionHandler,
   qualityHandler,
-} from "./handlers";
+} from './handlers';
 
-import { featureToMarker } from "./helpers";
+import { featureToMarker } from './helpers';
 
 const setLayerOptions = (name, color, handler) => {
   return {
-    attribution: "",
+    attribution: '',
     interactive: true,
     dataVar: `${name}Data`,
     layerName: `${name}Layer`,
@@ -35,9 +30,9 @@ const setLayerOptions = (name, color, handler) => {
       opacity: 1,
       color: color,
       // radius: 7.2,
-      dashArray: "",
-      lineCap: "butt",
-      lineJoin: "miter",
+      dashArray: '',
+      lineCap: 'butt',
+      lineJoin: 'miter',
       weight: 1,
       fill: true,
       fillOpacity: 0.5,
@@ -48,38 +43,25 @@ const setLayerOptions = (name, color, handler) => {
   };
 };
 
-const cementLayer = new L.geoJson(
-  cementData,
-  setLayerOptions("cement", "#FBB23E", cementHandler)
-);
-const climateLayer = new L.geoJson(
-  climateData,
-  setLayerOptions("climate", "yellow")
-);
+const cementLayer = new L.geoJson(cementData, setLayerOptions('cement', '#FBB23E', cementHandler));
+const climateLayer = new L.geoJson(climateData, setLayerOptions('climate', 'yellow'));
 const erosionLayer = new L.geoJson(
   erosionData,
-  setLayerOptions("erosion", "#adc378", erosionHandler)
+  setLayerOptions('erosion', '#adc378', erosionHandler)
 );
 const overgrazingLayer = new L.geoJson(
   overgrazingData,
-  setLayerOptions("overgrazing", "#9FC7E8", overgrazingHandler)
+  setLayerOptions('overgrazing', '#9FC7E8', overgrazingHandler)
 );
 
 const pollutionLayer = new L.geoJson(
   pollutionData,
-  setLayerOptions("pollution", "#f788b2", pollutionHandler)
+  setLayerOptions('pollution', '#f788b2', pollutionHandler)
 );
 
 const qualityLayer = new L.geoJson(qualityData, {
-  ...setLayerOptions("quality", "#ff11ee", qualityHandler),
+  ...setLayerOptions('quality', '#ff11ee', qualityHandler),
   pointToLayer: featureToMarker,
 });
 
-export {
-  cementLayer,
-  climateLayer,
-  erosionLayer,
-  overgrazingLayer,
-  pollutionLayer,
-  qualityLayer,
-};
+export { cementLayer, climateLayer, erosionLayer, overgrazingLayer, pollutionLayer, qualityLayer };

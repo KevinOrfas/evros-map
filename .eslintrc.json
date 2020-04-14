@@ -1,0 +1,20 @@
+{
+  "extends": ["standard", "prettier"],
+  "plugins": ["prettier", "sort-class-members"],
+  "rules": {
+    "no-shadow": ["error", { "builtinGlobals": false, "hoist": "functions", "allow": [] }],
+    "consistent-return": ["error", { "treatUndefinedAsUnspecified": true }],
+    "prefer-arrow-callback": ["error", { "allowUnboundThis": false }],
+    "prettier/prettier": ["error"],
+    "object-curly-newline": 0,
+    "curly": [2, "all"]
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "globals": {
+    "L": true
+  }
+}

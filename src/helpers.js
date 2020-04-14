@@ -1,9 +1,4 @@
-import {
-  controlsMap,
-  qualityMap,
-  pollutionMap,
-  climateMap,
-} from "./translations";
+import { qualityMap, pollutionMap, climateMap } from './translations';
 
 const resetHighlight = (e) => {
   for (const i in e.target._eventParents) {
@@ -14,9 +9,9 @@ const resetHighlight = (e) => {
 const highlightFeature = (e) => {
   const layer = e.target;
 
-  if (e.target.feature.geometry.type === "LineString") {
+  if (e.target.feature.geometry.type === 'LineString') {
     layer.setStyle({
-      color: "blue",
+      color: 'blue',
     });
   } else {
     layer.setStyle({
@@ -40,12 +35,12 @@ const determineIconType = (feature) => {
     popupAnchor: [1, -34],
     shadowSize: [41, 41],
   };
-  const identifiers = { id: "", className: "", iconUrl: "" };
-  if (typeof feature === "object") {
+  const identifiers = { id: '', className: '', iconUrl: '' };
+  if (typeof feature === 'object') {
     identifiers.id = `${feature}`;
     identifiers.className = `m-${feature.properties.amenity}`;
     identifiers.iconUrl = `../markers/${feature.properties.amenity}.svg`;
-  } else if (typeof feature === "string") {
+  } else if (typeof feature === 'string') {
     identifiers.id = `${feature}`;
     identifiers.className = `m-${feature}`;
     identifiers.iconUrl = `../src/markers/${feature}.svg`;
@@ -72,22 +67,22 @@ const byCategory = (category, filter) => ({ properties }) => {
 };
 
 const capitalize = (s) => {
-  return typeof s !== "string" ? "" : s.charAt(0).toUpperCase() + s.slice(1);
+  return typeof s !== 'string' ? '' : s.charAt(0).toUpperCase() + s.slice(1);
 };
 const makeMarkersVisible = (collection) => {
   collection.forEach((marker) => {
-    marker.classList.add("marker-visible");
-    marker.classList.remove("marker-hidden");
+    marker.classList.add('marker-visible');
+    marker.classList.remove('marker-hidden');
   });
 };
 const makeMarkersInvisible = (collection) => {
   collection.forEach((marker) => {
-    marker.classList.remove("marker-visible");
-    marker.classList.add("marker-hidden");
+    marker.classList.remove('marker-visible');
+    marker.classList.add('marker-hidden');
   });
 };
 const convertToHtmlElement = (stringElement) => {
-  const radioFragment = document.createElement("div");
+  const radioFragment = document.createElement('div');
   radioFragment.innerHTML = stringElement;
   return radioFragment.firstChild;
 };
@@ -96,32 +91,32 @@ const createRadioElement = (name, checked, { id }, className) => {
   try {
     // IE7 bugs out if you create a radio dynamically, so you have to do it
     // this hacky way (see http://bit.ly/PqYLBe)
-    radioInput = document.createElement("input");
+    radioInput = document.createElement('input');
     radioInput.classList.add(`${className}-selector`);
-    radioInput.setAttribute("type", "radio");
-    radioInput.setAttribute("name", name);
-    radioInput.setAttribute("id", obj.id);
+    radioInput.setAttribute('type', 'radio');
+    radioInput.setAttribute('name', name);
+    radioInput.setAttribute('id', id);
     if (checked) {
-      radioInput.setAttribute("checked", "checked");
+      radioInput.setAttribute('checked', 'checked');
     }
   } catch (err) {
     let radioStringElement = `<input type="radio" class="${className}-selector" name="${name}" id="${id}"`;
     if (checked) {
       radioStringElement += ' checked="checked"';
     }
-    radioStringElement += "/>";
+    radioStringElement += '/>';
     radioInput = convertToHtmlElement(radioStringElement);
   }
   return radioInput;
 };
 const resetIcons = () => {
-  const allMarkers = document.querySelectorAll(".leaflet-marker-icon");
+  const allMarkers = document.querySelectorAll('.leaflet-marker-icon');
   makeMarkersInvisible(allMarkers);
 };
 
 const markersHandler = {
   cement: (isVisible) => {
-    const cementMarkers = document.querySelectorAll(".m-cement");
+    const cementMarkers = document.querySelectorAll('.m-cement');
     if (isVisible) {
       makeMarkersVisible(cementMarkers);
     } else {
@@ -129,11 +124,9 @@ const markersHandler = {
     }
   },
   climate: (isVisible) => {
-    const desertificationMarkers = document.querySelectorAll(
-      ".m-desertification"
-    );
-    const fireMarkers = document.querySelectorAll(".m-fire");
-    const floodMarkers = document.querySelectorAll(".m-flood");
+    const desertificationMarkers = document.querySelectorAll('.m-desertification');
+    const fireMarkers = document.querySelectorAll('.m-fire');
+    const floodMarkers = document.querySelectorAll('.m-flood');
     if (isVisible) {
       makeMarkersVisible(desertificationMarkers);
       makeMarkersVisible(fireMarkers);
@@ -145,7 +138,7 @@ const markersHandler = {
     }
   },
   erosion: (isVisible) => {
-    const erosionMarkers = document.querySelectorAll(".m-erosion");
+    const erosionMarkers = document.querySelectorAll('.m-erosion');
     if (isVisible) {
       makeMarkersVisible(erosionMarkers);
     } else {
@@ -153,7 +146,7 @@ const markersHandler = {
     }
   },
   overgrazing: (isVisible) => {
-    const overgrazingMarkers = document.querySelectorAll(".m-overgrazing");
+    const overgrazingMarkers = document.querySelectorAll('.m-overgrazing');
     if (isVisible) {
       makeMarkersVisible(overgrazingMarkers);
     } else {
@@ -161,9 +154,9 @@ const markersHandler = {
     }
   },
   pollution: (isVisible) => {
-    const wastesMarkers = document.querySelectorAll(".m-wastes");
-    const pesticidesMarkers = document.querySelectorAll(".m-pesticides");
-    const pollutionMiscMarkers = document.querySelectorAll(".m-pollution");
+    const wastesMarkers = document.querySelectorAll('.m-wastes');
+    const pesticidesMarkers = document.querySelectorAll('.m-pesticides');
+    const pollutionMiscMarkers = document.querySelectorAll('.m-pollution');
     if (isVisible) {
       makeMarkersVisible(wastesMarkers);
       makeMarkersVisible(pesticidesMarkers);
@@ -175,9 +168,8 @@ const markersHandler = {
     }
   },
   quality: (isVisible) => {
-    const qualityMarkers = document.querySelectorAll(".m-quality");
-    const qualityGoodMarkers = document.querySelectorAll(".m-quality-good");
-    const qualityBadMarkers = document.querySelectorAll(".m-quality-bad");
+    const qualityGoodMarkers = document.querySelectorAll('.m-quality-good');
+    const qualityBadMarkers = document.querySelectorAll('.m-quality-bad');
     if (isVisible) {
       makeMarkersVisible(qualityGoodMarkers);
       makeMarkersVisible(qualityBadMarkers);
@@ -189,14 +181,14 @@ const markersHandler = {
 };
 
 const setIconClass = ({ icon, name }) => {
-  return L.DomUtil.create("i", `icon ${icon}-${name.toLowerCase()}`);
+  return L.DomUtil.create('i', `icon ${icon}-${name.toLowerCase()}`);
 };
 const isEmptyArray = (array) => !Array.isArray(array) || !array.length;
 
 const generateTable = (data) => {
   const translations = new Map([...qualityMap, ...pollutionMap, ...climateMap]);
 
-  const table = L.DomUtil.create("table");
+  const table = L.DomUtil.create('table');
   data.forEach((item) => {
     const row = table.insertRow();
     row.appendChild(row.insertCell().appendChild(setIconClass(item)));
@@ -205,9 +197,7 @@ const generateTable = (data) => {
         .insertCell()
         .appendChild(
           document.createTextNode(
-            capitalize(
-              item.name.replace(item.name, translations.get(item.name))
-            )
+            capitalize(item.name.replace(item.name, translations.get(item.name)))
           )
         )
     );
@@ -229,4 +219,5 @@ export {
   resetHighlight,
   highlightFeature,
   zoomToFeature,
+  convertToHtmlElement,
 };

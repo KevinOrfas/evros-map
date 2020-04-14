@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
   module: {
@@ -6,7 +6,7 @@ module.exports = {
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
-        use: ["babel-loader"],
+        use: ['babel-loader'],
       },
     ],
   },

@@ -1,4 +1,4 @@
-import "./leaflet-panel-layers";
+import './leaflet-panel-layers';
 import {
   cementLayer,
   climateLayer,
@@ -6,7 +6,7 @@ import {
   overgrazingLayer,
   pollutionLayer,
   qualityLayer,
-} from "./layers";
+} from './layers';
 
 const iconByName = (name) => `<i class="icon icon-${name}"></i>`;
 const conf = {
@@ -14,33 +14,30 @@ const conf = {
     layers: [
       {
         group: {
-          name: "Χάρτες",
+          name: 'Χάρτες',
         },
 
         collapsed: true,
 
         layers: [
           {
-            name: "Google",
-            layer: L.tileLayer(
-              "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
-              {
-                opacity: 1.0,
-                attribution:
-                  '<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>',
-                minZoom: 1,
-                maxZoom: 28,
-                minNativeZoom: 0,
-                maxNativeZoom: 18,
-              }
-            ),
+            name: 'Google',
+            layer: L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+              opacity: 1.0,
+              attribution:
+                '<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>',
+              minZoom: 1,
+              maxZoom: 28,
+              minNativeZoom: 0,
+              maxNativeZoom: 18,
+            }),
           },
           {
-            name: "Topomaps",
+            name: 'Topomaps',
             active: true,
             layer: {
-              type: "tileLayer",
-              args: ["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"],
+              type: 'tileLayer',
+              args: ['https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'],
             },
           },
         ],
@@ -49,66 +46,66 @@ const conf = {
   },
   overLayers: [
     {
-      name: "erosion",
-      icon: iconByName("erosion"),
+      name: 'erosion',
+      icon: iconByName('erosion'),
       layer: erosionLayer,
     },
     {
-      name: "cement",
-      icon: iconByName("cement"),
+      name: 'cement',
+      icon: iconByName('cement'),
       layer: cementLayer,
     },
     {
-      name: "overgrazing",
-      icon: iconByName("overgrazing"),
+      name: 'overgrazing',
+      icon: iconByName('overgrazing'),
       layer: overgrazingLayer,
     },
     {
-      name: "climate",
-      icon: "",
+      name: 'climate',
+      icon: '',
       layer: climateLayer,
       subcategories: [
         {
-          name: "flood",
-          icon: "icon",
+          name: 'flood',
+          icon: 'icon',
         },
         {
-          name: "fire",
-          icon: "icon",
+          name: 'fire',
+          icon: 'icon',
         },
         {
-          name: "desertification",
-          icon: "icon",
+          name: 'desertification',
+          icon: 'icon',
         },
       ],
     },
     {
-      name: "pollution",
-      icon: "",
+      name: 'pollution',
+      icon: '',
       layer: pollutionLayer,
       subcategories: [
         {
-          name: "wastes",
-          icon: "icon",
+          name: 'wastes',
+          icon: 'icon',
         },
         {
-          name: "pesticides",
-          icon: "icon",
+          name: 'pesticides',
+          icon: 'icon',
         },
       ],
     },
     {
-      name: "quality",
-      icon: "",
+      name: 'quality',
+      icon: '',
       layer: qualityLayer,
       subcategories: [
         {
-          name: "good",
-          icon: "icon-quality",
+          name: 'good',
+          icon: 'icon-quality',
         },
         {
-          name: "bad",
-          icon: "icon-quality",
+          name: 'bad',
+          icon: 'icon-quality',
         },
       ],
     },

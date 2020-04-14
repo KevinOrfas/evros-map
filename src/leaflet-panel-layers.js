@@ -1,10 +1,12 @@
-import "leaflet";
-import "leaflet-hash";
-import "leaflet-svg-shape-markers";
-import "leaflet.pattern";
-import "../libs/multi-style-layer";
+/* eslint-disable consistent-return */
+/* eslint-disable no-prototype-builtins */
+import 'leaflet';
+import 'leaflet-hash';
+import 'leaflet-svg-shape-markers';
+import 'leaflet.pattern';
+import '../libs/multi-style-layer';
 
-import { controlsMap } from "./translations";
+import { controlsMap } from './translations';
 import {
   capitalize,
   isEmptyArray,
@@ -12,10 +14,11 @@ import {
   createRadioElement,
   markersHandler,
   resetIcons,
-} from "./helpers";
+  convertToHtmlElement,
+} from './helpers';
 
 L.Control.PanelLayers = L.Control.Layers.extend({
-  includes: L.version[0] === "1" ? L.Evented.prototype : L.Mixin.Events,
+  includes: L.version[0] === '1' ? L.Evented.prototype : L.Mixin.Events,
 
   options: {
     compact: true,
@@ -23,10 +26,10 @@ L.Control.PanelLayers = L.Control.Layers.extend({
     collapsed: false,
     autoZIndex: true,
     collapsibleGroups: true,
-    buildItem: null, //function that return row item html node(or html string)
-    title: "", //title of panel
-    className: "", //additional class name for panel
-    position: "topright",
+    buildItem: null, // function that return row item html node(or html string)
+    title: '', // title of panel
+    className: '', // additional class name for panel
+    position: 'topright',
   },
 
   initialize: function (baseLayers, overlays, options) {
@@ -38,7 +41,7 @@ L.Control.PanelLayers = L.Control.Layers.extend({
     this._lastZIndex = 0;
     this._handlingClick = false;
 
-    this.className = "leaflet-panel-layers";
+    this.className = 'leaflet-panel-layers';
     this.once = false;
 
     var i, n, isCollapsed;
@@ -47,12 +50,7 @@ L.Control.PanelLayers = L.Control.Layers.extend({
       if (baseLayers[i].group && baseLayers[i].layers) {
         isCollapsed = baseLayers[i].collapsed || false;
         for (n in baseLayers[i].layers) {
-          this._addLayer(
-            baseLayers[i].layers[n],
-            false,
-            baseLayers[i].group,
-            isCollapsed
-          );
+          this._addLayer(baseLayers[i].layers[n], false, baseLayers[i].group, isCollapsed);
         }
       } else {
         this._addLayer(baseLayers[i], false);
@@ -63,12 +61,7 @@ L.Control.PanelLayers = L.Control.Layers.extend({
       if (overlays[i].group && overlays[i].layers) {
         isCollapsed = overlays[i].collapsed || false;
         for (n in overlays[i].layers) {
-          this._addLayer(
-            overlays[i].layers[n],
-            true,
-            overlays[i].group,
-            isCollapsed
-          );
+          this._addLayer(overlays[i].layers[n], true, overlays[i].group, isCollapsed);
         }
       } else {
         this._addLayer(overlays[i], true);
@@ -85,34 +78,32 @@ L.Control.PanelLayers = L.Control.Layers.extend({
 
     L.Control.Layers.prototype.onAdd.call(this, map);
 
-    this._map.on("resize", function (e) {
+    this._map.on('resize', (e) => {
       self._updateHeight(e.newSize.y);
     });
 
     return this._container;
   },
 
-  //TODO addBaseLayerGroup
-  //TODO addOverlayGroup
+  // TODO addBaseLayerGroup
+  // TODO addOverlayGroup
 
   addBaseLayer: function (layer, name, group) {
-    layer.name = name || layer.name || "";
+    layer.name = name || layer.name || '';
     this._addLayer(layer, false, group);
     this._update();
     return this;
   },
 
   addOverlay: function (layer, name, group) {
-    layer.name = name || layer.name || "";
+    layer.name = name || layer.name || '';
     this._addLayer(layer, true, group);
     this._update();
     return this;
   },
 
   removeLayer: function (layerDef) {
-    const layer = layerDef.hasOwnProperty("layer")
-      ? this._layerFromDef(layerDef)
-      : layerDef;
+    const layer = layerDef.hasOwnProperty('layer') ? this._layerFromDef(layerDef) : layerDef;
 
     this._map.removeLayer(layer);
 
@@ -129,7 +120,7 @@ L.Control.PanelLayers = L.Control.Layers.extend({
   _layerFromDef: function (layerDef) {
     for (var i = 0; i < this._layers.length; i++) {
       var id = L.stamp(this._layers[i].layer);
-      //TODO add more conditions to comparing definitions
+      // TODO add more conditions to comparing definitions
       if (this._getLayer(id).name === layerDef.name) {
         return this._getLayer(id).layer;
       }
@@ -144,6 +135,7 @@ L.Control.PanelLayers = L.Control.Layers.extend({
 
   _getLayer: function (id) {
     for (var i = 0; i < this._layers.length; i++) {
+      // eslint-disable-next-line eqeqeq
       if (this._layers[i] && this._layers[i].id == id) {
         return this._layers[i];
       }
@@ -152,21 +144,14 @@ L.Control.PanelLayers = L.Control.Layers.extend({
 
   _addLayer: function (layerDef, overlay, group, isCollapsed) {
     if (!layerDef.layer) {
-      throw new Error("layer not defined in item: " + (layerDef.name || ""));
+      throw new Error(`layer not defined in item: ${layerDef.name || ''}`);
     }
 
-    if (
-      !(layerDef.layer instanceof L.Class) &&
-      layerDef.layer.type &&
-      layerDef.layer.args
-    ) {
-      layerDef.layer = this._getPath(L, layerDef.layer.type).apply(
-        L,
-        layerDef.layer.args
-      );
+    if (!(layerDef.layer instanceof L.Class) && layerDef.layer.type && layerDef.layer.args) {
+      layerDef.layer = this._getPath(L, layerDef.layer.type).apply(L, layerDef.layer.args);
     }
 
-    if (!layerDef.hasOwnProperty("id")) {
+    if (!layerDef.hasOwnProperty('id')) {
       layerDef.id = L.stamp(layerDef.layer);
     }
 
@@ -189,20 +174,17 @@ L.Control.PanelLayers = L.Control.Layers.extend({
   },
 
   _createItem: function (obj) {
-    const item = L.DomUtil.create(
-      "div",
-      `${this.className}-item${obj.active ? " active" : ""}`
-    );
+    const item = L.DomUtil.create('div', `${this.className}-item${obj.active ? ' active' : ''}`);
 
     const checked = this._map.hasLayer(obj.layer);
     const createInput = () => {
       let input;
       if (obj.overlay) {
-        input = L.DomUtil.create("input", `${this.className}-selector`);
-        input.type = "checkbox";
+        input = L.DomUtil.create('input', `${this.className}-selector`);
+        input.type = 'checkbox';
         input.defaultChecked = false;
       } else {
-        input = this._createRadioElement("leaflet-base-layers", checked, obj);
+        input = this._createRadioElement('leaflet-base-layers', checked, obj);
       }
       input.value = obj.id;
       input.layerId = obj.id;
@@ -214,10 +196,10 @@ L.Control.PanelLayers = L.Control.Layers.extend({
     const input = createInput();
     L.DomEvent.on(
       input,
-      "click",
+      'click',
       (e) => {
         this._onInputClick();
-        const copy = e.target.nextElementSibling.getAttribute("data-title");
+        const copy = e.target.nextElementSibling.getAttribute('data-title');
         const action = markersHandler[copy];
         if (this.once === false) {
           resetIcons();
@@ -226,45 +208,45 @@ L.Control.PanelLayers = L.Control.Layers.extend({
         if (action) {
           if (e.target.checked) {
             action(true);
-            this.fire("panel:selected", e.target._layer);
+            this.fire('panel:selected', e.target._layer);
           } else {
             action(false);
-            this.fire("panel:unselected", e.target._layer);
+            this.fire('panel:unselected', e.target._layer);
           }
         }
       },
       this
     );
 
-    const label = L.DomUtil.create("label", `${this.className}-title`);
+    const label = L.DomUtil.create('label', `${this.className}-title`);
     label.htmlFor = input.id;
-    const title = L.DomUtil.create("span");
-    title.setAttribute("data-title", obj.name);
+    const title = L.DomUtil.create('span');
+    title.setAttribute('data-title', obj.name);
 
-    title.innerHTML = capitalize(controlsMap.get(obj.name)) || "";
+    title.innerHTML = capitalize(controlsMap.get(obj.name)) || '';
 
     if (!isEmptyArray(obj.subcategories)) {
-      const div = L.DomUtil.create("div");
+      const div = L.DomUtil.create('div');
       div.appendChild(generateTable(obj.subcategories));
       title.appendChild(div);
     }
 
     if (obj.icon) {
-      const iconTag = L.DomUtil.create("i", `${this.className}-icon`);
-      iconTag.innerHTML = obj.icon || "";
+      const iconTag = L.DomUtil.create('i', `${this.className}-icon`);
+      iconTag.innerHTML = obj.icon || '';
       label.appendChild(iconTag);
     }
 
     label.appendChild(input);
     label.appendChild(title);
 
-    const fakeCheckBox = L.DomUtil.create("span", "checkmark");
+    const fakeCheckBox = L.DomUtil.create('span', 'checkmark');
     label.appendChild(fakeCheckBox);
     item.appendChild(label);
 
     if (this.options.buildItem) {
-      const node = this.options.buildItem.call(this, obj); //custom node node or html string
-      if (typeof node === "string") {
+      const node = this.options.buildItem.call(this, obj); // custom node node or html string
+      if (typeof node === 'string') {
         item.appendChild(convertToHtmlElement(node));
       } else {
         item.appendChild(node);
@@ -281,15 +263,15 @@ L.Control.PanelLayers = L.Control.Layers.extend({
   },
 
   _addItem: function (obj) {
-    let self = this,
-      label,
-      input,
-      icon,
-      checked;
+    // const self = this;
+
+    // let input;
+    // let icon;
+    // let checked;
 
     let list = obj.overlay ? this._overlaysList : this._baseLayersList;
     if (obj.group) {
-      if (!obj.group.hasOwnProperty("name")) {
+      if (!obj.group.hasOwnProperty('name')) {
         obj.group = { name: obj.group };
       }
 
@@ -305,7 +287,7 @@ L.Control.PanelLayers = L.Control.Layers.extend({
       list = this._groups[obj.group.name];
     }
 
-    label = this._createItem(obj);
+    const label = this._createItem(obj);
 
     list.appendChild(label);
 
@@ -313,45 +295,37 @@ L.Control.PanelLayers = L.Control.Layers.extend({
   },
 
   _createGroup: function (groupdata, isCollapsed) {
-    var self = this,
-      groupdiv = L.DomUtil.create("div", `${this.className}-group`),
-      grouplabel,
-      grouptit,
-      groupexp;
-
-    grouplabel = L.DomUtil.create(
-      "label",
-      `${this.className}-grouplabel`,
-      groupdiv
-    );
+    const self = this;
+    const groupdiv = L.DomUtil.create('div', `${this.className}-group`);
+    const grouplabel = L.DomUtil.create('label', `${this.className}-grouplabel`, groupdiv);
 
     if (this.options.collapsibleGroups) {
-      L.DomUtil.addClass(groupdiv, "collapsible");
+      L.DomUtil.addClass(groupdiv, 'collapsible');
 
-      groupexp = L.DomUtil.create("i", `${this.className}-icon`, grouplabel);
+      const groupexp = L.DomUtil.create('i', `${this.className}-icon`, grouplabel);
       if (isCollapsed === true) {
-        groupexp.innerHTML = " + ";
+        groupexp.innerHTML = ' + ';
       } else {
-        groupexp.innerHTML = " - ";
+        groupexp.innerHTML = ' - ';
       }
 
-      L.DomEvent.on(grouplabel, "click", function () {
-        if (L.DomUtil.hasClass(groupdiv, "expanded")) {
-          L.DomUtil.removeClass(groupdiv, "expanded");
-          groupexp.innerHTML = " + ";
+      L.DomEvent.on(grouplabel, 'click', () => {
+        if (L.DomUtil.hasClass(groupdiv, 'expanded')) {
+          L.DomUtil.removeClass(groupdiv, 'expanded');
+          groupexp.innerHTML = ' + ';
         } else {
-          L.DomUtil.addClass(groupdiv, "expanded");
-          groupexp.innerHTML = " - ";
+          L.DomUtil.addClass(groupdiv, 'expanded');
+          groupexp.innerHTML = ' - ';
         }
         self._updateHeight();
       });
 
       if (isCollapsed === false) {
-        L.DomUtil.addClass(groupdiv, "expanded");
+        L.DomUtil.addClass(groupdiv, 'expanded');
       }
     }
 
-    grouptit = L.DomUtil.create("span", `${this.className}-title`, grouplabel);
+    const grouptit = L.DomUtil.create('span', `${this.className}-title`, grouplabel);
 
     grouptit.innerHTML = groupdata.name;
 
@@ -364,14 +338,14 @@ L.Control.PanelLayers = L.Control.Layers.extend({
     this._handlingClick = true;
 
     inputs.forEach((input) => {
-      const { checked, value, parentNode } = input;
+      const { checked, parentNode } = input;
       const { layer } = this._getLayer(input.value);
 
       if (checked && !this._map.hasLayer(layer)) {
-        L.DomUtil.addClass(parentNode.parentNode, "active");
+        L.DomUtil.addClass(parentNode.parentNode, 'active');
         this._map.addLayer(layer);
       } else if (!checked && this._map.hasLayer(layer)) {
-        L.DomUtil.removeClass(parentNode.parentNode, "active");
+        L.DomUtil.removeClass(parentNode.parentNode, 'active');
         this._map.removeLayer(layer);
       }
     });
@@ -382,64 +356,50 @@ L.Control.PanelLayers = L.Control.Layers.extend({
   },
 
   _initLayout: function () {
-    const container = L.DomUtil.create("div", this.className);
+    const container = L.DomUtil.create('div', this.className);
     this._container = container;
 
     if (this.options.compact) {
-      L.DomUtil.addClass(container, "compact");
+      L.DomUtil.addClass(container, 'compact');
     }
 
-    //Makes this work on IE10 Touch devices by stopping it from firing a mouseout event when the touch is released
-    container.setAttribute("aria-haspopup", true);
+    // Makes this work on IE10 Touch devices by stopping it from firing a mouseout event when the touch is released
+    container.setAttribute('aria-haspopup', true);
 
-    L.DomEvent.disableClickPropagation(container).disableScrollPropagation(
-      container
-    );
+    L.DomEvent.disableClickPropagation(container).disableScrollPropagation(container);
 
     if (this.options.className) {
       L.DomUtil.addClass(container, this.options.className);
     }
 
-    this._form = L.DomUtil.create("form", `${this.className}-list`);
+    this._form = L.DomUtil.create('form', `${this.className}-list`);
     this._section = this._form;
 
     this._updateHeight();
 
     if (this.options.collapsed) {
       if (L.Browser.android) {
-        L.DomEvent.on(container, "click", this._expand, this);
+        L.DomEvent.on(container, 'click', this._expand, this);
       } else {
-        L.DomEvent.on(container, "mouseenter", this._expand, this).on(
+        L.DomEvent.on(container, 'mouseenter', this._expand, this).on(
           container,
-          "mouseleave",
+          'mouseleave',
           this._collapse,
           this
         );
       }
 
-      this._map.on("click", this._collapse, this);
+      this._map.on('click', this._collapse, this);
     } else {
       this._expand();
     }
 
-    this._baseLayersList = L.DomUtil.create(
-      "div",
-      `${this.className}-base`,
-      this._form
-    );
-    this._separator = L.DomUtil.create(
-      "div",
-      `${this.className}-separator`,
-      this._form
-    );
-    this._overlaysList = L.DomUtil.create(
-      "div",
-      `${this.className}-overlays`,
-      this._form
-    );
+    this._baseLayersList = L.DomUtil.create('div', `${this.className}-base`, this._form);
+    this._separator = L.DomUtil.create('div', `${this.className}-separator`, this._form);
+    this._overlaysList = L.DomUtil.create('div', `${this.className}-overlays`, this._form);
 
     if (this.options.title) {
-      const titlabel = L.DomUtil.create("label", `${this.className}-title`);
+      const titlabel = L.DomUtil.create('label', `${this.className}-title`);
       titlabel.innerHTML = `<span>${this.options.title}</span>`;
       container.appendChild(titlabel);
     }
@@ -456,18 +416,15 @@ L.Control.PanelLayers = L.Control.Layers.extend({
   },
 
   _expand: function () {
-    L.DomUtil.addClass(this._container, "expanded");
+    L.DomUtil.addClass(this._container, 'expanded');
   },
 
   _collapse: function () {
-    this._container.className = this._container.className.replace(
-      "expanded",
-      ""
-    );
+    this._container.className = this._container.className.replace('expanded', '');
   },
 
   _getPath: function (obj, prop) {
-    const parts = prop.split(".");
+    const parts = prop.split('.');
     const last = parts.pop();
     const len = parts.length;
     let cur = parts[0];

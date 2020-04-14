@@ -3,6 +3,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const babelLoader = require("./config/babel-loader");
 // const codeGenConfig = require("./codegen-loader");
 
 module.exports = (env) => {
@@ -16,6 +17,16 @@ module.exports = (env) => {
       filename: "bundle.js",
       path: path.resolve(__dirname, "dist"),
       publicPath: "/dist/",
+    },
+    module: {
+      rules: [
+        {
+          enforce: "pre",
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: "eslint-loader",
+        },
+      ],
     },
 
     plugins: [
@@ -54,5 +65,5 @@ module.exports = (env) => {
   if (isDevelopement) {
     return merge(baseConfig, devConfig);
   }
-  return merge(baseConfig, require("./config/babel-loader"));
+  return merge(baseConfig, babelLoader);
 };

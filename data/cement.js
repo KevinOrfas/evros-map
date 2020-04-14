@@ -1,13 +1,13 @@
 export default {
-  type: "FeatureCollection",
-  name: "cement",
-  crs: { type: "name", properties: { name: "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+  type: 'FeatureCollection',
+  name: 'cement',
+  crs: { type: 'name', properties: { name: 'urn:ogc:def:crs:OGC:1.3:CRS84' } },
   features: [
     {
-      type: "Feature",
-      properties: { comment: null, village: "Μάκρη" },
+      type: 'Feature',
+      properties: { comment: null, village: 'Μάκρη' },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -35,10 +35,10 @@ export default {
       },
     },
     {
-      type: "Feature",
-      properties: { comment: null, village: "Μάκρη" },
+      type: 'Feature',
+      properties: { comment: null, village: 'Μάκρη' },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -61,10 +61,10 @@ export default {
       },
     },
     {
-      type: "Feature",
-      properties: { comment: null, village: "Μάκρη" },
+      type: 'Feature',
+      properties: { comment: null, village: 'Μάκρη' },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -88,10 +88,10 @@ export default {
       },
     },
     {
-      type: "Feature",
-      properties: { comment: null, village: "Μάκρη" },
+      type: 'Feature',
+      properties: { comment: null, village: 'Μάκρη' },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -120,10 +120,10 @@ export default {
       },
     },
     {
-      type: "Feature",
-      properties: { comment: null, village: "Μάκρη" },
+      type: 'Feature',
+      properties: { comment: null, village: 'Μάκρη' },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -195,10 +195,10 @@ export default {
       },
     },
     {
-      type: "Feature",
-      properties: { comment: null, village: "Μάκρη" },
+      type: 'Feature',
+      properties: { comment: null, village: 'Μάκρη' },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -310,10 +310,10 @@ export default {
       },
     },
     {
-      type: "Feature",
-      properties: { comment: null, village: "Άβαντας" },
+      type: 'Feature',
+      properties: { comment: null, village: 'Άβαντας' },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -343,10 +343,10 @@ export default {
       },
     },
     {
-      type: "Feature",
-      properties: { comment: null, village: "Άβαντας" },
+      type: 'Feature',
+      properties: { comment: null, village: 'Άβαντας' },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -390,10 +390,10 @@ export default {
       },
     },
     {
-      type: "Feature",
-      properties: { comment: null, village: "Σαμοθράκη" },
+      type: 'Feature',
+      properties: { comment: null, village: 'Σαμοθράκη' },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
@@ -489,10 +489,10 @@ export default {
       },
     },
     {
-      type: "Feature",
-      properties: { comment: null, village: "Σαμοθράκη" },
+      type: 'Feature',
+      properties: { comment: null, village: 'Σαμοθράκη' },
       geometry: {
-        type: "MultiPolygon",
+        type: 'MultiPolygon',
         coordinates: [
           [
             [
