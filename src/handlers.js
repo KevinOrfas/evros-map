@@ -36,7 +36,7 @@ const [getComments, getVillage, getType] = uiCopyTypes.map((text) => ({ properti
 });
 
 const commentCnt = (feature) =>
-  `<div><h4>${getVillage(feature)}</h4><hr>${getComments(feature)}</div>`;
+  `<div><h4>Τοποθεσία: ${getVillage(feature)}</h4><hr>${getComments(feature)}</div>`;
 const typeCnt = (feature) => `<div><h4>${getType(feature)}</h4><hr>${getVillage(feature)}</div>`;
 const descCnt = (feature) =>
   `<div><h4>${getVillage(feature)}</h4><hr><p>${showDescription(
