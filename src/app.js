@@ -73,8 +73,10 @@ const getMatchedWords = (strArr, regex) => {
 };
 
 const handlers = {
-  wastes: (marker, name) => {
-    marker.bindPopup(`<img src="images/${name}.jpg" width="300" height="225" />`);
+  wastes: (marker, name, village) => {
+    marker.bindPopup(
+      `<h3>Ρύπανση από απόβλητα</h3><img src="images/${name}.jpg" width="900" height="600" />`
+    );
   },
 };
 
