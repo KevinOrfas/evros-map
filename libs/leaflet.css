@@ -281,7 +281,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 /* general typography */
 .leaflet-container {
-  font: 14px/1.4 "PT Sans", Arial, Helvetica, sans-serif;
+  font: 14px/1.4 "Roboto Condensed", "PT Sans", Arial, Helvetica, sans-serif;
 }
 
 /* general toolbar styles */
@@ -475,6 +475,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 /* popup */
 
 .leaflet-popup {
+  width: 400px;
   position: absolute;
   text-align: center;
   margin-bottom: 20px;

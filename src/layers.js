@@ -39,27 +39,27 @@ const setLayerOptions = (name, color, handler) => {
 
 const cementLayer = new L.geoJson(
   cementData,
-  setLayerOptions('cement', '#FBB23E', eventHandler(commentCnt))
+  setLayerOptions('cement', 'rgb(251,176,64)', eventHandler(commentCnt))
 );
 const climateLayer = new L.geoJson(
   climateData,
-  setLayerOptions('climate', '#f3e25d', eventHandler(commentCnt))
+  setLayerOptions('climate', 'rgb(255,233,107)', eventHandler(commentCnt))
 );
 const erosionLayer = new L.geoJson(
   erosionData,
-  setLayerOptions('erosion', '#adc378', eventHandler(commentCnt))
+  setLayerOptions('erosion', 'rgb(198,222,137)', eventHandler(commentCnt))
 );
 const overgrazingLayer = new L.geoJson(
   overgrazingData,
-  setLayerOptions('overgrazing', '#9FC7E8', eventHandler(typeCnt))
+  setLayerOptions('overgrazing', 'rgb(160,201,236)', eventHandler(typeCnt))
 );
 const pollutionLayer = new L.geoJson(
   pollutionData,
-  setLayerOptions('pollution', '#f788b2', eventHandler(descCnt))
+  setLayerOptions('pollution', 'rgb(245,152,170)', eventHandler(descCnt))
 );
 
 const qualityLayer = new L.geoJson(qualityData, {
-  ...setLayerOptions('quality', '#ff11ee', eventHandler(descCnt)),
+  ...setLayerOptions('quality', 'rgb(255,255,255)', eventHandler(descCnt)),
   pointToLayer: featureToMarker,
 });
 
