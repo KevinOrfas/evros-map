@@ -42,11 +42,6 @@
   background-size: contain;
 }
 
-.icon-pollution {
-  background: url("../icons/pollution.png") center center no-repeat;
-  background-size: contain;
-}
-
 .icon-quality-good {
   background: url("../icons/good.svg") center center no-repeat;
   background-size: contain;
@@ -97,11 +92,6 @@
 
 .m-flood {
   background: url("../icons/flood.svg") center center no-repeat;
-  background-size: contain;
-}
-
-.m-quality {
-  background: url("../icons/quality.svg") center center no-repeat;
   background-size: contain;
 }
 
