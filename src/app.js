@@ -1,10 +1,10 @@
 /* eslint new-cap: ["error", { "newIsCap": false }] */
 // import * as buildInformation from "../buildInformation.gen.js";
 import './icons.css';
+
 import './style.css';
 import './libs/leaflet.css';
 import './leaflet-panel-layers.css';
-import IMG_20200111_094458 from './images/IMG_20200111_094458.jpg';
 
 import {
   cementPointsData,
@@ -28,7 +28,50 @@ import {
   overgrazingLayer,
   pollutionLayer,
 } from './layers';
-
+import {
+  IMG_20200111_094458,
+  IMG_20200111_094832,
+  IMG_20200111_095538,
+  IMG_20200111_095817,
+  IMG_20200111_100203,
+  IMG_20200111_100327,
+  IMG_20200111_100520,
+  IMG_20200111_100733,
+  IMG_20200111_100905,
+  IMG_20200111_101350,
+  IMG_20200111_101545,
+  IMG_20200111_101730,
+  IMG_20200111_101742,
+  IMG_20200111_102213,
+  IMG_20200111_102741,
+  IMG_20200111_103100,
+  IMG_20200111_104324,
+  IMG_20200111_104415,
+  IMG_20200111_104548,
+  IMG_20200111_110123,
+} from './images';
+const imagesMap = {
+  IMG_20200111_094458,
+  IMG_20200111_094832,
+  IMG_20200111_095538,
+  IMG_20200111_095817,
+  IMG_20200111_100203,
+  IMG_20200111_100327,
+  IMG_20200111_100520,
+  IMG_20200111_100733,
+  IMG_20200111_100905,
+  IMG_20200111_101350,
+  IMG_20200111_101545,
+  IMG_20200111_101730,
+  IMG_20200111_101742,
+  IMG_20200111_102213,
+  IMG_20200111_102741,
+  IMG_20200111_103100,
+  IMG_20200111_104324,
+  IMG_20200111_104415,
+  IMG_20200111_104548,
+  IMG_20200111_110123,
+};
 // eslint-disable-next-line no-new
 new L.Hash(map);
 const scale = L.control.scale();
@@ -81,10 +124,10 @@ const getMatchedWords = (strArr, regex) => {
 const handlers = {
   wastes: (marker, name, village) => {
     console.log('name', name);
-    const images = { IMG_20200111_094458: IMG_20200111_094458 };
-    console.log('handlers2[name]', images[name]);
+
+    console.log('handlers2[name]', imagesMap[name]);
     marker.bindPopup(
-      `<h3>Ρύπανση από απόβλητα</h3><img src="${images[name]}" width="900" height="600" />`
+      `<h3>Ρύπανση από απόβλητα</h3><img src="${imagesMap[name]}" width="900" height="600" />`
     );
   },
 };
