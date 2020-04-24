@@ -8,47 +8,47 @@
 
 /* ICONS */
 .icon-erosion {
-  background: url("../icons/erosion.svg") center center no-repeat;
+  background: url("./icons/erosion.svg") center center no-repeat;
   background-size: contain;
 }
 .icon-overgrazing {
-  background: url("../icons/overgrazing.svg") center center no-repeat;
+  background: url("./icons/overgrazing.svg") center center no-repeat;
   background-size: contain;
 }
 .icon-cement {
-  background: url("../icons/cement.svg") center center no-repeat;
+  background: url("./icons/cement.svg") center center no-repeat;
   background-size: contain;
 }
 .icon-wastes {
-  background: url("../icons/landfill.svg") center center no-repeat;
+  background: url("./icons/landfill.svg") center center no-repeat;
   background-size: contain;
 }
 .icon-pesticides {
-  background: url("../icons/pesticides.svg") center center no-repeat;
+  background: url("./icons/pesticides.svg") center center no-repeat;
   background-size: contain;
 }
 .icon-desertification {
-  background: url("../icons/desertification.svg") center center no-repeat;
+  background: url("./icons/desertification.svg") center center no-repeat;
   background-size: contain;
 }
 
 .icon-fire {
-  background: url("../icons/fire.svg") center center no-repeat;
+  background: url("./icons/fire.svg") center center no-repeat;
   background-size: contain;
 }
 
 .icon-flood {
-  background: url("../icons/flood.svg") center center no-repeat;
+  background: url("./icons/flood.svg") center center no-repeat;
   background-size: contain;
 }
 
 .icon-quality-good {
-  background: url("../icons/good.svg") center center no-repeat;
+  background: url("./icons/good.svg") center center no-repeat;
   background-size: contain;
 }
 
 .icon-quality-bad {
-  background: url("../icons/bad.svg") center center no-repeat;
+  background: url("./icons/bad.svg") center center no-repeat;
   background-size: contain;
 }
 
@@ -58,49 +58,49 @@
   text-align: center;
 }
 .m-erosion {
-  background: url("../icons/erosion.svg") center center no-repeat;
+  background: url("./icons/erosion.svg") center center no-repeat;
   background-size: contain;
 }
 .m-overgrazing {
-  background: url("../icons/overgrazing.svg") center center no-repeat;
+  background: url("./icons/overgrazing.svg") center center no-repeat;
   background-size: contain;
 }
 .m-cement {
-  background: url("../icons/cement.svg") center center no-repeat;
+  background: url("./icons/cement.svg") center center no-repeat;
   background-size: contain;
 }
 
 .m-wastes {
-  background: url("../icons/landfill.svg") center center no-repeat;
+  background: url("./icons/landfill.svg") center center no-repeat;
   background-size: contain;
 }
 
 .m-pesticides {
-  background: url("../icons/pesticides.svg") center center no-repeat;
+  background: url("./icons/pesticides.svg") center center no-repeat;
   background-size: contain;
 }
 
 .m-desertification {
-  background: url("../icons/desertification.svg") center center no-repeat;
+  background: url("./icons/desertification.svg") center center no-repeat;
   background-size: contain;
 }
 
 .m-fire {
-  background: url("../icons/fire.svg") center center no-repeat;
+  background: url("./icons/fire.svg") center center no-repeat;
   background-size: contain;
 }
 
 .m-flood {
-  background: url("../icons/flood.svg") center center no-repeat;
+  background: url("./icons/flood.svg") center center no-repeat;
   background-size: contain;
 }
 
 .m-quality-good {
-  background: url("../icons/good.svg") center center no-repeat;
+  background: url("./icons/good.svg") center center no-repeat;
   background-size: contain;
 }
 
 .m-quality-bad {
-  background: url("../icons/bad.svg") center center no-repeat;
+  background: url("./icons/bad.svg") center center no-repeat;
   background-size: contain;
 }

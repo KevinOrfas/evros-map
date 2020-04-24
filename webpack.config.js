@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const CopyPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -16,7 +16,7 @@ module.exports = (env) => {
     entry: './src/app.js',
     mode: 'production',
     output: {
-      filename: isDevelopement ? 'bundle.js' : 'bundle-[contentHash].js',
+      filename: isDevelopement ? 'bundle.js' : 'bundle-[contenthash].js',
       path: path.resolve(__dirname, 'dist'),
       // publicPath: '/public/',
     },
@@ -33,16 +33,32 @@ module.exports = (env) => {
           exclude: /node_modules/,
           use: ['style-loader', 'css-loader', 'sass-loader'],
         },
+        // {
+        //   test: /\.svg$/,
+        //   exclude: /node_modules/,
+        //   loader: 'svg-inline-loader',
+        // },
+        {
+          test: /\.html$/,
+          exclude: /node_modules/,
+          loader: 'html-loader',
+        },
+        {
+          test: /\.(png|jpg|gif)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'file-loader',
+            options: { name: '[name].[ext]', outputPath: 'images' },
+          },
+        },
         {
           test: /\.svg$/,
           exclude: /node_modules/,
-          loader: 'svg-inline-loader',
+          use: {
+            loader: 'file-loader',
+            options: { name: '[name].[ext]', outputPath: 'icons' },
+          },
         },
-        // {
-        //   test: /\.(png|svg|jpg|gif)$/,
-        //   exclude: /node_modules/,
-        //   use: ['file-loader'],
-        // },
       ],
     },
     plugins: [
@@ -53,6 +69,16 @@ module.exports = (env) => {
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       }),
       new HtmlWebpackPlugin({ template: 'src/index.html' }),
+      // new CopyPlugin([
+      //   {
+      //     from: path.resolve(__dirname, 'src/icons'),
+      //     to: path.resolve(__dirname, 'dist/icons'),
+      //   },
+      //   {
+      //     from: path.resolve(__dirname, 'src/libs'),
+      //     to: path.resolve(__dirname, 'dist/libs'),
+      //   },
+      // ]),
     ],
     optimization: {
       minimizer: [new UglifyJsPlugin()],
@@ -64,21 +90,12 @@ module.exports = (env) => {
     mode: 'development',
     devServer: {
       contentBase: path.resolve(__dirname, './'),
-      publicPath: '/dist/',
       watchContentBase: false,
       hotOnly: true,
       overlay: false,
       host: '0.0.0.0',
     },
-    plugins: [
-      new webpack.HotModuleReplacementPlugin(),
-      // new CopyPlugin([
-      //   {
-      //     from: path.resolve(__dirname, 'images'),
-      //     to: path.resolve(__dirname, 'dist'),
-      //   },
-      // ]),
-    ],
+    plugins: [new webpack.HotModuleReplacementPlugin()],
     devtool: 'source-map',
   };
 

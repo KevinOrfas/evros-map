@@ -1,5 +1,11 @@
 /* eslint new-cap: ["error", { "newIsCap": false }] */
 // import * as buildInformation from "../buildInformation.gen.js";
+import './icons.css';
+import './style.css';
+import './libs/leaflet.css';
+import './leaflet-panel-layers.css';
+import IMG_20200111_094458 from './images/IMG_20200111_094458.jpg';
+
 import {
   cementPointsData,
   desertificationData,
@@ -74,8 +80,11 @@ const getMatchedWords = (strArr, regex) => {
 
 const handlers = {
   wastes: (marker, name, village) => {
+    console.log('name', name);
+    const images = { IMG_20200111_094458: IMG_20200111_094458 };
+    console.log('handlers2[name]', images[name]);
     marker.bindPopup(
-      `<h3>Ρύπανση από απόβλητα</h3><img src="images/${name}.jpg" width="900" height="600" />`
+      `<h3>Ρύπανση από απόβλητα</h3><img src="${images[name]}" width="900" height="600" />`
     );
   },
 };

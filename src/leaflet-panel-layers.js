@@ -4,7 +4,7 @@ import 'leaflet';
 import 'leaflet-hash';
 import 'leaflet-svg-shape-markers';
 import 'leaflet.pattern';
-import '../libs/multi-style-layer';
+import './libs/multi-style-layer';
 
 import { controlsMap } from './translations';
 import {
