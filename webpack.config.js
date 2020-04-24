@@ -1,8 +1,10 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const babelLoader = require('./config/babel-loader');
 // const codeGenConfig = require("./codegen-loader");
 
@@ -14,9 +16,9 @@ module.exports = (env) => {
     entry: './src/app.js',
     mode: 'production',
     output: {
-      filename: 'bundle.js',
+      filename: isDevelopement ? 'bundle.js' : 'bundle-[contentHash].js',
       path: path.resolve(__dirname, 'dist'),
-      publicPath: '/dist/',
+      // publicPath: '/public/',
     },
     module: {
       rules: [
@@ -26,9 +28,23 @@ module.exports = (env) => {
           exclude: /node_modules/,
           loader: 'eslint-loader',
         },
+        {
+          test: /\.css$/,
+          exclude: /node_modules/,
+          use: ['style-loader', 'css-loader', 'sass-loader'],
+        },
+        {
+          test: /\.svg$/,
+          exclude: /node_modules/,
+          loader: 'svg-inline-loader',
+        },
+        // {
+        //   test: /\.(png|svg|jpg|gif)$/,
+        //   exclude: /node_modules/,
+        //   use: ['file-loader'],
+        // },
       ],
     },
-
     plugins: [
       new CleanWebpackPlugin({}),
       new webpack.DefinePlugin({
@@ -36,7 +52,11 @@ module.exports = (env) => {
         ENV_IS: JSON.stringify(env),
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       }),
+      new HtmlWebpackPlugin({ template: 'src/index.html' }),
     ],
+    optimization: {
+      minimizer: [new UglifyJsPlugin()],
+    },
     devtool: 'none',
   };
 
@@ -54,8 +74,8 @@ module.exports = (env) => {
       new webpack.HotModuleReplacementPlugin(),
       // new CopyPlugin([
       //   {
-      //     from: path.resolve(__dirname, "images"),
-      //     to: path.resolve(__dirname, "dist"),
+      //     from: path.resolve(__dirname, 'images'),
+      //     to: path.resolve(__dirname, 'dist'),
       //   },
       // ]),
     ],
