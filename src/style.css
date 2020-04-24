@@ -48,3 +48,7 @@ pre {
   box-shadow: 0 0 8px #999;
   height: 98vh;
 }
+
+.wrapper {
+  width: 400px;
+}
