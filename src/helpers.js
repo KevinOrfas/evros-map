@@ -8,12 +8,12 @@ const resetHighlight = (e) => {
 
 const highlightFeature = (e) => {
   const layer = e.target;
-
-  if (e.target.feature.geometry.type === 'LineString') {
+  const type = e.target.feature.geometry.type;
+  if (type === 'LineString') {
     layer.setStyle({
-      color: 'blue',
+      color: '#fff',
     });
-  } else {
+  } else if (type === 'MultiPolygon') {
     layer.setStyle({
       fillColor: layer.defaultOptions.style.color,
       fillOpacity: 1,
