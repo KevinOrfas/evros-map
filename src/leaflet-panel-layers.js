@@ -201,7 +201,7 @@ L.Control.PanelLayers = L.Control.Layers.extend({
         this._onInputClick();
         const copy = e.target.nextElementSibling.getAttribute('data-title');
         const action = markersHandler[copy];
-        if (this.once === false) {
+        if (this.once === false && !!action) {
           resetIcons();
           this.once = true;
         }
@@ -263,12 +263,6 @@ L.Control.PanelLayers = L.Control.Layers.extend({
   },
 
   _addItem: function (obj) {
-    // const self = this;
-
-    // let input;
-    // let icon;
-    // let checked;
-
     let list = obj.overlay ? this._overlaysList : this._baseLayersList;
     if (obj.group) {
       if (!obj.group.hasOwnProperty('name')) {

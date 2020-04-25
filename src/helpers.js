@@ -37,6 +37,8 @@ const determineIconType = (feature) => {
   };
   if (typeof feature === 'string') {
     iconOptions.className = `m-${feature}`;
+  } else if (typeof feature === 'object') {
+    iconOptions.className = `m-${feature.properties.amenity}`;
   }
   return iconOptions;
 };
