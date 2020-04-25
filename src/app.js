@@ -1,7 +1,6 @@
 /* eslint new-cap: ["error", { "newIsCap": false }] */
 // import * as buildInformation from "../buildInformation.gen.js";
 import './icons.css';
-
 import './style.css';
 import './libs/leaflet.css';
 import './leaflet-panel-layers.css';
