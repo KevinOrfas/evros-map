@@ -35,26 +35,17 @@ const determineIconType = (feature) => {
     popupAnchor: [1, -34],
     shadowSize: [41, 41],
   };
-  const identifiers = { id: '', className: '', iconUrl: '' };
-  if (typeof feature === 'object') {
-    identifiers.id = `${feature}`;
-    identifiers.className = `m-${feature.properties.amenity}`;
-    identifiers.iconUrl = `../markers/${feature.properties.amenity}.svg`;
-  } else if (typeof feature === 'string') {
-    identifiers.id = `${feature}`;
-    identifiers.className = `m-${feature}`;
-    identifiers.iconUrl = `../src/markers/${feature}.svg`;
+  if (typeof feature === 'string') {
+    iconOptions.className = `m-${feature}`;
   }
-  return { ...iconOptions, ...identifiers };
+  return iconOptions;
 };
 
+const featureIcon = (feature) => L.divIcon(determineIconType(feature));
 const featureToMarker = (feature, latlng) => {
   return L.marker(latlng, {
     icon: featureIcon(feature),
   });
-};
-const featureIcon = (feature) => {
-  return L.divIcon(determineIconType(feature));
 };
 
 const swapArr = (array, i, j) => ([array[i], array[j]] = [array[j], array[i]]);
