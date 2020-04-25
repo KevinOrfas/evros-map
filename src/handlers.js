@@ -1,5 +1,5 @@
 import Autolinker from 'autolinker';
-import { resetHighlight, highlightFeature, zoomToFeature } from './helpers';
+import { resetHighlight, highlightFeature, zoomToFeature, capitalize } from './helpers';
 
 const coords = [
   [40.06602200033871, 24.44890103711547],
@@ -22,29 +22,31 @@ const getPollutionDesc = (category) => {
 
 const showDescription = ({ category }) => {
   const desc = getPollutionDesc(category);
-  return !desc ? desc : Autolinker.link(desc.toLocaleString());
+  return !desc ? desc : Autolinker.link(capitalize(desc.toLocaleString()));
 };
 
-const linker = (name, props) => {
-  const property = props[name];
-  return !property ? '' : Autolinker.link(property.toLocaleString());
+const linker = (name, properties) => {
+  const property = properties[name];
+  return !property ? '' : Autolinker.link(capitalize(property.toLocaleString().toLowerCase()));
 };
 
-const uiCopyTypes = ['comment', 'village', 'eidos'];
-const [getComments, getVillage, getType] = uiCopyTypes.map((text) => ({ properties }) => {
-  return linker(text, properties);
-});
+const uiCopyTypes = ['comment', 'village', 'eidos', 'category'];
+const [getComments, getVillage, getType, getCategory] = uiCopyTypes.map(
+  (text) => ({ properties }) => {
+    return linker(text, properties);
+  }
+);
 
 const commentCnt = (feature) =>
-  `<div class="wrapper"><h4>Τοποθεσία: ${getVillage(feature)}</h4><hr>${getComments(
+  `<div class="wrapper"><h4>${getVillage(feature)}</h4>${getCategory(feature)}<hr>${getComments(
     feature
   )}</div>`;
 const typeCnt = (feature) =>
-  `<div class="wrapper"><h4>${getType(feature)}</h4><hr>${getVillage(feature)}</div>`;
+  `<div class="wrapper"><h4>${getVillage(feature)}</h4>${getType(feature)}<hr></div>`;
 const descCnt = (feature) =>
-  `<div class="wrapper"><h4>${getVillage(feature)}</h4><hr><p>${showDescription(
+  `<div class="wrapper"><h4>${getVillage(feature)}</h4>${showDescription(
     feature.properties
-  )}</br>${getComments(feature)}</p></div>`;
+  )}<hr>${getComments(feature)}</div>`;
 
 const eventHandler = (content) => (feature, layer) => {
   layer.bindPopup(content(feature), { maxHeight: 400 });

@@ -4373,7 +4373,7 @@ export default {
     {
       type: 'Feature',
       properties: {
-        comment: 'εκτεταμένη χρήση φυτοφαρμάκων',
+        comment: 'Εκτεταμένη χρήση φυτοφαρμάκων',
         village: 'Σαμοθράκη',
         category: 'pesticides',
       },
@@ -5164,7 +5164,7 @@ export default {
     {
       type: 'Feature',
       properties: {
-        comment: 'εκτεταμένη χρήση φυτοφαρμακων',
+        comment: 'Εκτεταμένη χρήση φυτοφαρμακων',
         village: 'Σαμοθράκη',
         category: 'pesticides',
       },
