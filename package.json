@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --env production",
+    "dev": "webpack --env development",
     "watch": "npm run build -- --watch",
     "start": "nodemon -w webpack.config.js -x webpack-dev-server -- --env development"
   },
@@ -35,6 +36,7 @@
     "file-loader": "^6.0.0",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.0",
     "nodemon": "^2.0.3",
     "prettier": "^2.0.4",

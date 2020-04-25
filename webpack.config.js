@@ -1,7 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const merge = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -12,13 +13,13 @@ module.exports = (env) => {
   const isDevelopement = env === 'development';
   console.log(`This is ${isDevelopement ? 'development' : 'production'} build`);
 
-  const baseConfig = {
+  const commonConfig = {
     entry: './src/app.js',
-    mode: 'production',
+    mode: env,
+    devtool: isDevelopement ? 'inline-cheap-source-map' : 'none',
     output: {
       filename: isDevelopement ? 'bundle.js' : 'bundle-[contenthash].js',
       path: path.resolve(__dirname, 'dist'),
-      // publicPath: '/public/',
     },
     module: {
       rules: [
@@ -33,11 +34,6 @@ module.exports = (env) => {
           exclude: /node_modules/,
           use: ['style-loader', 'css-loader', 'sass-loader'],
         },
-        // {
-        //   test: /\.svg$/,
-        //   exclude: /node_modules/,
-        //   loader: 'svg-inline-loader',
-        // },
         {
           test: /\.html$/,
           exclude: /node_modules/,
@@ -61,33 +57,10 @@ module.exports = (env) => {
         },
       ],
     },
-    plugins: [
-      new CleanWebpackPlugin({}),
-      new webpack.DefinePlugin({
-        ENV_IS_DEVELOPMENT: isDevelopement,
-        ENV_IS: JSON.stringify(env),
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-      }),
-      new HtmlWebpackPlugin({ template: 'src/index.html' }),
-      // new CopyPlugin([
-      //   {
-      //     from: path.resolve(__dirname, 'src/icons'),
-      //     to: path.resolve(__dirname, 'dist/icons'),
-      //   },
-      //   {
-      //     from: path.resolve(__dirname, 'src/libs'),
-      //     to: path.resolve(__dirname, 'dist/libs'),
-      //   },
-      // ]),
-    ],
-    optimization: {
-      minimizer: [new UglifyJsPlugin()],
-    },
-    devtool: 'none',
+    plugins: [new HtmlWebpackPlugin({ template: 'src/index.html' })],
   };
 
   const devConfig = {
-    mode: 'development',
     devServer: {
       contentBase: path.resolve(__dirname, './'),
       watchContentBase: false,
@@ -96,11 +69,24 @@ module.exports = (env) => {
       host: '0.0.0.0',
     },
     plugins: [new webpack.HotModuleReplacementPlugin()],
-    devtool: 'source-map',
+  };
+
+  const prodConfig = {
+    plugins: [
+      new CleanWebpackPlugin({}),
+      new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].css',
+        chunkFilename: '[id].css',
+        ignoreOrder: false, // Enable to remove warnings about conflicting order
+      }),
+    ],
+    optimization: {
+      minimizer: [new UglifyJsPlugin()],
+    },
   };
 
   if (isDevelopement) {
-    return merge(baseConfig, devConfig);
+    return merge(commonConfig, devConfig);
   }
-  return merge(baseConfig, babelLoader);
+  return merge(commonConfig, prodConfig, babelLoader);
 };
