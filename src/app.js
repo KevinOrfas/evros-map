@@ -123,9 +123,6 @@ const getMatchedWords = (strArr, regex) => {
 
 const handlers = {
   wastes: (marker, name, village) => {
-    console.log('name', name);
-
-    console.log('handlers2[name]', imagesMap[name]);
     marker.bindPopup(
       `<h3>Ρύπανση από απόβλητα</h3><img src="${imagesMap[name]}" width="900" height="600" />`
     );
