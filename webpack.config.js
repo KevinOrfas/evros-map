@@ -3,7 +3,8 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const babelLoader = require('./config/babel-loader');
 
@@ -26,11 +27,6 @@ module.exports = (env) => {
           test: /\.js$/,
           exclude: /node_modules/,
           loader: 'eslint-loader',
-        },
-        {
-          test: /\.css$/,
-          exclude: /node_modules/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
         },
         {
           test: /\.html$/,
@@ -76,10 +72,28 @@ module.exports = (env) => {
       overlay: false,
       host: '0.0.0.0',
     },
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          exclude: /node_modules/,
+          use: ['style-loader', 'css-loader', 'sass-loader'],
+        },
+      ],
+    },
     plugins: [new webpack.HotModuleReplacementPlugin()],
   };
 
   const prodConfig = {
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          exclude: /node_modules/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        },
+      ],
+    },
     plugins: [
       new CleanWebpackPlugin({}),
       new MiniCssExtractPlugin({
@@ -89,7 +103,7 @@ module.exports = (env) => {
       }),
     ],
     optimization: {
-      minimizer: [new UglifyJsPlugin()],
+      minimizer: [new TerserPlugin(), new OptimizeCssAssetsPlugin()],
     },
   };
 
