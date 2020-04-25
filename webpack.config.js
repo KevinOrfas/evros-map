@@ -38,8 +38,18 @@ module.exports = (env) => {
           loader: 'html-loader',
         },
         {
-          test: /\.(png|jpg|gif)$/,
+          test: /\.(png|jpg)$/,
           exclude: /node_modules/,
+          include: /src\/images/,
+          use: {
+            loader: 'file-loader',
+            options: { name: '[name].[ext]', outputPath: 'images/wastes' },
+          },
+        },
+        {
+          test: /\.(png|jpg)$/,
+          exclude: /node_modules/,
+          include: /src\/libs\/images/,
           use: {
             loader: 'file-loader',
             options: { name: '[name].[ext]', outputPath: 'images' },
