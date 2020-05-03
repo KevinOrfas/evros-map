@@ -38,13 +38,6 @@ const conf = {
               args: ['https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'],
             },
           },
-          {
-            name: 'Loss',
-            layer: {
-              type: 'tileLayer',
-              args: ['http://earthengine.google.org/static/hansen_2013/loss_alpha/{z}/{x}/{y}.png'],
-            },
-          },
         ],
       },
     ],
@@ -115,8 +108,22 @@ const conf = {
       ],
     },
   ],
+  loss: [
+    {
+      name: 'Loss',
+      layer: {
+        type: 'tileLayer',
+        args: ['http://earthengine.google.org/static/hansen_2013/loss_alpha/{z}/{x}/{y}.png'],
+      },
+    },
+  ],
 };
 
 const panelLayers = new L.Control.PanelLayers(null, conf.overLayers);
+const lossLayers = new L.Control.PanelLayers(null, conf.loss, {
+  compact: true,
+  position: 'bottomright',
+  className: 'loss',
+});
 
-export { conf, panelLayers };
+export { conf, panelLayers, lossLayers };

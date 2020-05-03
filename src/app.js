@@ -18,7 +18,7 @@ import {
 } from '../data';
 
 import { createMarker, byCategory } from './helpers';
-import { conf, panelLayers } from './controls';
+import { conf, panelLayers, lossLayers } from './controls';
 import { map } from './handlers';
 import {
   cementLayer,
@@ -100,6 +100,7 @@ const controls = L.control.panelLayers(conf.base.layers, null, {
   compact: true,
   position: 'bottomright',
 });
+map.addControl(lossLayers);
 controls.addTo(map);
 
 const paneNames = ['cement', 'climate', 'erosion', 'overgrazing', 'pollution'];

@@ -56,3 +56,7 @@ pre {
 .inline-head {
   display: inline;
 }
+
+.loss {
+  width: 229px !important;
+}

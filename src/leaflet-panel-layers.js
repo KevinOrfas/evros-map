@@ -184,13 +184,7 @@ L.Control.PanelLayers = L.Control.Layers.extend({
         input.type = 'checkbox';
         input.defaultChecked = false;
       } else {
-        if (obj.name.toLowerCase() === 'loss') {
-          input = L.DomUtil.create('input', `${this.className}-selector`);
-          input.type = 'checkbox';
-          input.defaultChecked = false;
-        } else {
-          input = this._createRadioElement('leaflet-base-layers', checked, obj);
-        }
+        input = this._createRadioElement('leaflet-base-layers', checked, obj);
       }
       input.value = obj.id;
       input.layerId = obj.id;
