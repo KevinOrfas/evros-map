@@ -24,7 +24,7 @@ const conf = {
             layer: L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
               opacity: 1.0,
               attribution:
-                '<a href="https://qgis.org">QGIS</a>  &middot; <a href="https://github.com/kevinorfas" target="_blank">Anastasios Orfanidis, George Galetsa</a>',
+                '<a href="https://qgis.org">QGIS</a>  &middot; <a href="https://github.com/kevinorfas" target="_blank">Anastasios Orfanidis</a> | <a href="https://www.linkedin.com/in/george-gkaletsas-786038144/" target="_blank">George Galetsa</a>',
               minZoom: 1,
               maxZoom: 28,
               minNativeZoom: 0,
@@ -44,21 +44,6 @@ const conf = {
   },
   overLayers: [
     {
-      name: 'erosion',
-      icon: iconByName('erosion'),
-      layer: erosionLayer,
-    },
-    {
-      name: 'cement',
-      icon: iconByName('cement'),
-      layer: cementLayer,
-    },
-    {
-      name: 'overgrazing',
-      icon: iconByName('overgrazing'),
-      layer: overgrazingLayer,
-    },
-    {
       name: 'climate',
       icon: '',
       layer: climateLayer,
@@ -68,11 +53,11 @@ const conf = {
           icon: 'icon',
         },
         {
-          name: 'fire',
+          name: 'flood',
           icon: 'icon',
         },
         {
-          name: 'flood',
+          name: 'fire',
           icon: 'icon',
         },
       ],
@@ -91,6 +76,21 @@ const conf = {
           icon: 'icon',
         },
       ],
+    },
+    {
+      name: 'erosion',
+      icon: iconByName('erosion'),
+      layer: erosionLayer,
+    },
+    {
+      name: 'cement',
+      icon: iconByName('cement'),
+      layer: cementLayer,
+    },
+    {
+      name: 'overgrazing',
+      icon: iconByName('overgrazing'),
+      layer: overgrazingLayer,
     },
     {
       name: 'quality',

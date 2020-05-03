@@ -7,12 +7,12 @@ pollutionMap.set('wastes', 'Ρύπανση από Στερεά Απόβλητα'
 pollutionMap.set('pesticides', 'Ρύπανση από Φυτοφάρμακα');
 
 const climateMap = new Map();
-climateMap.set('desertification', 'Ερημοποίηση');
-climateMap.set('flood', 'Πλημμύρα');
-climateMap.set('fire', 'Φωτία');
+climateMap.set('desertification', 'Κίνδυνος Ερημοποίηση');
+climateMap.set('flood', 'Κίνδυνος Πλημμύρα');
+climateMap.set('fire', 'Κίνδυνος Πυρκαγίας');
 
 const controlsMap = new Map();
-controlsMap.set('erosion', 'Διάβρωση');
+controlsMap.set('erosion', 'Κίνδυνος Διάβρωση');
 controlsMap.set('overgrazing', 'Υπερβόσκηση');
 controlsMap.set('cement', 'Τάσεις Τσιμεντοποίηση');
 controlsMap.set('pollution', 'Ρύπανση');

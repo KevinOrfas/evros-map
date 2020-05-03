@@ -5,7 +5,7 @@ export default {
   features: [
     {
       type: 'Feature',
-      properties: { comment: null, village: 'Μάκρη' },
+      properties: { category: 'Τάσεις Τσιμεντοποίηση', village: 'Μάκρη' },
       geometry: {
         type: 'MultiPolygon',
         coordinates: [
@@ -36,7 +36,7 @@ export default {
     },
     {
       type: 'Feature',
-      properties: { comment: null, village: 'Μάκρη' },
+      properties: { category: 'Τάσεις Τσιμεντοποίηση', village: 'Μάκρη' },
       geometry: {
         type: 'MultiPolygon',
         coordinates: [
@@ -62,7 +62,7 @@ export default {
     },
     {
       type: 'Feature',
-      properties: { comment: null, village: 'Μάκρη' },
+      properties: { category: 'Τάσεις Τσιμεντοποίηση', village: 'Μάκρη' },
       geometry: {
         type: 'MultiPolygon',
         coordinates: [
@@ -89,7 +89,7 @@ export default {
     },
     {
       type: 'Feature',
-      properties: { comment: null, village: 'Μάκρη' },
+      properties: { category: 'Τάσεις Τσιμεντοποίηση', village: 'Μάκρη' },
       geometry: {
         type: 'MultiPolygon',
         coordinates: [
@@ -121,7 +121,7 @@ export default {
     },
     {
       type: 'Feature',
-      properties: { comment: null, village: 'Μάκρη' },
+      properties: { category: 'Τάσεις Τσιμεντοποίηση', village: 'Μάκρη' },
       geometry: {
         type: 'MultiPolygon',
         coordinates: [
@@ -196,7 +196,7 @@ export default {
     },
     {
       type: 'Feature',
-      properties: { comment: null, village: 'Μάκρη' },
+      properties: { category: 'Τάσεις Τσιμεντοποίηση', village: 'Μάκρη' },
       geometry: {
         type: 'MultiPolygon',
         coordinates: [
@@ -311,7 +311,7 @@ export default {
     },
     {
       type: 'Feature',
-      properties: { comment: null, village: 'Άβαντας' },
+      properties: { category: 'Τάσεις Τσιμεντοποίηση', village: 'Άβαντας' },
       geometry: {
         type: 'MultiPolygon',
         coordinates: [
@@ -344,7 +344,7 @@ export default {
     },
     {
       type: 'Feature',
-      properties: { comment: null, village: 'Άβαντας' },
+      properties: { category: 'Τάσεις Τσιμεντοποίηση', village: 'Άβαντας' },
       geometry: {
         type: 'MultiPolygon',
         coordinates: [
@@ -391,7 +391,7 @@ export default {
     },
     {
       type: 'Feature',
-      properties: { comment: null, village: 'Σαμοθράκη' },
+      properties: { category: 'Τάσεις Τσιμεντοποίηση', village: 'Σαμοθράκη' },
       geometry: {
         type: 'MultiPolygon',
         coordinates: [
@@ -490,7 +490,7 @@ export default {
     },
     {
       type: 'Feature',
-      properties: { comment: null, village: 'Σαμοθράκη' },
+      properties: { category: 'Τάσεις Τσιμεντοποίηση', village: 'Σαμοθράκη' },
       geometry: {
         type: 'MultiPolygon',
         coordinates: [

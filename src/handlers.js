@@ -36,15 +36,18 @@ const [getComments, getVillage, getType, getCategory] = uiCopyTypes.map(
     return linker(text, properties);
   }
 );
-
-const commentCnt = (feature) =>
-  `<div class="wrapper"><h4>${getVillage(feature)}</h4>${getCategory(feature)}<hr>${getComments(
+const commentCnt = (feature) => {
+  return `<div class="wrapper"><h4 class="inline-head">${getVillage(feature)}</h4>, ${getCategory(
     feature
-  )}</div>`;
+  )}<hr>${getComments(feature)}</div>`;
+};
+
 const typeCnt = (feature) =>
-  `<div class="wrapper"><h4>${getVillage(feature)}</h4>${getType(feature)}<hr></div>`;
+  `<div class="wrapper"><h4 class="inline-head">${getVillage(feature)}</h4>, ${getType(
+    feature
+  )}<hr></div>`;
 const descCnt = (feature) =>
-  `<div class="wrapper"><h4>${getVillage(feature)}</h4>${showDescription(
+  `<div class="wrapper"><h4 class="inline-head">${getVillage(feature)}</h4>, ${showDescription(
     feature.properties
   )}<hr>${getComments(feature)}</div>`;
 
