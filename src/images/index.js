@@ -1,23 +1,34 @@
-import IMG_20200111_094458 from './IMG_20200111_094458.jpg';
-import IMG_20200111_094832 from './IMG_20200111_094832.jpg';
-import IMG_20200111_095538 from './IMG_20200111_095538.jpg';
-import IMG_20200111_095817 from './IMG_20200111_095817.jpg';
-import IMG_20200111_100203 from './IMG_20200111_100203.jpg';
-import IMG_20200111_100327 from './IMG_20200111_100327.jpg';
-import IMG_20200111_100520 from './IMG_20200111_100520.jpg';
-import IMG_20200111_100733 from './IMG_20200111_100733.jpg';
-import IMG_20200111_100905 from './IMG_20200111_100905.jpg';
-import IMG_20200111_101350 from './IMG_20200111_101350.jpg';
-import IMG_20200111_101545 from './IMG_20200111_101545.jpg';
-import IMG_20200111_101730 from './IMG_20200111_101730.jpg';
-import IMG_20200111_101742 from './IMG_20200111_101742.jpg';
-import IMG_20200111_102213 from './IMG_20200111_102213.jpg';
-import IMG_20200111_102741 from './IMG_20200111_102741.jpg';
-import IMG_20200111_103100 from './IMG_20200111_103100.jpg';
-import IMG_20200111_104324 from './IMG_20200111_104324.jpg';
-import IMG_20200111_104415 from './IMG_20200111_104415.jpg';
-import IMG_20200111_104548 from './IMG_20200111_104548.jpg';
-import IMG_20200111_110123 from './IMG_20200111_110123.jpg';
+import IMG_20200111_094458 from './makri_pollution/IMG_20200111_094458.jpg';
+import IMG_20200111_094832 from './makri_pollution/IMG_20200111_094832.jpg';
+import IMG_20200111_095538 from './makri_pollution/IMG_20200111_095538.jpg';
+import IMG_20200111_095817 from './makri_pollution/IMG_20200111_095817.jpg';
+import IMG_20200111_100203 from './makri_pollution/IMG_20200111_100203.jpg';
+import IMG_20200111_100327 from './makri_pollution/IMG_20200111_100327.jpg';
+import IMG_20200111_100520 from './makri_pollution/IMG_20200111_100520.jpg';
+import IMG_20200111_100733 from './makri_pollution/IMG_20200111_100733.jpg';
+import IMG_20200111_100905 from './makri_pollution/IMG_20200111_100905.jpg';
+import IMG_20200111_101350 from './makri_pollution/IMG_20200111_101350.jpg';
+import IMG_20200111_101545 from './makri_pollution/IMG_20200111_101545.jpg';
+import IMG_20200111_101730 from './makri_pollution/IMG_20200111_101730.jpg';
+import IMG_20200111_101742 from './makri_pollution/IMG_20200111_101742.jpg';
+import IMG_20200111_102213 from './makri_pollution/IMG_20200111_102213.jpg';
+import IMG_20200111_102741 from './makri_pollution/IMG_20200111_102741.jpg';
+import IMG_20200111_103100 from './makri_pollution/IMG_20200111_103100.jpg';
+import IMG_20200111_104324 from './makri_pollution/IMG_20200111_104324.jpg';
+import IMG_20200111_104415 from './makri_pollution/IMG_20200111_104415.jpg';
+import IMG_20200111_104548 from './makri_pollution/IMG_20200111_104548.jpg';
+import IMG_20200111_110123 from './makri_pollution/IMG_20200111_110123.jpg';
+
+import IMG_20200117_100449 from './avantas_polution/IMG_20200117_100449.jpg';
+import IMG_20200117_101005 from './avantas_polution/IMG_20200117_101005.jpg';
+import IMG_20200117_101258 from './avantas_polution/IMG_20200117_101258.jpg';
+import IMG_20200117_101726 from './avantas_polution/IMG_20200117_101726.jpg';
+
+import IMG_20200315_101930 from './leukimi_pollution/IMG_20200315_101930.jpg';
+import IMG_20200315_101936 from './leukimi_pollution/IMG_20200315_101936.jpg';
+import IMG_20200315_102349 from './leukimi_pollution/IMG_20200315_102349.jpg';
+import IMG_20200315_102928 from './leukimi_pollution/IMG_20200315_102928.jpg';
+import IMG_20200315_103535 from './leukimi_pollution/IMG_20200315_103535.jpg';
 
 export {
   IMG_20200111_094458,
@@ -40,4 +51,13 @@ export {
   IMG_20200111_104415,
   IMG_20200111_104548,
   IMG_20200111_110123,
+  IMG_20200117_100449,
+  IMG_20200117_101005,
+  IMG_20200117_101258,
+  IMG_20200117_101726,
+  IMG_20200315_101930,
+  IMG_20200315_101936,
+  IMG_20200315_102349,
+  IMG_20200315_102928,
+  IMG_20200315_103535,
 };
