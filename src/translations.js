@@ -21,6 +21,6 @@ controlsMap.set('climate', 'Ακραία καιρικά φαινόμενα');
 
 controlsMap.set('Google', 'Google');
 controlsMap.set('Topomaps', 'Topomaps');
-controlsMap.set('Loss', 'Forest Loss');
+controlsMap.set('Loss', 'Εκτίμηση Χαμένης Βλάστησης');
 
 export { controlsMap, climateMap, pollutionMap, qualityMap };
