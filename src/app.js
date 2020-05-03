@@ -127,9 +127,7 @@ featureGroupLayers.forEach((layer) => {
 });
 // boundsGroup end
 const getMatchedWords = (collection, regex) => {
-  console.log('collection', collection);
   return collection.map(({ images }) => {
-    console.log('images', images);
     let word;
     if (images) {
       images.replace(regex, (matchedWord) => {

@@ -38,6 +38,13 @@ const conf = {
               args: ['https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'],
             },
           },
+          {
+            name: 'Loss',
+            layer: {
+              type: 'tileLayer',
+              args: ['http://earthengine.google.org/static/hansen_2013/loss_alpha/{z}/{x}/{y}.png'],
+            },
+          },
         ],
       },
     ],

@@ -21,5 +21,6 @@ controlsMap.set('climate', 'Ακραία καιρικά φαινόμενα');
 
 controlsMap.set('Google', 'Google');
 controlsMap.set('Topomaps', 'Topomaps');
+controlsMap.set('Loss', 'Loss');
 
 export { controlsMap, climateMap, pollutionMap, qualityMap };
