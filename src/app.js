@@ -126,11 +126,13 @@ featureGroupLayers.forEach((layer) => {
   map.addLayer(layer);
 });
 // boundsGroup end
-const getMatchedWords = (strArr, regex) => {
-  return strArr.map((str) => {
+const getMatchedWords = (collection, regex) => {
+  console.log('collection', collection);
+  return collection.map(({ images }) => {
+    console.log('images', images);
     let word;
-    if (str) {
-      str.replace(regex, (matchedWord) => {
+    if (images) {
+      images.replace(regex, (matchedWord) => {
         word = matchedWord;
       });
     }
@@ -139,9 +141,9 @@ const getMatchedWords = (strArr, regex) => {
 };
 
 const handlers = {
-  wastes: (marker, name, village) => {
+  wastes: (marker, name, village, category) => {
     marker.bindPopup(
-      `<h3>Ρύπανση από απόβλητα</h3><img src="${imagesMap[name]}" width="900" height="600" />`
+      `<h3 class="inline-head">${village}</h3>, ${category} <div><hr><img src="${imagesMap[name]}" width="900" height="600" /></div>`
     );
   },
 };
@@ -149,15 +151,16 @@ const handlers = {
 const constructIcons = (name, { features }) => {
   const markers = features.map(createMarker(name));
   // TODO: give it to web worker
-  const images = features.map(({ properties }) => properties.Images);
-  const regex = /img[_]?\d{8}[_]\d{6}/i;
-  const names = getMatchedWords(images, regex);
-
   markers.forEach((marker, i) => {
     marker.addTo(map);
     const handler = handlers[name];
     if (handler) {
-      handler(marker, names[i]);
+      if (name === 'wastes') {
+        const wastesProps = features.map(({ properties }) => properties);
+        const regex = /img[_]?\d{8}[_]\d{6}/i;
+        const names = getMatchedWords(wastesProps, regex);
+        handler(marker, names[i], wastesProps[i].village, wastesProps[i].category);
+      }
     }
   });
 };

@@ -30,18 +30,16 @@ const linker = (name, properties) => {
   return !property ? '' : Autolinker.link(capitalize(property.toLocaleString().toLowerCase()));
 };
 
-const uiCopyTypes = ['comment', 'village', 'eidos', 'category'];
+const uiCopyTypes = ['comment', 'village', 'type', 'category'];
 const [getComments, getVillage, getType, getCategory] = uiCopyTypes.map(
   (text) => ({ properties }) => {
     return linker(text, properties);
   }
 );
-const commentCnt = (feature) => {
-  return `<div class="wrapper"><h4 class="inline-head">${getVillage(feature)}</h4>, ${getCategory(
+const commentCnt = (feature) =>
+  `<div class="wrapper"><h4 class="inline-head">${getVillage(feature)}</h4>, ${getCategory(
     feature
   )}<hr>${getComments(feature)}</div>`;
-};
-
 const typeCnt = (feature) =>
   `<div class="wrapper"><h4 class="inline-head">${getVillage(feature)}</h4>, ${getType(
     feature
@@ -60,4 +58,4 @@ const eventHandler = (content) => (feature, layer) => {
   });
 };
 
-export { map, eventHandler, descCnt, typeCnt, commentCnt };
+export { map, eventHandler, descCnt, typeCnt, commentCnt, getVillage, getCategory };
