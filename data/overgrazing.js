@@ -5,7 +5,7 @@ export default {
   features: [
     {
       type: 'Feature',
-      properties: { eidos: 'Υπερβόσκηση', comment: null, village: 'Σαμοθράκη' },
+      properties: { type: 'Υπερβόσκηση', comment: null, village: 'Σαμοθράκη' },
       geometry: {
         type: 'MultiPolygon',
         coordinates: [
@@ -246,7 +246,7 @@ export default {
     },
     {
       type: 'Feature',
-      properties: { eidos: 'Υπερβόσκηση', comment: null, village: 'Σαμοθράκη' },
+      properties: { type: 'Υπερβόσκηση', comment: null, village: 'Σαμοθράκη' },
       geometry: {
         type: 'MultiPolygon',
         coordinates: [
@@ -335,7 +335,7 @@ export default {
     },
     {
       type: 'Feature',
-      properties: { eidos: 'Υπερβόσκηση', comment: null, village: 'Σαμοθράκη' },
+      properties: { type: 'Υπερβόσκηση', comment: null, village: 'Σαμοθράκη' },
       geometry: {
         type: 'MultiPolygon',
         coordinates: [
