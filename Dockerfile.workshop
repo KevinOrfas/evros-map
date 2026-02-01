@@ -1,0 +1,51 @@
+# Ekohacks Workshop: Security Vulnerabilities in Dependencies
+# This container includes intentionally vulnerable dependencies for educational purposes
+#
+# DO NOT use this in production!
+#
+# Build: docker build -f Dockerfile.workshop -t ekohacks/vuln-workshop .
+# Run:   docker run -it --rm -p 8080:8080 ekohacks/vuln-workshop
+
+FROM node:18-alpine
+
+LABEL maintainer="Ekohacks <hello@ekohacks.com>"
+LABEL description="Workshop environment with vulnerable ESLint for security training"
+LABEL purpose="EDUCATIONAL USE ONLY"
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package.json package-lock.json* ./
+
+# Install dependencies (including vulnerable eslint 8.57.1)
+RUN npm install --legacy-peer-deps
+
+# Copy source code
+COPY . .
+
+# Expose dev server port
+EXPOSE 8080
+
+# Workshop instructions on startup
+RUN echo '#!/bin/sh' > /entrypoint.sh && \
+    echo 'echo ""' >> /entrypoint.sh && \
+    echo 'echo "=============================================="' >> /entrypoint.sh && \
+    echo 'echo "  EKOHACKS SECURITY WORKSHOP"' >> /entrypoint.sh && \
+    echo 'echo "=============================================="' >> /entrypoint.sh && \
+    echo 'echo ""' >> /entrypoint.sh && \
+    echo 'echo "This container has INTENTIONALLY VULNERABLE dependencies:"' >> /entrypoint.sh && \
+    echo 'echo "  - eslint@8.57.1 (CVE-2025-50537)"' >> /entrypoint.sh && \
+    echo 'echo ""' >> /entrypoint.sh && \
+    echo 'echo "Workshop exercises:"' >> /entrypoint.sh && \
+    echo 'echo "  1. Run: npm audit"' >> /entrypoint.sh && \
+    echo 'echo "  2. Read: cat WORKSHOP.md"' >> /entrypoint.sh && \
+    echo 'echo "  3. Fix: npm install eslint@9"' >> /entrypoint.sh && \
+    echo 'echo ""' >> /entrypoint.sh && \
+    echo 'echo "Starting shell..."' >> /entrypoint.sh && \
+    echo 'echo ""' >> /entrypoint.sh && \
+    echo 'exec sh' >> /entrypoint.sh && \
+    chmod +x /entrypoint.sh
+
+# Default command - interactive shell for workshop
+ENTRYPOINT ["/entrypoint.sh"]

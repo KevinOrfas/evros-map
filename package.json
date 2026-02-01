@@ -22,7 +22,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.5.3",
-    "eslint": "^9.39.2",
+    "eslint": "8.57.1",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-config-standard": "^14.1.1",
