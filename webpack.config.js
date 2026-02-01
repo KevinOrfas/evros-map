@@ -1,11 +1,9 @@
 const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const babelLoader = require('./config/babel-loader');
 
 module.exports = (env) => {
@@ -15,10 +13,12 @@ module.exports = (env) => {
   const commonConfig = {
     entry: './src/app.js',
     mode: isDevelopement ? 'development' : 'production',
-    devtool: isDevelopement ? 'inline-cheap-source-map' : 'none',
+    devtool: isDevelopement ? 'inline-cheap-source-map' : false,
     output: {
       filename: isDevelopement ? 'bundle.js' : 'bundle-[contenthash].js',
       path: path.resolve(__dirname, 'dist'),
+      clean: true,
+      assetModuleFilename: '[name][ext]',
     },
     module: {
       rules: [
@@ -31,26 +31,26 @@ module.exports = (env) => {
           test: /\.(png|jpg)$/,
           exclude: /node_modules/,
           include: /src\/images/,
-          use: {
-            loader: 'file-loader',
-            options: { name: '[name].[ext]', outputPath: 'images/wastes' },
+          type: 'asset/resource',
+          generator: {
+            filename: 'images/wastes/[name][ext]',
           },
         },
         {
           test: /\.(png|jpg)$/,
           exclude: /node_modules/,
           include: /src\/libs\/images/,
-          use: {
-            loader: 'file-loader',
-            options: { name: '[name].[ext]', outputPath: 'images' },
+          type: 'asset/resource',
+          generator: {
+            filename: 'images/[name][ext]',
           },
         },
         {
           test: /\.svg$/,
           exclude: /node_modules/,
-          use: {
-            loader: 'file-loader',
-            options: { name: '[name].[ext]', outputPath: 'icons' },
+          type: 'asset/resource',
+          generator: {
+            filename: 'icons/[name][ext]',
           },
         },
       ],
@@ -76,7 +76,6 @@ module.exports = (env) => {
         },
       ],
     },
-    plugins: [new webpack.HotModuleReplacementPlugin()],
   };
 
   const prodConfig = {
@@ -90,15 +89,14 @@ module.exports = (env) => {
       ],
     },
     plugins: [
-      new CleanWebpackPlugin({}),
       new MiniCssExtractPlugin({
         filename: '[name].[contenthash].css',
         chunkFilename: '[id].css',
-        ignoreOrder: false, // Enable to remove warnings about conflicting order
+        ignoreOrder: false,
       }),
     ],
     optimization: {
-      minimizer: [new TerserPlugin(), new OptimizeCssAssetsPlugin()],
+      minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
     },
   };
 
