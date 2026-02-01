@@ -100,3 +100,19 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil(clients.claim());
 });
+
+// Background sync for reports
+self.addEventListener('sync', (event) => {
+  if (event.tag === 'sync-reports') {
+    console.log('Background sync triggered');
+    event.waitUntil(notifyClientsToSync());
+  }
+});
+
+// Notify all clients to sync their pending reports
+async function notifyClientsToSync() {
+  const clients = await self.clients.matchAll({ type: 'window' });
+  clients.forEach((client) => {
+    client.postMessage({ type: 'SYNC_REPORTS' });
+  });
+}

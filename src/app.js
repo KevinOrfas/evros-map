@@ -27,6 +27,7 @@ import {
   overgrazingLayer,
   pollutionLayer,
 } from './layers';
+import { initReportSystem } from './report';
 import {
   IMG_20200111_094458,
   IMG_20200111_094832,
@@ -142,7 +143,7 @@ const getMatchedWords = (collection, regex) => {
 const handlers = {
   wastes: (marker, name, village, category) => {
     marker.bindPopup(
-      `<h3 class="inline-head">${village}</h3>, ${category} <div><hr><img src="${imagesMap[name]}" width="900" height="600" /></div>`
+      `<h3 class="inline-head">${village}</h3>, ${category} <div><hr><img alt="" src="${imagesMap[name]}" width="900" height="600" /></div>`
     );
   },
 };
@@ -200,3 +201,6 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
+
+// Initialize report system
+initReportSystem(map);
