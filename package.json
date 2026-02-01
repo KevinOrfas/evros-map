@@ -23,7 +23,6 @@
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.0",
     "eslint": "^9.39.2",
-    "eslint-config-airbnb-base": "^13.2.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",
