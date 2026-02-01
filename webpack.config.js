@@ -18,6 +18,7 @@ module.exports = (env) => {
     devtool: isDevelopement ? 'inline-cheap-source-map' : false,
     output: {
       filename: isDevelopement ? 'bundle.js' : 'bundle-[contenthash].js',
+      chunkFilename: isDevelopement ? '[name].chunk.js' : '[name].[contenthash].chunk.js',
       path: path.resolve(__dirname, 'dist'),
       clean: true,
       assetModuleFilename: '[name][ext]',
@@ -109,6 +110,22 @@ module.exports = (env) => {
     ],
     optimization: {
       minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
+      splitChunks: {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+          data: {
+            test: /[\\/]data[\\/]/,
+            name: 'geodata',
+            chunks: 'all',
+            minSize: 0,
+          },
+        },
+      },
     },
   };
 
