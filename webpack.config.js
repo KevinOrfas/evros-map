@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
 const babelLoader = require('./config/babel-loader');
 
 module.exports = (env) => {
@@ -93,6 +95,16 @@ module.exports = (env) => {
         filename: '[name].[contenthash].css',
         chunkFilename: '[id].css',
         ignoreOrder: false,
+      }),
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: 'src/manifest.json', to: 'manifest.json' },
+        ],
+      }),
+      new InjectManifest({
+        swSrc: './src/sw.js',
+        swDest: 'sw.js',
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // 10MB for large GeoJSON
       }),
     ],
     optimization: {

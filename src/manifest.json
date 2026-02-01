@@ -1,0 +1,21 @@
+{
+  "name": "Common Ground - Κοινό Έδαφος",
+  "short_name": "Κοινό Έδαφος",
+  "description": "Environmental monitoring for Evros region",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#16a34a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icons/good.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["environment", "maps", "utilities"],
+  "lang": "el",
+  "dir": "ltr"
+}
