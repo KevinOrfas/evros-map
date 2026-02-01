@@ -9,12 +9,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const babelLoader = require('./config/babel-loader');
 
 module.exports = (env) => {
-  const isDevelopement = env === 'development';
+  const isDevelopement = env === 'development' || (env && env.development);
   console.log(`This is ${isDevelopement ? 'development' : 'production'} build`);
 
   const commonConfig = {
     entry: './src/app.js',
-    mode: env,
+    mode: isDevelopement ? 'development' : 'production',
     devtool: isDevelopement ? 'inline-cheap-source-map' : 'none',
     output: {
       filename: isDevelopement ? 'bundle.js' : 'bundle-[contenthash].js',
@@ -22,12 +22,6 @@ module.exports = (env) => {
     },
     module: {
       rules: [
-        {
-          enforce: 'pre',
-          test: /\.js$/,
-          exclude: /node_modules/,
-          loader: 'eslint-loader',
-        },
         {
           test: /\.html$/,
           exclude: /node_modules/,
@@ -66,10 +60,11 @@ module.exports = (env) => {
 
   const devConfig = {
     devServer: {
-      contentBase: path.resolve(__dirname, './'),
-      watchContentBase: false,
-      hotOnly: true,
-      overlay: false,
+      static: {
+        directory: path.resolve(__dirname, './'),
+        watch: false,
+      },
+      hot: true,
       host: '0.0.0.0',
     },
     module: {

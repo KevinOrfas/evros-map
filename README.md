@@ -1,6 +1,10 @@
 # Common Ground (Κοινό Έδαφος)
 
-An interactive web-based mapping application for monitoring and visualizing environmental degradation and land quality issues in the Evros region, Greece.
+[![Ekohacks Open Source](https://img.shields.io/badge/Ekohacks-Open%20Source-green)](https://ekohacks.com)
+
+An interactive web-based mapping application for monitoring and visualising environmental degradation and land quality issues in the Evros region, Greece.
+
+> **Part of the [Ekohacks](https://ekohacks.com) open source ecosystem** — where software craftsmanship meets environmental consciousness.
 
 ## Overview
 

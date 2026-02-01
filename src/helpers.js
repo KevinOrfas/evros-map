@@ -51,13 +51,17 @@ const featureToMarker = (feature, latlng) => {
 };
 
 const swapArr = (array, i, j) => ([array[i], array[j]] = [array[j], array[i]]);
-const createMarker = (name) => ({ geometry }) => {
-  const coords = swapArr(geometry.coordinates, 0, 1);
-  return L.marker(coords, { icon: featureIcon(name) });
-};
-const byCategory = (category, filter) => ({ properties }) => {
-  return properties[category] === filter;
-};
+const createMarker =
+  (name) =>
+  ({ geometry }) => {
+    const coords = swapArr(geometry.coordinates, 0, 1);
+    return L.marker(coords, { icon: featureIcon(name) });
+  };
+const byCategory =
+  (category, filter) =>
+  ({ properties }) => {
+    return properties[category] === filter;
+  };
 
 const capitalize = (s) => {
   return typeof s !== 'string' ? '' : s.charAt(0).toUpperCase() + s.slice(1);

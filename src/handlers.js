@@ -32,9 +32,10 @@ const linker = (name, properties) => {
 
 const uiCopyTypes = ['comment', 'village', 'type', 'category'];
 const [getComments, getVillage, getType, getCategory] = uiCopyTypes.map(
-  (text) => ({ properties }) => {
-    return linker(text, properties);
-  }
+  (text) =>
+    ({ properties }) => {
+      return linker(text, properties);
+    }
 );
 const commentCnt = (feature) =>
   `<div class="wrapper"><h4 class="inline-head">${getVillage(feature)}</h4>, ${getCategory(
